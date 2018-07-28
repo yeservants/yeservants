@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter:400,700');
+
+// Set your brand colors
+$blue: #1d6e91;
+//$pink: #FA7C91; //maybe?
+
+// Update Bulma's global variables
+$family-sans-serif: "Bitter", serif;
+$primary: $blue;
+//$link: $pink;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+//$input-border-color: transparent;
+//$input-shadow: none;
+
+// Import the rest of Bulma
+@import "bulma.sass";

@@ -1,0 +1,35 @@
+{
+  "name": "yes-website",
+  "version": "3.0.0",
+  "description": "Website built for yeservants.org",
+  "main": "build.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "npm run compilejs && npm run compilecss",
+    "compilejs": "babel src/js -d public",
+    "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeservants/website.git"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "zfbx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeservants/website/issues"
+  },
+  "homepage": "https://github.com/yeservants/website#readme",
+  "dependencies": {
+    "glob": "^7.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "sass": "^1.10.1"
+  }
+}
