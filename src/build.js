@@ -1,11 +1,46 @@
-const cmds = require('./cmds_new.json');
+const config = require('./config.json');
+const glob = require('glob');
 const fs = require('fs');
-console.log("Reading template..");
-var template = fs.readFileSync('CmdListTemplate.html', "utf8");
-var num = 1;
-var cl = "";
-console.log("Compiling Commands..")
+const ncp = require('ncp').ncp;
+ncp.limit = 16;
 
+rmDir = function (dirPath, removeSelf) {
+    if (removeSelf === undefined)
+        removeSelf = true;
+    try { var files = fs.readdirSync(dirPath); }
+    catch (e) { return; }
+    if (files.length > 0)
+        for (var i = 0; i < files.length; i++) {
+            var filePath = dirPath + '/' + files[i];
+            if (fs.statSync(filePath).isFile())
+                fs.unlinkSync(filePath);
+            else
+                rmDir(filePath);
+        }
+    if (removeSelf)
+        fs.rmdirSync(dirPath);
+};
+
+rmDir('../public', false);
+
+
+ncp('static', '../public', function (err) {
+    if (err) {
+        return console.error(err);
+    }
+    ncp('../public', '../docs', function (err) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log('done!');
+    });
+});
+
+
+
+/* //Resused code from docs generator
+var template = fs.readFileSync('CmdListTemplate.html', "utf8");
+var cl = "";
 
 for (var key in cmds) {
     for (var i = 0; i < cmds[key].length; i++) {
@@ -27,13 +62,12 @@ for (var key in cmds) {
             cl += `<span class="cell-part">${cmds[key][i]["Usage"][l]}</span>`;
         }
         cl += `</span></div></div>`;
-        console.log(`Added Command #${num}`);
-        num++;
     }
 }
-console.log(`Commands Compiled..\nMerging Template Data..`);
+
 template = template.replace(/{{COMMANDS}}/, cl);
 fs.writeFileSync('commands/index.html', template, function (err) {
     if (err) throw err;
     console.log('Commands Saved!');
 });
+*/

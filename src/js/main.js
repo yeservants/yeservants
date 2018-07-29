@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  console.log('Hello Bulma!');
+    document.documentElement.className = "js";
+    console.log('Hello Y.E.S.!');
 
 });
