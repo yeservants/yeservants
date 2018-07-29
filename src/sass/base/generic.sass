@@ -1,21 +1,21 @@
 $body-background-color: $white !default
 $body-size: 16px !default
 $body-rendering: optimizeLegibility !default
-$body-family: $family-primary !default
-$body-color: $text !default
+$body-family: $family-sans-serif !default
+$body-color: $black !default
 $body-weight: $weight-normal !default
 $body-line-height: 1.5 !default
 
-$code-family: $family-code !default
+$code-family: $family-monospace !default
 $code-padding: 0.25em 0.5em 0.25em !default
 $code-weight: normal !default
 $code-size: 0.875em !default
 
-$hr-background-color: $background !default
+$hr-background-color: $body-background-color !default
 $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
-$strong-color: $text-strong !default
+$strong-color: $black-ter !default
 $strong-weight: $weight-bold !default
 
 html
@@ -29,24 +29,13 @@ html
   text-rendering: $body-rendering
   text-size-adjust: 100%
 
-article,
-aside,
-figure,
-footer,
-header,
-hgroup,
-section
+article, aside, figure, footer, header, hgroup, section
   display: block
 
-body,
-button,
-input,
-select,
-textarea
+body, button, input, select, textarea
   font-family: $body-family
 
-code,
-pre
+code, pre
   -moz-osx-font-smoothing: auto
   -webkit-font-smoothing: auto
   font-family: $code-family
@@ -58,7 +47,6 @@ body
   line-height: $body-line-height
 
 // Inline
-
 a
   color: $link
   cursor: pointer
@@ -69,8 +57,8 @@ a
     color: $link-hover
 
 code
-  background-color: $code-background
-  color: $code
+  background-color: $grey-dark
+  color: $grey
   font-size: $code-size
   font-weight: $code-weight
   padding: $code-padding
@@ -102,11 +90,9 @@ strong
   font-weight: $strong-weight
 
 // Block
-
 pre
-  +overflow-touch
-  background-color: $pre-background
-  color: $pre
+  background-color: $grey-light
+  color: $black
   font-size: 0.875em
   overflow-x: auto
   padding: 1.25rem 1.5rem
@@ -124,4 +110,4 @@ table
     text-align: left
     vertical-align: top
   th
-    color: $text-strong
+    color: $black
