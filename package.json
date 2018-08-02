@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm run compilejs && npm run compilecss",
+    "build": "npm run emptyandbuild && npm run compilejs && npm run compilecss",
+    "emptyandbuild": "node ./src/build.js",
     "compilejs": "babel src/js -d public",
     "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed"
   },
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/yeservants/website#readme",
   "dependencies": {
     "glob": "^7.1.2",
+    "glob-promise": "^3.4.0",
     "ncp": "^2.0.0"
   },
   "devDependencies": {

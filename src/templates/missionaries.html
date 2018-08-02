@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#1a6c90"/>
+    <title>{{siteName}} - Missionaries</title>
+    <meta name="description" content="Meet some of our wonderful missionaries who work hard spreading the gospel of Jesus Christ around the world." />
+    <link rel="canonical" href="{{baseURL}}missionaries/"/>
+    <link rel="alternate" href="{{baseURL}}missionaries/" hreflang="en">
+    <!--<link rel="alternate" href="{{baseURL}}es/missionaries/" hreflang="es"> only if spanish version exists-->
+    <link rel="stylesheet" type="text/css" href="{{baseURL}}main.css" media="all">
+</head>
+<body>
+<div id="wrapper">
+    <section id="header">
+        <header>
+            <a href="{{baseURL}}"><img src="{{baseURL}}images/logo.png" alt="{{siteName}}"></a>
+        </header>
+    </section>
+    
+    <section id="nav">
+        <nav>
+            <a href="{{baseURL}}missionaries" class="active">Missionaries</a>
+            <a href="{{baseURL}}join">Get Involved</a>
+            <a href="{{baseURL}}contact">Contact</a>
+            <a href="{{baseURL}}donate">Donate</a>
+        </nav>
+    </section>
+
+    <section>
+        <h1>Missionaries</h1>
+    </section>
+    <section>
+        <p>
+            Meet some of our wonderful missionaries who work hard spreading the gospel of Jesus Christ around the world. Not all of our missionaries are listed here as some don’t have a profile to ensure their safety because they’re currently located in dangerous parts of the world. Please pray for the safety of our missionaries and support them with a donation if you can.
+        </p>
+    </section>
+
+    <section id="missionaries">
+
+        {{missionaries}}
+
+    </section>
+
+
+
+
+    <section id="footer">
+        <footer>
+            <div class="extra">
+                <p><b>{{address}}</b> - {{phone}}<br />
+                {{siteName}} &copy; {{copyrightStart}}-{{copyrightEnd}} All Rights Reserved</p>
+            </div>
+            <div class="right">
+                <a href="{{baseURL}}privacy">Privacy Policy</a>
+                <br />
+                <a href="{{baseURL}}contact">Contact</a>
+            </div>
+        </footer>
+    </section>
+</div><!--End #wrapper-->
+<script src="{{baseURL}}main.js"></script>
+</body>
+</html>

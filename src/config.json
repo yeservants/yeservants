@@ -1,10 +1,11 @@
 {
     "author": "zfbx",
     "site":{
-        "url": "yeservants.org",
+        "baseURL": "file:///C:/Development/yeservants/website/public/",
         "name": "Yielded Evangelical Servants",
+        "description": "",
         "nickname": "Y.E.S",
-        "phone": "(407) 498-5128",
+        "phone": "407-498-5128",
         "address": "P.O. Box 700697, St. Cloud, FL 34770",
         "copyright": "2002"
     }

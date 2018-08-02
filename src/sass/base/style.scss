@@ -13,6 +13,10 @@ body {
     display: flex;
     justify-content: center;
 }
+h1 {
+    font-size: 32px;
+    color: $primary;
+}
 h2 {
     font-size: 22px;
     color: $primary;
@@ -29,7 +33,7 @@ h2 {
     color: $primary;
 }
 .divider span {
-    background-color: $white;
+    background-color: $background;
     padding: 3px;
     font-size:28px;
     line-height: 0;
@@ -40,6 +44,19 @@ h2 {
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+#footer {
+    background: $grey-dark;
+    color: $background;
+    line-height: 1.6;
+    padding: 25px 0;
+    width: 100%;
+    max-width: unset;
+}
+#footer a {
+    color: $background;
+    text-decoration: underline;
+    text-underline-position: under;
 }
 section, header, nav, footer {
     display: flex;
@@ -75,7 +92,7 @@ nav a {
     text-decoration: none;
     display: block;
     padding: 1em;
-    color: rgb(84, 84, 84);
+    color: $grey-dark;
     border-bottom: solid 2px #ffffff;;
 }
 nav a:hover {
@@ -85,6 +102,44 @@ nav a:hover {
 nav #active {
     text-decoration: underline;
 }
+#missionary {
+    text-align: left;
+    margin-bottom: 50px;
+    align-items: flex-start;
+}
+
+#missionary .leftside {
+    flex: 1;
+}
+#missionary .rightside {
+    padding-left: 20px;
+    flex: 2;
+}
+.donationbutton {
+    text-align: center;
+}
+.keep-newlines {
+    white-space: pre-line;
+}
+
+.button {
+    background-color: $primary;
+    box-shadow: 0 5px 0 darken($primary, 8);
+    color: $background;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+.button:hover {
+    background-color: darken($primary, 4);
+    color: $background;
+}
+.button:active {
+    box-shadow: none;
+    top: 5px;
+}
+
 .center {
     align-items:center;
     text-align: center;
@@ -116,13 +171,34 @@ nav #active {
     color: $primary;
     fill: currentColor;
 }
+
+#missionaries {
+    flex-flow: column wrap;
+}
+#missionaries div {
+    flex-grow: 0;
+    flex-basis: 25%;
+}
+
+@media all and (max-width: 966px) {
+    #missionaries div {
+        flex-basis: 33.3%;
+    }
+}
+
+@media all and (max-width: 780px) {
+    #missionaries div {
+        flex-basis: 50%;
+    }
+}
+
 @media all and (max-width: 654px) {
     body {
         padding: 0 20px;
     }
     nav, section, footer {
         flex-direction: column;
-        align-items:center;
+        align-items:center !important;
     }
     footer, footer div {
         text-align: center !important;
@@ -132,6 +208,22 @@ nav #active {
         padding: 0.5em 1em;
         border-top: solid 1px rgba(179, 179, 179, 0.289);
         border-bottom: solid 1px rgba(179, 179, 179, 0.289);
+    }
+    #missionary .leftside {
+        width: 70%;
+    }
+    #missionary .rightside {
+        padding-left: 0px;
+        width: 100%;
+    }
+    #missionaries div {
+        flex-basis: 100%;
+    }
+    .donationbutton {
+        width: 100%;
+    }
+    .button {
+        width: 100%;
     }
     .big-only {
         display: none;

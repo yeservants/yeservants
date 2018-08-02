@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#1a6c90"/>
+    <title>{{name}} - {{siteName}}</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="canonical" href="{{baseURL}}missionary/{{missionaryURL}}/"/>
+    <link rel="alternate" href="{{baseURL}}missionary/{{missionaryURL}}/" hreflang="en">
+    <!--<link rel="alternate" href="{{baseURL}}es/missionary/{{baseURL}}" hreflang="es"> only if spanish version exists-->
+    <link rel="stylesheet" type="text/css" href="{{baseURL}}main.css" media="all">
+</head>
+<body>
+<div id="wrapper">
+    <section id="header">
+        <header>
+            <a href="{{baseURL}}"><img src="{{baseURL}}images/logo.png" alt="{{siteName}}"></a>
+        </header>
+    </section>
+    
+    <section id="nav">
+        <nav>
+            <a href="{{baseURL}}missionaries">Missionaries</a>
+            <a href="{{baseURL}}join">Get Involved</a>
+            <a href="{{baseURL}}contact">Contact</a>
+            <a href="{{baseURL}}donate">Donate</a>
+        </nav>
+    </section>
+
+    <section class="name">
+        <h1>{{name}}</h1>
+    </section>
+
+    <section id="missionary">
+        <div class="leftside">
+            <img src="{{baseURL}}images/{{picture}}" alt="{{name}}'s picture" class="full">
+            <span class="big-only center">
+                <b>Contact</b><br />
+                {{contact}}
+            </span>
+        </div>
+        <div class="rightside">
+            <div class="donationbutton">
+                <a class="button" href="{{donationURL}}">Donate to {{name}}</a>
+            </div>
+            <div class="bio keep-newlines">
+                {{bio}}
+            </div>
+            <span class="small-only center">
+                <section class="divider" id="sponsor">
+                    <span>Contact</span>
+                </section>
+                {{contact}}
+            </span>
+        </div>
+    </section>
+
+    <section id="footer">
+        <footer>
+            <div class="extra">
+                <p><b>{{address}}</b> - {{phone}}<br />
+                {{siteName}} &copy; {{copyrightStart}}-{{copyrightEnd}} All Rights Reserved</p>
+            </div>
+            <div class="right">
+                <a href="{{baseURL}}privacy">Privacy Policy</a>
+                <br />
+                <a href="{{baseURL}}contact">Contact</a>
+            </div>
+        </footer>
+    </section>
+</div><!--End #wrapper-->
+<script src="{{baseURL}}main.js"></script>
+</body>
+</html>
