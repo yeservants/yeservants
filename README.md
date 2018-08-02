@@ -2,7 +2,7 @@
 
 This project is a website builder for the yeservants.org powered by nodejs, babel and sass.
 
-**Folder Structure**
+## Folder Structure
 
      ├── docs                # Compiled src for github pages
      ├── public              # Compiled src for yeservants.org
@@ -28,7 +28,7 @@ Have nodejs 8 or higher installed
 
 `npm install babel-cli babel-preset-env sass --g` (Global babel and sass compiler)
 
-### Build
+## Build
 `npm run build` (Builds for /public)
 
 `npm run build4docs` (Builds for /docs which runs the [Beta Github Page](https://yeservants.github.io/website/))
