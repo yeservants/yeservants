@@ -10,7 +10,12 @@
     "build": "npm run emptyandbuild && npm run compilejs && npm run compilecss",
     "emptyandbuild": "node ./src/build.js",
     "compilejs": "babel src/js -d public",
-    "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed"
+    "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed",
+
+    "builddocs": "npm run emptyandbuilddocs && npm run compilejsdocs && npm run compilecssdocs",
+    "emptyandbuilddocs": "node ./src/build4docs.js",
+    "compilejsdocs": "babel src/js -d docs",
+    "compilecssdocs": "sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed"
   },
   "repository": {
     "type": "git",

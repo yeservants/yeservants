@@ -22,18 +22,18 @@ rmDir = function (dirPath, removeSelf) {
         fs.rmdirSync(dirPath);
 };
 
-rmDir(__dirname + '/../public', false);
+rmDir(__dirname + '/../docs', false);
 
 
 var missionariesdata = "";
 
-let mdir = __dirname + '/../public/missionary';
+let mdir = __dirname + '/../docs/missionary';
 if (!fs.existsSync(mdir)){
     fs.mkdirSync(mdir);
 }
 
 //Replace variables
-let baseURL = config.site.baseURL;
+let baseURL = "https://yeservants.github.io/website/";
 let siteName = config.site.name;
 let address = config.site.address;
 let phone = config.site.phone;
@@ -126,7 +126,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             console.log('Missionary Saved!');
         });
     });
-    let msdir = __dirname + '/../public/missionaries';
+    let msdir = __dirname + '/../docs/missionaries';
     if (!fs.existsSync(msdir)){
         fs.mkdirSync(msdir);
     }
@@ -141,7 +141,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                     .replace(/{{description}}/g, sitedescription)
                     .replace(/{{missionaries}}/g, missionariesdata)
 
-    fs.writeFileSync(__dirname + `/../public/missionaries/index.html`, mstmp, function (err) {
+    fs.writeFileSync(__dirname + `/../docs/missionaries/index.html`, mstmp, function (err) {
         if (err) throw err;
         console.log('Missionaries Page Saved!');
     });
@@ -162,13 +162,13 @@ hometmp = hometmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{copyrightEnd}}/g, copyrightEnd)
                 .replace(/{{description}}/g, sitedescription)
                 .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
-fs.writeFileSync(__dirname + `/../public/index.html`, hometmp, function (err) {
+fs.writeFileSync(__dirname + `/../docs/index.html`, hometmp, function (err) {
     if (err) throw err;
     console.log('Homepage Saved!');
 });
 
 
-let redir = __dirname + '/../public/missionary';
+let redir = __dirname + '/../docs/missionary';
 if (!fs.existsSync(redir)){
     fs.mkdirSync(redir);
 }
@@ -177,15 +177,17 @@ console.log("data: " + missionariesdata);
 retmp = retmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{siteName}}/g, siteName)
 
-fs.writeFileSync(__dirname + `/../public/missionary/index.html`, retmp, function (err) {
+fs.writeFileSync(__dirname + `/../docs/missionary/index.html`, retmp, function (err) {
     if (err) throw err;
     console.log('Missionaries Page Saved!');
 });
 
 
 
+
+
 //copy over static files
-ncp(__dirname + '/static', __dirname + '/../public', function (err) {
+ncp(__dirname + '/static', __dirname + '/../docs', function (err) {
     if (err) {
         return console.error(err);
     }
@@ -193,3 +195,38 @@ ncp(__dirname + '/static', __dirname + '/../public', function (err) {
 
 
 console.log('completed.');
+
+
+/* //Resused code from docs generator
+var template = fs.readFileSync('CmdListTemplate.html', "utf8");
+var cl = "";
+
+for (var key in cmds) {
+    for (var i = 0; i < cmds[key].length; i++) {
+        cl += `<div class="command" id="${num}" data-module="${key.toLocaleLowerCase()}"><div class="command-name">`;
+        for (var j = 0; j < cmds[key][i]["Aliases"].length; j++) {
+            cl += `<span>${cmds[key][i]["Aliases"][j]}</span>`;
+        }
+        cl += `<span class="module ${key.toLocaleLowerCase()}">${key}<span></div>
+            <div class="description"><section>${cmds[key][i]["Description"]}</section>`;
+        if (cmds[key][i]["Requirements"].length !== 0) {
+            cl += `<section class="description-warning"><span>Requires</span><section class="required-permissions">`;
+            for (var k = 0; k < cmds[key][i]["Requirements"].length; k++) {
+                cl += `<span class="permission">${cmds[key][i]["Requirements"][k]}</span>`;
+            }
+            cl += `</section></section>`;
+        }
+        cl += `</div><div class="usage"><span class="cell-parts">`;
+        for (var l = 0; l < cmds[key][i]["Usage"].length; l++) {
+            cl += `<span class="cell-part">${cmds[key][i]["Usage"][l]}</span>`;
+        }
+        cl += `</span></div></div>`;
+    }
+}
+
+template = template.replace(/{{COMMANDS}}/, cl);
+fs.writeFileSync('commands/index.html', template, function (err) {
+    if (err) throw err;
+    console.log('Commands Saved!');
+});
+*/
