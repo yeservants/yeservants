@@ -3,19 +3,19 @@
 This project is a website builder for the yeservants.org powered by nodejs, babel and sass.
 
 **Folder Structure**
-├── docs                # Compiled src for github pages
-├── public              # Compiled src for yeservants.org
-├── src                 
-│   ├── js              # javascript to be compiled
-│   ├── missionaries    # missionary information to compile
-│   ├── sass            # Stylesheets to compile
-│   ├── static          # Folder to copy as-is to public
-│   │   ├──  images     # Site + missionary images
-│   ├── templates       # HTML templates that form layout
-│   ├── build.js        # Main Build script that compiles everything
-│   └── config.json     # Site configuration variables
-├── build.bat 
-└── README.md           # This page :)
+    ├── docs                # Compiled src for github pages
+    ├── public              # Compiled src for yeservants.org
+    ├── src                 
+    │   ├── js              # javascript to be compiled
+    │   ├── missionaries    # missionary information to compile
+    │   ├── sass            # Stylesheets to compile
+    │   ├── static          # Folder to copy as-is to public
+    │   │   ├──  images     # Site + missionary images
+    │   ├── templates       # HTML templates that form layout
+    │   ├── build.js        # Main Build script that compiles everything
+    │   └── config.json     # Site configuration variables
+    ├── build.bat 
+    └── README.md           # This page :)
 
 
 
