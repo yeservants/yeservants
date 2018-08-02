@@ -21,15 +21,21 @@ This project is a website builder for the yeservants.org powered by nodejs, babe
 
 
 ## Set Up
+
 Have nodejs 8 or higher installed
+
 `npm install` (Install required dependencies)
+
 `npm install babel-cli babel-preset-env sass --g` (Global babel and sass compiler)
 
 ### Build
 `npm run build` (Builds for /public)
+
 `npm run build4docs` (Builds for /docs which runs the [Beta Github Page](https://yeservants.github.io/website/))
 
+
 Build only css: `npm run compilecss`
+
 Build only js: `npm run compilejs`
 
 ## License
