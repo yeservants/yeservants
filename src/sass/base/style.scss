@@ -177,7 +177,7 @@ nav #active {
 }
 #missionaries div {
     flex-grow: 0;
-    flex-basis: 25%;
+    flex-basis: 24%;
     text-align: center;
     background-color: #f7f7f7;
     border-radius: 3px;
@@ -189,13 +189,13 @@ nav #active {
 
 @media all and (max-width: 966px) {
     #missionaries div {
-        flex-basis: 33.3%;
+        flex-basis: 32%;
     }
 }
 
 @media all and (max-width: 780px) {
     #missionaries div {
-        flex-basis: 50%;
+        flex-basis: 49%;
     }
 }
 

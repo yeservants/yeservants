@@ -6,10 +6,10 @@ exports.info = {
     contact: { 
         "none": "nothing"
     },
-    description: "Interesting stuff about me is I wrote this website." //keep this short
+    description: "Anita Cornieles plans and directs the multi-church annual daily vacation bible school in Puerto Ayacucho, Venezuela comprised of 14 local churches and over 1000 children."
 }
 
-exports.bio = () => { //This is where the main body goes written in the 1st person 
+exports.bio = () => {
 return `
 <b>Sending Church:</b>
 <b>Ministry Started:</b>
@@ -20,7 +20,7 @@ Anita Cornieles plans and directs the multi-church annual daily vacation bible s
 `;
 };
 
-exports.bio_es = () => { //optional spanish version?
+exports.bio_es = () => { 
 return `
 `;
 };

@@ -22,7 +22,7 @@ We have six children, four boys and two girls. We currently live in Dallas, Texa
 `;
 };
 
-exports.bio_es = () => { //optional spanish version?
+exports.bio_es = () => { 
 return `
 `;
 };
