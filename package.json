@@ -14,7 +14,8 @@
     "builddocs": "npm run emptyandbuilddocs && npm run compilejsdocs && npm run compilecssdocs",
     "emptyandbuilddocs": "node ./src/build.js docs",
     "compilejsdocs": "babel src/js -d docs",
-    "compilecssdocs": "sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed"
+    "compilecssdocs": "sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed",
+    "buildall": "npm run build && npm run builddocs"
   },
   "repository": {
     "type": "git",

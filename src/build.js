@@ -65,7 +65,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         let location = m.info.location;
         let missionaryURL = m.info.url;
         let picture = m.info.picture;
-        let contact = "";
+        let contact = "<b>Contact</b><br />";
         let donationURL = `${baseURL}donate?missionary=${encodeURIComponent(name)}`;
         let bio = `<b>Location:</b> ${location}\n${m.bio()}`;
         
@@ -82,26 +82,21 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             stat.picture++;
         }
 
-        let first = true;
         let c = m.info.contact;
         for (var key in c) {
             if (c.hasOwnProperty(key)) {
-                if(first) {
-                    contact += `<b>Contact</b><br />`;
-                    first = false;
-                }
                 switch(key) {
                     case'email':
                         let etemp = "";
                         c[key].split('').forEach(function(ch) {
                             etemp += `<span>${ch}</span>`;
                         });
-                        contact += etemp;
+                        contact += etemp + `<br />`;
                         break;
                     case 'address':
                         let ar = c[key];
                         for(i=0; i<ar.length; i++) {
-                            contact += ar[i];
+                            contact += ar[i] + `<br />`;
                         }
                         break;
                     case 'phone':
@@ -109,14 +104,15 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         c[key].split('').forEach(function(ph) {
                             ptemp += `<span>${ph}</span>`;
                         });
-                        contact += ptemp;
+                        contact += ptemp + `<br />`;
                         break;
                     case 'link':
-                        contact += `<a href="${c[key]}" rel="nofollow">${c[key]}</a>`;
+                        contact += `<a href="${c[key]}" rel="nofollow">${c[key]}</a><br />`;
                         break;
                     case 'none':
                         console.warn(chalk.bgWhite(chalk.red(`-- No Contact`)));
                         stat.contact++;
+                        contact = "";
                         break;
                     default:
                         break;
