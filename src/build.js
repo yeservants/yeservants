@@ -37,7 +37,7 @@ if (!fs.existsSync(mdir)){
 
 //Replace variables
 let baseURL = config.site.baseURL;
-if(directory === "docs") {
+if(directory !== "public") {
     baseURL = "https://yeservants.github.io/website/";
 }
 
