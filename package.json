@@ -12,7 +12,7 @@
     "compilejs": "babel src/js -d public",
     "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed",
     "builddocs": "npm run emptyandbuilddocs && npm run compilejsdocs && npm run compilecssdocs",
-    "emptyandbuilddocs": "node ./src/build4docs.js",
+    "emptyandbuilddocs": "node ./src/build.js docs",
     "compilejsdocs": "babel src/js -d docs",
     "compilecssdocs": "sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed"
   },

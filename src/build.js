@@ -6,6 +6,8 @@ const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
 
+var directory = process.argv[2] || "public";
+
 rmDir = function (dirPath, removeSelf) {
     if (removeSelf === undefined)
         removeSelf = true;
@@ -23,18 +25,22 @@ rmDir = function (dirPath, removeSelf) {
         fs.rmdirSync(dirPath);
 };
 
-rmDir(__dirname + '/../public', false);
+rmDir(__dirname + `/../${directory}`, false);
 
 
 var missionariesdata = "";
 
-let mdir = __dirname + '/../public/missionary';
+let mdir = __dirname + `/../${directory}/missionary`;
 if (!fs.existsSync(mdir)){
     fs.mkdirSync(mdir);
 }
 
 //Replace variables
 let baseURL = config.site.baseURL;
+if(directory === "docs") {
+    baseURL = "https://yeservants.github.io/website/";
+}
+
 let siteName = config.site.name;
 let address = config.site.address;
 let phone = config.site.phone;
@@ -44,6 +50,7 @@ let copyrightEnd = date.getFullYear();
 
 
 glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
+    var stat = {picture: 0, hidden: 0, unknown: 0, contact: 0};
     if (err) console.error(err);
     console.log(chalk.bgGreen(`Processing Missionaries (${files.length} found)`));
     files.forEach(f => {
@@ -63,18 +70,26 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         let bio = `<b>Location:</b> ${location}\n${m.bio()}`;
         
         if (location === 'Hidden') {
-            console.log(chalk.bgWhite(chalk.yellow(`--${name}'s Location is Hidden for Safety.`)));
+            console.log(chalk.bgWhite(chalk.cyan(`-- Location Hidden`)));
+            stat.hidden ++;
         }
         if (location === 'Unknown') {
-            console.warn(chalk.bgWhite(chalk.red(`--${name}'s Location is Unknown?`)));
+            console.warn(chalk.bgWhite(chalk.red(`-- Location Unknown?`)));
+            stat.unknown++;
         }
         if (picture === 'none.jpg') {
-            console.warn(chalk.bgWhite(chalk.red(`--${name} doesn't have a picture.`)));
+            console.warn(chalk.bgWhite(chalk.red(`-- No picture.`)));
+            stat.picture++;
         }
-        
+
+        let first = true;
         let c = m.info.contact;
         for (var key in c) {
             if (c.hasOwnProperty(key)) {
+                if(first) {
+                    contact += `<b>Contact</b><br />`;
+                    first = false;
+                }
                 switch(key) {
                     case'email':
                         let etemp = "";
@@ -100,7 +115,8 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         contact += `<a href="${c[key]}" rel="nofollow">${c[key]}</a>`;
                         break;
                     case 'none':
-                        console.warn(chalk.bgWhite(chalk.red(`--${name} doesn't have any contact information.`)));
+                        console.warn(chalk.bgWhite(chalk.red(`-- No Contact`)));
+                        stat.contact++;
                         break;
                     default:
                         break;
@@ -137,7 +153,11 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
 
         fs.writeFileSync(`${ndir}/index.html`, tmp);
     });
-    let msdir = __dirname + '/../public/missionaries';
+
+    console.log(`${stat.picture} Missing Pictures. \n${stat.hidden} Hidden Missionaries. \n${stat.unknown} Missing Locations \n${stat.contact} Missing Contact Info`);
+
+
+    let msdir = __dirname + `/../${directory}/missionaries`;
     if (!fs.existsSync(msdir)){
         fs.mkdirSync(msdir);
     }
@@ -152,7 +172,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                     .replace(/{{description}}/g, sitedescription)
                     .replace(/{{missionaries}}/g, missionariesdata)
 
-    fs.writeFileSync(__dirname + `/../public/missionaries/index.html`, mstmp);
+    fs.writeFileSync(__dirname + `/../${directory}/missionaries/index.html`, mstmp);
 });
 
 
@@ -170,7 +190,7 @@ fs.writeFileSync(__dirname + `/../public/index.html`, hometmp);
 
 
 
-let redir = __dirname + '/../public/missionary';
+let redir = __dirname + `/../${directory}/missionary`;
 if (!fs.existsSync(redir)){
     fs.mkdirSync(redir);
 }
@@ -178,12 +198,12 @@ let retmp = fs.readFileSync(__dirname + '/templates/missionary-redirect.html', "
 retmp = retmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{siteName}}/g, siteName)
 
-fs.writeFileSync(__dirname + `/../public/missionary/index.html`, retmp);
+fs.writeFileSync(__dirname + `/../${directory}/missionary/index.html`, retmp);
 
 
 
 //copy over static files
-ncp(__dirname + '/static', __dirname + '/../public', function (err) {
+ncp(__dirname + '/static', __dirname + `/../${directory}`, function (err) {
     if (err) {
         return console.error(err);
     }
@@ -191,6 +211,6 @@ ncp(__dirname + '/static', __dirname + '/../public', function (err) {
 
 
 process.on('beforeExit', function() {
-    console.log(chalk.bgCyan('Building complete.'));
+    console.log(chalk.bgCyan(`Building complete for ${directory}.`));
     process.exit();
 });
