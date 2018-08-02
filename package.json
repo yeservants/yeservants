@@ -11,7 +11,6 @@
     "emptyandbuild": "node ./src/build.js",
     "compilejs": "babel src/js -d public",
     "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed",
-
     "builddocs": "npm run emptyandbuilddocs && npm run compilejsdocs && npm run compilecssdocs",
     "emptyandbuilddocs": "node ./src/build4docs.js",
     "compilejsdocs": "babel src/js -d docs",
@@ -31,6 +30,7 @@
   },
   "homepage": "https://github.com/yeservants/website#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "glob": "^7.1.2",
     "glob-promise": "^3.4.0",
     "ncp": "^2.0.0"

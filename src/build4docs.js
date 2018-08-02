@@ -2,6 +2,7 @@ const config = require('./config.json');
 const glob = require('glob');
 const fs = require('fs');
 const ncp = require('ncp').ncp;
+const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
 
@@ -44,12 +45,12 @@ let copyrightEnd = date.getFullYear();
 
 glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
     if (err) console.error(err);
-    console.log(`Processing Missionaries (${files.length} found)`);
+    console.log(chalk.bgGreen(`Processing Missionaries (${files.length} found)`));
     files.forEach(f => {
         let m = require(`${f}`);
         let tmp = fs.readFileSync(__dirname + '/templates/missionary.html', "utf8");
 
-        console.log(`Loading Missionary: ${m.info.name}.`);
+        console.log(chalk.bgWhite(chalk.green(`Loading Missionary: ${m.info.name}.`)));
 
         //missionary variables
         let name = m.info.name;
@@ -60,6 +61,16 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         let contact = "";
         let donationURL = `${baseURL}donate?missionary=${encodeURIComponent(name)}`;
         let bio = `<b>Location:</b> ${location}\n${m.bio()}`;
+        
+        if (location === 'Hidden') {
+            console.log(chalk.bgWhite(chalk.yellow(`--${name}'s Location is Hidden for Safety.`)));
+        }
+        if (location === 'Unknown') {
+            console.warn(chalk.bgWhite(chalk.red(`--${name}'s Location is Unknown?`)));
+        }
+        if (picture === 'none.jpg') {
+            console.warn(chalk.bgWhite(chalk.red(`--${name} doesn't have a picture.`)));
+        }
         
         let c = m.info.contact;
         for (var key in c) {
@@ -87,6 +98,9 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         break;
                     case 'link':
                         contact += `<a href="${c[key]}" rel="nofollow">${c[key]}</a>`;
+                        break;
+                    case 'none':
+                        console.warn(chalk.bgWhite(chalk.red(`--${name} doesn't have any contact information.`)));
                         break;
                     default:
                         break;
@@ -121,10 +135,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             fs.mkdirSync(ndir);
         }
 
-        fs.writeFileSync(`${ndir}/index.html`, tmp, function (err) {
-            if (err) throw err;
-            console.log('Missionary Saved!');
-        });
+        fs.writeFileSync(`${ndir}/index.html`, tmp);
     });
     let msdir = __dirname + '/../docs/missionaries';
     if (!fs.existsSync(msdir)){
@@ -141,15 +152,8 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                     .replace(/{{description}}/g, sitedescription)
                     .replace(/{{missionaries}}/g, missionariesdata)
 
-    fs.writeFileSync(__dirname + `/../docs/missionaries/index.html`, mstmp, function (err) {
-        if (err) throw err;
-        console.log('Missionaries Page Saved!');
-    });
+    fs.writeFileSync(__dirname + `/../docs/missionaries/index.html`, mstmp);
 });
-
-
-
-
 
 
 
@@ -162,10 +166,8 @@ hometmp = hometmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{copyrightEnd}}/g, copyrightEnd)
                 .replace(/{{description}}/g, sitedescription)
                 .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
-fs.writeFileSync(__dirname + `/../docs/index.html`, hometmp, function (err) {
-    if (err) throw err;
-    console.log('Homepage Saved!');
-});
+fs.writeFileSync(__dirname + `/../docs/index.html`, hometmp);
+
 
 
 let redir = __dirname + '/../docs/missionary';
@@ -173,16 +175,10 @@ if (!fs.existsSync(redir)){
     fs.mkdirSync(redir);
 }
 let retmp = fs.readFileSync(__dirname + '/templates/missionary-redirect.html', "utf8");
-console.log("data: " + missionariesdata);
 retmp = retmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{siteName}}/g, siteName)
 
-fs.writeFileSync(__dirname + `/../docs/missionary/index.html`, retmp, function (err) {
-    if (err) throw err;
-    console.log('Missionaries Page Saved!');
-});
-
-
+fs.writeFileSync(__dirname + `/../docs/missionary/index.html`, retmp);
 
 
 
@@ -194,39 +190,7 @@ ncp(__dirname + '/static', __dirname + '/../docs', function (err) {
 });
 
 
-console.log('completed.');
-
-
-/* //Resused code from docs generator
-var template = fs.readFileSync('CmdListTemplate.html', "utf8");
-var cl = "";
-
-for (var key in cmds) {
-    for (var i = 0; i < cmds[key].length; i++) {
-        cl += `<div class="command" id="${num}" data-module="${key.toLocaleLowerCase()}"><div class="command-name">`;
-        for (var j = 0; j < cmds[key][i]["Aliases"].length; j++) {
-            cl += `<span>${cmds[key][i]["Aliases"][j]}</span>`;
-        }
-        cl += `<span class="module ${key.toLocaleLowerCase()}">${key}<span></div>
-            <div class="description"><section>${cmds[key][i]["Description"]}</section>`;
-        if (cmds[key][i]["Requirements"].length !== 0) {
-            cl += `<section class="description-warning"><span>Requires</span><section class="required-permissions">`;
-            for (var k = 0; k < cmds[key][i]["Requirements"].length; k++) {
-                cl += `<span class="permission">${cmds[key][i]["Requirements"][k]}</span>`;
-            }
-            cl += `</section></section>`;
-        }
-        cl += `</div><div class="usage"><span class="cell-parts">`;
-        for (var l = 0; l < cmds[key][i]["Usage"].length; l++) {
-            cl += `<span class="cell-part">${cmds[key][i]["Usage"][l]}</span>`;
-        }
-        cl += `</span></div></div>`;
-    }
-}
-
-template = template.replace(/{{COMMANDS}}/, cl);
-fs.writeFileSync('commands/index.html', template, function (err) {
-    if (err) throw err;
-    console.log('Commands Saved!');
+process.on('beforeExit', function() {
+    console.log(chalk.bgCyan('Building complete.'));
+    process.exit();
 });
-*/
