@@ -29,11 +29,11 @@ Have nodejs 8 or higher installed
 `npm install babel-cli babel-preset-env sass --g` (Global babel and sass compiler)
 
 ## Build
-'npm run buildall` - To build everything
+'npm run build` - To build everything
 
-`npm run build` - To build for /public
+`node ./src/build.js` - To build for /public
 
-`npm run build4docs` - To build for /docs for [Beta Github Page](https://yeservants.github.io/website/)
+`node ./src/build.js docs` - To build for /docs for [Beta Github Page](https://yeservants.github.io/website/)
 
 Build only css: `npm run compilecss`
 
