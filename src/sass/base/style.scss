@@ -100,8 +100,9 @@ nav a:hover {
     text-decoration: underline;
     text-underline-position: under;
 }
-nav #active {
+nav .active {
     text-decoration: underline;
+    text-underline-position: under;
 }
 #missionary {
     text-align: left;
