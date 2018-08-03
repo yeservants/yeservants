@@ -6,6 +6,8 @@ const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
 
+var ver = Math.floor(Math.random() * 10000000);
+
 var directory = process.argv[2] || "public";
 
 rmDir = function (dirPath, removeSelf) {
@@ -141,6 +143,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             .replace(/{{contact}}/g, contact)
             .replace(/{{donationURL}}/g, donationURL)
             .replace(/{{bio}}/g, bio)
+            .replace(/{{ver}}/g, ver)
 
         let ndir = `${mdir}/${missionaryURL}`;
         if (!fs.existsSync(ndir)){
@@ -167,6 +170,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                     .replace(/{{copyrightEnd}}/g, copyrightEnd)
                     .replace(/{{description}}/g, sitedescription)
                     .replace(/{{missionaries}}/g, missionariesdata)
+                    .replace(/{{ver}}/g, ver)
 
     fs.writeFileSync(__dirname + `/../${directory}/missionaries/index.html`, mstmp);
 });
@@ -182,6 +186,7 @@ hometmp = hometmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{copyrightEnd}}/g, copyrightEnd)
                 .replace(/{{description}}/g, sitedescription)
                 .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
+                .replace(/{{ver}}/g, ver)
 fs.writeFileSync(__dirname + `/../${directory}/index.html`, hometmp);
 
 
@@ -211,6 +216,7 @@ privacytmp = privacytmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{copyrightEnd}}/g, copyrightEnd)
                 .replace(/{{description}}/g, sitedescription)
                 .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
+                .replace(/{{ver}}/g, ver)
 fs.writeFileSync(__dirname + `/../${directory}/privacy/index.html`, privacytmp);
 
 
