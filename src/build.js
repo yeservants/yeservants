@@ -182,7 +182,7 @@ hometmp = hometmp.replace(/{{baseURL}}/g, baseURL)
                 .replace(/{{copyrightEnd}}/g, copyrightEnd)
                 .replace(/{{description}}/g, sitedescription)
                 .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
-fs.writeFileSync(__dirname + `/../public/index.html`, hometmp);
+fs.writeFileSync(__dirname + `/../${directory}/index.html`, hometmp);
 
 
 
