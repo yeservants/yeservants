@@ -221,7 +221,6 @@ fs.writeFileSync(__dirname + `/../${directory}/privacy/index.html`, privacytmp);
 
 
 
-
 //copy over static files
 ncp(__dirname + '/static', __dirname + `/../${directory}`, function (err) {
     if (err) {
