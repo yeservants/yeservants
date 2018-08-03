@@ -23,8 +23,8 @@ h2 {
     text-transform: uppercase;
 }
 .divider {
-    margin-top: 40px;
-    margin-bottom: 5px;
+    margin-top: 50px;
+    margin-bottom: 16px;
     padding: 0;
     height:4px;
     background-color: $primary;
@@ -70,6 +70,7 @@ section, header, nav, footer {
 section div, footer div {
     flex: 1;
     padding: 5px;
+    line-height: 1.8;
 }
 
 header a {
@@ -114,6 +115,9 @@ nav #active {
 #missionary .rightside {
     padding-left: 20px;
     flex: 2;
+}
+#home-stats div b {
+    font-size: 38px;
 }
 .donationbutton {
     text-align: center;
@@ -225,6 +229,9 @@ nav #active {
     }
     #missionaries div {
         flex-basis: 100%;
+    }
+    #home-stats div {
+        flex-basis: 49%;
     }
     .donationbutton {
         width: 100%;
