@@ -118,6 +118,7 @@ nav #active {
 }
 #home-stats div b {
     font-size: 38px;
+    color: #393939;
 }
 .donationbutton {
     text-align: center;
@@ -229,6 +230,9 @@ nav #active {
     }
     #missionaries div {
         flex-basis: 100%;
+    }
+    #home-stats {
+        flex-flow: row wrap;
     }
     #home-stats div {
         flex-basis: 49%;
