@@ -198,6 +198,24 @@ fs.writeFileSync(__dirname + `/../${directory}/missionary/index.html`, retmp);
 
 
 
+let privacydir = __dirname + `/../${directory}/privacy`;
+if (!fs.existsSync(privacydir)){
+    fs.mkdirSync(privacydir);
+}
+let privacytmp = fs.readFileSync(__dirname + '/templates/privacy.html', "utf8");
+privacytmp = privacytmp.replace(/{{baseURL}}/g, baseURL)
+                .replace(/{{siteName}}/g, siteName)
+                .replace(/{{address}}/g, address)
+                .replace(/{{phone}}/g, phone)
+                .replace(/{{copyrightStart}}/g, copyrightStart)
+                .replace(/{{copyrightEnd}}/g, copyrightEnd)
+                .replace(/{{description}}/g, sitedescription)
+                .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
+fs.writeFileSync(__dirname + `/../${directory}/privacy/index.html`, privacytmp);
+
+
+
+
 //copy over static files
 ncp(__dirname + '/static', __dirname + `/../${directory}`, function (err) {
     if (err) {
