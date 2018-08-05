@@ -42,7 +42,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     var spam = document.getElementById(spam);
     var submit = document.getElementById(submit);
     var status = document.getElementById(status);
-    var msg;
+    //var msg;
     //name 
     if (!namereg.test(name.value)) {
         showError(name.id, `Invalid formatting [A-z . - and spaces]`);
@@ -73,7 +73,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     } else {
         showError(message.id, '');
         //just clean it up a little.
-        msg = message.value.replace(msgreg, '');
+        //msg = message.value.replace(msgreg, '');
     }
     //trap
     if (trap.value !== '') {
@@ -97,7 +97,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     //update button
     submit.value = "Submitting..";
 
-
+/*
     var xhr = new XMLHttpRequest();
     xhr.open('POST', `https://getsimpleform.com/messages/ajax?form_api_token=${token}`);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -126,6 +126,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
         phone: phone.value,
         message: msg
     }));
+    */
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -138,13 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('bspam3').innerHTML = num3;
 
     document.getElementById('contacta').onsubmit = function(e) {
-        e.preventDefault();
-        sendContact('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam', 'asubmit', 'astatus');
-        return false;
+        return sendContact('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam', 'asubmit', 'astatus');
     }
     document.getElementById('contactb').onsubmit = function(e) {
-        e.preventDefault();
-        sendContact('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam', 'bsubmit', 'bstatus');
-        return false;
+        return sendContact('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam', 'bsubmit', 'bstatus');
     }
 });

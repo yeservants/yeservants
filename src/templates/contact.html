@@ -51,7 +51,8 @@
     <section class="center">
             <div style="flex:2; width: 100%;">
 
-                    <form class="contactform" method="POST" id="contacta" onsubmit="return submitGeneral()">
+                    <form class="contactform" method="POST" id="contacta" action="https://getsimpleform.com/messages?form_api_token=">
+                        <input type="hidden" name="redirect_to" value="{{baseURL}}thanks" />
                         <div class="field">
                             <label for="aname">Name: <spian class="required">*</span></label>
                             <input type="text" id="aname" name="aname" required>
@@ -122,7 +123,8 @@
         </div>
         <div style="flex:2; width: 100%;">
 
-            <form class="contactform" method="POST" id="contactb" onsubmit="return submitAccounting()">
+            <form class="contactform" method="POST" id="contactb" action="https://getsimpleform.com/messages?form_api_token=a8fa4227876b573d9d1579ee350a706c">
+                <input type="hidden" name="redirect_to" value="{{baseURL}}thanks" />
                 <div class="field">
                     <label for="bname">Name: <spian class="required">*</span></label>
                     <input type="text" id="bname" name="bname" required>
