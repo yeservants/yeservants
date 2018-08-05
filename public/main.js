@@ -29,7 +29,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     if (to === 'accounting') {
         token = 'a8fa4227876b573d9d1579ee350a706c';
     } else if (to === 'general') {
-        token = '';
+        token = '8792a521c2d584dcee90ee9e767318ff';
     } else {
         return false;
     }
