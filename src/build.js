@@ -187,7 +187,8 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
 
 let hometmp = fs.readFileSync(__dirname + '/templates/index.html', "utf8");
 hometmp = siteData(hometmp);
-hometmp = hometmp.replace(/{{description}}/g, sitedescription);
+hometmp = hometmp.replace(/{{description}}/g, sitedescription)
+                .replace(/{{startedAgo}}/g, (copyrightEnd - copyrightStart));
 fs.writeFileSync(__dirname + `/../${directory}/index.html`, hometmp);
 
 
