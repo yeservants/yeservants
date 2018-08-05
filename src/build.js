@@ -5,7 +5,6 @@ const ncp = require('ncp').ncp;
 const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
-
 var directory = process.argv[2] || "public";
 
 rmDir = function (dirPath, removeSelf) {
@@ -39,8 +38,10 @@ function createDir(path) {
 createDir(`${directory}/missionary`);
 createDir(`${directory}/missionaries`);
 createDir(`${directory}/contact`);
+createDir(`${directory}/contact/sent`);
 createDir(`${directory}/privacy`);
 createDir(`${directory}/join`);
+createDir(`${directory}/thanks`);
 
 
 //Replace variables
@@ -48,7 +49,8 @@ let baseURL = config.site.baseURL;
 if(directory !== "public") {
     baseURL = "https://yeservants.github.io/website/";
 }
-var ver = Math.floor(Math.random() * 100000);
+//var ver = Math.floor(Math.random() * 100000);
+var ver = 8; //cutdown on push elements
 let siteName = config.site.name;
 let address = config.site.address;
 let phone = config.site.phone;
@@ -207,6 +209,16 @@ fs.writeFileSync(__dirname + `/../${directory}/join/index.html`, jointmp);
 let contacttmp = fs.readFileSync(__dirname + '/templates/contact.html', "utf8");
 contacttmp = siteData(contacttmp);
 fs.writeFileSync(__dirname + `/../${directory}/contact/index.html`, contacttmp);
+
+
+let thankstmp = fs.readFileSync(__dirname + '/templates/thanks.html', "utf8");
+thankstmp = siteData(thankstmp);
+fs.writeFileSync(__dirname + `/../${directory}/thanks/index.html`, thankstmp);
+
+
+let senttmp = fs.readFileSync(__dirname + '/templates/sent.html', "utf8");
+senttmp = siteData(senttmp);
+fs.writeFileSync(__dirname + `/../${directory}/contact/sent/index.html`, senttmp);
 
 
 
