@@ -6,8 +6,6 @@ const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
 
-var ver = Math.floor(Math.random() * 10000000);
-
 var directory = process.argv[2] || "public";
 
 rmDir = function (dirPath, removeSelf) {
@@ -26,29 +24,51 @@ rmDir = function (dirPath, removeSelf) {
     if (removeSelf)
         fs.rmdirSync(dirPath);
 };
-
 rmDir(__dirname + `/../${directory}`, false);
-
 
 var missionariesdata = "";
 
-let mdir = __dirname + `/../${directory}/missionary`;
-if (!fs.existsSync(mdir)){
-    fs.mkdirSync(mdir);
+function createDir(path) {
+    let dir = `${__dirname}/../${path}`; //project folder based directory | homedir/yeservants/website/
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+    return dir;
 }
+
+createDir(`${directory}/missionary`);
+createDir(`${directory}/missionaries`);
+createDir(`${directory}/contact`);
+createDir(`${directory}/privacy`);
+createDir(`${directory}/join`);
+
 
 //Replace variables
 let baseURL = config.site.baseURL;
 if(directory !== "public") {
     baseURL = "https://yeservants.github.io/website/";
 }
-
+var ver = Math.floor(Math.random() * 100000);
 let siteName = config.site.name;
 let address = config.site.address;
 let phone = config.site.phone;
 let sitedescription = config.site.description;
 let copyrightStart = config.site.copyright;
 let copyrightEnd = date.getFullYear();
+
+
+function siteData(template) {
+    let data = template.replace(/{{baseURL}}/g, baseURL)
+                    .replace(/{{siteName}}/g, siteName)
+                    .replace(/{{address}}/g, address)
+                    .replace(/{{phone}}/g, phone)
+                    .replace(/{{copyrightStart}}/g, copyrightStart)
+                    .replace(/{{copyrightEnd}}/g, copyrightEnd)
+                    .replace(/{{ver}}/g, ver);
+    return data;
+}
+
+
 
 
 glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
@@ -58,6 +78,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
     files.forEach(f => {
         let m = require(`${f}`);
         let tmp = fs.readFileSync(__dirname + '/templates/missionary.html', "utf8");
+        let retmp = fs.readFileSync(__dirname + '/templates/single-missionary-redirect.html', "utf8");
 
         console.log(chalk.bgWhite(chalk.green(`Loading Missionary: ${m.info.name}.`)));
 
@@ -130,94 +151,62 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             </a>
         </div>`;
 
-        tmp = tmp.replace(/{{baseURL}}/g, baseURL)
-            .replace(/{{siteName}}/g, siteName)
-            .replace(/{{address}}/g, address)
-            .replace(/{{phone}}/g, phone)
-            .replace(/{{copyrightStart}}/g, copyrightStart)
-            .replace(/{{copyrightEnd}}/g, copyrightEnd)
-            .replace(/{{name}}/g, name)
+        tmp = siteData(tmp);
+        tmp = tmp.replace(/{{name}}/g, name)
             .replace(/{{description}}/g, description)
             .replace(/{{missionaryURL}}/g, missionaryURL)
             .replace(/{{picture}}/g, picture)
             .replace(/{{contact}}/g, contact)
             .replace(/{{donationURL}}/g, donationURL)
             .replace(/{{bio}}/g, bio)
-            .replace(/{{ver}}/g, ver)
 
-        let ndir = `${mdir}/${missionaryURL}`;
-        if (!fs.existsSync(ndir)){
-            fs.mkdirSync(ndir);
-        }
+        //redirect anyone who tries to go to missionaries/name to missionary/name (From old system, later can be removed probably)
+        retmp = siteData(retmp);
+        retmp = retmp.replace(/{{name}}/g, name).replace(/{{missionaryURL}}/g, missionaryURL);
 
-        fs.writeFileSync(`${ndir}/index.html`, tmp);
+        let missionaryDir = createDir(`${directory}/missionary/${missionaryURL}`);
+        let missionariesDir = createDir(`${directory}/missionaries/${missionaryURL}`);
+
+        fs.writeFileSync(`${missionaryDir}/index.html`, tmp);
+        fs.writeFileSync(`${missionariesDir}/index.html`, retmp);
+
     });
 
     console.log(`${stat.picture} Missing Pictures. \n${stat.hidden} Hidden Missionaries. \n${stat.unknown} Missing Locations \n${stat.contact} Missing Contact Info`);
 
 
-    let msdir = __dirname + `/../${directory}/missionaries`;
-    if (!fs.existsSync(msdir)){
-        fs.mkdirSync(msdir);
-    }
     let mstmp = fs.readFileSync(__dirname + '/templates/missionaries.html', "utf8");
-    //console.log("data: " + missionariesdata);
-    mstmp = mstmp.replace(/{{baseURL}}/g, baseURL)
-                    .replace(/{{siteName}}/g, siteName)
-                    .replace(/{{address}}/g, address)
-                    .replace(/{{phone}}/g, phone)
-                    .replace(/{{copyrightStart}}/g, copyrightStart)
-                    .replace(/{{copyrightEnd}}/g, copyrightEnd)
-                    .replace(/{{description}}/g, sitedescription)
-                    .replace(/{{missionaries}}/g, missionariesdata)
-                    .replace(/{{ver}}/g, ver)
-
+    mstmp = siteData(mstmp);
+    mstmp = mstmp.replace(/{{missionaries}}/g, missionariesdata)
     fs.writeFileSync(__dirname + `/../${directory}/missionaries/index.html`, mstmp);
+
 });
 
 
-
 let hometmp = fs.readFileSync(__dirname + '/templates/index.html', "utf8");
-hometmp = hometmp.replace(/{{baseURL}}/g, baseURL)
-                .replace(/{{siteName}}/g, siteName)
-                .replace(/{{address}}/g, address)
-                .replace(/{{phone}}/g, phone)
-                .replace(/{{copyrightStart}}/g, copyrightStart)
-                .replace(/{{copyrightEnd}}/g, copyrightEnd)
-                .replace(/{{description}}/g, sitedescription)
-                .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
-                .replace(/{{ver}}/g, ver)
+hometmp = siteData(hometmp);
+hometmp = hometmp.replace(/{{description}}/g, sitedescription);
 fs.writeFileSync(__dirname + `/../${directory}/index.html`, hometmp);
 
 
-
-let redir = __dirname + `/../${directory}/missionary`;
-if (!fs.existsSync(redir)){
-    fs.mkdirSync(redir);
-}
 let retmp = fs.readFileSync(__dirname + '/templates/missionary-redirect.html', "utf8");
-retmp = retmp.replace(/{{baseURL}}/g, baseURL)
-                .replace(/{{siteName}}/g, siteName)
-
+retmp = siteData(retmp);
 fs.writeFileSync(__dirname + `/../${directory}/missionary/index.html`, retmp);
 
 
-
-let privacydir = __dirname + `/../${directory}/privacy`;
-if (!fs.existsSync(privacydir)){
-    fs.mkdirSync(privacydir);
-}
 let privacytmp = fs.readFileSync(__dirname + '/templates/privacy.html', "utf8");
-privacytmp = privacytmp.replace(/{{baseURL}}/g, baseURL)
-                .replace(/{{siteName}}/g, siteName)
-                .replace(/{{address}}/g, address)
-                .replace(/{{phone}}/g, phone)
-                .replace(/{{copyrightStart}}/g, copyrightStart)
-                .replace(/{{copyrightEnd}}/g, copyrightEnd)
-                .replace(/{{description}}/g, sitedescription)
-                .replace(/{{startedAgo}}/g, copyrightEnd-copyrightStart)
-                .replace(/{{ver}}/g, ver)
+privacytmp = siteData(privacytmp);
 fs.writeFileSync(__dirname + `/../${directory}/privacy/index.html`, privacytmp);
+
+
+let jointmp = fs.readFileSync(__dirname + '/templates/join.html', "utf8");
+jointmp = siteData(jointmp);
+fs.writeFileSync(__dirname + `/../${directory}/join/index.html`, jointmp);
+
+
+let contacttmp = fs.readFileSync(__dirname + '/templates/contact.html', "utf8");
+contacttmp = siteData(contacttmp);
+fs.writeFileSync(__dirname + `/../${directory}/contact/index.html`, contacttmp);
 
 
 
