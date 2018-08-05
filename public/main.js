@@ -10,49 +10,29 @@ var num2 = String(Math.floor(Math.random() * 10) + 1);
 var num3 = String(Math.floor(Math.random() * 3) + 1);
 var sum = String(Number(num1) + Number(num3));
 
-/*function $(v) {
-    var t = v.slice(0,1) === '#' ? 'id' : 'class';
-    v = v.slice(1);
-    if (t === 'id') {
-        return document.getElementById(v);
-    } else {
-        return document.getElementsByClassName(v)
-    }     
-}*/
-
-function send(to, name, email, phone, message) {
-    var token;
-    if (to === 'accounting') token = 'a8fa4227876b573d9d1579ee350a706c';else if (to === 'general') token = '';else return false;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://getsimpleform.com/messages/ajax?form_api_token=' + token);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var res = JSON.parse(xhr.responseText);
-            console.log(res);
-            return true;
-        }
-    };
-    xhr.send(JSON.stringify({
-        name: name,
-        email: email,
-        phone: phone,
-        message: message
-    }));
-}
-
 function showError(id, msg) {
     var box = document.getElementById(id + 'warn');
-    console.log(box);
     if (box) {
         box.innerHTML = msg;
-    } else {
-        console.error('no warning field found for #' + id);
     }
 }
 
-function validateSend(to, name, email, phone, message, trap, spam) {
+function showStatus(id, msg) {
+    var box = document.getElementById(id + 'status');
+    if (box) {
+        box.innerHTML = msg;
+    }
+}
+
+function sendContact(to, name, email, phone, message, trap, spam, submit, status) {
+    var token;
+    if (to === 'accounting') {
+        token = 'a8fa4227876b573d9d1579ee350a706c';
+    } else if (to === 'general') {
+        token = '';
+    } else {
+        return false;
+    }
 
     var name = document.getElementById(name);
     var email = document.getElementById(email);
@@ -60,9 +40,10 @@ function validateSend(to, name, email, phone, message, trap, spam) {
     var message = document.getElementById(message);
     var trap = document.getElementById(trap);
     var spam = document.getElementById(spam);
+    var submit = document.getElementById(submit);
+    var status = document.getElementById(status);
     var msg;
     //name 
-    console.log(name.value);
     if (!namereg.test(name.value)) {
         showError(name.id, 'Invalid formatting [A-z . - and spaces]');
         return false;
@@ -113,39 +94,56 @@ function validateSend(to, name, email, phone, message, trap, spam) {
     }
     showError(spam.id, '');
 
-    var status = send(to, name, email, phone, msg);
+    //update button
+    submit.value = "Submitting..";
 
-    if (status === true) {
-        name.value = '';
-        email.value = '';
-        phone.value = '';
-        message.value = '';
-        spam.value = '';
-        alert('Message Sent!');
-        return true;
-    } else {
-        alert('Something went wrong');
-        return false;
-    }
-}
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://getsimpleform.com/messages/ajax?form_api_token=' + token);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var res = JSON.parse(xhr.responseText);
+            console.log(res);
 
-function submitGeneral() {
-    return validateSend('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam');
-}
-
-function submitAccounting() {
-    return validateSend('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam');
+            name.value = '';
+            email.value = '';
+            phone.value = '';
+            message.value = '';
+            spam.value = '';
+            submit.value = 'Submit';
+            return false;
+        } else {
+            console.log(xhr);
+            submit.value = 'Submit';
+            status.innerHTML = '<span style="color:#ff0000">Message Failed to send.</span>';
+            return false;
+        }
+    };
+    xhr.send(JSON.stringify({
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        message: msg
+    }));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     document.documentElement.className = "js";
-    console.log('Hello Y.E.S.!');
-
     document.getElementById('aspam1').innerHTML = num1;
     document.getElementById('aspam2').innerHTML = num2;
     document.getElementById('aspam3').innerHTML = num3;
-
     document.getElementById('bspam1').innerHTML = num1;
     document.getElementById('bspam2').innerHTML = num2;
     document.getElementById('bspam3').innerHTML = num3;
+
+    document.getElementById('contacta').onsubmit = function (e) {
+        e.preventDefault();
+        sendContact('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam', 'asubmit', 'astatus');
+        return false;
+    };
+    document.getElementById('contactb').onsubmit = function (e) {
+        e.preventDefault();
+        sendContact('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam', 'bsubmit', 'bstatus');
+        return false;
+    };
 });
