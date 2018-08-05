@@ -97,7 +97,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     //update button
     submit.value = "Submitting..";
 
-    /*
+    /* Sadly Simpleform doesn't allow cross-origin request that aren't whitelisted..
         var xhr = new XMLHttpRequest();
         xhr.open('POST', `https://getsimpleform.com/messages/ajax?form_api_token=${token}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -131,17 +131,24 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
 
 document.addEventListener('DOMContentLoaded', function () {
     document.documentElement.className = "js";
-    document.getElementById('aspam1').innerHTML = num1;
-    document.getElementById('aspam2').innerHTML = num2;
-    document.getElementById('aspam3').innerHTML = num3;
-    document.getElementById('bspam1').innerHTML = num1;
-    document.getElementById('bspam2').innerHTML = num2;
-    document.getElementById('bspam3').innerHTML = num3;
 
-    document.getElementById('contacta').onsubmit = function (e) {
-        return sendContact('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam', 'asubmit', 'astatus');
-    };
-    document.getElementById('contactb').onsubmit = function (e) {
-        return sendContact('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam', 'bsubmit', 'bstatus');
-    };
+    if (document.getElementById('contacta')) {
+        document.getElementById('aspam1').innerHTML = num1;
+        document.getElementById('aspam2').innerHTML = num2;
+        document.getElementById('aspam3').innerHTML = num3;
+
+        document.getElementById('contacta').onsubmit = function (e) {
+            return sendContact('general', 'aname', 'aemail', 'aphone', 'amessage', 'atrap', 'aspam', 'asubmit', 'astatus');
+        };
+    }
+
+    if (document.getElementById('contactb')) {
+        document.getElementById('bspam1').innerHTML = num1;
+        document.getElementById('bspam2').innerHTML = num2;
+        document.getElementById('bspam3').innerHTML = num3;
+
+        document.getElementById('contactb').onsubmit = function (e) {
+            return sendContact('accounting', 'bname', 'bemail', 'bphone', 'bmessage', 'btrap', 'bspam', 'bsubmit', 'bstatus');
+        };
+    }
 });
