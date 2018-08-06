@@ -4,7 +4,7 @@ var emailreg = /^(?:[A-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-z0-9!#$%&'*+/=?^_`{|}~-]
 var num = /^(\d){1}$/;
 var msgreg = /[^\s\d\w\r\n.ñáéíóúü,()\/\\!#@$%^&*_\-=`~<>'"?{}\][]/g;
 var namereg = /^([A-zñáéíóúü\-. ]+)$/;
-var phonereg = /[0-9-.()x+ ]+/g;
+var phonereg = /^[0-9-.()x+ ]+$/g;
 var num1 = String(Math.floor(Math.random() * 6) + 1);
 var num2 = String(Math.floor(Math.random() * 10) + 1);
 var num3 = String(Math.floor(Math.random() * 3) + 1);
@@ -25,14 +25,14 @@ function showStatus(id, msg) {
 }
 
 function sendContact(to, name, email, phone, message, trap, spam, submit, status) {
-    var token;
+    /*var token;
     if (to === 'accounting') {
         token = 'a8fa4227876b573d9d1579ee350a706c';
     } else if (to === 'general') {
         token = '8792a521c2d584dcee90ee9e767318ff';
     } else {
         return false;
-    }
+    }*/
 
     var name = document.getElementById(name);
     var email = document.getElementById(email);
@@ -59,7 +59,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     }
     //phone (optional)
     if (phone.value.length > 0) {
-        if (!phonereg.test(phone.value) || phone.value.length < 8) {
+        if (!(phonereg.test(phone.value)) || phone.value.length < 8) {
             showError(phone.id, `Invalid phone number. "(111) 111-1111", "+44 1111 111 111"`);
             return false;
         } else {
