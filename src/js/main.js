@@ -2,9 +2,9 @@
 
 var emailreg = /^(?:[A-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[A-z0-9](?:[A-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])*$/;
 var num = /^(\d){1}$/;
-var msgreg = /[^\s\d\w\r\n.ñáéíóúü,()\/\\!#@$%^&*_\-=`~<>'"?{}\][]/g;
+var msgreg = /[^\s\d\w\r\n\.ñáéíóúü,()\/\\!#@$%^&*_\-=`~<>'"?{}\]\[]/g;
 var namereg = /^([A-zñáéíóúü\-. ]+)$/;
-var phonereg = /^[0-9-.()x+ ]+$/g;
+var phonereg = /^[0-9-\.\(\)\x\+\s]+$/g;
 var num1 = String(Math.floor(Math.random() * 6) + 1);
 var num2 = String(Math.floor(Math.random() * 10) + 1);
 var num3 = String(Math.floor(Math.random() * 3) + 1);
@@ -59,7 +59,7 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     }
     //phone (optional)
     if (phone.value.length > 0) {
-        if (!(phonereg.test(phone.value)) || phone.value.length < 8) {
+        if (!phonereg.test(phone.value)) {
             showError(phone.id, `Invalid phone number. "(111) 111-1111", "+44 1111 111 111"`);
             return false;
         } else {
