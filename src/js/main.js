@@ -4,7 +4,7 @@ var emailreg = /^(?:[A-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-z0-9!#$%&'*+/=?^_`{|}~-]
 var num = /^(\d){1}$/;
 var msgreg = /[^\s\d\w\r\n\.ñáéíóúü,()\/\\!#@$%^&*_\-=`~<>'"?{}\]\[]/g;
 var namereg = /^([A-zñáéíóúü\-. ]+)$/;
-var phonereg = /^[0-9-\.\(\)\x\+\s]+$/g;
+//var phonereg = /^[0-9-\.\(\)\x\+\s]+$/g;
 var num1 = String(Math.floor(Math.random() * 6) + 1);
 var num2 = String(Math.floor(Math.random() * 10) + 1);
 var num3 = String(Math.floor(Math.random() * 3) + 1);
@@ -57,15 +57,15 @@ function sendContact(to, name, email, phone, message, trap, spam, submit, status
     } else {
         showError(email.id, '');
     }
-    //phone (optional)
-    if (phone.value.length > 0) {
+    //phone (optional) | Causing issues
+    /*if (phone.value.length > 0) {
         if (!phonereg.test(phone.value)) {
             showError(phone.id, `Invalid phone number. "(111) 111-1111", "+44 1111 111 111"`);
             return false;
         } else {
             showError(phone.id, '');
         }
-    }
+    }*/
     //message 
     if (message.value.length < 30) {
         showError(message.id, `Add more to your message.`);
