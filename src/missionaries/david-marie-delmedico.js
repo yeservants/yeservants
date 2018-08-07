@@ -1,8 +1,8 @@
 exports.info = {
-    name: "Dave and Marie Delmedicos",
-    url: "delmedicos",
+    name: "Dave and Marie Delmedico",
+    url: "delmedico",
     location: "DeSoto, Texas",
-    picture: "delmedicos.png",
+    picture: "delmedico.png",
     contact: { 
         "email": "davedelmedico52@gmail.com"
     },
