@@ -85,6 +85,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         console.log(chalk.bgWhite(chalk.green(`Loading Missionary: ${m.info.name}.`)));
 
         //missionary variables
+        let aplosScriptInclude = "";
         let name = m.info.name;
         let description = m.info.description;
         let location = m.info.location;
@@ -144,6 +145,10 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                 }
             }
         };
+        if (donationEmbed {
+            aplosScriptInclude = '<script type="text/javascript" src="https://cdn.aplos.com/widgets/donations/1.0.1/donations.min.js"></script>';
+        });
+        {{aplosScriptInclude}}
 
         missionariesdata = missionariesdata + `<div class="missionaryitem">
             <a href="${baseURL}missionary/${missionaryURL}" alt="${name}">
@@ -160,7 +165,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             .replace(/{{picture}}/g, picture)
             .replace(/{{contact}}/g, contact)
             .replace(/{{donationURL}}/g, donationURL)
-            .replace(/{{bio}}/g, bio)
+            .replace(/{{bio}}/g, bio);
 
         //redirect anyone who tries to go to missionaries/name to missionary/name (From old system, later can be removed probably)
         retmp = siteData(retmp);
