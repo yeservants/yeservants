@@ -42,6 +42,7 @@ createDir(`${directory}/contact/sent`);
 createDir(`${directory}/privacy`);
 createDir(`${directory}/join`);
 createDir(`${directory}/thanks`);
+createDir(`${directory}/donate`);
 
 
 //Replace variables
@@ -71,8 +72,6 @@ function siteData(template) {
 }
 
 
-
-
 glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
     var stat = {picture: 0, hidden: 0, unknown: 0, contact: 0};
     if (err) console.error(err);
@@ -93,6 +92,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         let picture = m.info.picture;
         let contact = "<b>Contact</b><br />";
         let donationURL = `${baseURL}donate?missionary=${encodeURIComponent(name)}`;
+        let donationEmbed = false; 
         let bio = `<b>Location:</b> ${location}\n${m.bio()}`;
         
         if (location === 'Hidden') {
@@ -144,11 +144,12 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         break;
                 }
             }
-        };
-        if (donationEmbed {
+        }
+
+        if (donationEmbed) {
             aplosScriptInclude = '<script type="text/javascript" src="https://cdn.aplos.com/widgets/donations/1.0.1/donations.min.js"></script>';
-        });
-        {{aplosScriptInclude}}
+        }
+        
 
         missionariesdata = missionariesdata + `<div class="missionaryitem">
             <a href="${baseURL}missionary/${missionaryURL}" alt="${name}">
@@ -165,6 +166,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             .replace(/{{picture}}/g, picture)
             .replace(/{{contact}}/g, contact)
             .replace(/{{donationURL}}/g, donationURL)
+            .replace(/{{aplosScriptInclude}}/g, aplosScriptInclude)
             .replace(/{{bio}}/g, bio);
 
         //redirect anyone who tries to go to missionaries/name to missionary/name (From old system, later can be removed probably)
@@ -225,6 +227,10 @@ fs.writeFileSync(__dirname + `/../${directory}/thanks/index.html`, thankstmp);
 let senttmp = fs.readFileSync(__dirname + '/templates/sent.html', "utf8");
 senttmp = siteData(senttmp);
 fs.writeFileSync(__dirname + `/../${directory}/contact/sent/index.html`, senttmp);
+
+let donatetmp = fs.readFileSync(__dirname + '/templates/donate.html', "utf8");
+donatetmp = siteData(donatetmp);
+fs.writeFileSync(__dirname + `/../${directory}/donate/index.html`, donatetmp);
 
 
 
