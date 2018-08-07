@@ -1,9 +1,9 @@
 {
     "author": "zfbx",
     "site":{
-        "baseURL": "file:///C:/Development/yeservants/website/public/",
+        "baseURL": "https://yeservants.org/",
         "name": "Yielded Evangelical Servants",
-        "description": "",
+        "description": "Yielded Evangelical Servants is a Not-for-profit organization responsible for handling services for missionaries all over the world. Our mission is to...",
         "nickname": "Y.E.S",
         "phone": "407-498-5128",
         "address": "P.O. Box 700697, St. Cloud, FL 34770",

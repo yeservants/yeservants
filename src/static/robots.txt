@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /download/
+Disallow: /thanks/
+Disallow: /contact/sent/
+Disallow: /missionary/index.html
