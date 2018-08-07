@@ -128,26 +128,6 @@ nav .active {
     white-space: pre-line;
 }
 
-.button {
-    background-color: $primary;
-    box-shadow: 0 5px 0 darken($primary, 8);
-    color: $background;
-    padding: 1em 1.5em;
-    text-decoration: none;
-    //text-transform: uppercase;
-    border-radius: 3px;
-    position: relative;
-    line-height: 4;
-}
-.button:hover {
-    background-color: darken($primary, 4);
-    color: $background;
-}
-.button:active {
-    box-shadow: none;
-    top: 5px;
-}
-
 .center {
     align-items:center;
     text-align: center;
@@ -169,6 +149,7 @@ nav .active {
 .small-only {
     display: none;
 }
+
 .icon {
     display: block;
     color: $primary;
@@ -178,6 +159,34 @@ nav .active {
 .icon svg {
     color: $primary;
     fill: currentColor;
+}
+
+.button {
+    background-color: $primary;
+    box-shadow: 0 5px 0 darken($primary, 8);
+    color: $background;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    //text-transform: uppercase;
+    border-radius: 3px;
+    position: relative;
+    line-height: 4;
+}
+.button:hover {
+    background-color: darken($primary, 4);
+    color: $background;
+}
+.button:active {
+    box-shadow: none;
+    top: 5px;
+}
+
+.button > .icon {
+    color: $white;
+    display: inline;
+}
+.button > .icon svg {
+    color: $white;
 }
 
 #missionaries {
