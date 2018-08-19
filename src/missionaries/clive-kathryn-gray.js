@@ -1,7 +1,8 @@
 exports.info = {
     name: "Clive and Kathryn Gray",
-    url: "clive-and-kathryn-gray",
-    location: "Northern Ireland, UK",
+    url: "gray",
+    oldurl: "clive-and-kathryn-gray",
+    location: "Indonesia",
     picture: "clive-kathryn-gray.jpg",
     contact: {
         //"address": [

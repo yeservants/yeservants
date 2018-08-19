@@ -89,6 +89,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
         let description = m.info.description;
         let location = m.info.location;
         let missionaryURL = m.info.url;
+        let redirect = m.info.oldurl || false;
         let picture = m.info.picture;
         let contact = "<b>Contact</b><br />";
         let donationURL = `${baseURL}donate?missionary=${encodeURIComponent(name)}`;
@@ -175,9 +176,16 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
 
         let missionaryDir = createDir(`${directory}/missionary/${missionaryURL}`);
         let missionariesDir = createDir(`${directory}/missionaries/${missionaryURL}`);
-
         fs.writeFileSync(`${missionaryDir}/index.html`, tmp);
         fs.writeFileSync(`${missionariesDir}/index.html`, retmp);
+
+        if (redirect) { //so old urls don't give 404s
+            let redirecttmp = fs.readFileSync(__dirname + '/templates/old-url-redirect.html', "utf8");
+            redirecttmp = siteData(redirecttmp);
+            redirecttmp = redirecttmp.replace(/{{redirectURL}}/g, `missionary/${missionaryURL}`);
+            let redirectDir = createDir(`${directory}/missionary/${redirect}`);
+            fs.writeFileSync(`${redirectDir}/index.html`, redirecttmp);
+        }
 
     });
 
