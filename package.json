@@ -7,9 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "node ./src/build.js && node ./src/build.js docs && npm run compilejs && npm run compilecss",
-    "compilejs": "babel src/js -d public && babel src/js -d docs",
-    "compilecss": "sass src/sass/main.scss:public/main.css --no-source-map --style=compressed && sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed"
+    "build": "node ./src/build.js && npm run compilejs && npm run compilecss",
+    "compilejs": "babel src/js -d docs",
+    "compilecss": "sass src/sass/main.scss:docs/main.css --no-source-map --style=compressed"
   },
   "repository": {
     "type": "git",

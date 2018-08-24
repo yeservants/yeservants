@@ -5,7 +5,7 @@ const ncp = require('ncp').ncp;
 const chalk = require('chalk');
 var date = new Date();
 ncp.limit = 16;
-var directory = process.argv[2] || "public";
+var directory = "docs";
 
 rmDir = function (dirPath, removeSelf) {
     if (removeSelf === undefined)
@@ -47,9 +47,9 @@ createDir(`${directory}/donate`);
 
 //Replace variables
 let baseURL = config.site.baseURL;
-if(directory !== "public") {
-    baseURL = "https://yeservants.github.io/website/";
-}
+//if(directory !== "public") {
+//    baseURL = "https://yeservants.github.io/website/";
+//}
 //var ver = Math.floor(Math.random() * 100000);
 var ver = 8; //cutdown on push elements
 let siteName = config.site.name;
