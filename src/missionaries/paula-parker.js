@@ -11,7 +11,7 @@ exports.info = {
 
 exports.bio = () => {
 return `
-<b>Sending Church:</b> Int The Vine Church, Fullerton, CA
+<b>Sending Church:</b> In The Vine Church, Fullerton, CA
 <b>Ministry Started:</b> 1997
 <b>Duration:</b> Full-Time
 
