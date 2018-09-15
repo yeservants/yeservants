@@ -2,7 +2,7 @@ exports.info = {
     name: "Rick and Beth Hicks", 
     url: "hicks",
     location: "Ozamiz, Philippines",
-    picture: "rick-beth-hicks.png",
+    picture: "rick-beth-hicks.jpg",
     contact: { 
         "none": "none"
     },
