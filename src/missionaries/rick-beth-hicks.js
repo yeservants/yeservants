@@ -6,12 +6,12 @@ exports.info = {
     contact: { 
         "none": "none"
     },
-    description: "Interesting stuff about me is I wrote this website."
+    description: "Rick and Beth have been married 37 years. They have 2 adult children and one granddaughter."
 }
 
 exports.bio = () => { 
 return `
-<b>Sending Church:</b> Unknown
+<b>Sending Church:</b> Celebration Community Church
 <b>Ministry Started:</b> 2002
 <b>Duration:</b> Full-Time
 
