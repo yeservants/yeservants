@@ -114,6 +114,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
             if (c.hasOwnProperty(key)) {
                 switch(key) {
                     case'email':
+                    case'email2':
                         let etemp = "";
                         c[key].split('').forEach(function(ch) {
                             etemp += `<span>${ch}</span>`;
@@ -121,12 +122,14 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         contact += etemp + `<br />`;
                         break;
                     case 'address':
+                    case 'address2':
                         let ar = c[key];
                         for(i=0; i<ar.length; i++) {
                             contact += ar[i] + `<br />`;
                         }
                         break;
                     case 'phone':
+                    case 'phone2':
                         let ptemp = "";
                         c[key].split('').forEach(function(ph) {
                             ptemp += `<span>${ph}</span>`;
@@ -134,6 +137,7 @@ glob(__dirname + '/missionaries/*.js', {recursive: false}, (err, files) => {
                         contact += ptemp + `<br />`;
                         break;
                     case 'link':
+                    case 'link2':
                         contact += `<a href="${c[key]}" rel="nofollow">${c[key]}</a><br />`;
                         break;
                     case 'none':

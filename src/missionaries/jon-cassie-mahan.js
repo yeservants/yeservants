@@ -9,9 +9,9 @@ exports.info = {
             "Urbana, IL 61801"
         ],
         "phone": "Jon: 615-785-7427",
-        "phone": "Cassie: 309-255-7043",
+        "phone2": "Cassie: 309-255-7043",
         "email": "Jonmahan1@gmail.com",
-        "email": "Cassiemahan@gmail.com"
+        "email2": "Cassiemahan@gmail.com"
     },
     description: "Jon was involved with Campus Outreach at Tennessee Tech University. In 2008, Jon moved to Central Illinois to join the Campus Outreach expansion staff team. There he met Cassie"
 }

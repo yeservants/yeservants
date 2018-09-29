@@ -5,7 +5,7 @@ exports.info = {
     picture: "weston.png",
     contact: { 
         "email": "richard@intonations.org",
-        "email": "Catherine@intonations.org"
+        "email2": "Catherine@intonations.org"
     },
     description: "Since 1985 Richard and Catherine Weston have been involved with ministry among international students (ISM) in a variety of roles." 
 }

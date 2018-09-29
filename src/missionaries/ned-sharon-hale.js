@@ -8,12 +8,12 @@ exports.info = {
             "1500 Hinman Ave., #201", 
             "Evanston, IL 60201"
         ],
-        "address": [
+        "address2": [
             "635 Science Drive", 
             "Madison, WI 53711"
         ],
         "email": "ned.hale@intervarsity.org",
-        "email": "nhale@intervarsity.org"
+        "email2": "nhale@intervarsity.org"
     },
     description: "Ned and Sharon Hale are now involved in cross-cultural mission through First Presbyterian Church of Evanston, IL They are currently developing a personal and church outreach ministry to international students"
 }
