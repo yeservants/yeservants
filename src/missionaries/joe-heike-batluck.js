@@ -1,5 +1,5 @@
 exports.info = {
-    name: "Joe and Jeike Batluck", 
+    name: "Joe and Heike Batluck", 
     url: "batluck",
     location: "Germany",
     picture: "none.jpg",
