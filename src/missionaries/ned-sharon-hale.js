@@ -1,7 +1,7 @@
 exports.info = {
     name: "Ned and Sharon Hale", 
     url: "hale",
-    location: "Evanston, IL",
+    location: "Great Lakes Region",
     picture: "ned-sharon-hale.jpg", 
     contact: {
         "phone": "608-334-5418",
@@ -14,7 +14,7 @@ exports.info = {
 
 exports.bio = () => {
 return `
-<b>Sending Church:</b> First Presbyterian Church
+<b>Sending Church:</b> Christ Presbyterian Church
 <b>Ministry Started:</b> February 2005
 <b>Duration:</b> Part-Time
 
