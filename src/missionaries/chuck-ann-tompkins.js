@@ -2,7 +2,7 @@ exports.info = {
     name: "Chuck and Ann Tompkins",
     url: "chuck-and-ann-tompkins",
     location: "Ithaca, NY",
-    picture: "none.jpg",
+    picture: "tompkins.jpg",
     contact: {
         "address": [
             "170 Muzzy Road",
