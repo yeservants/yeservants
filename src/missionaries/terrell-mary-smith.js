@@ -11,8 +11,7 @@ exports.info = {
 
 exports.bio = () => {
 return `
-<b>Sending Church:</b> First Church of City
-<b>Ministry Started:</b> September 2004
+<b>Ministry Started:</b> 1971
 <b>Duration:</b> Full-Time
 
 <b>About</b>
