@@ -1,12 +1,12 @@
 exports.info = {
-    name: "Paul-Timothy & Deborah",
+    name: "Philip & Cariane Knudsen",
     url: "paul-timothy", 
     location: "East Asia",
     picture: "none.jpg", 
     contact: { 
         "none": "none"
     },
-    description: "The information on Paul Timothy and family are undisclosed as they work in a closed country. Please pray for them as they seek to bring His kingdom."
+    description: "The information on Philip and Cariane Knudsen are undisclosed as they work in a closed country. Please pray for them as they seek to bring His kingdom."
 }
 
 exports.bio = () => { 
