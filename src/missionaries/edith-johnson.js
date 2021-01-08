@@ -4,7 +4,7 @@ exports.info = {
     location: "Unknown",
     picture: "edith.jpg",
     contact: {
-        "email": "edithjohnson2010@yahoo.com"
+        "email": "edithjohnson14@gmail.com"
     },
     description: "Nothing is currently public known about Edith Johnson."
 }
