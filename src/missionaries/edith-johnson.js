@@ -2,7 +2,7 @@ exports.info = {
     name: "Edith Johnson",
     url: "johnson",
     location: "Unknown",
-    picture: "none.jpg",
+    picture: "edith.jpg",
     contact: {
         "email": "edithjohnson2010@yahoo.com"
     },
