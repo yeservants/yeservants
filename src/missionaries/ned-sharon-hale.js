@@ -36,9 +36,3 @@ Since 2006 Ned has been volunteering as the National Archivist for InterVarsity.
 Jesus Christ makes it clear that we are to love our neighbor as we love ourselves (Matthew’s Gospel chapters 5-7). In the increasingly “global village” of our world, what better way is there to foster peace and harmony in our world than to love the “stranger in our very midst” (Leviticus 19:33-34)?  International Student Ministry is one of the most strategic opportunities we have to influence future world leaders now being educated on North American campuses. As Christians we share the Gospel of God’s redeeming love, but whether any respond to that message or not, such leaders can never go back to their home countries without knowing that they have been welcomed and hosted by those representing both America and the Church of Jesus Christ.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

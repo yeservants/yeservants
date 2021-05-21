@@ -30,9 +30,3 @@ I will be serving Charlie's Lunch Ministries in their feeding centers and medica
 Thank you so much for joining me in caring for the least of these (Matthew 25:31­40). Caring for their spiritual, physical, and emotional needs requires a willingness and sacrifice on our part. Please keep this ministry in your prayers as I depend on Christ to provide, protect, and use me to advance His Kingdom here on earth.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

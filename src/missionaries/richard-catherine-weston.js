@@ -26,9 +26,3 @@ International education is now a global phenomenon ensuring that bright, aspirin
 In his many trips to the US Richard has warmly appreciated the support and affirmation of many new Christian friends. We continue to need to raise 100% of our support and we are grateful for the opportunity, via Y.E.S Ministries, to have a channel for tax efficient giving from US sources. Do get in touch with us, using contact details below.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

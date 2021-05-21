@@ -40,9 +40,3 @@ Jimmie and Gloria have a desire to return to Namibia to continue their ministry 
 • Counseling church members through life issues and acting as liaison between students and teachers to help students enroll and excel in the government schools
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

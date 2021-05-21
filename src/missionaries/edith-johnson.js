@@ -19,9 +19,3 @@ return `
 Nothing is currently public known about Edith Johnson.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

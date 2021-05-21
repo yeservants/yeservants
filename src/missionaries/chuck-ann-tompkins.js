@@ -30,9 +30,3 @@ We were in traditional pastoral ministry for over 34 years. We resigned from Bet
 God has been faithful to meet our needs through friends who affirm our ministry and emphases. We feel confident that God has led for us to remain in Ithaca, building on the relational capital of many years. Chuck works part time to meet financial needs, though his primary passion is working with people. We are grateful to the Lord for whoever is able to be part of our financial support team.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

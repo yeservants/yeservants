@@ -20,9 +20,3 @@ The information on Daniel and Doris Matheus is undisclosed for their safety. Ple
 
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

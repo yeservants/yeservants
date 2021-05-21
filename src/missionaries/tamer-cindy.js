@@ -29,9 +29,3 @@ Their focus has been the Middle East and Arab World. A very strategic location e
 Thank you for considering supporting us. We are excited about what the Lord is doing in this part of the world and all over. We are on the field (front line) because of donors and prayer partners like you. This makes us more excited as we see the body of Christ at work! It would be our great pleasure to partner in this ministry with you. As our partners in prayer or finance, we commit to you join in prayer for you also if you would like to contact us. We commit to be good stewards of the financial gifts that the Lord bestows on us through you. This is a true partnership with eternal rewards. If you would like to partner with us or would like more information, please use the form or contact information below.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

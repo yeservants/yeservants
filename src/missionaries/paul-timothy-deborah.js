@@ -23,9 +23,3 @@ The information on Paul Timothy and family are undisclosed as they work in a clo
 
 <b>Personal Message:</b> We are privileged to serve and we are grateful for all of our partners as we stand together to advance His kingdom. `;
 };
-
-exports.bio_es = () => { 
-return `
-`;
-};
-

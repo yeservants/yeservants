@@ -20,9 +20,3 @@ William and Chantell Burgess have been missionaries since 2001 and have been mar
 They have served as missionaries in Zambia, Southern Africa. While in Zambia their work entailed equipping the locals through discipleship, relational evangelism and leadership training. They have also helped with church planting, providing clean water and outreaches showing the Jesus film. They have done mission work in Namibia, Africa, and Central America.
 `;
 };
-
-exports.bio_es = () => { 
-return `
-`;
-};
-

@@ -19,9 +19,3 @@ return `
 The Batlucks live in Kandern, Germany, where Joe serves as lead pastor of Black Forest Christian Fellowship. As a church comprised primarily of missionaries from a various missions such as GEM, SIL/Wycliff, Teach Beyond, IMB, CMA, TEAM, Young Life and many others and missionary kids who are attending Black Forest Academy, BFCF plays a strategic role in equipping these saints for the gospel work that they are doing not only in Germany but through Europe, Africa and the Middle East.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

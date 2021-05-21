@@ -21,9 +21,3 @@ Dave and Marie have served in missions for thirty three years. Thirty two of tho
 We have six children, four boys and two girls. We currently live in Dallas, Texas. We are serving at the International Linguistics Center when we aren't doing an overseas project.
 `;
 };
-
-exports.bio_es = () => { 
-return `
-`;
-};
-

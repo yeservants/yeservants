@@ -26,9 +26,3 @@ Terrell studied Physics and Geology at the University of California, Berkeley, d
 Before joining Y.E.S., Terrell was Senior Campus Staff Member in International Student Ministry with InterVarsity’s Graduate &amp; Faculty Ministries at the University of Wisconsin, Madison. Terrell is an author, trainer, pioneer, evangelist, speaker, web site designer, photographer, enjoys computers and playing ping pong. Terrell’s greatest joy is explaining the Good News about Jesus to interested international students. Mary recently spent much of her summer caring for her aging mother, and building relationships with staff and other residents in a retirement home. We’re a thankful family - to God for His love to us, and thankful for each other.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

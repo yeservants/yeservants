@@ -30,9 +30,3 @@ Beyond the scope of the mission's involvement with missionaries, their current m
 'Seek ye first the kingdom of God...' (Matt. 6:33), however God may lead you. If He leads you to support us financially, we praise God for his faithfulness. If He leads you to pray for us, we deeply appreciate that. Our desire is that you seek first his kingdom.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

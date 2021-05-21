@@ -33,9 +33,3 @@ It is our prayer that as Wolfgang is from Germany that this may be a great help 
 Thank you for being our partners for the Gospels sake in West Belfast.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

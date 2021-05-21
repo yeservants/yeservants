@@ -25,9 +25,3 @@ Because we want you to be able to support them financially, if you feel led to d
 Please also keep the undisclosed missionaries in your prayers, for their safety and His will to be done.
 `;
 };
-
-exports.bio_es = () => { 
-return `
-`;
-};
-

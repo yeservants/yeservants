@@ -40,9 +40,3 @@ Please pray for wisdom, for our family and ministry, for health and for the fina
 Blessings
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

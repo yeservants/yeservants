@@ -19,9 +19,3 @@ return `
 Nothing is currently publicly known about Oscar Tovar at this time.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

@@ -25,9 +25,3 @@ Lucy’s current ministry focuses on international students and scholars. She pa
 I truly appreciate both your prayer and financial support as we partner together to reach the nations for Christ. International ministry is strategic because God brought the world to our doorstep and there is an openness in people’s hearts as they live far away from home. In sharing the Gospel and doing discipleship my prayers and hope are that these individuals will be the next generation of leaders and influencers in their community and country for our Lord Jesus. I am passionate to see the good news of God reach the ends of the earth.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

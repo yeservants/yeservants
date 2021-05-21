@@ -30,9 +30,3 @@ I have been traveling back to Southern Sudan every year since 1999, supporting t
 I am grateful for the faithful financial support of the many friends who have stood with me and believed in and encouraged me over the years. May the Lord bless you back as you are such a blessing to the many that we reach through your support.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

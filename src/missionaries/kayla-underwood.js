@@ -17,8 +17,3 @@ I will be serving as a full-time missionary with Selamta Family Project in Addis
 
 `;
 };
-
-exports.bio_es = () => { //optional spanish version?
-return ``;
-};
-

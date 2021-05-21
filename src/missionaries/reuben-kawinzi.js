@@ -19,9 +19,3 @@ return `
 Reuben Kawinzi's Information is undisclosed for their safety.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

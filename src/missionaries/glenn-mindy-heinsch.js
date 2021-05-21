@@ -22,9 +22,3 @@ Glenn and Mindy (set up by Glenn’s sister) had their first date in May 2002 �
 Glenn serves as the Upward Director at Bethel Church of Fargo and Calvary United Methodist Church of Fargo. The Upward ministry draws athletes from the entire Fargo/Moorhead area and surrounding communities. The Upward Sports program in Fargo/Moorhead reaches over 450 students each year with the gospel through the Upward basketball and cheering program. Games are played on 4 different church/school campuses each Saturday for eight weeks. Upward Sports is the world’s largest Christian youth sports provider. It ministers to over a half a million youth each year through basketball, cheering, flag football, baseball, and soccer. Glenn’s vision is to expand Upward Sports in Fargo/Moorhead to someday include flag football, soccer, and volleyball making it a year round ministry. Prior to moving to Fargo/Moorhead in the fall of 2017, Glenn served as the Upward Director at Celebration Community Church in Celebration, FL  for three years. It was during his time there that Glenn expanded the Upward Program from a one sport ministry that lasted three months to a year round ministry. His prayer is that God would allow that same growth and expansion to happen in the community of Fargo/Moorhead.
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

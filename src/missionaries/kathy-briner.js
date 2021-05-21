@@ -29,9 +29,3 @@ The specific calling God has on Kathy's life is to minister to Single Moms and W
 We are told in John 10:10 that "the enemy comes  only to steal, kill, and destroy, Yet Jesus came to give us life and life more abundantly". I am claiming this abundant life Jesus came to give is available to ALL who put our faith in Him!   When we seek first the Kingdom of God and His righteousness that all these things will be added unto us. (Matthew 6:33)   It is my desire to help women understand that God does want to help them and He will... Helping to show them a process of learning to think differently so that they can live differently then others, when they "no longer conform to the patterns of this world and instead become transformed through the renewing of their minds. It is then they can test and discern what the pleasing and perfect will of God is". (Romans 12:2) and when they "trust in the Lord with all their hearts , and do not lean on their own understanding, and they acknowledge Him in all their ways, He will make their path straight". Proverbs 3:5-6 This will result in being able to live abundantly free, walking in true wholeness! 
 `;
 };
-
-exports.bio_es = () => {
-return `
-`;
-};
-

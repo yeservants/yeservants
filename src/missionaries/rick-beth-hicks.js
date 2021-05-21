@@ -25,9 +25,3 @@ What kind of world awaits our children if at home looms the cruelty of child abu
 We thank God for those that partner with us through, prayer, love and financial support. You are our partners and we could not do this work without you. Our hearts are continually overwhelmed by God’s faithfulness. Our prayer is that He will bless each of you abundantly.
 `;
 };
-
-exports.bio_es = () => { 
-return `
-`;
-};
-

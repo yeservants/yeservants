@@ -1,7 +1,6 @@
 exports.info = {
     name: "Clive and Kathryn Gray",
     url: "gray",
-    oldurl: "clive-and-kathryn-gray",
     location: "Indonesia",
     picture: "clive-kathryn-gray.jpg",
     contact: {
@@ -31,10 +30,3 @@ The Masters Servants,
 Clive and Kathryn Gray
 `;
 };
-
-
-exports.bio_es = () => {
-return `
-`;
-};
-
