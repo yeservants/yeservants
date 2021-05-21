@@ -1,43 +1,29 @@
 # Yielded Evangelical Servants Website
 
-This project is a website builder for the yeservants.org powered by nodejs, babel and sass.
+This project is a website builder for the yeservants.org powered by nodejs
 
 ## Folder Structure
 
      ├── docs              # Compiled src for github pages
      ├── public            # Compiled src for yeservants.org
      ├── src                 
-     │   ├── js            # javascript to be compiled
      │   ├── missionaries  # missionary information to compile
-     │   ├── sass          # Stylesheets to compile
      │   ├── static        # Folder to copy as-is to public
      │   │   ├──  images   # Site + missionary images
      │   ├── templates     # HTML templates that form layout
-     │   ├── build.js      # Main Build script that compiles everything
-     │   └── config.json   # Site configuration variables
-     ├── build.bat
+     ├── build.bat         # Runs npm run build for you
+     ├── build.js          # Main Build script that compiles everything
      └── README.md         # This page :)
-
 
 
 ## Set Up
 
-Have nodejs 8 or higher installed
+Have nodejs 12 or higher installed
 
 `npm install` (Install required dependencies)
 
-`npm install babel-cli babel-preset-env sass --g` (Global babel and sass compiler)
-
 ## Build
 'npm run build` - To build everything
-
-`node ./src/build.js` - To build for /public
-
-`node ./src/build.js docs` - To build for /docs for [Beta Github Page](https://yeservants.github.io/website/)
-
-Build only css: `npm run compilecss`
-
-Build only js: `npm run compilejs`
 
 ## License
 
