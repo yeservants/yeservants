@@ -99,13 +99,13 @@ glob(src + '/missionaries/*.js', {recursive: false}, (err, files) => {
     });
 
     let mstmp = fs.readFileSync(path.join(templates, 'missionaries.html'), "utf8");
-    mstmp = siteData(mstmp).replace(/{{missionaries}}/g, missionariesdata);
+    mstmp = siteData(mstmp.replace(/{{missionaries}}/g, missionariesdata));
     fs.outputFileSync(path.join(out, 'missionaries', 'index.html'), mstmp);
 });
 
 function processPage(temp) {
     let file = fs.readFileSync(path.join(templates, `${temp}.html`), "utf8");
-    file = file.replace(/{{description}}/g, site.description).replace(/{{startedAgo}}/g, (date.getFullYear() - site.copyright));
+    file = siteData(file.replace(/{{description}}/g, site.description).replace(/{{startedAgo}}/g, (date.getFullYear() - site.copyright)));
     if (temp === "index") fs.outputFileSync(path.join(out, 'index.html'), file);
     else fs.outputFileSync(path.join(out, temp, 'index.html'), file);
 }
