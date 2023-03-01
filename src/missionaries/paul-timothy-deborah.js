@@ -1,12 +1,12 @@
 exports.info = {
-    name: "Philip & Cariane Knudsen",
+    name: "Phil & Cariane Knudsen",
     url: "paul-timothy", 
-    location: "East Asia",
-    picture: "none.jpg", 
+    location: "Kansas City, MO",
+    picture: "knudsen.png", 
     contact: { 
         "none": "none"
     },
-    description: "The information on Philip and Cariane Knudsen are undisclosed as they work in a closed country. Please pray for them as they seek to bring His kingdom."
+    description: "The information on Phil and Cariane Knudsen is undisclosed. Please pray for them as they seek to bring His kingdom."
 }
 
 exports.bio = () => { 
@@ -18,7 +18,7 @@ return `
 <b>Status:</b> 60% funds raised
 
 <b>About</b>
-The information on Paul Timothy and family are undisclosed as they work in a closed country. Please pray for them as they seek to bring His kingdom.
+The information on Paul and Cariane Knudsen is undisclosed. Please pray for them as they seek to bring His kingdom.
 
 
 <b>Personal Message:</b> We are privileged to serve and we are grateful for all of our partners as we stand together to advance His kingdom. `;
