@@ -12,7 +12,7 @@ exports.info = {
 exports.bio = () => {
 return `
 <b>Sending Church:</b>
-<b>Mission Started:</b> 25%
+<b>Mission Started:</b>
 <b>Duration:</b> Full-Time
 
 <b>About</b>
