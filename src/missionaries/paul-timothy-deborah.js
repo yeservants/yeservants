@@ -11,11 +11,11 @@ exports.info = {
 
 exports.bio = () => { 
 return `
-<b>Sending Church:</b> New Hope Community
+<b>Sending Church:</b> C2C KC
 <b>Ministry Started:</b> 2008
 <b>Duration:</b> Full-Time
 
-<b>Status:</b> 60% funds raised
+<b>Status:</b> 25% funds raised
 
 <b>About</b>
 The information on Paul and Cariane Knudsen is undisclosed. Please pray for them as they seek to bring His kingdom.
