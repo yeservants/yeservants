@@ -178,7 +178,19 @@
                     <div class="icon-container-item">
                         <div class="block">
                             <p><i class="bi bi-clock-history"></i></p>
-                            <p class="counter-wrapper"><span class="f">33</span></p>
+                            <p class="counter-wrapper"><span id="counter" class="f"></span></p>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const startYear = 2023; // The base year when the counter was 33
+    const startValue = 32; // Initial value in 2023
+    const currentYear = new Date().getFullYear();
+    const newValue = startValue + (currentYear - startYear);
+
+    document.getElementById("counter").textContent = newValue;
+  });
+</script>
+
                             <p class="text-block">Years</p>
                         </div>
                     </div>
@@ -723,8 +735,16 @@ color: white !important;
                 </div>
             </div>
             <div class="footer_bottom">
-                <p>Yielded Evangelical Servants © 2002-2024 All Rights Reserved <br> Yielded Evangelical Servants is a Registered under 501(c)(3) as not-for-profit.</p>
-            </div>
+    <p>Yielded Evangelical Servants © 2002-<span id="current-year"></span> All Rights Reserved <br> 
+    Yielded Evangelical Servants is registered under 501(c)(3) as a not-for-profit.</p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  });
+</script>
+
         </footer>
     </div>  
     <script src="js/jquery-3.1.1.min.js"></script>
