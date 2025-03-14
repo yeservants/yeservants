@@ -24,6 +24,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
+
 </head>
   <style>
       html,
@@ -128,12 +129,27 @@
     
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
+    
         <div class="swiper-slide">
           <img
-            src="https://www.cry.org/wp-content/uploads/children-are-powerful-agents-of-change.jpg"
+            src="Yespic/slider2.jpg"
             alt=""
           />
         </div>
+        <div class="swiper-slide">
+          <img
+            src="Yespic/slider3.jpg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="Yespic/slider4.jpg"
+            alt=""
+          />
+        </div>
+    
+    
      
           <div class="swiper-slide">
           <img
@@ -417,7 +433,189 @@ padding: 5px;
                 
                 </div>
             </div>
+
+
+
+
         </section>
+
+
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Each row-block holds 1 big image + 2 small stacked images */
+    .row-block {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      height: auto; /* fixed row height so images line up nicely */
+      max-width: 1100px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    /* For any .row-block, images fill the available space without distortion */
+    .row-block img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover; /* crop without distortion */
+      border-radius: 8px;
+      cursor: pointer;   /* indicate clickable images */
+    }
+
+    /* Pattern 1: Big image on the LEFT, small images on the RIGHT */
+    .left-big .big {
+      flex: 2; /* Big image takes about 2/3 of the row-block width */
+    }
+     .left-big .small-images  img{
+width: 100% !important;
+}
+     .right-big .small-images  img{
+width: 100% !important;
+}
+
+    .left-big .small-images {
+      flex: 1; /* The stacked small images take the remaining space */
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Pattern 2: Big image on the RIGHT, small images on the LEFT */
+    .right-big .big {
+      flex: 2;
+    }
+    .right-big .small-images {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Make it scale nicely on smaller screens */
+    @media (max-width: 768px) {
+      .row-block {
+        flex-direction: column; /* stack big + small vertically */
+        height: auto;          /* let height adjust naturally on smaller devices */
+      }
+      .row-block .big, .row-block .small-images {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;           /* hidden by default */
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;          /* enable scroll if image is tall */
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.show {
+      display: flex;           /* show the modal with flex layout for center alignment */
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      display: block;
+      border-radius: 8px;
+      margin-top: 5%;
+    }
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      font-size: 3rem;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
+
+
+  <h2 style="text-align: center; padding: 50px; font-size: 50px; font-weight: bold;">GALLERY</h2>
+
+  <!-- 1st row: Big image on the left, 2 small on the right -->
+  <div class="row-block left-big">
+    <img src="Yespic/1.jpg" class="big" alt="Big Photo 1">
+    <div class="small-images">
+      <img src="Yespic/2.jpg" class="small" alt="Small Photo 1">
+      <img src="Yespic/3.jpg" class="small" alt="Small Photo 2">
+    </div>
+  </div>
+
+  <!-- 2nd row: Big image on the right, 2 small on the left -->
+  <div class="row-block right-big">
+    <div class="small-images">
+      <img src="Yespic/4.jpg" class="small" alt="Small Photo 3">
+      <img src="Yespic/5.jpg" class="small" alt="Small Photo 4">
+    </div>
+    <img src="Yespic/9.jpg" class="big" alt="Big Photo 2">
+  </div>
+
+  <!-- 3rd row: Big image on the left, 2 small on the right (copy & customize as needed) -->
+  <div class="row-block left-big">
+    <img src="Yespic/6.jpg" class="big" alt="Big Photo 3">
+    <div class="small-images">
+      <img src="Yespic/7.jpg" class="small" alt="Small Photo 5">
+      <img src="Yespic/8.jpg" class="small" alt="Small Photo 6">
+    </div>
+  </div>
+
+  <!-- Modal (Lightbox) -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Modal Image">
+  </div>
+
+  <script>
+    // Grab all images in our gallery
+    const images = document.querySelectorAll('.row-block img');
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeBtn = document.querySelector('.close');
+
+    // Open the modal on image click
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.classList.add('show');
+        modalImg.src = img.src; // set the modal image source to the clicked image's src
+      });
+    });
+
+    // Close the modal when the close button is clicked
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    // Also close the modal when clicking outside the modal image
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+  </script>
+
+
   <h2 class="recent-event-title ">RECENT EVENTS</h2>
 
    <section class="event-section">
@@ -780,4 +978,8 @@ color: white !important;
 }
 </style>
 
+
+
+
+</body>
 </html>
