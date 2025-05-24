@@ -131,10 +131,158 @@
 
 
   <div class="bio-container">
-<div class="img-container">
-<img src="https://yeservants.org/images/andres.jpeg" alt="">
 
+
+
+<div class="simple-carousel">
+  <style>
+    .simple-carousel {
+  width: 100%;
+  max-width: 400px;
+  /* Alineado a la izquierda, sin margin auto */
+}
+
+.simple-carousel input[type="radio"] {
+  display: none;
+}
+
+.simple-carousel .carousel {
+  overflow: hidden;
+  border: 2px solid #ff9a18;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.simple-carousel .slides {
+  display: flex;
+  width: 800%; /* 8 slides */
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.simple-carousel .slide {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-carousel .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.simple-carousel .dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.simple-carousel .dots label {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* Slide transitions */
+.simple-carousel #slide1:checked ~ .carousel .slides { transform: translateX(0%); }
+.simple-carousel #slide2:checked ~ .carousel .slides { transform: translateX(-100%); }
+.simple-carousel #slide3:checked ~ .carousel .slides { transform: translateX(-200%); }
+.simple-carousel #slide4:checked ~ .carousel .slides { transform: translateX(-300%); }
+.simple-carousel #slide5:checked ~ .carousel .slides { transform: translateX(-400%); }
+.simple-carousel #slide6:checked ~ .carousel .slides { transform: translateX(-500%); }
+.simple-carousel #slide7:checked ~ .carousel .slides { transform: translateX(-600%); }
+.simple-carousel #slide8:checked ~ .carousel .slides { transform: translateX(-700%); }
+
+/* Active dot highlight */
+.simple-carousel #slide1:checked ~ .dots label[for="slide1"],
+.simple-carousel #slide2:checked ~ .dots label[for="slide2"],
+.simple-carousel #slide3:checked ~ .dots label[for="slide3"],
+.simple-carousel #slide4:checked ~ .dots label[for="slide4"],
+.simple-carousel #slide5:checked ~ .dots label[for="slide5"],
+.simple-carousel #slide6:checked ~ .dots label[for="slide6"],
+.simple-carousel #slide7:checked ~ .dots label[for="slide7"],
+.simple-carousel #slide8:checked ~ .dots label[for="slide8"] {
+  background-color: #ff9a18;
+}
+
+/* Responsive fallback */
+@media (max-width: 420px) {
+  .simple-carousel .carousel {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .simple-carousel .slide {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .simple-carousel .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+  </style>
+
+  <!-- Radio buttons -->
+  <input type="radio" name="slider" id="slide1" checked>
+  <input type="radio" name="slider" id="slide2">
+  <input type="radio" name="slider" id="slide3">
+  <input type="radio" name="slider" id="slide4">
+  <input type="radio" name="slider" id="slide5">
+  <input type="radio" name="slider" id="slide6">
+  <input type="radio" name="slider" id="slide7">
+  <input type="radio" name="slider" id="slide8">
+
+  <!-- Carousel slides -->
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide"><img src="image/IMG-20250524-WA0004.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0005.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0006.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0007.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0008.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0009.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0010.jpg" alt=""></div>
+      <div class="slide"><img src="image/IMG-20250524-WA0011.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots">
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
+    <label for="slide5"></label>
+    <label for="slide6"></label>
+    <label for="slide7"></label>
+    <label for="slide8"></label>
+  </div>
 </div>
+
+
+
+
+
+
+
 
 
 <div class="missionarie-content-container">
@@ -148,14 +296,34 @@
 
 <ul class="item-list">
 <li class="items-links"><strong>Location:</strong> United States</li>
-<li class="items-links"><strong>Sending Church</strong>:</li>
-<li class="items-links"><strong>Ministry Started:</strong></li>
-<li class="items-links"><strong>Duration:</strong></li>
+<li class="items-links"><strong>Sending Church</strong>: Greeneway Church</li>
+<li class="items-links"><strong>Ministry Started: </strong>2008</li>
+<li class="items-links"><strong>Duration:</strong> 17 years and going strong</li>
 </ul>
 
-
+<style>
+.about-text {
+margin-bottom: 5px !important;
+padding: 5px 5px 5px 0px !important;
+}
+</style>
 <strong class="about-text-about">About</strong>
-<p class="about-text">Andrés González and Jocelyn González. Andrés surrendered his life to Jesus in 2007, being called by the Lord to preach unity in accordance with John 13:34-35. There is no better way to spread the gospel to all nations than by showing the world that we are one. Since 2009, Andrés has started his ministry, teaching Bible classes, and serving as the Spanish ministry director at Greeneway Church for many years. With a heart for missions, he has dedicated himself to traveling and sharing this message of unity with the church. Today, he serves as the president of YES, fulfilling God's calling in his life. He and his wife Jocelyn are a testimony to the power of God's restoration and spiritual healing. Together, they have two sons.</p>
+
+
+<p class="about-text">Andrés González is the President of Yielded Evangelical Servants (YES) and a full-time missionary dedicated to building unity within the global Church and bringing hope to communities in need. With over 17 years of ministry experience, Andrés has served in diverse roles—from Bible teacher to church leader to international missionary.</p>
+
+
+<p class="about-text">His passion for missions began in 2014 with his first trip to Honduras, where he helped build a church for a struggling community named "Mata Hambre." Since then, he has led and participated in mission efforts across Central America and Colombia, focusing on construction projects, leadership development, humanitarian aid, and Gospel-centered outreach.</p>
+
+<p class="about-text">Andrés served for over a decade as the Spanish Ministry Director at Greeneway Church in Florida, where he helped launch and grow a vibrant Hispanic congregation. In 2021, he became the President of YES, continuing his call to mobilize and unite missionaries under one vision: that the world would know Christ by the unity of His people (John 13:34–35; John 17:20–21).</p>
+
+<p class="about-text">Now serving full-time, Andrés travels wherever the Spirit leads—often to Latin America—equipping churches, discipling leaders, and building physical and spiritual infrastructure in vulnerable communities. Whether constructing a church roof, installing solar panels, digging wells, or delivering school supplies, his mission remains clear: to be a bridge of blessing and a messenger of hope.</p>
+
+<p class="about-text">Andrés doesn’t walk this journey alone. He is joyfully joined in ministry by his wife Jocelyn, whose support and shared passion for missions strengthen every step of the work. Together with their two sons, Ian and Mathias, the González family embodies a life of faith and service. Ian and Mathias have joined mission trips, experienced the field, and are being raised with a heart for God’s Kingdom—even as each walks their own path of faith.</p>
+
+<p class="about-text">The González family believes deeply that the Church is one body, called to one mission, under one Lord.</p>
+
+
 
 
 
