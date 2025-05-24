@@ -175,16 +175,15 @@
             }
         });
 
-
-
-   document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const logoElements = document.querySelectorAll(".main-logo");
 
   if (logoElements.length > 0) {
     logoElements.forEach((el) => {
-      el.addEventListener("click", () => {
-        window.location.href = "https://yeservants.org/";
-      });
+      const parentAnchor = el.closest("a");
+      if (parentAnchor) {
+        parentAnchor.href = "https://yeservants.org/";
+      }
     });
   }
 });
