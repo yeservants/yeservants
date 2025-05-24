@@ -275,6 +275,19 @@
     <label for="slide7"></label>
     <label for="slide8"></label>
   </div>
+
+<script>
+  const totalSlides = 8;
+  let currentSlide = 1;
+
+  setInterval(() => {
+    currentSlide++;
+    if (currentSlide > totalSlides) currentSlide = 1;
+    document.getElementById('slide' + currentSlide).checked = true;
+  }, 3000); // cambia cada 4 segundos
+</script>
+
+
 </div>
 
 
