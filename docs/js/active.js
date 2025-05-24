@@ -174,3 +174,17 @@
                 oldFacebookIcon.parentNode.replaceChild(newFacebookIcon, oldFacebookIcon);
             }
         });
+
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+  const logoElements = document.querySelectorAll(".main-logo");
+
+  if (logoElements.length > 0) {
+    logoElements.forEach((el) => {
+      el.addEventListener("click", () => {
+        window.location.href = "https://yeservants.org/";
+      });
+    });
+  }
+});
