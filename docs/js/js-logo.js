@@ -7,12 +7,26 @@ document.addEventListener("DOMContentLoaded", function () {
     oldFacebookIcon.parentNode.replaceChild(newFacebookIcon, oldFacebookIcon);
   }
 
-  // Add click redirect to image inside .main-logo
-  const logoImg = document.querySelector(".main-logo img");
-  if (logoImg) {
-    logoImg.style.cursor = "pointer"; // optional: make it look clickable
-    logoImg.addEventListener("click", () => {
-      window.location.href = "https://yeservants.org/";
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoImages = document.querySelectorAll(".main-logo img");
+
+  if (logoImages.length > 0) {
+    logoImages.forEach((img) => {
+      img.style.cursor = "pointer"; // Opcional, da feedback visual
+
+      img.addEventListener("click", () => {
+        window.location.href = "https://yeservants.org/";
+      });
     });
   }
+
+
+document.querySelectorAll('a[href*="missionaries.html"]').forEach(a => {
+  a.href = 'https://yeservants.org/missionaries.html';
+});
+
+
 });
