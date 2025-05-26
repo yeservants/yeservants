@@ -176,14 +176,16 @@
         });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const logoElements = document.querySelectorAll(".main-logo");
+  const logoImages = document.querySelectorAll(".main-logo img");
 
-  if (logoElements.length > 0) {
-    logoElements.forEach((el) => {
-      const parentAnchor = el.closest("a");
-      if (parentAnchor) {
-        parentAnchor.href = "https://yeservants.org/";
-      }
+  if (logoImages.length > 0) {
+    logoImages.forEach((img) => {
+      img.style.cursor = "pointer"; // Opcional, da feedback visual
+
+      img.addEventListener("click", () => {
+        window.location.href = "https://yeservants.org/";
+      });
     });
   }
 });
+
