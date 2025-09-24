@@ -189,3 +189,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+////// js to update the year on footer 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const currentYear = new Date().getFullYear();
+  const footers = document.querySelectorAll(".footer_bottom");
+
+  if (footers.length > 0) {
+    footers.forEach(footer => {
+      footer.innerHTML = `
+        <p>
+          Yielded Evangelical Servants © 2002-${currentYear} All Rights Reserved <br>
+          Yielded Evangelical Servants is Registered under 501(c)(3) as not-for-profit.
+        </p>
+      `;
+    });
+  }
+});
+
+
+//////// js to change footer po box and remove phone -----
+document.addEventListener("DOMContentLoaded", () => {
+  const footer = document.querySelector(".footer-text.one");
+
+  if (footer) {
+    // Hide the phone <li>
+    const phoneLi = footer.querySelector('li a[href^="tel:"]')?.closest("li");
+    if (phoneLi) {
+      phoneLi.style.display = "none";
+    }
+
+    // Update PO Box address (find the one with location_on icon)
+    const addressLi = Array.from(footer.querySelectorAll("li a"))
+      .find(a => a.querySelector("i")?.textContent.trim() === "location_on"); 
+
+    if (addressLi) {
+      addressLi.innerHTML = `<i class="material-icons">location_on</i>PO Box 770308, Orlando Florida 32837, United States of America`;
+    }
+  }
+});
+
+
+////// remove phone from header
+
+let phoneElementHeader = document.querySelector(".phone")
+phoneElementHeader.style.display = "none"
