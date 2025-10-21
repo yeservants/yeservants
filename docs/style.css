@@ -26,6 +26,13 @@ text-decoration: none !important;
     margin-right: 45px;
 }
 
+   .main-logo {
+display: flex !important;
+
+
+   }
+
+
 .join-us>p {
     background: #3b5147 none repeat scroll 0 0;
     line-height: 50px;
