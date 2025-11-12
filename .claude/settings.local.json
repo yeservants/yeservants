@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(for dir in */)",
+      "Bash(do if [ -f \"$dirindex.html\" ])",
+      "Bash(then echo \"Processing $dirindex.html\" fi done)",
+      "Bash(then echo \"Processing $dirindex.html\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(python update_menus.py:*)",
+      "Bash(python update_missionary_links.py:*)",
+      "Bash(python update_missionary_relative_links.py:*)",
+      "Bash(python:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
