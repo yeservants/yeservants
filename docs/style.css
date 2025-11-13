@@ -40,6 +40,12 @@ display: flex !important;
     padding: 0;
 }
 
+.site-footer .cols {
+justify-content: center !important;
+
+}
+
+
 .header .header-top .join-us p a {
     background: #3b5147 none repeat scroll 0 0;
     color: #ff9a18;
