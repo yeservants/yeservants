@@ -11,7 +11,10 @@
       "Bash(python update_menus.py:*)",
       "Bash(python update_missionary_links.py:*)",
       "Bash(python update_missionary_relative_links.py:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []

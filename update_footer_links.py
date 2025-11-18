@@ -49,26 +49,32 @@ c:/yeservants/docs/thanks/index.html""".strip().split('\n')
 
 # Pattern to find the footer navigation ul
 # Looking for variations of the navigation links
+# GitHub Pages serves from docs/ as root, so paths should start with / (not /docs/)
 patterns = [
-    (r'<li><a href="/">Home</a></li>', '<li><a href="/docs/index.html">Home</a></li>'),
-    (r'<li><a href="index\.html">Home</a></li>', '<li><a href="/docs/index.html">Home</a></li>'),
-    (r'<li><a href="about\.html">About</a></li>', '<li><a href="/docs/about.html">About</a></li>'),
-    (r'<li><a href="missionaries\.html">Missionaries</a></li>', '<li><a href="/docs/missionaries.html">Missionaries</a></li>'),
-    (r'<li><a href="donate/">Donate</a></li>', '<li><a href="/docs/donate/index.html">Donate</a></li>'),
-    (r'<li><a href="donate/index\.html">Donate</a></li>', '<li><a href="/docs/donate/index.html">Donate</a></li>'),
-    (r'<li><a href="contact/">Contact</a></li>', '<li><a href="/docs/contact/index.html">Contact</a></li>'),
-    (r'<li><a href="contact/index\.html">Contact</a></li>', '<li><a href="/docs/contact/index.html">Contact</a></li>'),
+    (r'<li><a href="/docs/index\.html">Home</a></li>', '<li><a href="/index.html">Home</a></li>'),
+    (r'<li><a href="/">Home</a></li>', '<li><a href="/index.html">Home</a></li>'),
+    (r'<li><a href="index\.html">Home</a></li>', '<li><a href="/index.html">Home</a></li>'),
+    (r'<li><a href="/docs/about\.html">About</a></li>', '<li><a href="/about.html">About</a></li>'),
+    (r'<li><a href="about\.html">About</a></li>', '<li><a href="/about.html">About</a></li>'),
+    (r'<li><a href="/docs/missionaries\.html">Missionaries</a></li>', '<li><a href="/missionaries.html">Missionaries</a></li>'),
+    (r'<li><a href="missionaries\.html">Missionaries</a></li>', '<li><a href="/missionaries.html">Missionaries</a></li>'),
+    (r'<li><a href="/docs/donate/index\.html">Donate</a></li>', '<li><a href="/donate/index.html">Donate</a></li>'),
+    (r'<li><a href="donate/">Donate</a></li>', '<li><a href="/donate/index.html">Donate</a></li>'),
+    (r'<li><a href="donate/index\.html">Donate</a></li>', '<li><a href="/donate/index.html">Donate</a></li>'),
+    (r'<li><a href="/docs/contact/index\.html">Contact</a></li>', '<li><a href="/contact/index.html">Contact</a></li>'),
+    (r'<li><a href="contact/">Contact</a></li>', '<li><a href="/contact/index.html">Contact</a></li>'),
+    (r'<li><a href="contact/index\.html">Contact</a></li>', '<li><a href="/contact/index.html">Contact</a></li>'),
     # Also handle relative paths from subdirectories
-    (r'<li><a href="\.\./index\.html">Home</a></li>', '<li><a href="/docs/index.html">Home</a></li>'),
-    (r'<li><a href="\.\./\.\./index\.html">Home</a></li>', '<li><a href="/docs/index.html">Home</a></li>'),
-    (r'<li><a href="\.\./about\.html">About</a></li>', '<li><a href="/docs/about.html">About</a></li>'),
-    (r'<li><a href="\.\./\.\./about\.html">About</a></li>', '<li><a href="/docs/about.html">About</a></li>'),
-    (r'<li><a href="\.\./missionaries\.html">Missionaries</a></li>', '<li><a href="/docs/missionaries.html">Missionaries</a></li>'),
-    (r'<li><a href="\.\./\.\./missionaries\.html">Missionaries</a></li>', '<li><a href="/docs/missionaries.html">Missionaries</a></li>'),
-    (r'<li><a href="\.\./donate/">Donate</a></li>', '<li><a href="/docs/donate/index.html">Donate</a></li>'),
-    (r'<li><a href="\.\./\.\./donate/">Donate</a></li>', '<li><a href="/docs/donate/index.html">Donate</a></li>'),
-    (r'<li><a href="\.\./contact/">Contact</a></li>', '<li><a href="/docs/contact/index.html">Contact</a></li>'),
-    (r'<li><a href="\.\./\.\./contact/">Contact</a></li>', '<li><a href="/docs/contact/index.html">Contact</a></li>'),
+    (r'<li><a href="\.\./index\.html">Home</a></li>', '<li><a href="/index.html">Home</a></li>'),
+    (r'<li><a href="\.\./\.\./index\.html">Home</a></li>', '<li><a href="/index.html">Home</a></li>'),
+    (r'<li><a href="\.\./about\.html">About</a></li>', '<li><a href="/about.html">About</a></li>'),
+    (r'<li><a href="\.\./\.\./about\.html">About</a></li>', '<li><a href="/about.html">About</a></li>'),
+    (r'<li><a href="\.\./missionaries\.html">Missionaries</a></li>', '<li><a href="/missionaries.html">Missionaries</a></li>'),
+    (r'<li><a href="\.\./\.\./missionaries\.html">Missionaries</a></li>', '<li><a href="/missionaries.html">Missionaries</a></li>'),
+    (r'<li><a href="\.\./donate/">Donate</a></li>', '<li><a href="/donate/index.html">Donate</a></li>'),
+    (r'<li><a href="\.\./\.\./donate/">Donate</a></li>', '<li><a href="/donate/index.html">Donate</a></li>'),
+    (r'<li><a href="\.\./contact/">Contact</a></li>', '<li><a href="/contact/index.html">Contact</a></li>'),
+    (r'<li><a href="\.\./\.\./contact/">Contact</a></li>', '<li><a href="/contact/index.html">Contact</a></li>'),
 ]
 
 updated_count = 0
