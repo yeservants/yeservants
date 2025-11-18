@@ -59,7 +59,7 @@
       .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #fff;
+        background: transparent;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -67,11 +67,13 @@
 
       .swiper-slide img {
         display: block;
-        width: 100%;
+        width: 150px;
         height: 100%;
         object-fit: cover;
       }
-    </style>
+            /* TYPOGRAPHY ADJUSTMENTS - increase primary text sizes site-wide */
+         
+        </style>
 <body>
     <div class="wrapper">
         <header class="header">
@@ -126,15 +128,15 @@
                         <div class="col-md-7 col-sm-12 col-xs-12" style="padding: 0px; margin-top: 50px;">
                             <div class="menu header-menu">
                                 <ul class="nav navbar-nav" style="padding: 0px;">
-                                    <li class="active" ><a style="color: #ff9a18;" href="index.html">Home</a></li>
+                                    <li class="active" ><a style="color: #ff9a18;" href="/index.html">Home</a></li>
                                     <li><a href="/about.html">About</a></li>
                                     <li><a href="/missionaries.html">Missionaries</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get Involved <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/donate/index.html">Donate</a></li>
-                                            <li><a href="send-a-team.html">Send a Team</a></li>
-                                            <li><a href="join/">Become a Missionary</a></li>
+                                            <li><a href="/send-a-team.html">Send a Team</a></li>
+                                            <li><a href="/join/index.html">Become a Missionary</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="/contact/index.html">Contact</a></li>
@@ -221,780 +223,406 @@ font-size:  20px ;
                 </div>
             </section>
         </header>
-        <section class="carosal-area" style="height: 600px; user-select: none;">
-    
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-    
-        <div class="swiper-slide">
-          <img
-            src="Yespic/slider2.jpg"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="Yespic/slider3.jpg"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="Yespic/slider4.jpg"
-            alt=""
-          />
-        </div>
-    
-    
-     
-          <div class="swiper-slide">
-          <img
-            src="https://borgenproject.org/wp-content/uploads/10-Facts-about-Orphans-in-South-Africa-1.jpg"
-            alt=""
-          />
-        </div>
-
- 
-          <div class="swiper-slide">
-          <img
-            src="https://st2.depositphotos.com/3746523/7580/i/950/depositphotos_75805281-stock-photo-orphans-in-an-orphan-boarding.jpg"
-            alt=""
-          />
-        </div>
- 
+        
 
 
-        <div class="swiper-slide"> <img
-            src="https://images.assettype.com/thequint/2015-10/5049254a-422b-4be8-835f-0f9b160830d9/missionaries-of-charity-reuters.jpg"
-            alt=""
-          /></div>
-        <div class="swiper-slide"> <img
-            src="https://static.wixstatic.com/media/44d8e4_a517b835e4004fed8924adf38cb492dc~mv2.jpg/v1/fill/w_640,h_438,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/44d8e4_a517b835e4004fed8924adf38cb492dc~mv2.jpg"
-            alt=""
-          /></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
 
 
-        </section>
-    
-<div class="block-wrapper">
-
-
-              <h3 class="title-underslider">GUIDED BY THE SPIRIT AND THEIR SENDING CHURCH WITHOUT ORGANIZATIONAL ENCUMBRANCES.</h3>
-
-            <div class="container icon-container" >
-                <div class="row row-fix">
-                    <div class="icon-container-item">
-                        <div class="block">
-                            <p><i class="bi bi-clock-history"></i></p>
-                            <p class="counter-wrapper"><span id="counter" class="f"></span></p>
-
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const startYear = 2023; // The base year when the counter was 33
-    const startValue = 32; // Initial value in 2023
-    const currentYear = new Date().getFullYear();
-    const newValue = startValue + (currentYear - startYear);
-
-    document.getElementById("counter").textContent = newValue;
-  });
-</script>
-
-                            <p class="text-block">Years</p>
-                        </div>
-                    </div>
-                    <div class="icon-container-item">
-                        <div class="block">
-                            <p><i class="bi bi-people"></i></p>
-                            <p class="counter-wrapper"><span class="cod">80</span></p>
-                            <p class="text-block">Missionaries</p>
-                        </div>
-                    </div>
-                    <div class="icon-container-item">
-                        <div class="block">
-                            <p><i class="bi bi-globe-americas"></i></p>
-                            <p class="counter-wrapper"><span class="bik">15+</span></p>
-                            <p class="text-block">Countries</p>
-                        </div>
-                    </div>
-                    <div class="icon-container-item">
-                        <div class="block">
-                            <p><i class="bi bi-airplane"></i></p>
-                            <p class="counter-wrapper"><span class="coffe">450+</span></p>
-                            <p class="text-block">Trips</p>
-                        </div>
-                    </div>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4a634e',
+                        "background-light": '#F9F9F9',
+                        "background-dark": '#1a1a1a',
+                        "card-light": '#FFFFFF',
+                        "card-dark": '#2a2a2a',
+                        "text-light": '#333333',
+                        "text-dark": '#E0E0E0',
+                        "subtle-light": '#666666',
+                        "subtle-dark": '#A0A0A0',
+                        "border-light": '#E0E0E0',
+                        "border-dark": '#444444',
+                        "accent": '#d4ac6e'
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '8px',
+                        'lg': '12px',
+                        'xl': '16px',
+                    },
+                },
+            },
+        };
+    </script>
 
 
 
+<style>
 
-                </div>
-            </div>
-        </div>
+.bg-image {
+  background-image: url('https://yeservants.org/Yespic/1.jpg');
+  background-position: center;
+  background-size: cover;
+}
 
-    <section class="our_activity">
-            <h2 class="about-us">ABOUT US</h2>
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua. </p> -->
-            <div class="container">
-                <div class="row row-modificator">
-                    <div class=" fix-w">
-                        <div class="single-Promo remove-margin" >
-                            <div class="promo-icon">
-                                <!-- <i class="material-icons">near_me</i> -->
-                            </div>
-                            <h2  id="title-theme"><a href="#">HISTORY</a></h2>
-                            <p>Pastor Bernie LaTour and his wife Jean began their missionary work with New Tribes Mission in South America in 1970. They subsequently moved to northern Virginia in 1988 where Pastor LaTour served as Director of Missions for a large nondenominational church that had been supporting them. Y.E.S. was founded in November 1990 out of a need to centrally manage the donations provided for some of the missionaries with whom Pastor LaTour was working at the time. </p>
-                        </div>
-                    </div>
-                    <div class=" fix-w">
-                        <div class="single-Promo" >
-                            <div class="promo-icon">
-                                <!-- <i class="material-icons">favorite</i> -->
-                            </div>
-                            <h2  id="title-theme"><a href="#">FINANCIAL ACCOUNTABILITY</a></h2>
-                            
-                            <p>The Board of Y.E.S. is committed to biblical standards of financial stewardship, sending as much financial support to the field as possible. Y.E.S. operates with a volunteer staff and on the lowest administrative costs possible.</p>
-                            <div id="div-img-financial">
-                               <img src="https://yeservants.org/images/BocaTrip.png" alt="Yes Servant personal">
-                            </div>
-                             
-                        </div>
-                    </div>
-                    <div class=" fix-w">
-                        <div class="single-Promo">
-                            <div class="promo-icon">
-                            
-                            </div>
-                            <h2  id="title-theme"><a href="#">OUR VISION</a></h2>
-                            <p>Our vision is to see the global Body of Christ fully yielded to Jesus and walking in Spirit-empowered unity, so that every believer lives on mission, the Gospel is preached, disciples are made, and communities are transformed,  until the world recognizes Christ through our love, our witness, and our obedience to His calling.
+        .material-icons-outlined {
+            font-size: 3rem;line-height: 1;
+        }
+    /* Scale up Tailwind's rem-based utilities slightly so text and utilities appear larger */
+    html { font-size: 112.5%; } /* base 16px -> 18px */
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased">
+
+<main>
+<section class="yes-hero-fullwidth-section">
+<div class="swiper yes-hero-main-carousel">
+<div class="swiper-wrapper">
+<!-- Slide 1 -->
+<div class="swiper-slide">
+<div class="yes-hero-slide-bg" style="background-image: url('Yespic/slider3.jpg');">
+<div class="yes-hero-overlay"></div>
+<div class="yes-hero-content-wrapper">
+<h1 class="yes-hero-title">Serving as One. Reaching the Nations.</h1>
+<p class="yes-hero-subtitle">
+A mission organization founded by missionaries, serving globally since 1990. We exist to empower missionaries, mobilize churches, and make Jesus known to the unreached.
 </p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="events_section_area">
-            <h2>Leadership</h2>
-            <p class="leader-title">The Board has in-depth background and experience in the management of ministries, mission work, the preparation of missionaries, accounting, bookkeeping, income taxation for missionaries, and personal financial management. The Board partners with “sending” churches in the oversight of Y.E.S. missionaries.</p>
-            <div class="container ">
-                <div class="row flex-fix">
-                    <div class="col-md-4 col-xs-12" style="width: 350px;">
-                        <div class="events_single">
-                            <a href="https://yeservants.org/missionary/Andres-Gonzalez/"><img src="images/andres.png" alt=""></a>
-                            
-                            <div class="clear"></div>
-                            <a href="https://yeservants.org/missionary/Andres-Gonzalez/">
-                                <h3>Andres Gonzalez</h3>
-                            </a>
-                            <h6>President</h6>
-                        </div>
-                    </div>
-                        <div class="col-md-4 col-xs-12" style="width: 350px;">
-                        <div class="events_single">
-                            <img src="images/Alejandro_delgado.png" alt="">
-                            
-                            <div class="clear"></div>
-                            <h3>Alejandro delgado</h3>
-                            <h6>Vice president</h6>
-                        </div>
-                    </div>
-                        <div class="col-md-4 col-xs-12" style="width: 350px;">
-                        <div class="events_single">
-                            <img src="https://yeservants.org/images/none.jpg" alt="">
-                            
-                            <div class="clear"></div>
-                            <h3>Clarette Bernaez</h3>
-                            <h6>Secretary</h6>
-                        </div>
-                    </div>
-    <div class="col-md-4 col-xs-12" style="width: 350px;">
-                        <div class="events_single">
-                            <img src="https://yeservants.org/images/none.jpg" alt="">
-                            
-                            <div class="clear"></div>
-                            <h3>Jocelyn González</h3>
-                            <h6>Treasurer</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-<section class="our_activity">
-            <div class="container">
-                <div class="row">
-                    <div class="" style="max-width: 1500px !important; ">
-                        <div class="single-Promo" style="height: fit-content; background-color: white;">
-                            <div class="promo-icon">
-                            </div>
-
-             <style>
-
-.our_activity .single-Promo .h2-fix::before {
-background: none;
-
-}
-.single-Promo h2 { 
-
-margin-top: 30px !important;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.single-Promo .fix2{
-font-family: roboto;
-font-weight: 400;
-border: 1px solid #ff9a18;
-
-padding: 5px;
-}
-.ministry-list li {
-font-family: roboto;
-font-size: 18px;
-padding: 5px;
-}
-
-.financial-list li {
-font-family: roboto;
-font-size: 18px;
-padding: 5px;
-}
-
-</style>
-
-                            <section class="events_section_area">
-            <h2>OUR MISSION</h2>
-                        </section>
-
-                           <h2  id="fix2-w"  class="fix2 ">WHAT WE DO</h2>
-                            <p id="fix2-text">Our mission is to share the Gospel of Jesus Christ with the world by assisting in the development, support, and accountability of our members' ministries. Serving globally by equipping, empowering, and walking alongside God's servants so they can fulfill their calling and expand the kingdom of Christ, reflecting His love and unity in every nation
-</p>
-
-
-
-<div class="mid-section-container">
-    <div class="ministry-service-container">
-    
-         <h2 class="fix2">MINISTRY SERVICES
-        </h2>
-                                    <ul class="ministry-list">
-        <li>Assist in the development and promotion of ministry</li>
-        <li>Assist in on-going spiritual training and development leading to ordination
-        </li>
-        <li>Assist in communication with other missionaries and donors through web based services
-        </li>
-        <li>Provide training to sending churches on the development and support of missions
-        </li>
-        <li>Coordinate and promote short-term mission trips to assist and encourage members
-        </li>
-                                    </ul>
-    </div>
-    
-    
-    
-    
-    
-    
-     <div class="financial-list-container">
-         <h2 class="fix2">FINANCIAL AND PERSONAL SERVICES
-         </h2>
-                                                            <ul class="financial-list">
-                                        <li>Y.E.S. offers the most cost-effective and quality service possible to our missionaries
-         </li>
-                                        <li>Maintains records of and distributes monthly support payments
-    
-         </li>
-                                        <li>Provides a monthly report of support received from donors
-    
-         </li>
-                                        <li>Prepares annual Form 1099-MISC statements for reporting income to the IRS
-    
-         </li>
-                                        <li>Solicits funds to support ministries and provide emergency relief assistance
-    
-         </li>
-                                        <li>Provides a personal web-page devoted to each ministry
-    
-    
-         </li>
-                                    </ul>
-     </div>
+<div class="yes-hero-buttons">
+<a class="yes-hero-btn yes-hero-btn-primary" href="/donate/index.html">Donate</a>
+<a class="yes-hero-btn yes-hero-btn-secondary" href="/join/index.html">Become a Missionary</a>
 </div>
-  
-                        </div>
-                    </div>
-                
-                
-                </div>
-            </div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="swiper-slide">
+<div class="yes-hero-slide-bg" style="background-image: url('Yespic/9.jpg');">
+<div class="yes-hero-overlay"></div>
+<div class="yes-hero-content-wrapper">
+<h1 class="yes-hero-title">Empowering Missionaries Worldwide</h1>
+<p class="yes-hero-subtitle">
+Supporting those who answer the call to serve. We provide field care, training, and resources to missionaries in over 10 nations.
+</p>
+<div class="yes-hero-buttons">
+<a class="yes-hero-btn yes-hero-btn-primary" href="/donate/index.html">Support a Missionary</a>
+<a class="yes-hero-btn yes-hero-btn-secondary" href="about.html">Learn More</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="swiper-slide">
+<div class="yes-hero-slide-bg" style="background-image: url('Yespic/IMG-20240810-WA0014.jpg');">
+<div class="yes-hero-overlay"></div>
+<div class="yes-hero-content-wrapper">
+<h1 class="yes-hero-title">Join the Mission</h1>
+<p class="yes-hero-subtitle">
+Whether you give, go, or send — you can be part of changing eternity. Partner with us to reach the unreached.
+</p>
+<div class="yes-hero-buttons">
+<a class="yes-hero-btn yes-hero-btn-primary" href="/join/index.html">Apply to Serve</a>
+<a class="yes-hero-btn yes-hero-btn-secondary" href="/send-a-team.html">Send a Team</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation buttons -->
+<div class="swiper-button-next yes-hero-nav-next"></div>
+<div class="swiper-button-prev yes-hero-nav-prev"></div>
+<!-- Pagination -->
+<div class="swiper-pagination yes-hero-pagination"></div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Who We Are</h2>
+<p class="max-w-4xl mx-auto text-subtle-light dark:text-subtle-dark mb-12 text-lg">
+                    YES (Yielded Evangelical Servants) is a U.S.-based, missionary-founded nonprofit dedicated to advancing the Gospel among the nations. For over 35 years, we have served missionaries, churches, and ministry partners through accountability, field care, training, global mobilization, and donor support — with a field-focused administrative model that maximizes impact and minimizes overhead.
+                </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent mb-2">diversity_3</span>
+<h3 class="font-semibold">Founded by missionaries</h3>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent mb-2">public</span>
+<h3 class="font-semibold">Serving globally since 1990</h3>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent mb-2">savings</span>
+<h3 class="font-semibold">Field-focused stewardship</h3>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent mb-2">flag</span>
+<h3 class="font-semibold">Active in multiple nations</h3>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-card-light dark:bg-card-dark">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-primary">Why We Exist</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-xl shadow-lg">
+<h3 class="text-2xl font-bold text-primary mb-4">The Need</h3>
+<p class="text-subtle-light dark:text-subtle-dark leading-relaxed">Many believers feel called to missions but lack support, training, accountability, or a sending structure. Churches want to send missionaries, but don’t always have the systems to do it.</p>
+</div>
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-xl shadow-lg">
+<h3 class="text-2xl font-bold text-primary mb-4">Our Response</h3>
+<p class="text-subtle-light dark:text-subtle-dark leading-relaxed">YES exists to bridge that gap — so every calling can become reality, and the Gospel reaches where it has not yet been heard.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">How We Serve</h2>
+<p class="max-w-2xl mx-auto text-subtle-light dark:text-subtle-dark">We focus on three core pillars to empower Gospel work worldwide.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
+<span class="material-icons-outlined text-accent mb-4">support_agent</span>
+<h3 class="text-xl font-bold text-primary mb-3">Supporting Missionaries</h3>
+<p class="text-subtle-light dark:text-subtle-dark mb-6 flex-grow">Field care, coaching, donor management, financial accountability, and our prayer network.</p>
+<a class="mt-auto bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors" href="donate/index.html">Learn More</a>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
+<span class="material-icons-outlined text-accent mb-4">church</span>
+<h3 class="text-xl font-bold text-primary mb-3">Mobilizing Churches</h3>
+<p class="text-subtle-light dark:text-subtle-dark mb-6 flex-grow">Missions training, strategy development, evangelism tools, and partnership models.</p>
+<a class="mt-auto bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors" href="/contact/index.html">Learn More</a>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
+<span class="material-icons-outlined text-accent mb-4">groups</span>
+<h3 class="text-xl font-bold text-primary mb-3">Sending Teams</h3>
+<p class="text-subtle-light dark:text-subtle-dark mb-6 flex-grow">Short and long-term teams for construction, evangelism, leadership development, and next-gen missions.</p>
+<a class="mt-auto bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors" href="send-a-team.html">Learn More</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 md:py-20 bg-primary">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent" style="font-size: 2.5rem;">event</span>
+<p class="text-4xl font-bold mt-2">35+</p>
+<p class="text-sm uppercase tracking-wider">Years Serving</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent" style="font-size: 2.5rem;">supervisor_account</span>
+<p class="text-4xl font-bold mt-2">20+</p>
+<p class="text-sm uppercase tracking-wider">Active Missionaries</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent" style="font-size: 2.5rem;">language</span>
+<p class="text-4xl font-bold mt-2">20+</p>
+<p class="text-sm uppercase tracking-wider">Nations Reached</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-icons-outlined text-accent" style="font-size: 2.5rem;">favorite</span>
+<p class="text-4xl font-bold mt-2">1000s</p>
+<p class="text-sm uppercase tracking-wider">Reached with Gospel</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center justify-center gap-12 bg-card-light dark:bg-card-dark p-10 rounded-xl shadow-lg">
+<div class="flex-shrink-0">
+<img alt="Candid Platinum Seal of Transparency 2023" class="h-52 w-52" src="https://yeservants.org/images/candid-seal-platinum-2025.png"/>
+</div>
+<div class="text-center md:text-left">
+<h2 class="text-2xl font-bold text-primary mb-4">Verified for Accountability and Transparency</h2>
+<p class="text-subtle-light dark:text-subtle-dark mb-6 max-w-2xl">
+                            YES is a Platinum-rated nonprofit on Candid (formerly GuideStar), demonstrating financial integrity, public transparency, and trustworthy governance. When you give, you partner with a ministry that protects every dollar and honors every donor.
+                        </p>
+<!-- <a class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors" href="#">View Our Candid Profile</a> -->
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-card-light dark:bg-card-dark text-center">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Be Part of the Story</h2>
+<p class="max-w-3xl mx-auto text-lg text-subtle-light dark:text-subtle-dark mb-10">
+                    You can be part of what God is doing among the nations. Whether you give, go, or send — you help change eternity.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+<a class="bg-accent text-primary font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition-transform transform hover:scale-105" href="/donate/index.html">Donate</a>
+<a class="bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition-transform transform hover:scale-105" href="/join/index.html">Apply to Serve</a>
+<a class="bg-gray-200 dark:bg-gray-600 text-text-light dark:text-text-dark font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors transform hover:scale-105" href="/contact/index.html">Contact Us</a>
+</div>
+</div>
+</section>
+
+<!-- Testimonials Carousel Section -->
+<section class="py-16 md:py-24 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">What People Are Saying</h2>
+<p class="max-w-2xl mx-auto text-subtle-light dark:text-subtle-dark">Hear from those whose lives have been transformed through our ministry.</p>
+</div>
+<div class="swiper testimonialsSwiper max-w-5xl mx-auto">
+<div class="swiper-wrapper">
+<!-- Testimonial 1 -->
+<div class="swiper-slide">
+<div class="bg-card-light dark:bg-card-dark p-6 md:p-8 rounded-xl shadow-lg">
+<div class="flex justify-center mb-3">
+<svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 32 32">
+<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+</svg>
+</div>
+<p class="text-base md:text-lg text-subtle-light dark:text-subtle-dark mb-4 italic leading-relaxed">
+"YES has been instrumental in our journey as missionaries. Their support, guidance, and unwavering commitment to the Gospel has enabled us to reach communities we never thought possible. We are forever grateful."
+</p>
+<div class="flex items-center justify-center">
+<img src="https://yeservants.org/images/andres.png" alt="Testimonial" class="w-12 h-12 rounded-full mr-3 object-cover">
+<div class="text-left">
+<h4 class="font-semibold text-primary text-base">Sarah & John Martinez</h4>
+<p class="text-xs text-subtle-light dark:text-subtle-dark">Missionaries in Ecuador</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="swiper-slide">
+<div class="bg-card-light dark:bg-card-dark p-6 md:p-8 rounded-xl shadow-lg">
+<div class="flex justify-center mb-3">
+<svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 32 32">
+<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+</svg>
+</div>
+<p class="text-base md:text-lg text-subtle-light dark:text-subtle-dark mb-4 italic leading-relaxed">
+"Partnering with YES has transformed our church's approach to missions. They provided the training, resources, and structure we needed to effectively send and support our missionary families. It's been a game-changer."
+</p>
+<div class="flex items-center justify-center">
+<img src="https://yeservants.org/images/none.jpg" alt="Testimonial" class="w-12 h-12 rounded-full mr-3 object-cover">
+<div class="text-left">
+<h4 class="font-semibold text-primary text-base">Pastor Michael Chen</h4>
+<p class="text-xs text-subtle-light dark:text-subtle-dark">Grace Community Church</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="swiper-slide">
+<div class="bg-card-light dark:bg-card-dark p-6 md:p-8 rounded-xl shadow-lg">
+<div class="flex justify-center mb-3">
+<svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 32 32">
+<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+</svg>
+</div>
+<p class="text-base md:text-lg text-subtle-light dark:text-subtle-dark mb-4 italic leading-relaxed">
+"Our short-term mission trip with YES changed our lives. The organization, care, and spiritual depth of the experience exceeded our expectations. We witnessed God's work firsthand and came back with a renewed passion for missions."
+</p>
+<div class="flex items-center justify-center">
+<img src="https://yeservants.org/images/Alejandro_delgado.png" alt="Testimonial" class="w-12 h-12 rounded-full mr-3 object-cover">
+<div class="text-left">
+<h4 class="font-semibold text-primary text-base">Emily Rodriguez</h4>
+<p class="text-xs text-subtle-light dark:text-subtle-dark">Mission Trip Participant</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 4 -->
+<div class="swiper-slide">
+<div class="bg-card-light dark:bg-card-dark p-6 md:p-8 rounded-xl shadow-lg">
+<div class="flex justify-center mb-3">
+<svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 32 32">
+<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+</svg>
+</div>
+<p class="text-base md:text-lg text-subtle-light dark:text-subtle-dark mb-4 italic leading-relaxed">
+"The accountability and transparency YES demonstrates is remarkable. As a donor, I have complete confidence that my giving is making a real impact for the Kingdom. Their Platinum rating speaks volumes about their integrity."
+</p>
+<div class="flex items-center justify-center">
+<img src="https://yeservants.org/images/none.jpg" alt="Testimonial" class="w-12 h-12 rounded-full mr-3 object-cover">
+<div class="text-left">
+<h4 class="font-semibold text-primary text-base">David Thompson</h4>
+<p class="text-xs text-subtle-light dark:text-subtle-dark">Ministry Partner</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation buttons -->
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+<!-- Pagination -->
+<div class="swiper-pagination"></div>
+</div>
+</div>
+</section>
+</main>
+
+
+</body></html>
 
 
 
 
-        </section>
 
 
 
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    /* Each row-block holds 1 big image + 2 small stacked images */
-    .row-block {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      height: auto; /* fixed row height so images line up nicely */
-      max-width: 1100px;
-      margin: 0 auto;
-      margin-bottom: 30px;
-    }
-    /* For any .row-block, images fill the available space without distortion */
-    .row-block img {
-      width: 50%;
-      height: 50%;
-      object-fit: cover; /* crop without distortion */
-      border-radius: 8px;
-      cursor: pointer;   /* indicate clickable images */
-    }
-
-    /* Pattern 1: Big image on the LEFT, small images on the RIGHT */
-    .left-big .big {
-      flex: 2; /* Big image takes about 2/3 of the row-block width */
-    }
-     .left-big .small-images  img{
-width: 100% !important;
-}
-     .right-big .small-images  img{
-width: 100% !important;
-}
-
-    .left-big .small-images {
-      flex: 1; /* The stacked small images take the remaining space */
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Pattern 2: Big image on the RIGHT, small images on the LEFT */
-    .right-big .big {
-      flex: 2;
-    }
-    .right-big .small-images {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Make it scale nicely on smaller screens */
-    @media (max-width: 768px) {
-      .row-block {
-        flex-direction: column; /* stack big + small vertically */
-        height: auto;          /* let height adjust naturally on smaller devices */
-      }
-      .row-block .big, .row-block .small-images {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    /* Modal styles */
-    .modal {
-      display: none;           /* hidden by default */
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      overflow: auto;          /* enable scroll if image is tall */
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal.show {
-      display: flex;           /* show the modal with flex layout for center alignment */
-    }
-    .modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      margin: auto;
-      display: block;
-      border-radius: 8px;
-      margin-top: 5%;
-    }
-    .close {
-      position: absolute;
-      top: 30px;
-      right: 50px;
-      font-size: 3rem;
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
 
 
 
-  <h2 style="text-align: center; padding: 50px; font-size: 50px; font-weight: bold;">GALLERY</h2>
-
-  <!-- 1st row: Big image on the left, 2 small on the right -->
-  <div class="row-block left-big">
-    <img src="Yespic/1.jpg" class="big" alt="Big Photo 1">
-    <div class="small-images">
-      <img src="Yespic/2.jpg" class="small" alt="Small Photo 1">
-      <img src="Yespic/3.jpg" class="small" alt="Small Photo 2">
-    </div>
-  </div>
-
-  <!-- 2nd row: Big image on the right, 2 small on the left -->
-  <div class="row-block right-big">
-    <div class="small-images">
-      <img src="Yespic/4.jpg" class="small" alt="Small Photo 3">
-      <img src="Yespic/5.jpg" class="small" alt="Small Photo 4">
-    </div>
-    <img src="Yespic/9.jpg" class="big" alt="Big Photo 2">
-  </div>
-
-  <!-- 3rd row: Big image on the left, 2 small on the right (copy & customize as needed) -->
-  <div class="row-block left-big">
-    <img src="Yespic/6.jpg" class="big" alt="Big Photo 3">
-    <div class="small-images">
-      <img src="Yespic/7.jpg" class="small" alt="Small Photo 5">
-      <img src="Yespic/8.jpg" class="small" alt="Small Photo 6">
-    </div>
-  </div>
-
-  <!-- Modal (Lightbox) -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg" alt="Modal Image">
-  </div>
-
-  <script>
-    // Grab all images in our gallery
-    const images = document.querySelectorAll('.row-block img');
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('modalImg');
-    const closeBtn = document.querySelector('.close');
-
-    // Open the modal on image click
-    images.forEach(img => {
-      img.addEventListener('click', () => {
-        modal.classList.add('show');
-        modalImg.src = img.src; // set the modal image source to the clicked image's src
-      });
-    });
-
-    // Close the modal when the close button is clicked
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('show');
-    });
-
-    // Also close the modal when clicking outside the modal image
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('show');
-      }
-    });
-  </script>
 
 
-  <h2 class="recent-event-title ">RECENT EVENTS</h2>
-
-   <section class="event-section">
 
 
-    <h3 class="mission-trip-title">Mission trip Costa Rica 2024</h3>
-
- <style>
-
- .mission-trip-title {
-  padding: 30px 0px 30px 0px;
-font-family: "Roboto", sans-serif;
-    font-size: 32px;
-    font-weight: 300;  
-    text-align: center;
-    color: #ff9a18;
- }
-
-.recent-event-description {
-    font-family: roboto;
-    font-size:18px !important;
-    padding: 35px 0px 35px 0px;
-    max-width: 90%;
-    margin: 0 auto;
-}
 
 
-.recent-event-description2 {
-    font-family: roboto;
-    font-size:18px !important;
-    padding: 0px 0px 25px 0px;
-    max-width: 90%;
-    margin: 0 auto;
-}
 
 
-  .event-section {
-  max-width: 1410px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 10px;
-      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
-}
-.recent-event-title {
-    color: #3c354e;
-    font-family: "Roboto", sans-serif;
-    font-size: 42px;
-    font-weight: 700;
-    margin: 115px auto 50px;
-    position: relative;
-    text-transform: uppercase;
-    width: 100%;
-    text-align: center;
-    margin: 75px 0 50px;
-}
-
-    body {
-      background: #eee;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
-
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .mySwiper2 {
-  height: 500px;
-  max-width: 90%;
-  border-radius: 10px ;
-}
-  </style>
-
-  <div class="swiper mySwiper mySwiper2">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0007.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0008.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0009.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0010.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0011.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0012.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0013.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0014.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0015.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0016.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0017.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0018.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0019.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0020.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0021.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0022.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0023.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0024.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0025.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0026.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0027.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0028.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0029.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0030.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0031.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0032.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0033.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0034.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0035.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0036.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0037.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0038.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0039.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0040.jpg" alt=""></div>  
-<div class="swiper-slide"><img src="Yespic/IMG-20240810-WA0041.jpg" alt=""></div>  
 
 
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-
- <p class="recent-event-description">Mission Trip Costa Rica 2024 was a transformative journey led by Yielded Evangelical Servants, involving a team of 30 individuals, including children, traveling from the USA to Costa Rica. Divided into two groups, our first team undertook significant renovations at a local church, including painting the entire church, replacing the roof, and performing essential electrical work. Concurrently, our second team engaged with the community's children through a week-long Vacation Bible School program, providing snacks, juices, and introducing new sports equipment such as football, soccer, basketball, and volleyball. We also conducted meaningful evangelistic outreach to mothers and family members.</p>
-
- <p class="recent-event-description2">The culmination of our efforts was a joyous occasion as we gathered in the newly renovated church, warmly welcoming many new community members into our congregation. This mission trip exemplified unity as various organizations and individuals worked together as one church, one body. The memories created and lives touched during Mission Trip Costa Rica 2024 will forever resonate within our hearts.</p>
 
 
-</section>        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
         
-        <section   class="donors">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="donors_input">
-
-
-<style>
-.donors {
-
-margin-bottom: 50px;
-
-}
-.donors_input {
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-}
-
-.events_section_area2 {
-
-    margin: 10px auto 10px;
-    width: 400px;
-     
-    text-align: center;
-    font-family: roboto;
-     font-size: 30px;
-
-   border-bottom: 1px solid rgb(5, 5, 5);
-}
-
-.donors_input p {
-padding: 10px;
-font-size: 18px !important;
-font-family: roboto !important;
-}
-.donors_image {
-display: flex;
-flex-direction: column;
-align-items: center;
-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
-border-top-right-radius: 20px;
-border-bottom-right-radius: 20px;
-
-}
-.donors_image img {
-padding: 20px 20px 38px 20px;
-}
-
-
-
-.donors_image p {
-font-size: 20px !important;
-text-align: center;
-padding: 10px;
-
-}
-
-.pray-text-new{
-text-transform: none !important;
-padding: 10px !important;
-margin: 0px !important;
-max-width: 70%;
-margin: 0 auto  !important;
-}
-.donors_input {
-padding: 20px;
-
-}
-</style>
-
-
-
-
-
-
-                                            
-            <h4 class="events_section_area2" style="color: white; border-bottom: solid 1px white;margin-bottom: 10px;">Statement of Faith</h4>
-
-           <p class="pray-text-new">
-We believe in one God, eternally existing in three Persons: Father, Son, and Holy Spirit.
-</p>
-
-<p class="pray-text-new">
-We believe that the Bible is the inspired, authoritative, and trustworthy Word of God, fully true in all that it affirms and sufficient for faith, life, and mission.
-</p>
-
-<p class="pray-text-new">
-We believe that Jesus Christ is the eternal Son of God, fully God and fully man, who lived a sinless life, died on the cross for our sins, rose bodily from the dead, ascended into heaven, and will return in glory to judge the living and the dead and establish His Kingdom forever.
-</p>
-
-<p class="pray-text-new">
-We believe that salvation is a gift of God, received by grace through faith in Jesus Christ alone, not by works. By this salvation we are forgiven, made new, reconciled to God, and adopted into His family.
-</p>
-
-<p class="pray-text-new">
-We believe that the Holy Spirit indwells every believer, empowering us for holy living, spiritual growth, and bold witness, and granting gifts for the building up of the Body of Christ and the fulfillment of God’s mission in the world.
-</p>
-
-<p class="pray-text-new">
-We believe in the unity of the global Body of Christ, one people from every nation, tribe, and language, called to love one another, live in communion, and demonstrate Christ to the world.
-</p>
-
-<p class="pray-text-new">
-We believe in the Great Commission as the ongoing mission of the Church, and that every follower of Christ is called to participate in making disciples of all nations through word, deed, and the power of the Holy Spirit.
-</p>
-
-<p class="pray-text-new">
-We believe in the resurrection of the dead, the final judgment, and the new creation in which God will restore all things and dwell forever with His redeemed people.
-</p>
-
-
-                        
-                        
-                        </div>
-                        <div class="donors_image">
-                             
-                                                                        
-            <h4 class="events_section_area2">International Christian Fellowship of Churches</h4>
-
-   <p class="pray-text2">Many churches started in the field lack a strong support system. To support the pastors and to enable these churches to grow, we have been given ICFC. This new arm of Y.E.S. will provide training, conferences, and a means for pastors to communicate with and support one another.
-</p>
-
-
-            <!-- <h4 class="events_section_area2">Who We Sponsor</h4>
-
-
-                            <img style="margin: 0 auto;" src="https://yeservants.org/images/MissionaryFlightsInternationalLogo.png" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="clear">
-       </div>
     
 
 <style>
@@ -1008,65 +636,88 @@ margin: 0 auto;
 .material-icons {
 color: white !important;
 }
+
+footer p {
+color: white !important
+
+}
+li {
+color: white !important;
+
+}
 </style>
 
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row " style="display: flex; justify-content: center; gap: 100px;">
-                    <div class="col-md-4 col-sm-12 " style="max-width: 300px; text-align: center; width: 150px;">
-                        <div class="footer-charity-text">
-                            <img src="/yes_logo/white.png" style="width: 150px;"  alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row row-fix-footer">
-                            <div class="">
-                            <div class="footer-charity-text">
-                            <h2>HELP CHARITY</h2>
-                            <p>By donating to our General Fund, you're not just giving; you're changing lives. Your generosity enables us to reach those who have yet to hear the Gospel, extending hope and light to the darkest corners. You're aiding us in our mission to serve the needy, providing essentials, comfort, and compassion. Moreover, your support fuels numerous projects that uplift communities and transform futures. Together, we can make a profound difference. Thank you for partnering with us in spreading love, hope, and faith.</p>
-                          <a  class="donate-btn"  style="padding: 0px;" href="https://yeservants.org/donate/">DONATE NOW</a>
-                            <hr>
-                            <p><a href="https://www.facebook.com/profile.php?id=100080058171515&mibextid=LQQJ4d"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter-x"></i></a><a href="https://www.instagram.com/yeservants?igsh=NTc4MTIwNjQ2YQ=="><i class="bi bi-instagram"></i></i></a></p>
-                        </div>
-                            </div>
-                            <!-- <div class="col-md-4 col-sm-3" style="width: fit-content;">
-                                <div class="footer-text two">
-                                    <h3>USEFUL LINKS</h3>
-                                    <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Causes</a></li>
-                                        <li><a href="#">Event</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
-                            <div class="col-md-4 col-sm-4">
-                                <div class="footer-text one">
-                                    <h3>CONTACT US</h3>
-                                    <ul>
-                                        <li><a href="#"><i class="material-icons">location_on</i>P.O. Box 700697, St. Cloud, FL 34770, United States of America</a></li>
-                                        <li><a href="mailto:info@yeservants.org"><i class="material-icons">email</i>info@yeservants.org</a></li>
-                                        <li><a href="tel:+407-498-5128"><i class="material-icons">call</i>407-498-5128</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-    <p>Yielded Evangelical Servants © 2002-<span id="current-year"></span> All Rights Reserved <br> 
-    Yielded Evangelical Servants is registered under 501(c)(3) as a not-for-profit.</p>
-</div>
+   <footer class="site-footer" aria-label="Site footer">
+     <style>
+       .site-footer{background:#233427;color:#fff;padding:40px 16px;font-family: Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+       .site-footer .container{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between}
+       .site-footer .brand{display:flex;gap:16px;align-items:center;flex:0 1 360px}
+       .site-footer .brand img{height:64px;width:auto;display:block}
+       .site-footer .brand h2{margin:0;font-size:20px;color:#d4ac6e}
+       .site-footer .brand p{margin:0;color:#e6e6e6;font-size:14px}
+       .site-footer .about{max-width:420px;color:#e6e6e6;font-size:14px;line-height:1.5}
+       .site-footer .cols{display:flex;gap:24px;flex:1 1 360px;flex-wrap:wrap;align-items:flex-start}
+       .site-footer .col{min-width:160px}
+       .site-footer h3{margin:0 0 8px 0;font-size:15px;color:#fff}
+       .site-footer a{color:#e6e6e6;text-decoration:none}
+       .site-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+       .site-footer .contact li{font-size:14px;color:#d9d9d9}
+       .site-footer .social{display:flex;gap:12px;margin-top:8px}
+       .site-footer .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:rgba(255,255,255,0.04);color:#fff}
+       .site-footer .seal{display:flex;align-items:center;gap:12px}
+       .site-footer .seal img{height:72px;width:auto}
+       .site-footer .bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:24px;padding-top:16px;text-align:center;font-size:13px;color:rgba(255,255,255,0.78)}
+       @media(max-width:768px){.site-footer .container{flex-direction:column;align-items:center;text-align:center}.site-footer .cols{justify-content:center}.site-footer .brand{justify-content:center}}
+     </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("current-year").textContent = new Date().getFullYear();
-  });
-</script>
+     <div class="container">
+       <div class="brand">
+         <img src="https://yeservants.org/yes_logo/white.png" alt="YES logo" />
+         <div>
+           <h2>Yielded Evangelical Servants</h2>
+           <p>Serving as One. Reaching the Nations.</p>
+         </div>
+       </div>
 
-        </footer>
+       <div class="cols">
+         <div class="col nav">
+           <h3>Navigation</h3>
+           <ul>
+             <li><a href="/index.html">Home</a></li>
+             <li><a href="/about.html">About</a></li>
+             <li><a href="/missionaries.html">Missionaries</a></li>
+             <li><a href="/donate/index.html">Donate</a></li>
+             <li><a href="/contact/index.html">Contact</a></li>
+           </ul>
+         </div>
+
+         <div class="col contact">
+           <h3>Contact</h3>
+           <ul>
+             <li>PO Box 770308, Orlando, FL 32837</li>
+             <li><a href="mailto:info@yeservants.org">info@yeservants.org</a></li>
+           </ul>
+           <div class="social" role="list">
+             <a href="https://www.facebook.com/yeservants" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+             <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+             <a href="https://www.instagram.com/yeservants" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+           </div>
+         </div>
+
+         <div class="col seal">
+           <div>
+             <img src="https://yeservants.org/images/candid-seal-platinum-2025.png" alt="Candid Platinum Seal" />
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="bottom">Yielded Evangelical Servants © 2002-2025. Registered 501(c)(3). All Rights Reserved.</div>
+   </footer>
+
+
+
     </div>  
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/animationCounter.js"></script>
@@ -1077,27 +728,297 @@ color: white !important;
     
 </body>
  <script>
-      var swiper = new Swiper(".mySwiper", {
-        pagination: {
-          el: ".swiper-pagination",
-          type: "progressbar"
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        },
-        autoplay: {
-          delay: 3000
-        },
-        a11y: {
-          loop: "true"
+      // Wait for DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hero Carousel
+        var yesHeroCarousel = new Swiper(".yes-hero-main-carousel", {
+          pagination: {
+            el: ".yes-hero-pagination",
+            clickable: true,
+            dynamicBullets: true
+          },
+          navigation: {
+            nextEl: ".yes-hero-nav-next",
+            prevEl: ".yes-hero-nav-prev"
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+          },
+          loop: true,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
+          speed: 1000
+        });
+
+        // Testimonials Carousel
+        var testimonialsSwiper = new Swiper(".testimonialsSwiper", {
+          pagination: {
+            el: ".testimonialsSwiper .swiper-pagination",
+            clickable: true,
+            dynamicBullets: true
+          },
+          navigation: {
+            nextEl: ".testimonialsSwiper .swiper-button-next",
+            prevEl: ".testimonialsSwiper .swiper-button-prev"
+          },
+          autoplay: {
+            delay: 6000,
+            disableOnInteraction: false
+          },
+          loop: true,
+          speed: 800,
+          spaceBetween: 30
+        });
+
+        // Original mySwiper if it exists
+        var mySwiperEl = document.querySelector(".mySwiper");
+        if (mySwiperEl) {
+          var swiper = new Swiper(".mySwiper", {
+            pagination: {
+              el: ".swiper-pagination",
+              type: "progressbar"
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev"
+            },
+            autoplay: {
+              delay: 3000
+            },
+            loop: true
+          });
         }
       });
-
     </script>
 <style>
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background-color: #ff9a18; /* Change to the desired color */
+}
+
+/* YES Hero Carousel - Full Width Section */
+.yes-hero-fullwidth-section {
+  position: relative;
+  width: 100vw !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  height: 80vh !important;
+  min-height: 500px !important;
+  overflow: hidden !important;
+}
+
+/* YES Hero Main Carousel Container */
+.yes-hero-main-carousel {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.yes-hero-main-carousel .swiper-slide {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* YES Hero Slide Background */
+.yes-hero-slide-bg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* YES Hero Overlay */
+.yes-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* YES Hero Content Wrapper */
+.yes-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* YES Hero Title */
+.yes-hero-title {
+  color: white;
+  font-size: 2.25rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .yes-hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+/* YES Hero Subtitle */
+.yes-hero-subtitle {
+  color: #E5E7EB;
+  font-size: 1.125rem;
+  font-weight: 300;
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .yes-hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* YES Hero Buttons */
+.yes-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .yes-hero-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.yes-hero-btn {
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.yes-hero-btn:hover {
+  transform: scale(1.05);
+}
+
+.yes-hero-btn-primary {
+  background-color: #d4ac6e;
+  color: #4a634e;
+}
+
+.yes-hero-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.yes-hero-btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.yes-hero-btn-secondary:hover {
+  background-color: white;
+  color: #4a634e;
+}
+
+/* YES Hero Navigation */
+.yes-hero-nav-next,
+.yes-hero-nav-prev {
+  color: white !important;
+}
+
+.yes-hero-nav-next:after,
+.yes-hero-nav-prev:after {
+  font-size: 35px !important;
+  font-weight: bold !important;
+  color: white !important;
+}
+
+/* YES Hero Pagination */
+.yes-hero-pagination {
+  bottom: 30px !important;
+  z-index: 10 !important;
+}
+
+.yes-hero-pagination .swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.7 !important;
+  width: 14px !important;
+  height: 14px !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.yes-hero-pagination .swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: white !important;
+  border-color: white !important;
+  transform: scale(1.2) !important;
+}
+
+/* Testimonials Carousel Styling */
+.testimonialsSwiper {
+  width: 100%;
+  padding-bottom: 45px;
+}
+
+.testimonialsSwiper .swiper-pagination {
+  bottom: 5px !important;
+}
+
+.testimonialsSwiper .swiper-pagination-bullet {
+  background: #4a634e;
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+
+.testimonialsSwiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #d4ac6e;
+  transform: scale(1.2);
+}
+
+.testimonialsSwiper .swiper-button-next,
+.testimonialsSwiper .swiper-button-prev {
+  color: #4a634e !important;
+}
+
+.testimonialsSwiper .swiper-button-next:after,
+.testimonialsSwiper .swiper-button-prev:after {
+  font-size: 24px;
+}
+
+.testimonialsSwiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonialsSwiper .swiper-slide > div {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Dark mode adjustments */
+.dark .testimonialsSwiper .swiper-button-next,
+.dark .testimonialsSwiper .swiper-button-prev {
+  color: #d4ac6e !important;
 }
 </style>
 
