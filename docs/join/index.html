@@ -135,6 +135,22 @@
             </section>
         </header>
 
+    <!-- HERO SECTION -->
+    <section class="yes-hero-single-page">
+        <div class="yes-hero-slide-bg" style="background-image: url('../Yespic/8.jpg');">
+            <div class="yes-hero-overlay"></div>
+            <div class="yes-hero-content-wrapper">
+                <h1 class="yes-hero-title">Join the Mission</h1>
+                <p class="yes-hero-subtitle">
+                    Are you called to serve? Whether you go, send a team, or partner with us, there are many ways to be part of reaching the nations with the love of Christ.
+                </p>
+                <div class="yes-hero-buttons">
+                    <a class="yes-hero-btn yes-hero-btn-primary" href="#get-involved">Get Started</a>
+                    <a class="yes-hero-btn yes-hero-btn-secondary" href="../about.html">Learn More About YES</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- SITE CONTENT START  -->
 
@@ -181,6 +197,123 @@ font-family: "Bitter" !important;
 padding:30px 0px 40px 0px;
 font-weight: 500 !important;
 font-size: 16px !important;
+}
+
+/* Hero Section Styles */
+.yes-hero-single-page {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.yes-hero-slide-bg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.yes-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.yes-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.yes-hero-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .yes-hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.yes-hero-subtitle {
+  color: #E5E7EB;
+  font-size: 1.125rem;
+  font-weight: 300;
+  max-width: 48rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .yes-hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+.yes-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .yes-hero-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.yes-hero-btn {
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.yes-hero-btn:hover {
+  transform: scale(1.05);
+}
+
+.yes-hero-btn-primary {
+  background-color: #d4ac6e;
+  color: #4a634e;
+}
+
+.yes-hero-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.yes-hero-btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.yes-hero-btn-secondary:hover {
+  background-color: white;
+  color: #4a634e;
 }
 </style>
 
