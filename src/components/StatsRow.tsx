@@ -77,7 +77,7 @@ export default function StatsRow() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat, i) => (
-          <div key={stat.label} className="text-center">
+          <div key={stat.labelKey} className="text-center">
             <div className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-accent)] mb-2">
               {stat.display ?? `${counts[i]}${stat.suffix}`}
             </div>

@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { useLang, type Lang } from '../i18n/useLang';
+import { useLang } from '../i18n/useLang';
+import type { Lang } from '../i18n/translations';
 
 interface Props { base: string; }
 
