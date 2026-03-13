@@ -1,5 +1,14 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [react(), sitemap()],
+  output: 'static',
+  site: 'https://fpsjago.github.io',
+  base: '/yesservant-proposal',
+  compressHTML: true,
+  build: { assets: '_assets' },
+  vite: { plugins: [tailwindcss()] },
+});

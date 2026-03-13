@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MissionaryDetail from '../../components/MissionaryDetail';
+import Footer from '../../components/Footer';
+
+export async function getStaticPaths() {
+  const missionaries = await getCollection('missionaries');
+  return missionaries.map((m) => ({
+    params: { slug: m.data.url },
+    props: { missionary: m.data },
+  }));
+}
+
+const { missionary } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<BaseLayout title={`${missionary.name} — Y.E.S. Missionary`} description={missionary.description}>
+  <MissionaryDetail missionary={missionary} base={base} client:visible />
+  <Footer base={base} client:visible />
+</BaseLayout>

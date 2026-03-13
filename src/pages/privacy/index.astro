@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<BaseLayout title="Privacy Policy — Y.E.S." description="Privacy policy for Yielded Evangelical Servants website.">
+  <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-light text-[var(--color-primary)] mb-6 leading-tight">
+        Privacy Policy
+      </h1>
+    </div>
+  </section>
+
+  <section class="relative pb-24 md:pb-32 overflow-hidden">
+    <div class="relative z-10 max-w-3xl mx-auto px-6 space-y-10">
+      <div data-reveal="fade">
+        <h2 class="font-heading text-2xl font-medium text-[var(--color-primary)] mb-4">
+          You as a Guest
+        </h2>
+        <div class="text-[var(--color-text-muted)] leading-relaxed space-y-4">
+          <p>
+            We are committed to protecting your privacy. We will only use the information that we collect about you lawfully (in accordance with the Data Protection Act 1998 and GDPR).
+          </p>
+          <p>
+            We will only collect information about you to respond to any inquiries which you may have through our contact page. We will not e-mail you in the future unless you have given us your consent. We will give you the chance to refuse any marketing email from us in the future for which there will be none.
+          </p>
+          <p>The type of information we may collect about you includes:</p>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>Your name</li>
+            <li>Email address</li>
+            <li>Phone number</li>
+            <li>IP Address</li>
+          </ul>
+          <p>
+            We will never collect information about you without your explicit consent. The information we hold will be accurate and up to date. You can check the information that we hold about you by emailing us. If you find any inaccuracies we will delete or correct it promptly.
+          </p>
+          <p>
+            The personal information which we hold will be held securely in accordance with our internal security policy and the law.
+          </p>
+          <p>
+            We may use technology to track the patterns of behaviour of visitors to our site. This can include using a "cookie" which would be stored on your browser. You can usually modify your browser to prevent this happening. The information collected in this way can be used to identify you unless you modify your browser settings.
+          </p>
+          <p>
+            If you have any questions/comments about privacy, you should <a href={`${base}contact/`} class="text-[var(--color-accent)] underline hover:opacity-80">contact us</a>.
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal="fade">
+        <h2 class="font-heading text-2xl font-medium text-[var(--color-primary)] mb-4">
+          You as a Missionary
+        </h2>
+        <div class="text-[var(--color-text-muted)] leading-relaxed space-y-4">
+          <p>
+            We only collect the information you give us to post on your profile as you have given us permission. We may e-mail you in the future regarding changes to your profile. We will give you the chance to refuse any marketing email from us in the future for which there will be none.
+          </p>
+          <p>The type of information we may collect about you includes:</p>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>Your name</li>
+            <li>Public general contact info including location, sending church, etc</li>
+            <li>A bio you provide</li>
+            <li>A picture you provide</li>
+          </ul>
+          <p>
+            We will never collect any other information about you without your explicit consent. The information we hold should be accurate and up to date provided you contact us when anything changes. You can check the information that we hold about you on your profile. If you find any inaccuracies please contact us and we will delete or correct it promptly.
+          </p>
+          <p>
+            If you have any questions/comments about your privacy or profile, you should <a href={`${base}contact/`} class="text-[var(--color-accent)] underline hover:opacity-80">contact us</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer base={base} client:visible />
+</BaseLayout>

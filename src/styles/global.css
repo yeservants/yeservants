@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+astro-island { display: contents; }
+
+@theme {
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'General Sans', system-ui, sans-serif;
+  --color-bg: #FAF8F4;
+  --color-surface: #F0EBE3;
+  --color-primary: #2C4A3E;
+  --color-accent: #C27D41;
+  --color-text: #1C1C1A;
+  --color-text-muted: #6B6560;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body { overflow-x: hidden; }
+  ::selection { background: var(--color-accent); color: #fff; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Atmospheric backgrounds */
+.atmos-glow { position: relative; }
+.atmos-glow::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(194,125,65,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(44,74,62,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.atmos-glow-center { position: relative; }
+.atmos-glow-center::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(194,125,65,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Film grain overlay */
+.grain::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(44,74,62,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Background ghost text */
+.bg-text {
+  position: absolute;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: rgba(44, 74, 62, 0.05);
+  pointer-events: none;
+  user-select: none;
+  line-height: 0.85;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* Floating decorative elements */
+.float-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(194,125,65,0.3), transparent);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.float-cross {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.float-cross::before, .float-cross::after {
+  content: '';
+  position: absolute;
+  background: var(--color-accent);
+}
+.float-cross::before { width: 12px; height: 1px; top: 50%; transform: translateY(-50%); }
+.float-cross::after { width: 1px; height: 12px; left: 50%; transform: translateX(-50%); }
+
+.float-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(194,125,65,0.2);
+  pointer-events: none;
+}
+
+/* Edge fades */
+.edge-fades::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+  z-index: 40;
+  pointer-events: none;
+}
+.edge-fades::after {
+  content: '';
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to top, var(--color-bg), transparent);
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Clip-path portrait reveal */
+[data-reveal="clip"] {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="clip"].visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Fade reveal */
+[data-reveal="fade"] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="fade"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger reveal */
+[data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-stagger].visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+[data-reveal-stagger].visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.08s; }
+[data-reveal-stagger].visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.16s; }
+[data-reveal-stagger].visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.24s; }
+[data-reveal-stagger].visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
+[data-reveal-stagger].visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Missionary bio content styles */
+.missionary-bio b {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+}
+.missionary-bio b:first-child {
+  margin-top: 0;
+}
+.missionary-bio a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.missionary-bio a:hover {
+  opacity: 0.8;
+}
+.missionary-bio ul {
+  margin-left: 1.5em;
+  list-style-type: disc;
+}

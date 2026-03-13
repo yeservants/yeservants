@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block private/admin paths if any exist in the future
+Disallow: /_assets/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://yeservants.org/sitemap-index.xml

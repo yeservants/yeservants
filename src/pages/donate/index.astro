@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<BaseLayout title="Donate — Y.E.S." description="Support evangelical missionaries through tax-deductible donations to Yielded Evangelical Servants.">
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[var(--color-bg)]">
+    <div class="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[58%] right-[2%] leading-none pointer-events-none select-none whitespace-nowrap" style="color:rgba(44,74,62,0.06)" aria-hidden="true">GIVE</div>
+    <div class="float-cross top-[15%] left-[4%] opacity-40" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-4">2 Corinthians 9:7</p>
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-light text-[var(--color-primary)] leading-[1.05] mb-6">
+        Give To The Mission
+      </h1>
+      <p class="font-heading italic text-[var(--color-text-muted)] text-lg md:text-xl leading-relaxed max-w-xl">
+        &ldquo;God loves a cheerful giver.&rdquo;
+      </p>
+    </div>
+  </section>
+
+  <!-- Donate options -->
+  <section class="py-20 md:py-28 bg-[var(--color-bg)]">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">Ways to Give</p>
+        <h2 class="font-heading text-3xl md:text-5xl font-light text-[var(--color-primary)] leading-tight">
+          Support a Missionary Today
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Online -->
+        <div class="relative overflow-hidden rounded-2xl bg-[var(--color-primary)] p-10">
+          <div class="float-ring w-24 h-24 -top-4 -right-4 border-white/10" aria-hidden="true"></div>
+          <p class="text-[var(--color-accent)] text-xs tracking-[0.2em] uppercase font-medium mb-4">Recommended</p>
+          <h2 class="font-heading text-2xl font-medium text-white mb-4">Donate Online</h2>
+          <p class="text-white/60 leading-relaxed mb-8">
+            Make a secure, tax-deductible donation through our partner Aplos. Set up a one-time gift or recurring support for a specific missionary.
+          </p>
+          <a
+            href="https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90"
+          >
+            Give Online Now →
+          </a>
+        </div>
+
+        <!-- Mail -->
+        <div class="rounded-2xl bg-[var(--color-surface)] p-10 border border-[var(--color-primary)]/8">
+          <p class="text-[var(--color-accent)] text-xs tracking-[0.2em] uppercase font-medium mb-4">By Mail</p>
+          <h2 class="font-heading text-2xl font-medium text-[var(--color-primary)] mb-4">Give By Check</h2>
+          <p class="text-[var(--color-text-muted)] leading-relaxed mb-5">
+            Make checks payable to <strong class="text-[var(--color-text)]">Y.E.S.</strong> — include the missionary name in the memo line. Mail to:
+          </p>
+          <address class="not-italic text-[var(--color-primary)] font-medium leading-relaxed mb-8 text-lg">
+            Y.E.S.<br />
+            PO Box 770308<br />
+            Orlando, FL 32837
+          </address>
+          <a
+            href={`${base}download/Mail-inDonation.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-6 py-3 border border-[var(--color-primary)]/30 text-[var(--color-primary)] font-medium rounded transition-all duration-300 hover:bg-[var(--color-primary)] hover:text-white"
+          >
+            Download Mail-in Form
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-bleed image break -->
+  <div class="relative h-64 md:h-80 overflow-hidden">
+    <img src={`${base}Yespic/IMG-20240810-WA0011.jpg`} alt="Mission work" class="w-full h-full object-cover" loading="lazy" />
+    <div class="absolute inset-0 bg-[var(--color-primary)]/60"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
+      <p class="font-heading text-white text-2xl md:text-4xl font-light max-w-2xl leading-tight italic">
+        &ldquo;Your generosity enables missionaries to stay on the field and change eternity.&rdquo;
+      </p>
+    </div>
+  </div>
+
+  <!-- Impact section -->
+  <section class="py-20 md:py-28 bg-[var(--color-surface)]">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      {[
+        { stat: '100%', label: 'of designated gifts go to the missionary', desc: 'We keep overhead low so your gift goes directly where you intend.' },
+        { stat: '501(c)(3)', label: 'registered nonprofit', desc: 'All donations are tax-deductible to the full extent allowed by law.' },
+        { stat: '35+', label: 'years of faithful stewardship', desc: 'We have been accountable to donors and missionaries since 1990.' },
+      ].map((item) => (
+        <div class="text-center">
+          <p class="font-heading text-4xl md:text-5xl font-light text-[var(--color-accent)] mb-2">{item.stat}</p>
+          <p class="font-medium text-[var(--color-primary)] mb-3 text-sm uppercase tracking-wide">{item.label}</p>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Small print -->
+  <section class="py-10 bg-[var(--color-bg)] text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+        Y.E.S. is a 501(c)(3) registered nonprofit. All donations are tax-deductible to the extent allowed by law.
+        Questions? <a href={`${base}contact/`} class="text-[var(--color-accent)] hover:underline">Contact us</a>.
+      </p>
+    </div>
+  </section>
+
+  <Footer base={base} client:visible />
+</BaseLayout>

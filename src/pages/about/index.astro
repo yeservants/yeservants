@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const milestones = [
+  { year: '1990', text: 'Founded by a small team of experienced missionaries with a vision to serve the unreached.' },
+  { year: '2002', text: 'Incorporated as a 501(c)(3) nonprofit, establishing financial accountability and governance.' },
+  { year: '2010', text: 'Expanded operations to over 10 nations, supporting long-term field missionaries.' },
+  { year: '2018', text: 'Launched structured short-term teams program, equipping churches to send teams abroad.' },
+  { year: '2023', text: 'Received Candid Platinum rating — recognizing financial integrity and transparency.' },
+  { year: 'Today', text: 'Supporting 20+ missionaries in 20+ nations, with thousands reached through the Gospel.' },
+];
+
+const pillars = [
+  {
+    title: 'Missionary-Founded',
+    body: 'We were founded by people who have served on the field. That experience shapes every policy, partnership, and program.',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0',
+  },
+  {
+    title: 'Accountability Structure',
+    body: 'Transparent governance and financial practices ensure donor funds and team resources are stewarded responsibly.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    title: 'Field-Focused Model',
+    body: 'We prioritize local leadership, contextual training, and logistics support so ministries remain sustainable after teams leave.',
+    icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064',
+  },
+  {
+    title: 'Long-Term Fruit',
+    body: 'Decades of work across multiple nations have produced lasting community outcomes in education, health, and leadership development.',
+    icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707',
+  },
+];
+---
+
+<BaseLayout title="About Y.E.S. — Yielded Evangelical Servants" description="Learn about Yielded Evangelical Servants — founded by missionaries in 1990, serving globally with transparency and accountability.">
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[var(--color-bg)]">
+    <div class="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[58%] right-[2%] leading-none pointer-events-none select-none whitespace-nowrap" style="color:rgba(44,74,62,0.06)" aria-hidden="true">ABOUT</div>
+    <div class="float-line h-[30vh] top-[10%] left-[4%]" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-4">Our Story</p>
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-light text-[var(--color-primary)] leading-[1.05] mb-6">
+        Who We Are
+      </h1>
+      <p class="text-[var(--color-text-muted)] text-lg md:text-xl leading-relaxed max-w-2xl">
+        YES (Yielded Evangelical Servants) is a U.S.-based, missionary-founded nonprofit dedicated to advancing the Gospel among the nations. For over 35 years, we have served missionaries, churches, and ministry partners with accountability, field care, training, and donor support.
+      </p>
+    </div>
+  </section>
+
+  <!-- Full-bleed image break -->
+  <div class="relative h-64 md:h-96 overflow-hidden">
+    <img src={`${base}Yespic/2.jpg`} alt="Missionaries in the field" class="w-full h-full object-cover" loading="lazy" />
+    <div class="absolute inset-0 bg-[var(--color-primary)]/50"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <p class="font-heading text-white text-2xl md:text-4xl font-light text-center px-6 leading-relaxed italic">
+        &ldquo;Serving as One. Reaching the Nations.&rdquo;
+      </p>
+    </div>
+  </div>
+
+  <!-- Why We Exist -->
+  <section class="relative py-20 md:py-28 overflow-hidden bg-[var(--color-surface)]">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">The Need</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-6 leading-tight">Why We Exist</h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+          Many believers feel called to missions but lack support, training, accountability, or a sending structure. Churches want to send missionaries, but don't always have the systems to do it.
+        </p>
+        <p class="text-[var(--color-text-muted)] leading-relaxed">
+          YES exists to bridge that gap — so every calling can become reality, and the Gospel reaches where it has not yet been heard.
+        </p>
+      </div>
+      <div>
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">Our Response</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-6 leading-tight">What We Do</h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+          We combine practical structure, field experience, and long-term relationships to help churches, schools, and individuals serve safely and effectively. Our emphasis is on service that builds capacity and produces lasting outcomes.
+        </p>
+        <a href={`${base}contact/`} class="inline-flex items-center gap-2 text-[var(--color-primary)] font-medium text-sm tracking-wide border-b border-[var(--color-primary)]/30 pb-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300">
+          Get in touch
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="relative py-20 md:py-28 overflow-hidden bg-[var(--color-bg)]">
+    <div class="float-cross top-[15%] right-[5%] opacity-40" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">1990 to Today</p>
+        <h2 class="font-heading text-3xl md:text-5xl font-light text-[var(--color-primary)] leading-tight">Our Story</h2>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-[4.5rem] top-0 bottom-0 w-px bg-[var(--color-primary)]/10 hidden md:block"></div>
+        <div class="flex flex-col gap-10">
+          {milestones.map((m) => (
+            <div class="flex gap-6 md:gap-10 items-start">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="font-heading text-[var(--color-accent)] font-semibold text-base leading-none">{m.year}</span>
+              </div>
+              <div class="flex-shrink-0 hidden md:flex items-start pt-1">
+                <div class="w-2.5 h-2.5 rounded-full bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]"></div>
+              </div>
+              <p class="text-[var(--color-text-muted)] leading-relaxed pt-0.5">{m.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes YES Different -->
+  <section class="relative py-20 md:py-28 overflow-hidden bg-[var(--color-primary)]">
+    <div class="float-ring w-20 h-20 top-[10%] right-[8%] border-white/10" aria-hidden="true"></div>
+    <div class="float-cross bottom-[10%] left-[5%] opacity-20" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">Our Distinctives</p>
+        <h2 class="font-heading text-3xl md:text-5xl font-light text-white leading-tight">What Makes YES Different</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {pillars.map((p) => (
+          <div class="bg-white/5 border border-white/10 rounded-xl p-8">
+            <div class="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 flex items-center justify-center mb-4">
+              <svg width="20" height="20" fill="none" stroke="var(--color-accent)" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={p.icon} />
+              </svg>
+            </div>
+            <h3 class="font-heading text-lg font-medium text-white mb-3">{p.title}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 md:py-24 bg-[var(--color-bg)] text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="font-heading text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-4">Ready to Get Involved?</h2>
+      <p class="text-[var(--color-text-muted)] mb-8 leading-relaxed">Whether you give, go, or send — you can be part of changing eternity.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`${base}donate/`} class="px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90">
+          Donate Now
+        </a>
+        <a href={`${base}join/`} class="px-8 py-3.5 border border-[var(--color-primary)]/30 text-[var(--color-primary)] font-medium rounded transition-all duration-300 hover:bg-[var(--color-primary)] hover:text-white">
+          Become a Missionary
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer base={base} client:visible />
+</BaseLayout>

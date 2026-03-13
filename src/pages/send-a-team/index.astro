@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const destinations = [
+  { country: 'Costa Rica', region: 'Central America', focus: "Construction, evangelism, children's ministry" },
+  { country: 'Colombia', region: 'South America', focus: 'Church planting, leadership development' },
+  { country: 'Philippines', region: 'Southeast Asia', focus: 'Community outreach, medical missions' },
+  { country: 'Kenya', region: 'East Africa', focus: 'Education, orphan care, evangelism' },
+];
+
+const tripTypes = [
+  {
+    title: 'Construction Teams',
+    body: 'Build homes, churches, and facilities that serve local communities for generations.',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+  {
+    title: 'Evangelism Teams',
+    body: 'Share the Gospel through door-to-door outreach, open-air events, and church partnership.',
+    icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+  },
+  {
+    title: 'Youth & School Groups',
+    body: 'Life-changing experiences for students that build faith and global perspective.',
+    icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+  },
+  {
+    title: 'Leadership Development',
+    body: 'Partner with local pastors and leaders to train the next generation of servants.',
+    icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+];
+---
+
+<BaseLayout title="Send a Team — Y.E.S." description="Organize a meaningful mission trip with Yielded Evangelical Servants. We help churches, schools, and groups serve in Costa Rica, Colombia, Philippines, Kenya, and more.">
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[var(--color-bg)]">
+    <div class="absolute font-heading font-bold text-[clamp(4rem,14vw,12rem)] top-[58%] right-[2%] leading-none pointer-events-none select-none whitespace-nowrap" style="color:rgba(44,74,62,0.06)" aria-hidden="true">SEND</div>
+    <div class="float-line h-[30vh] top-[10%] left-[4%]" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-4">
+        Short &amp; Long-Term Missions
+      </p>
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-light text-[var(--color-primary)] leading-[1.05] mb-6">
+        Send a Team.<br />Make an Impact.
+      </h1>
+      <p class="text-[var(--color-text-muted)] text-lg md:text-xl leading-relaxed max-w-2xl">
+        Whether you are a church, school, or university, YES can help you organize a meaningful mission trip that serves others and strengthens your group's faith.
+      </p>
+      <a href="mailto:info@yeservants.org" class="mt-8 inline-block px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90">
+        Start Planning Your Trip
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-20 md:py-28 bg-[var(--color-bg)]">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">Why Go with YES</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-6 leading-tight">
+          Well-Structured. Field-Focused. Lasting Impact.
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-5">
+          Our short-term mission experiences are designed to build lasting relationships, support local ministries, and open the hearts of those who go. We work with trusted partners in several regions of the world, offering safe, well-structured trips.
+        </p>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-5">
+          Interested in sending a team? Email us at
+          <a href="mailto:info@yeservants.org" class="text-[var(--color-accent)] hover:underline font-medium">info@yeservants.org</a>
+          with your phone number and a brief description of your idea &mdash; destination, dates, type of trip, and number of people.
+        </p>
+        <p class="text-[var(--color-text-muted)] leading-relaxed">
+          Our team will contact you as soon as possible to talk through the possibilities and help you start planning. We look forward to serving with you!
+        </p>
+      </div>
+      <div class="relative">
+        <img src={`${base}Yespic/IMG-20240810-WA0007.jpg`} alt="Mission team" class="w-full aspect-[4/3] object-cover rounded-xl" loading="lazy" />
+        <div class="absolute -bottom-4 -left-4 bg-[var(--color-accent)] text-white px-5 py-3 rounded-lg shadow-lg">
+          <p class="font-heading text-2xl font-semibold leading-none">20+</p>
+          <p class="text-white/80 text-xs mt-0.5">Nations served</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trip Types -->
+  <section class="py-20 md:py-28 bg-[var(--color-surface)]">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">What We Offer</p>
+        <h2 class="font-heading text-3xl md:text-5xl font-light text-[var(--color-primary)] leading-tight">Types of Mission Trips</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {tripTypes.map((t) => (
+          <div class="bg-[var(--color-bg)] rounded-xl p-8">
+            <div class="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-5">
+              <svg width="20" height="20" fill="none" stroke="var(--color-accent)" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={t.icon} />
+              </svg>
+            </div>
+            <h3 class="font-heading text-lg font-medium text-[var(--color-primary)] mb-3">{t.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{t.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations -->
+  <section class="py-20 md:py-28 bg-[var(--color-bg)]">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-3">Where We Serve</p>
+        <h2 class="font-heading text-3xl md:text-5xl font-light text-[var(--color-primary)] leading-tight">Current Destinations</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {destinations.map((d, i) => (
+          <div class="relative overflow-hidden rounded-xl bg-[var(--color-surface)] p-6 border border-[var(--color-primary)]/5">
+            <span class="absolute top-4 right-4 font-heading text-3xl font-bold text-[var(--color-primary)]/5">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="font-heading text-xl font-semibold text-[var(--color-primary)] mb-1">{d.country}</h3>
+            <p class="text-[var(--color-accent)] text-xs uppercase tracking-wide mb-3">{d.region}</p>
+            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{d.focus}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-[var(--color-text-muted)] text-sm mt-8">
+        And beyond &mdash; we work with partners in additional regions based on your group's calling.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-20 bg-[var(--color-primary)] text-center overflow-hidden">
+    <div class="float-cross top-[15%] left-[8%] opacity-20" aria-hidden="true"></div>
+    <div class="float-ring w-20 h-20 bottom-[15%] right-[8%] border-white/10" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
+      <h2 class="font-heading text-3xl md:text-4xl font-light text-white mb-4">Ready to Plan Your Trip?</h2>
+      <p class="text-white/60 mb-8 leading-relaxed">
+        Our team will contact you as soon as possible to talk through the possibilities and help you start planning. We look forward to serving with you!
+      </p>
+      <a href="mailto:info@yeservants.org?subject=Send a Team Inquiry" class="inline-block px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90">
+        Email Us to Get Started
+      </a>
+    </div>
+  </section>
+
+  <Footer base={base} client:visible />
+</BaseLayout>

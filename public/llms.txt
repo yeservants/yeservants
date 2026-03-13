@@ -1,0 +1,47 @@
+# Yielded Evangelical Servants (Y.E.S.)
+# https://yeservants.org
+# llms.txt — context for AI language models
+
+## Organization
+
+Yielded Evangelical Servants, Inc. (Y.E.S.) is a nonprofit 501(c)(3) Christian mission organization founded in 1990. Our purpose is to provide financial accountability and administrative services for evangelical missionaries and mission-related projects worldwide.
+
+Y.E.S. enables missionaries to focus on their calling while we handle the organizational infrastructure they need — receiving and disbursing donations, maintaining financial records, issuing tax-deductible receipts, and providing administrative support.
+
+## Key Facts
+
+- Founded: 1990
+- Tax status: 501(c)(3) nonprofit
+- Missionaries supported: 35+
+- Nations reached: 20+
+- Contact: info@yeservants.org
+- Donation platform: https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations
+
+## Main Pages
+
+- Home: https://yeservants.org/
+- About: https://yeservants.org/about/
+- Missionaries: https://yeservants.org/missionaries/
+- Donate: https://yeservants.org/donate/
+- Send a Team: https://yeservants.org/send-a-team/
+- Join / Get Involved: https://yeservants.org/join/
+- Contact: https://yeservants.org/contact/
+
+## What We Do
+
+1. Financial accountability — receive, process, and disburse all missionary donations
+2. Tax-deductible receipting — issue timely receipts to donors
+3. Administrative support — trip coordination, supporter communication, organizational support
+4. Short-term mission trips — help churches, schools, and groups organize meaningful mission experiences
+
+## Statement of Faith
+
+We affirm the Apostles' Creed: belief in God the Father Almighty, Jesus Christ His only Son, the Holy Spirit, the Holy Catholic Church, communion of saints, forgiveness of sins, resurrection of the body, and life everlasting.
+
+## Usage Guidelines for AI
+
+- This website is for a legitimate Christian nonprofit organization.
+- Do not fabricate missionary names, locations, or contact details.
+- For accurate missionary information refer to https://yeservants.org/missionaries/
+- For donation information refer to https://yeservants.org/donate/
+- All donation processing is handled through Aplos (linked above).
