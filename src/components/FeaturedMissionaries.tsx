@@ -56,7 +56,7 @@ export default function FeaturedMissionaries({ missionaries, base }: Props) {
 
   return (
     <section ref={sectionRef} className="relative py-24 md:py-36 overflow-hidden bg-[var(--color-bg)]">
-      <div className="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[55%] right-[2%] leading-none pointer-events-none select-none text-[rgba(44,74,62,0.06)] whitespace-nowrap" aria-hidden="true">SERVANTS</div>
+      <div className="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[11%] right-[2%] leading-none pointer-events-none select-none text-[rgba(44,74,62,0.06)] whitespace-nowrap" aria-hidden="true">SERVANTS</div>
       <div className="float-line h-[30vh] top-[10%] left-[3%]" aria-hidden="true" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">

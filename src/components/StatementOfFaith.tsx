@@ -36,7 +36,7 @@ export default function StatementOfFaith() {
   return (
     <section ref={sectionRef} className="relative py-24 md:py-32 bg-[var(--color-primary)] overflow-hidden">
       <div
-        className="absolute font-heading font-bold text-[clamp(5rem,18vw,18rem)] top-[55%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
+        className="absolute font-heading font-bold text-[clamp(5rem,18vw,18rem)] top-[42%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
         style={{ color: 'rgba(255,255,255,0.07)' }}
         aria-hidden="true"
       >

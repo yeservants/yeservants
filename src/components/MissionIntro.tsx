@@ -39,7 +39,7 @@ export default function MissionIntro() {
 
   return (
     <section ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden atmos-glow bg-[var(--color-bg)]">
-      <div className="absolute font-heading font-bold text-[clamp(4rem,14vw,14rem)] top-[55%] right-[2%] leading-none pointer-events-none select-none text-[rgba(44,74,62,0.06)] whitespace-nowrap" aria-hidden="true">MISSION</div>
+      <div className="absolute font-heading font-bold text-[clamp(4rem,14vw,14rem)] top-[24%] right-[2%] leading-none pointer-events-none select-none text-[rgba(44,74,62,0.06)] whitespace-nowrap" aria-hidden="true">MISSION</div>
       <div className="float-cross top-[10%] right-[15%]" aria-hidden="true" />
       <div className="float-line h-[25vh] bottom-[10%] left-[5%]" aria-hidden="true" />
 

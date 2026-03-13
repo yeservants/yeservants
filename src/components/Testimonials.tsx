@@ -57,7 +57,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-20 md:py-28 bg-[var(--color-surface)] overflow-hidden">
       <div
-        className="absolute font-heading font-bold text-[clamp(4rem,14vw,14rem)] top-[10%] left-[-2%] pointer-events-none select-none leading-none whitespace-nowrap"
+        className="absolute font-heading font-bold text-[clamp(4rem,14vw,14rem)] top-[1%] left-1/2 -translate-x-1/2 pointer-events-none select-none leading-none whitespace-nowrap"
         style={{ color: 'rgba(44,74,62,0.04)' }}
         aria-hidden="true"
       >

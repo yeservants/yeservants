@@ -63,7 +63,7 @@ export default function StatsRow() {
   return (
     <section ref={sectionRef} className="relative bg-[var(--color-primary)] py-16 md:py-20 overflow-hidden">
       <div
-        className="absolute font-heading font-bold text-[clamp(5rem,16vw,16rem)] top-[55%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
+        className="absolute font-heading font-bold text-[clamp(5rem,16vw,16rem)] top-[1%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
         style={{ color: 'rgba(255,255,255,0.07)' }}
         aria-hidden="true"
       >
