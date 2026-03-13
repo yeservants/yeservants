@@ -41,13 +41,13 @@ export default function MissionaryDetail({ missionary, base }: Props) {
   return (
     <div>
       {/* Full-bleed hero */}
-      <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
-        <img
-          src={heroImg}
-          alt={missionary.name}
-          className="w-full h-full object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-[var(--color-primary)]/65" />
+      <section className="relative h-[60vh] min-h-[420px] overflow-hidden bg-gradient-to-br from-[#2C4A3E] via-[#1e3530] to-[#0f1f18]">
+        {/* Radial accent glow */}
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_100%_0%,rgba(194,125,65,0.18)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[50%] h-[60%] bg-[radial-gradient(ellipse_at_0%_100%,rgba(44,74,62,0.8)_0%,transparent_70%)] pointer-events-none" />
+        {/* Decorative cross motif */}
+        <div aria-hidden="true" className="absolute top-[20%] right-[8%] text-[var(--color-accent)] opacity-10 text-[5rem] pointer-events-none select-none">✛</div>
+        <div aria-hidden="true" className="absolute bottom-[15%] left-[6%] text-white opacity-[0.04] text-[8rem] font-heading font-bold pointer-events-none select-none leading-none">YES</div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
           <a
             href={`${base}missionaries/`}
@@ -197,9 +197,10 @@ export default function MissionaryDetail({ missionary, base }: Props) {
       </section>
 
       {/* CTA strip */}
-      <section className="py-16 bg-[var(--color-primary)] text-center relative overflow-hidden">
-        <div className="float-cross top-[20%] left-[8%] opacity-20" aria-hidden="true" />
-        <div className="float-ring w-16 h-16 bottom-[20%] right-[8%] border-white/10" aria-hidden="true" />
+      <section className="py-16 green-gradient text-center relative overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 70% 50%, rgba(194,125,65,0.11) 0%, transparent 55%)' }} />
+        <svg aria-hidden="true" className="absolute top-[15%] left-[6%] text-[var(--color-accent)] opacity-[0.13]" width="28" height="42" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+        <svg aria-hidden="true" className="absolute bottom-[15%] right-[6%] text-white opacity-[0.06]" width="20" height="30" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
         <div className="relative z-10 max-w-xl mx-auto px-6">
           <p className="font-heading text-white text-2xl md:text-3xl font-light mb-6 leading-tight">
             {t('detail_ctaLabel')} {missionary.name.split(' ')[0]}{t('detail_ministry')}

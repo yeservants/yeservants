@@ -21,74 +21,58 @@ export default function MissionariesGrid({ missionaries, base }: Props) {
     if (!grid) return;
 
     const cards = Array.from(grid.querySelectorAll('.m-card'));
-
     gsap.fromTo(
       cards,
-      { opacity: 0, y: 28 },
-      { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', stagger: 0.04, delay: 0.1 }
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', stagger: 0.05, delay: 0.1 }
     );
-
-    cards.forEach((card) => {
-      const img = card.querySelector('.m-card-img');
-      if (img) {
-        gsap.to(img, {
-          yPercent: -6,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-        });
-      }
-    });
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, []);
 
   return (
-    <section ref={gridRef} className="relative py-16 md:py-24 bg-[var(--color-bg)]">
+    <section ref={gridRef} className="relative pt-8 pb-16 md:pt-10 md:pb-20 bg-[var(--color-bg)]">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+        {/* 4-per-row circular grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
           {missionaries.map((m) => (
             <a
               key={m.url}
               href={`${base}missionary/${m.url}/`}
-              className="m-card group block"
+              className="m-card group flex flex-col items-center text-center"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden rounded-xl bg-[var(--color-surface)] mb-4">
+              {/* Circle image */}
+              <div className="relative w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-[var(--color-accent)]/25 ring-offset-4 ring-offset-[var(--color-bg)] group-hover:ring-[var(--color-accent)]/70 transition-all duration-400 mb-4 flex-shrink-0">
                 <img
                   src={`${base}images/${m.picture}`}
                   alt={m.name}
-                  width={400}
-                  height={480}
+                  width={160}
+                  height={160}
                   loading="lazy"
-                  className="m-card-img w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.08]"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[var(--color-primary)]/0 group-hover:bg-[var(--color-primary)]/30 transition-all duration-500 flex items-end p-5">
-                  <span className="translate-y-3 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 text-white text-sm font-medium tracking-wide flex items-center gap-1.5">
-                    {t('grid_viewProfile')}
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </span>
-                </div>
-                {/* Accent border on hover */}
-                <div className="absolute inset-0 rounded-xl ring-0 group-hover:ring-2 ring-[var(--color-accent)] transition-all duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-[var(--color-primary)]/0 group-hover:bg-[var(--color-primary)]/15 transition-colors duration-400 rounded-full" />
               </div>
 
-              {/* Text */}
-              <h3 className="font-heading text-base font-medium text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-300 leading-snug mb-1">
+              {/* Name */}
+              <h3 className="font-heading text-[var(--color-primary)] text-sm md:text-base font-medium leading-snug group-hover:text-[var(--color-accent)] transition-colors duration-300 mb-1.5">
                 {m.name}
               </h3>
-              <div className="flex items-center gap-1.5 text-[var(--color-text-muted)] text-sm">
-                <svg className="w-3.5 h-3.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+
+              {/* Location */}
+              <div className="flex items-center gap-1 text-[var(--color-text-muted)] text-[10px] tracking-[0.12em] uppercase mb-2.5">
+                <svg className="w-3 h-3 text-[var(--color-accent)]/60 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
                 </svg>
                 {m.location}
+              </div>
+
+              {/* View profile on hover */}
+              <div className="flex items-center gap-1.5 text-[var(--color-accent)] text-[10px] tracking-[0.15em] uppercase font-medium opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                <span aria-hidden="true" className="text-[8px] leading-none">✛</span>
+                {t('grid_viewProfile')}
               </div>
             </a>
           ))}
@@ -101,9 +85,10 @@ export default function MissionariesGrid({ missionaries, base }: Props) {
             href="https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[var(--color-accent)] text-white text-[11px] tracking-[0.18em] uppercase font-semibold hover:opacity-90 transition-opacity duration-300"
           >
-            Give Now →
+            <span aria-hidden="true" className="text-[9px] leading-none">✛</span>
+            Give Now
           </a>
         </div>
       </div>

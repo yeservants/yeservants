@@ -41,7 +41,7 @@ const pillars = [
 
   <!-- Hero -->
   <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[var(--color-bg)]">
-    <div class="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[45%] right-[2%] leading-none pointer-events-none select-none whitespace-nowrap" style="color:rgba(44,74,62,0.06)" aria-hidden="true">ABOUT</div>
+    <div class="absolute font-heading font-bold text-[clamp(4rem,16vw,14rem)] top-[45%] left-1/2 -translate-x-1/2 leading-none pointer-events-none select-none whitespace-nowrap" style="color:rgba(44,74,62,0.06)" aria-hidden="true">ABOUT</div>
     <div class="float-line h-[30vh] top-[10%] left-[4%]" aria-hidden="true"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto px-6">
@@ -122,9 +122,10 @@ const pillars = [
   </section>
 
   <!-- What Makes YES Different -->
-  <section class="relative py-20 md:py-28 overflow-hidden bg-[var(--color-primary)]">
-    <div class="float-ring w-20 h-20 top-[10%] right-[8%] border-white/10" aria-hidden="true"></div>
-    <div class="float-cross bottom-[10%] left-[5%] opacity-20" aria-hidden="true"></div>
+  <section class="relative py-20 md:py-28 overflow-hidden green-gradient">
+    <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 80% 30%, rgba(194,125,65,0.11) 0%, transparent 55%)"></div>
+    <svg aria-hidden="true" class="absolute top-[8%] left-[5%] text-[var(--color-accent)] opacity-[0.12]" width="32" height="48" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+    <svg aria-hidden="true" class="absolute bottom-[8%] right-[6%] text-white opacity-[0.06]" width="20" height="30" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
 
     <div class="relative z-10 max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
@@ -143,22 +144,6 @@ const pillars = [
             <p class="text-white/50 text-sm leading-relaxed">{p.body}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-20 md:py-24 bg-[var(--color-bg)] text-center">
-    <div class="max-w-2xl mx-auto px-6">
-      <h2 class="font-heading text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-4">Ready to Get Involved?</h2>
-      <p class="text-[var(--color-text-muted)] mb-8 leading-relaxed">Whether you give, go, or send — you can be part of changing eternity.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={`${base}donate/`} class="px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90">
-          Donate Now
-        </a>
-        <a href={`${base}join/`} class="px-8 py-3.5 border border-[var(--color-primary)]/30 text-[var(--color-primary)] font-medium rounded transition-all duration-300 hover:bg-[var(--color-primary)] hover:text-white">
-          Become a Missionary
-        </a>
       </div>
     </div>
   </section>

@@ -5,7 +5,7 @@ export default function MissionStrip() {
   const doubled = `${words} \u00B7 ${words} \u00B7 `;
 
   return (
-    <section className="relative bg-[var(--color-primary)] py-5 overflow-hidden">
+    <section className="relative green-gradient py-5 overflow-hidden">
       <div className="flex whitespace-nowrap" style={{ animation: 'marquee 30s linear infinite' }}>
         <span className="font-heading italic text-[var(--color-accent)] text-lg md:text-xl tracking-[0.15em] px-4">
           {doubled}

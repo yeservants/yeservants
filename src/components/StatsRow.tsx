@@ -61,16 +61,19 @@ export default function StatsRow() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[var(--color-primary)] py-16 md:py-20 overflow-hidden">
+    <section ref={sectionRef} className="relative green-gradient py-16 md:py-20 overflow-hidden">
+      {/* Accent glow */}
+      <div aria-hidden="true" className="absolute top-0 right-0 w-[45%] h-full pointer-events-none" style={{ background: 'radial-gradient(ellipse at 100% 50%, rgba(194,125,65,0.12) 0%, transparent 65%)' }} />
       <div
-        className="absolute font-heading font-bold text-[clamp(5rem,16vw,16rem)] top-[1%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
-        style={{ color: 'rgba(255,255,255,0.07)' }}
+        className="absolute font-heading font-bold text-[clamp(5rem,16vw,16rem)] top-[1%] left-1/2 -translate-x-1/2 pointer-events-none select-none leading-none whitespace-nowrap"
+        style={{ color: 'rgba(255,255,255,0.06)' }}
         aria-hidden="true"
       >
         IMPACT
       </div>
-      <div className="float-cross top-[15%] left-[10%] opacity-30" aria-hidden="true" />
-      <div className="float-ring w-16 h-16 bottom-[15%] right-[10%] border-white/10" aria-hidden="true" />
+      {/* Real SVG crosses */}
+      <svg aria-hidden="true" className="absolute top-[10%] left-[6%] opacity-[0.12] text-[var(--color-accent)]" width="32" height="48" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute bottom-[10%] right-[8%] opacity-[0.08] text-white" width="20" height="30" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat, i) => (

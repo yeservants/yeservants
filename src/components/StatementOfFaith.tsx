@@ -34,24 +34,21 @@ export default function StatementOfFaith() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 bg-[var(--color-primary)] overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 green-gradient overflow-hidden">
+      {/* Accent glow */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(194,125,65,0.10) 0%, transparent 60%)' }} />
       <div
-        className="absolute font-heading font-bold text-[clamp(5rem,18vw,18rem)] top-[42%] right-[2%] pointer-events-none select-none leading-none whitespace-nowrap"
-        style={{ color: 'rgba(255,255,255,0.07)' }}
+        className="absolute font-heading font-bold text-[clamp(5rem,18vw,18rem)] top-[42%] left-1/2 -translate-x-1/2 pointer-events-none select-none leading-none whitespace-nowrap"
+        style={{ color: 'rgba(255,255,255,0.06)' }}
         aria-hidden="true"
       >
         FAITH
       </div>
-
-      <div className="float-cross top-[15%] right-[10%] opacity-30" aria-hidden="true" />
-      <div className="float-line h-[20vh] bottom-[10%] left-[8%] opacity-15" aria-hidden="true" />
-
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[var(--color-accent)] opacity-20" aria-hidden="true">
-        <svg width="40" height="60" viewBox="0 0 40 60" fill="currentColor">
-          <rect x="16" y="0" width="8" height="60" />
-          <rect x="0" y="16" width="40" height="8" />
-        </svg>
-      </div>
+      {/* Real SVG crosses */}
+      <svg aria-hidden="true" className="absolute top-8 left-1/2 -translate-x-1/2 text-[var(--color-accent)] opacity-20" width="40" height="60" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute top-[12%] right-[8%] text-[var(--color-accent)] opacity-[0.10]" width="24" height="36" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute bottom-[10%] left-[6%] text-white opacity-[0.06]" width="18" height="27" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <div className="float-line h-[20vh] bottom-[10%] left-[8%] opacity-10" aria-hidden="true" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <p className="text-[var(--color-accent)] text-sm tracking-[0.2em] uppercase font-medium mb-8">

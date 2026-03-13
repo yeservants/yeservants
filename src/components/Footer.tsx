@@ -1,5 +1,10 @@
 'use client';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLang } from '../i18n/useLang';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   base: string;
@@ -8,6 +13,22 @@ interface Props {
 export default function Footer({ base }: Props) {
   const year = 2026;
   const { t } = useLang();
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el) return;
+    gsap.set(el, { opacity: 0, y: 28 });
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 78%', once: true },
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.vars.trigger === el) t.kill();
+      });
+    };
+  }, []);
 
   const links = [
     { href: `${base}`, label: t('footer_home') },
@@ -18,8 +39,49 @@ export default function Footer({ base }: Props) {
   ];
 
   return (
-    <footer className="relative bg-[var(--color-primary)] pt-16 pb-8 overflow-hidden">
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+    <footer className="relative green-gradient overflow-hidden">
+      {/* Shared accent glow */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 75% 20%, rgba(194,125,65,0.13) 0%, transparent 55%)' }} />
+      {/* Decorative SVG crosses */}
+      <svg aria-hidden="true" className="absolute top-[4%] left-[6%] text-[var(--color-accent)] opacity-[0.13]" width="36" height="54" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute top-[12%] right-[8%] text-[var(--color-accent)] opacity-[0.10]" width="24" height="36" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute top-[38%] left-[50%] -translate-x-1/2 text-white opacity-[0.025]" width="110" height="165" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="2"/><rect x="0" y="18" width="40" height="8" rx="2"/></svg>
+      <svg aria-hidden="true" className="absolute bottom-[12%] left-[4%] text-white opacity-[0.05]" width="18" height="27" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+      <svg aria-hidden="true" className="absolute top-[6%] right-[30%] text-white opacity-[0.04]" width="14" height="21" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
+
+      {/* ── CTA ── */}
+      <div className="relative z-10 border-b border-[#FAF8F4]/10 py-20 md:py-28 px-6">
+        <div ref={ctaRef} className="max-w-3xl mx-auto text-center">
+          <p className="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-5">
+            2 Corinthians 9:7
+          </p>
+          <h2 className="font-heading text-3xl md:text-5xl font-light italic text-[#FAF8F4] mb-6 leading-tight">
+            Support The Mission
+          </h2>
+          <p className="text-[#FAF8F4]/65 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            Your generosity enables missionaries to focus on their calling. Every gift, no matter the size, makes an eternal difference.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity duration-300 hover:opacity-90"
+            >
+              Donate Online
+            </a>
+            <a
+              href={`${base}donate/`}
+              className="px-8 py-3.5 border border-[#FAF8F4]/30 text-[#FAF8F4] font-medium rounded transition-all duration-300 hover:bg-[#FAF8F4]/10"
+            >
+              Give By Mail
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Navigation ── */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-14 pb-8">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -85,9 +147,20 @@ export default function Footer({ base }: Props) {
           </div>
         </div>
 
-        <div className="border-t border-[#FAF8F4]/10 pt-6 text-center">
+        <div className="border-t border-[#FAF8F4]/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[#FAF8F4]/30 text-xs leading-relaxed">
             {t('footer_copyright')}
+          </p>
+          <p className="text-[#FAF8F4]/20 text-xs">
+            Designed by{' '}
+            <a
+              href="https://www.fullstackevolved.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FAF8F4]/40 hover:text-[var(--color-accent)] transition-colors duration-300"
+            >
+              fsevo
+            </a>
           </p>
         </div>
       </div>

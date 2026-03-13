@@ -14,7 +14,6 @@ import ICFCSection from '../components/ICFCSection';
 import SponsorsSection from '../components/SponsorsSection';
 import Testimonials from '../components/Testimonials';
 import CandidSection from '../components/CandidSection';
-import DonateCTA from '../components/DonateCTA';
 import Footer from '../components/Footer';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -88,6 +87,5 @@ const featured = allMissionaries
   <SponsorsSection base={base} client:visible />
   <Testimonials client:visible />
   <CandidSection base={base} client:visible />
-  <DonateCTA base={base} client:visible />
   <Footer base={base} client:visible />
 </BaseLayout>
