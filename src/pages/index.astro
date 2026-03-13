@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero';
 import MissionStrip from '../components/MissionStrip';
@@ -16,23 +18,55 @@ import Testimonials from '../components/Testimonials';
 import CandidSection from '../components/CandidSection';
 import Footer from '../components/Footer';
 
+// Yespic image imports
+import yespic1 from '../assets/images/yespic/1.jpg';
+import yespic9 from '../assets/images/yespic/9.jpg';
+import yespicWA0010 from '../assets/images/yespic/IMG-20240810-WA0010.jpg';
+import yespicWA0012 from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
+
+// Portrait image glob
+const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// Pre-process hero images → WebP
+const [heroImg1, heroImg9, heroImgWA0010] = await Promise.all([
+  getImage({ src: yespic1,     format: 'webp', width: 1920, quality: 80 }),
+  getImage({ src: yespic9,     format: 'webp', width: 1920, quality: 80 }),
+  getImage({ src: yespicWA0010, format: 'webp', width: 1920, quality: 80 }),
+]);
+
+// Process featured missionaries
 const allMissionaries = await getCollection('missionaries');
-const featured = allMissionaries
-  .filter((m) => m.data.picture !== 'none.jpg')
-  .sort((a, b) => a.data.name.localeCompare(b.data.name))
-  .slice(0, 3)
-  .map((m) => m.data);
+const featured = await Promise.all(
+  allMissionaries
+    .filter((m) => m.data.picture !== 'none.jpg')
+    .sort((a, b) => a.data.name.localeCompare(b.data.name))
+    .slice(0, 3)
+    .map(async (m) => {
+      const key = `/src/assets/images/${m.data.picture}`;
+      const mod = portraitModules[key];
+      let pictureUrl: string | undefined;
+      if (mod?.default) {
+        const opt = await getImage({ src: mod.default, format: 'webp', width: 416, height: 416, quality: 85 });
+        pictureUrl = opt.src;
+      }
+      return { ...m.data, pictureUrl };
+    })
+);
 ---
 
 <BaseLayout title="Y.E.S. — Yielded Evangelical Servants" description="Yielded Evangelical Servants is a nonprofit supporting evangelical missionaries worldwide since 2002. Pray, give, and go.">
-  <Hero base={base} client:load />
+  <Hero base={base} heroImages={[heroImg1.src, heroImg9.src, heroImgWA0010.src]} client:load />
   <MissionStrip client:visible />
   <MissionIntro client:visible />
 
   <!-- Full-bleed image break 1 -->
   <div class="relative h-72 md:h-[28rem] overflow-hidden">
-    <img src={`${base}Yespic/9.jpg`} alt="Missionaries serving" class="w-full h-full object-cover" loading="lazy" />
+    <Image src={yespic9} alt="Missionaries serving" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 bg-[var(--color-primary)]/55"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
       <p class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase font-medium mb-3">Our Purpose</p>
@@ -48,7 +82,7 @@ const featured = allMissionaries
 
   <!-- Full-bleed image break 2 -->
   <div class="relative h-72 md:h-96 overflow-hidden">
-    <img src={`${base}Yespic/IMG-20240810-WA0010.jpg`} alt="Mission field" class="w-full h-full object-cover" loading="lazy" />
+    <Image src={yespicWA0010} alt="Mission field" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 bg-[var(--color-primary)]/60"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
       <p class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase font-medium mb-4">Founded 1990</p>
@@ -67,7 +101,7 @@ const featured = allMissionaries
 
   <!-- Full-bleed image break 3 -->
   <div class="relative h-64 md:h-80 overflow-hidden">
-    <img src={`${base}Yespic/IMG-20240810-WA0012.jpg`} alt="Mission work" class="w-full h-full object-cover" loading="lazy" />
+    <Image src={yespicWA0012} alt="Mission work" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 bg-black/50"></div>
     <div class="absolute inset-0 flex items-center justify-center text-center px-6">
       <div>

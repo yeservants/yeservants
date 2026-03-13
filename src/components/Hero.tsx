@@ -3,11 +3,11 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useLang } from '../i18n/useLang';
 
-interface Props { base: string; }
+interface Props { base: string; heroImages?: [string, string, string]; }
 
 const ADVANCE = 7; // seconds per slide
 
-export default function Hero({ base }: Props) {
+export default function Hero({ base, heroImages }: Props) {
   const { t } = useLang();
   const [current, setCurrent]   = useState(0);
   const [incoming, setIncoming] = useState<number | null>(null);
@@ -23,21 +23,21 @@ export default function Hero({ base }: Props) {
 
   const slides = [
     {
-      image: `${base}Yespic/1.jpg`,
+      image: heroImages?.[0] ?? `${base}Yespic/1.jpg`,
       heading: t('hero_s1_heading'),
       sub:     t('hero_s1_sub'),
       cta1: { label: t('hero_s1_cta1'), href: `${base}donate/` },
       cta2: { label: t('hero_s1_cta2'), href: `${base}join/` },
     },
     {
-      image: `${base}Yespic/9.jpg`,
+      image: heroImages?.[1] ?? `${base}Yespic/9.jpg`,
       heading: t('hero_s2_heading'),
       sub:     t('hero_s2_sub'),
       cta1: { label: t('hero_s2_cta1'), href: `${base}donate/` },
       cta2: { label: t('hero_s2_cta2'), href: `${base}missionaries/` },
     },
     {
-      image: `${base}Yespic/IMG-20240810-WA0010.jpg`,
+      image: heroImages?.[2] ?? `${base}Yespic/IMG-20240810-WA0010.jpg`,
       heading: t('hero_s3_heading'),
       sub:     t('hero_s3_sub'),
       cta1: { label: t('hero_s3_cta1'), href: `${base}join/` },

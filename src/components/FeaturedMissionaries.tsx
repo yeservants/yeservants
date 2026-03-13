@@ -92,7 +92,7 @@ export default function FeaturedMissionaries({ missionaries, base }: Props) {
               {/* Circle image */}
               <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden ring-2 ring-[var(--color-accent)]/25 ring-offset-4 ring-offset-[var(--color-bg)] group-hover:ring-[var(--color-accent)]/70 transition-all duration-400 mb-5 flex-shrink-0">
                 <img
-                  src={`${base}images/${m.picture}`}
+                  src={m.pictureUrl ?? `${base}images/${m.picture}`}
                   alt={m.name}
                   width={208}
                   height={208}

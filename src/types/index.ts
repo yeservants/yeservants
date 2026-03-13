@@ -15,6 +15,7 @@ export interface Missionary {
   url: string;
   location: string;
   picture: string;
+  pictureUrl?: string;
   description: string;
   bio: string;
   contact?: MissionaryContact;

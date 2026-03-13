@@ -1,14 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MissionariesGrid from '../../components/MissionariesGrid';
 import Footer from '../../components/Footer';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
 const allMissionaries = await getCollection('missionaries');
-const sorted = allMissionaries
-  .map((m) => m.data)
-  .sort((a, b) => a.name.localeCompare(b.name));
+const sorted = await Promise.all(
+  allMissionaries
+    .sort((a, b) => a.data.name.localeCompare(b.data.name))
+    .map(async (m) => {
+      const key = `/src/assets/images/${m.data.picture}`;
+      const mod = portraitModules[key];
+      let pictureUrl: string | undefined;
+      if (mod?.default) {
+        const opt = await getImage({ src: mod.default, format: 'webp', width: 320, height: 320, quality: 85 });
+        pictureUrl = opt.src;
+      }
+      return { ...m.data, pictureUrl };
+    })
+);
 ---
 
 <BaseLayout title="Our Missionaries — Y.E.S." description="Meet the evangelical missionaries supported by Yielded Evangelical Servants worldwide.">

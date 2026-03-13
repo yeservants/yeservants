@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer';
+import yespicWA0007 from '../../assets/images/yespic/IMG-20240810-WA0007.jpg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -78,7 +80,7 @@ const tripTypes = [
         </p>
       </div>
       <div class="relative">
-        <img src={`${base}Yespic/IMG-20240810-WA0007.jpg`} alt="Mission team" class="w-full aspect-[4/3] object-cover rounded-xl" loading="lazy" />
+        <Image src={yespicWA0007} alt="Mission team" format="webp" width={800} quality={85} class="w-full aspect-[4/3] object-cover rounded-xl" loading="lazy" />
         <div class="absolute -bottom-4 -left-4 bg-[var(--color-accent)] text-white px-5 py-3 rounded-lg shadow-lg">
           <p class="font-heading text-2xl font-semibold leading-none">20+</p>
           <p class="text-white/80 text-xs mt-0.5">Nations served</p>

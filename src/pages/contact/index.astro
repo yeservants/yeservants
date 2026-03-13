@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer';
+import yespicWA0009 from '../../assets/images/yespic/IMG-20240810-WA0009.jpg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
@@ -95,7 +97,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   <!-- Full-bleed image break -->
   <div class="relative h-60 md:h-72 overflow-hidden">
-    <img src={`${base}Yespic/IMG-20240810-WA0009.jpg`} alt="Mission field" class="w-full h-full object-cover" loading="lazy" />
+    <Image src={yespicWA0009} alt="Mission field" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 bg-[var(--color-primary)]/60"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
       <p class="font-heading text-white text-xl md:text-3xl font-light max-w-xl leading-relaxed">

@@ -45,7 +45,7 @@ export default function MissionariesGrid({ missionaries, base }: Props) {
               {/* Circle image */}
               <div className="relative w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-[var(--color-accent)]/25 ring-offset-4 ring-offset-[var(--color-bg)] group-hover:ring-[var(--color-accent)]/70 transition-all duration-400 mb-4 flex-shrink-0">
                 <img
-                  src={`${base}images/${m.picture}`}
+                  src={m.pictureUrl ?? `${base}images/${m.picture}`}
                   alt={m.name}
                   width={160}
                   height={160}

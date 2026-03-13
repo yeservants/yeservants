@@ -14,7 +14,7 @@ export default function MissionaryDetail({ missionary, base }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
   const gallery = missionary.gallery ?? [];
   const hasGallery = gallery.length > 0;
-  const heroImg = hasGallery ? `${base}images/${gallery[0]}` : `${base}images/${missionary.picture}`;
+  const heroImg = hasGallery ? `${base}images/${gallery[0]}` : (missionary.pictureUrl ?? `${base}images/${missionary.picture}`);
 
   useEffect(() => {
     if (!hasGallery) return;
@@ -102,7 +102,7 @@ export default function MissionaryDetail({ missionary, base }: Props) {
                   </>
                 ) : (
                   <img
-                    src={`${base}images/${missionary.picture}`}
+                    src={missionary.pictureUrl ?? `${base}images/${missionary.picture}`}
                     alt={missionary.name}
                     className="w-full h-full object-cover"
                   />

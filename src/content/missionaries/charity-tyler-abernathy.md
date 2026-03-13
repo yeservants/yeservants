@@ -1,0 +1,12 @@
+---
+name: Charity and Tyler Abernathy
+url: abernathy
+location: Tasmania, Australia
+picture: abernathy.jpg
+description: Charity and Tyler are currently training to be missionaries at Worldview Centre for Intercultural Studies in Tasmania, Australia.
+bio: |
+  <b>About</b>
+  Charity and I are currently training to be missionaries at Worldview Centre for Intercultural Studies in Tasmania, Australia. We will be there for 3 years, and then we will be heading into the missions field. We are currently still seeking God's guidance for where we need to go following the completion of our training. The book God's Smuggler by Brother Andrew has been a huge inspiration to us in our journey so far, as well as a great encouragement during times of stepping out in faith. Thank you for your support!
+contact:
+  none: true
+---
