@@ -159,7 +159,7 @@ export default function Footer({ base }: Props) {
               rel="noopener noreferrer"
               className="text-[#FAF8F4]/40 hover:text-[var(--color-accent)] transition-colors duration-300"
             >
-              fsevo
+              FSEVO
             </a>
           </p>
         </div>
