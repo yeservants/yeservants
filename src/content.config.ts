@@ -25,6 +25,11 @@ const missionaries = defineCollection({
     sendingChurch: z.string().optional(),
     ministryStarted: z.string().optional(),
     duration: z.string().optional(),
+    /* V3 Gospel Workers profile fields — optional, non-breaking */
+    role: z.string().optional(),
+    region: z.string().optional(),
+    yearsOfService: z.string().optional(),
+    quote: z.string().optional(),
   }),
 });
 

@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer";
+import PageHero from "../../components/PageHero";
+import GiveOptions from "../../components/GiveOptions";
+import GiveTrust from "../../components/GiveTrust";
+import GiveMajorPartners from "../../components/GiveMajorPartners";
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<BaseLayout
+  title="Give — YES | Yielded Evangelical Servants"
+  description="Invest in Gospel workers who are giving everything to advance the Great Commission. Monthly partnership with YES provides sustained support in some of the world's most challenging places."
+>
+  <PageHero eyebrowKey="give_s1_eyebrow" headlineKey="give_s1_headline" introKey="give_s1_body" client:load />
+  <GiveOptions base={base} client:visible />
+  <GiveTrust base={base} client:visible />
+  <GiveMajorPartners client:visible />
+  <Footer base={base} client:visible />
+</BaseLayout>

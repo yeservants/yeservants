@@ -1,125 +1,86 @@
 ---
-import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero';
-import MissionStrip from '../components/MissionStrip';
-import MissionIntro from '../components/MissionIntro';
-import StatsRow from '../components/StatsRow';
-import FeaturedMissionaries from '../components/FeaturedMissionaries';
-import AboutSection from '../components/AboutSection';
-import VisionSection from '../components/VisionSection';
-import LeadershipSection from '../components/LeadershipSection';
-import StatementOfFaith from '../components/StatementOfFaith';
-import ICFCSection from '../components/ICFCSection';
-import SponsorsSection from '../components/SponsorsSection';
-import Testimonials from '../components/Testimonials';
-import CandidSection from '../components/CandidSection';
 import Footer from '../components/Footer';
+import HomeReality from '../components/HomeReality';
+import HomeFieldStories from '../components/HomeFieldStories';
+import HomeDifference from '../components/HomeDifference';
+import HomeWhatYesDoes from '../components/HomeWhatYesDoes';
+import HomeWhyYes from '../components/HomeWhyYes';
+import HomeWhoWeAre from '../components/HomeWhoWeAre';
+import HomeBiblical from '../components/HomeBiblical';
+import HomeFinalCta from '../components/HomeFinalCta';
 
-// Yespic image imports
-import yespic1 from '../assets/images/yespic/1.jpg';
-import yespic9 from '../assets/images/yespic/9.jpg';
-import yespicWA0010 from '../assets/images/yespic/IMG-20240810-WA0010.jpg';
-import yespicWA0012 from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
+// Hero carousel field photos → WebP (dignified, real field photography)
+import hero1Src from '../assets/images/yespic/IMG-20240810-WA0010.jpg';
+import hero2Src from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
+import hero3Src from '../assets/images/yespic/IMG-20240810-WA0009.jpg';
+import hero4Src from '../assets/images/yespic/9.jpg';
 
-// Portrait image glob
-const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/images/*.{jpg,jpeg,png}',
-  { eager: true }
-);
+// Field story photos — stand-ins; CLIENT must replace with verified location photos
+// Section 3 story 1: Bajo Rodríguez, Costa Rica stand-in
+import story1Src from '../assets/images/yespic/1.jpg';
+// Section 3 story 2: Mata Hambre, Honduras stand-in
+import story2Src from '../assets/images/yespic/IMG-20240810-WA0007.jpg';
+// Section 3 story 3: Ozamiz, Philippines stand-in
+import story3Src from '../assets/images/yespic/2.jpg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
-// Pre-process hero images → WebP
-const [heroImg1, heroImg9, heroImgWA0010] = await Promise.all([
-  getImage({ src: yespic1,     format: 'webp', width: 1920, quality: 80 }),
-  getImage({ src: yespic9,     format: 'webp', width: 1920, quality: 80 }),
-  getImage({ src: yespicWA0010, format: 'webp', width: 1920, quality: 80 }),
-]);
+const heroSrcs = [hero1Src, hero2Src, hero3Src, hero4Src];
+const heroImages = (
+  await Promise.all(
+    heroSrcs.map((src) => getImage({ src, format: 'webp', width: 880, height: 1100, quality: 82 }))
+  )
+).map((img) => img.src);
 
-// Process featured missionaries
-const allMissionaries = await getCollection('missionaries');
-const featured = await Promise.all(
-  allMissionaries
-    .filter((m) => m.data.picture !== 'none.jpg')
-    .sort((a, b) => a.data.name.localeCompare(b.data.name))
-    .slice(0, 3)
-    .map(async (m) => {
-      const key = `/src/assets/images/${m.data.picture}`;
-      const mod = portraitModules[key];
-      let pictureUrl: string | undefined;
-      if (mod?.default) {
-        const opt = await getImage({ src: mod.default, format: 'webp', width: 416, height: 416, quality: 85 });
-        pictureUrl = opt.src;
-      }
-      return { ...m.data, pictureUrl };
-    })
-);
+// Section 3 story images → WebP
+/* CLIENT: replace stand-in photos with verified field photos for each location */
+const story1Img = await getImage({ src: story1Src, format: 'webp', width: 720, height: 540, quality: 82 });
+const story2Img = await getImage({ src: story2Src, format: 'webp', width: 720, height: 540, quality: 82 });
+const story3Img = await getImage({ src: story3Src, format: 'webp', width: 720, height: 540, quality: 82 });
+
+const description =
+  "YES (Yielded Evangelical Servants) has strengthened missionaries, pastors, evangelists, and church planters for more than 35 years — sustaining faithful Gospel workers in some of the world's most difficult places.";
+
+// Transparency seal lives in public/ — referenced directly
+const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
 ---
 
-<BaseLayout title="Y.E.S. — Yielded Evangelical Servants" description="Yielded Evangelical Servants is a nonprofit supporting evangelical missionaries worldwide since 2002. Pray, give, and go.">
-  <Hero base={base} heroImages={[heroImg1.src, heroImg9.src, heroImgWA0010.src]} client:load />
-  <MissionStrip client:visible />
-  <MissionIntro client:visible />
+<BaseLayout title="Strengthening Gospel Workers · YES (Yielded Evangelical Servants)" description={description} preloadImage={heroImages[0]}>
+  {/* Section 1 — Hero */}
+  <Hero base={base} heroImages={heroImages} client:load />
 
-  <!-- Full-bleed image break 1 -->
-  <div class="relative h-72 md:h-[28rem] overflow-hidden">
-    <Image src={yespic9} alt="Missionaries serving" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
-    <div class="absolute inset-0 bg-[var(--color-primary)]/55"></div>
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-      <p class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase font-medium mb-3">Our Purpose</p>
-      <p class="font-heading text-white text-2xl md:text-4xl lg:text-5xl font-light leading-tight max-w-3xl italic">
-        &ldquo;Go therefore and make disciples of all nations.&rdquo;
-      </p>
-      <p class="text-white/50 text-sm tracking-[0.2em] uppercase mt-4">Matthew 28:19</p>
-    </div>
-  </div>
+  {/* Section 2 — The Reality on the Ground */}
+  <HomeReality base={base} client:visible />
 
-  <StatsRow client:visible />
-  <FeaturedMissionaries missionaries={featured} base={base} client:visible />
+  {/* Section 3 — Thirty-Five Years of Witness (three field stories) */}
+  <HomeFieldStories
+    base={base}
+    story1Img={{ src: story1Img.src, alt: "A faithful pastor and his congregation in Bajo Rodríguez, Costa Rica — stand-in photo" }}
+    story2Img={{ src: story2Img.src, alt: "Gospel workers serving in the Mata Hambre community, Honduras — stand-in photo" }}
+    story3Img={{ src: story3Img.src, alt: "Ministry workers in Ozamiz, Philippines — stand-in photo" }}
+    client:visible
+  />
 
-  <!-- Full-bleed image break 2 -->
-  <div class="relative h-72 md:h-96 overflow-hidden">
-    <Image src={yespicWA0010} alt="Mission field" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
-    <div class="absolute inset-0 bg-[var(--color-primary)]/60"></div>
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-      <p class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase font-medium mb-4">Founded 1990</p>
-      <p class="font-heading text-white text-2xl md:text-4xl font-light leading-tight max-w-2xl">
-        35+ years of serving missionaries<br/>across 20+ nations worldwide.
-      </p>
-      <a href={`${base}about/`} class="mt-6 inline-flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors duration-300">
-        Our story
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
+  {/* Section 4 — The Difference YES Makes */}
+  <HomeDifference base={base} client:visible />
 
-  <AboutSection client:visible />
-  <VisionSection base={base} client:visible />
+  {/* Section 5 — What YES Does (3 cards) */}
+  <HomeWhatYesDoes base={base} client:visible />
 
-  <!-- Full-bleed image break 3 -->
-  <div class="relative h-64 md:h-80 overflow-hidden">
-    <Image src={yespicWA0012} alt="Mission work" format="webp" width={1920} quality={80} class="w-full h-full object-cover" loading="lazy" />
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
-      <div>
-        <p class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase font-medium mb-3">Get Involved</p>
-        <p class="font-heading text-white text-2xl md:text-3xl font-light max-w-xl">Whether you give, go, or send — you help change eternity.</p>
-        <div class="flex gap-4 justify-center mt-6">
-          <a href={`${base}donate/`} class="px-6 py-2.5 bg-[var(--color-accent)] text-white text-sm font-medium rounded hover:opacity-90 transition-opacity">Donate</a>
-          <a href={`${base}send-a-team/`} class="px-6 py-2.5 border border-white/40 text-white text-sm font-medium rounded hover:bg-white/10 transition-colors">Send a Team</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {/* Section 6 — Why YES (4 points) */}
+  <HomeWhyYes base={base} client:visible />
 
-  <LeadershipSection base={base} client:visible />
-  <StatementOfFaith client:visible />
-  <ICFCSection client:visible />
-  <SponsorsSection base={base} client:visible />
-  <Testimonials client:visible />
-  <CandidSection base={base} client:visible />
+  {/* Section 7 — Who We Are (stat row + transparency) */}
+  <HomeWhoWeAre base={base} sealSrc={sealSrc} client:visible />
+
+  {/* Section 8 — Biblical Foundation */}
+  <HomeBiblical base={base} client:visible />
+
+  {/* Section 9 — Final CTA */}
+  <HomeFinalCta base={base} client:visible />
+
   <Footer base={base} client:visible />
 </BaseLayout>

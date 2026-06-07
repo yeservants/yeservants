@@ -50,13 +50,13 @@ export default function MissionaryDetail({ missionary, base }: Props) {
         <div aria-hidden="true" className="absolute bottom-[15%] left-[6%] text-white opacity-[0.04] text-[8rem] font-heading font-bold pointer-events-none select-none leading-none">YES</div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
           <a
-            href={`${base}missionaries/`}
+            href={`${base}gospel-workers/`}
             className="inline-flex items-center gap-2 text-white/60 text-xs tracking-[0.2em] uppercase mb-6 hover:text-white transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             {t('detail_back')}
           </a>
-          <p className="text-[var(--color-accent)] text-xs tracking-[0.25em] uppercase font-medium mb-4">{t('detail_label')}</p>
+          <p className="text-[var(--color-accent-light)] text-xs tracking-[0.25em] uppercase font-medium mb-4">{t('detail_label')}</p>
           <h1 className="font-heading text-4xl md:text-6xl font-light text-white leading-[1.05] mb-4">
             {missionary.name}
           </h1>
@@ -93,9 +93,11 @@ export default function MissionaryDetail({ missionary, base }: Props) {
                       {gallery.map((_, i) => (
                         <button
                           key={i}
+                          type="button"
                           onClick={() => setSlide(i)}
                           className={`h-1.5 rounded-full transition-all duration-300 ${i === slide ? 'bg-[var(--color-accent)] w-5' : 'bg-white/50 w-1.5'}`}
                           aria-label={`Slide ${i + 1}`}
+                          aria-current={i === slide}
                         />
                       ))}
                     </div>
@@ -114,19 +116,19 @@ export default function MissionaryDetail({ missionary, base }: Props) {
                 <div className="mt-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-primary)]/8 p-6 flex flex-col gap-4">
                   {missionary.sendingChurch && (
                     <div>
-                      <p className="text-[var(--color-accent)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_sendingChurch')}</p>
+                      <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_sendingChurch')}</p>
                       <p className="text-[var(--color-primary)] font-medium text-sm">{missionary.sendingChurch}</p>
                     </div>
                   )}
                   {missionary.ministryStarted && (
                     <div>
-                      <p className="text-[var(--color-accent)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_started')}</p>
+                      <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_started')}</p>
                       <p className="text-[var(--color-primary)] font-medium text-sm">{missionary.ministryStarted}</p>
                     </div>
                   )}
                   {missionary.duration && (
                     <div>
-                      <p className="text-[var(--color-accent)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_duration')}</p>
+                      <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.2em] uppercase font-medium mb-1">{t('detail_duration')}</p>
                       <p className="text-[var(--color-primary)] font-medium text-sm">{missionary.duration}</p>
                     </div>
                   )}
@@ -138,7 +140,7 @@ export default function MissionaryDetail({ missionary, base }: Props) {
                 href="https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 w-full flex items-center justify-center gap-2 px-6 py-4 bg-[var(--color-accent)] text-white font-medium rounded-xl transition-opacity hover:opacity-90"
+                className="mt-5 w-full flex items-center justify-center gap-2 px-6 py-4 bg-[var(--color-accent-deep)] text-white font-medium rounded-xl transition-opacity hover:opacity-90"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
@@ -152,9 +154,9 @@ export default function MissionaryDetail({ missionary, base }: Props) {
               {bioLines.map((line, i) => {
                 if (line.startsWith('<b>') && line.endsWith('</b>')) {
                   return (
-                    <h3 key={i} className="font-heading text-xl font-medium text-[var(--color-primary)] mt-10 mb-4 first:mt-0">
+                    <h2 key={i} className="font-heading text-xl font-medium text-[var(--color-primary)] mt-10 mb-4 first:mt-0">
                       {line.replace(/<\/?b>/g, '')}
-                    </h3>
+                    </h2>
                   );
                 }
                 return (
@@ -168,16 +170,16 @@ export default function MissionaryDetail({ missionary, base }: Props) {
 
               {hasContact && (
                 <div className="mt-10 pt-8 border-t border-[var(--color-primary)]/10">
-                  <h3 className="font-heading text-lg font-medium text-[var(--color-primary)] mb-4">{t('detail_contact')}</h3>
+                  <h2 className="font-heading text-lg font-medium text-[var(--color-primary)] mb-4">{t('detail_contact')}</h2>
                   <div className="space-y-2 text-sm text-[var(--color-text-muted)]">
                     {contact!.email && (
                       <p><span className="font-medium text-[var(--color-text)]">Email: </span>
-                        <a href={`mailto:${contact!.email}`} className="text-[var(--color-accent)] hover:underline">{contact!.email}</a>
+                        <a href={`mailto:${contact!.email}`} className="text-[var(--color-accent-deep)] hover:underline">{contact!.email}</a>
                       </p>
                     )}
                     {contact!.phone && (
                       <p><span className="font-medium text-[var(--color-text)]">Phone: </span>
-                        <a href={`tel:${contact!.phone.replace(/[^+\d]/g, '')}`} className="text-[var(--color-accent)] hover:underline">{contact!.phone}</a>
+                        <a href={`tel:${contact!.phone.replace(/[^+\d]/g, '')}`} className="text-[var(--color-accent-deep)] hover:underline">{contact!.phone}</a>
                       </p>
                     )}
                     {contact!.address && (
@@ -185,7 +187,7 @@ export default function MissionaryDetail({ missionary, base }: Props) {
                     )}
                     {contact!.link && (
                       <p><span className="font-medium text-[var(--color-text)]">Website: </span>
-                        <a href={contact!.link} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:underline">{contact!.link}</a>
+                        <a href={contact!.link} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-deep)] hover:underline">{contact!.link}</a>
                       </p>
                     )}
                   </div>
@@ -196,33 +198,6 @@ export default function MissionaryDetail({ missionary, base }: Props) {
         </div>
       </section>
 
-      {/* CTA strip */}
-      <section className="py-16 green-gradient text-center relative overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 70% 50%, rgba(194,125,65,0.11) 0%, transparent 55%)' }} />
-        <svg aria-hidden="true" className="absolute top-[15%] left-[6%] text-[var(--color-accent)] opacity-[0.13]" width="28" height="42" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
-        <svg aria-hidden="true" className="absolute bottom-[15%] right-[6%] text-white opacity-[0.06]" width="20" height="30" viewBox="0 0 40 60" fill="currentColor"><rect x="16" y="0" width="8" height="60" rx="3"/><rect x="0" y="18" width="40" height="8" rx="3"/></svg>
-        <div className="relative z-10 max-w-xl mx-auto px-6">
-          <p className="font-heading text-white text-2xl md:text-3xl font-light mb-6 leading-tight">
-            {t('detail_ctaLabel')} {missionary.name.split(' ')[0]}{t('detail_ministry')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 bg-[var(--color-accent)] text-white font-medium rounded transition-opacity hover:opacity-90"
-            >
-              {t('detail_giveNow')}
-            </a>
-            <a
-              href={`${base}missionaries/`}
-              className="px-8 py-3.5 border border-white/30 text-white font-medium rounded transition-all hover:bg-white/10"
-            >
-              {t('detail_meetOthers')}
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

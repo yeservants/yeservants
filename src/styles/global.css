@@ -3,14 +3,26 @@
 astro-island { display: contents; }
 
 @theme {
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'General Sans', system-ui, sans-serif;
-  --color-bg: #FAF8F4;
-  --color-surface: #F0EBE3;
-  --color-primary: #2C4A3E;
-  --color-accent: #C27D41;
-  --color-text: #1C1C1A;
-  --color-text-muted: #6B6560;
+  /* V3 — Reverent Editorial Authority */
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Lora', Georgia, 'Times New Roman', serif;
+
+  /* Palette — forest green × orange (70 green / 20 cream / 10 orange) */
+  --color-bg: #F6F2EA;            /* warm off-white — light editorial sections */
+  --color-bg-dark: #2D5233;       /* deep forest green — hero + feature sections */
+  --color-surface: #EFE9DD;       /* warm card surface on light */
+  --color-primary: #2D5233;       /* forest green */
+  --color-primary-light: #3A6B42;
+  --color-primary-deep: #1F3A26;
+  --color-accent: #E8751A;        /* orange — graphics, large display text, borders, decorative (≥3:1 only) */
+  --color-accent-hover: #B5530C;  /* darker orange — button hover (white text 4.98:1, paired with deep base below) */
+  --color-accent-deep: #A84F0A;   /* deep orange — small text/links on LIGHT bg + button backgrounds (AA 4.5:1: 4.94:1 on #F6F2EA, white text 5.55:1) */
+  --color-accent-light: #F6A862;  /* light orange — small text on DARK green bg (AA 4.59:1 on #2D5233) */
+  --color-grey: #7A8A82;          /* sage grey */
+  --color-grey-light: #9AADA3;
+  --color-cream: #F0EDE6;         /* off-white text on dark */
+  --color-text: #1C2620;          /* near-black green — text on light */
+  --color-text-muted: #5E6B62;    /* muted green-grey */
 }
 
 @layer base {
@@ -22,10 +34,15 @@ astro-island { display: contents; }
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     overflow-x: hidden;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='26.5' y='19' width='3' height='18' rx='1.5' fill='%23C27D41' opacity='0.07'/%3E%3Crect x='19' y='26.5' width='18' height='3' rx='1.5' fill='%23C27D41' opacity='0.07'/%3E%3C/svg%3E");
+    /* V3 readability floor: body ≥ 17px, line-height ≥ 1.7 */
+    font-size: 1.0625rem;        /* 17px */
+    line-height: 1.75;
+    /* low-opacity orange cross-grid texture (light sections) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='26.5' y='19' width='3' height='18' rx='1.5' fill='%23E8751A' opacity='0.06'/%3E%3Crect x='19' y='26.5' width='18' height='3' rx='1.5' fill='%23E8751A' opacity='0.06'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 56px 56px;
   }
@@ -34,78 +51,99 @@ astro-island { display: contents; }
   a { color: inherit; text-decoration: none; }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  /* Visible focus for keyboard users (accessibility — SC 2.4.11 / 1.4.11).
+     Dual-ring so the indicator clears 3:1 on BOTH light (#F6F2EA) and dark (#2D5233)
+     backgrounds: deep-orange outline (4.94:1 on light) + cream halo (visible on dark). */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-deep);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(240, 237, 230, 0.85);
+    border-radius: 2px;
+  }
+  /* On dark sections the cream halo carries contrast; keep the orange outline too. */
+  .green-gradient :focus-visible,
+  .green-gradient-r :focus-visible,
+  [class*="primary-deep"] :focus-visible {
+    outline-color: var(--color-accent-light);
   }
 }
 
-/* Green gradient — replaces all flat bg-primary sections */
+/* ── Section backgrounds ─────────────────────────────────── */
+/* Deep forest-green gradient (hero + feature/dark sections) */
 .green-gradient {
-  background: linear-gradient(135deg, #2C4A3E 0%, #1e3530 55%, #0f1f18 100%);
+  background: linear-gradient(135deg, #2D5233 0%, #234029 55%, #14271a 100%);
 }
 .green-gradient-r {
-  background: linear-gradient(to right, #2C4A3E 0%, #1e3530 60%, #0f1f18 100%);
+  background: linear-gradient(to right, #2D5233 0%, #234029 60%, #14271a 100%);
 }
 
-/* Atmospheric backgrounds */
+/* Atmospheric radial glows (forest + amber, subtle) */
 .atmos-glow { position: relative; }
 .atmos-glow::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(194,125,65,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(44,74,62,0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(232,117,26,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(45,82,51,0.05) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
-
 .atmos-glow-center { position: relative; }
 .atmos-glow-center::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(194,125,65,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(232,117,26,0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Film grain overlay */
+/* Film grain overlay (fixed, ~3%) */
 .grain::after {
   content: '';
   position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  opacity: 0.028;
   pointer-events: none;
   z-index: 9999;
 }
 
 /* Dot grid background */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(44,74,62,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(45,82,51,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.dot-grid-light {
+  background-image: radial-gradient(circle, rgba(240,237,230,0.10) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Background ghost text */
-.bg-text {
+/* Background ghost typography (renamed from .bg-text — avoids Tailwind v4 bg-{token} collision) */
+.ghosttype {
   position: absolute;
   font-family: var(--font-heading);
   font-weight: 700;
-  color: rgba(44, 74, 62, 0.05);
+  color: rgba(45, 82, 51, 0.05);
   pointer-events: none;
   user-select: none;
   line-height: 0.85;
   white-space: nowrap;
   z-index: 0;
 }
+.ghosttype-light {
+  color: rgba(240, 237, 230, 0.05);
+}
 
-/* Floating decorative elements */
+/* ── Floating decorative elements ────────────────────────── */
 .float-line {
   position: absolute;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(194,125,65,0.3), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(232,117,26,0.3), transparent);
   opacity: 0.25;
   pointer-events: none;
 }
-
 .float-cross {
   position: absolute;
   width: 12px;
@@ -120,11 +158,10 @@ astro-island { display: contents; }
 }
 .float-cross::before { width: 12px; height: 1px; top: 50%; transform: translateY(-50%); }
 .float-cross::after { width: 1px; height: 12px; left: 50%; transform: translateX(-50%); }
-
 .float-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(194,125,65,0.2);
+  border: 1px solid rgba(232,117,26,0.2);
   pointer-events: none;
 }
 
@@ -148,10 +185,26 @@ astro-island { display: contents; }
   pointer-events: none;
 }
 
-/* Clip-path portrait reveal */
+/* ── Kinetic headline (GSAP SplitText) ───────────────────── */
+/* Wrapper per line gets overflow:hidden so the line masks up from below */
+.split-mask { overflow: hidden; display: block; }
+
+/* ── Scroll reveals ──────────────────────────────────────── */
+/* Mask-up reveal (preferred over fades per brief) */
+[data-reveal="mask"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="mask"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Clip-path reveal */
 [data-reveal="clip"] {
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-reveal="clip"].visible {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -168,40 +221,164 @@ astro-island { display: contents; }
   transform: translateY(0);
 }
 
-/* Stagger reveal */
+/* Stagger reveal — index-driven delay via --reveal-delay, plus nth-child fallback */
 [data-reveal-stagger] > * {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
 }
-[data-reveal-stagger].visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
-[data-reveal-stagger].visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.08s; }
-[data-reveal-stagger].visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.16s; }
-[data-reveal-stagger].visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.24s; }
-[data-reveal-stagger].visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
-[data-reveal-stagger].visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+[data-reveal-stagger].visible > * { opacity: 1; transform: none; }
+[data-reveal-stagger].visible > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-stagger].visible > *:nth-child(2) { transition-delay: 0.08s; }
+[data-reveal-stagger].visible > *:nth-child(3) { transition-delay: 0.16s; }
+[data-reveal-stagger].visible > *:nth-child(4) { transition-delay: 0.24s; }
+[data-reveal-stagger].visible > *:nth-child(5) { transition-delay: 0.32s; }
+[data-reveal-stagger].visible > *:nth-child(6) { transition-delay: 0.40s; }
 
-/* Marquee animation */
+/* ── Animations ──────────────────────────────────────────── */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-/* Scroll indicator bounce */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(8px); }
 }
 
-/* Reduced motion */
+/* Hero carousel — slow Ken-Burns on each slide + progress-bar fill */
+@keyframes hero-kenburns {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1.16); }
+}
+@keyframes carousel-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+.hero-slide { animation: hero-kenburns 14s ease-in-out infinite alternate; }
+
+/* Ghost Latin-cross watermark — faint atmosphere behind hero content.
+   Size/position via Tailwind utilities on the element; the bars draw inside it. */
+.ghost-cross {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+}
+.ghost-cross::before,
+.ghost-cross::after {
+  content: '';
+  position: absolute;
+  background: currentColor; /* set text color per hero: cream on dark, green on light */
+  border-radius: 6px;
+}
+.ghost-cross::before { left: 50%; top: 0; bottom: 0; width: 11%; transform: translateX(-50%); } /* vertical */
+.ghost-cross::after  { left: 4%; right: 4%; top: 23%; height: 11%; }                            /* upper transom */
+
+/* Drifting light motes (dust in sacred light) — used on the hero atmosphere */
+@keyframes mote {
+  0%   { transform: translate3d(0, 0, 0);        opacity: 0; }
+  15%  { opacity: 0.6; }
+  50%  { transform: translate3d(12px, -34px, 0); opacity: 0.85; }
+  85%  { opacity: 0.4; }
+  100% { transform: translate3d(-6px, -68px, 0); opacity: 0; }
+}
+.mote {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(246,222,180,0.9), rgba(246,222,180,0) 70%);
+  pointer-events: none;
+  animation: mote 11s ease-in-out infinite;
+}
+
+/* ── Celestial atmosphere (breathing light, starfield, aurora, halo) ──
+   Reverent, restrained motion for the deep-green blocks. Every effect is
+   decorative (aria-hidden) and animates only opacity/transform/filter, so it
+   stays GPU-cheap and won't fight the Tailwind rotate on the ray divs. */
+
+/* God-rays gently breathe — sacred light swelling and softening.
+   Drives opacity only (the ray div keeps its own rotate transform). */
+@keyframes ray-breathe {
+  0%, 100% { opacity: 0.025; }
+  50%      { opacity: 0.07; }
+}
+.god-rays { animation: ray-breathe 11s ease-in-out infinite; will-change: opacity; }
+
+/* Twinkling stars — points of light fading in and out at varied rhythms */
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.45); }
+  50%      { opacity: 0.9; transform: scale(1); }
+}
+.star {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(248,236,206,0.95), rgba(248,236,206,0) 70%);
+  box-shadow: 0 0 6px 1px rgba(248,236,206,0.35);
+  pointer-events: none;
+  animation: twinkle 6s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+.star-lg { width: 5px; height: 5px; }
+
+/* Slow-drifting celestial glow (aurora of warm light through the canopy) */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-5%, 2%, 0) scale(1);    opacity: 0.4; }
+  50%  { transform: translate3d(5%, -3%, 0) scale(1.18); opacity: 0.8; }
+  100% { transform: translate3d(-5%, 2%, 0) scale(1);    opacity: 0.4; }
+}
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(64px);
+  animation: aurora-drift 22s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Soft pulsing halo — placed behind a ghost cross to give it presence */
+@keyframes halo-pulse {
+  0%, 100% { opacity: 0.16; transform: translate(-50%, -50%) scale(0.9); }
+  50%      { opacity: 0.4;  transform: translate(-50%, -50%) scale(1.1); }
+}
+.cross-halo {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(246,205,148,0.55), rgba(246,205,148,0.08) 46%, transparent 72%);
+  filter: blur(18px);
+  animation: halo-pulse 7s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Rare drifting ember — a single slow point that crosses the sky */
+@keyframes ember-fall {
+  0%   { transform: translate3d(0, -10px, 0);   opacity: 0; }
+  12%  { opacity: 0.7; }
+  88%  { opacity: 0.5; }
+  100% { transform: translate3d(-40px, 120px, 0); opacity: 0; }
+}
+.ember {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(246,205,148,1), rgba(246,205,148,0) 70%);
+  pointer-events: none;
+  animation: ember-fall 16s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+  [data-reveal], [data-reveal-stagger] > * { opacity: 1 !important; transform: none !important; clip-path: none !important; }
 }
 
-/* Missionary bio content styles */
+/* ── Long-form / worker bio content ──────────────────────── */
 .missionary-bio b {
   display: block;
   font-family: var(--font-heading);
@@ -210,18 +387,18 @@ astro-island { display: contents; }
   margin-bottom: 0.25rem;
   color: var(--color-primary);
 }
-.missionary-bio b:first-child {
-  margin-top: 0;
-}
+.missionary-bio b:first-child { margin-top: 0; }
 .missionary-bio a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.missionary-bio a:hover {
-  opacity: 0.8;
-}
+.missionary-bio a:hover { opacity: 0.8; }
 .missionary-bio ul {
   margin-left: 1.5em;
   list-style-type: disc;
 }
+
+/* ── Rich prose (V3 long-form pages) ─────────────────────── */
+.prose-yes p { margin-bottom: 1.35em; }
+.prose-yes p:last-child { margin-bottom: 0; }

@@ -1,0 +1,54 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+import PageHero from '../../components/PageHero';
+import HiwPartnershipSteps from '../../components/HiwPartnershipSteps';
+import HiwWhatSupportCovers from '../../components/HiwWhatSupportCovers';
+import HiwMissionTeams from '../../components/HiwMissionTeams';
+import HiwFunds from '../../components/HiwFunds';
+
+/**
+ * Field photos used on this page (all different from the hero on index.astro
+ * which uses IMG-20240810-WA0010.jpg).
+ *
+ * Teams photo → yespic/1.jpg (group / mission-team mood)
+ * <!-- CLIENT: replace with verified mission-team photo -->
+ */
+import teamFieldSrc from '../../assets/images/yespic/1.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const teamFieldImg = await getImage({
+  src: teamFieldSrc,
+  format: 'webp',
+  width: 760,
+  height: 950,
+  quality: 82,
+});
+
+const description =
+  "YES provides direct, sustained support to missionaries, pastors, evangelists, and church planters — along with mission teams, leadership development, and long-term field partnership.";
+---
+
+<BaseLayout
+  title="How It Works · YES (Yielded Evangelical Servants)"
+  description={description}
+>
+  <!--
+    Section rhythm (kit alternates LIGHT / DARK):
+    1. Opener         — LIGHT  (bg-[var(--color-bg)])
+    2. Partnership    — DARK   (green-gradient)
+    3. Support Covers — LIGHT
+    4. Mission Teams  — DARK
+    5. Funds          — LIGHT
+  -->
+
+  <PageHero eyebrowKey="hiw_opener_label" headlineKey="hiw_opener_headline" introKey="hiw_opener_body" client:load />
+  <HiwPartnershipSteps client:visible />
+  <HiwWhatSupportCovers client:visible />
+  <HiwMissionTeams base={base} fieldImage={teamFieldImg.src} client:visible />
+  <HiwFunds base={base} client:visible />
+
+  <Footer base={base} client:visible />
+</BaseLayout>

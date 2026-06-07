@@ -10,15 +10,18 @@ interface Props {
   ogImage?: string;
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  /** Preload the LCP image (e.g. the hero photo) so Lighthouse discovers it first. */
+  preloadImage?: string;
 }
 
 const {
   title,
-  description = 'Yielded Evangelical Servants (Y.E.S.) is a nonprofit 501(c)(3) mission organization supporting evangelical missionaries worldwide since 1990.',
+  description = "YES (Yielded Evangelical Servants) has strengthened missionaries, pastors, evangelists, and church planters for more than 35 years — sustaining faithful Gospel workers in some of the world's most difficult places.",
   canonicalUrl,
   ogImage = '/images/homepage-children.jpg',
   ogType = 'website',
   noindex = false,
+  preloadImage,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -30,10 +33,11 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'NonprofitOrganization',
   name: 'Yielded Evangelical Servants, Inc.',
-  alternateName: 'Y.E.S.',
+  alternateName: 'YES',
   url: siteUrl,
   logo: `${siteUrl}/images/logo.png`,
-  description: 'A nonprofit 501(c)(3) Christian mission organization founded in 1990, providing financial accountability and administrative services for evangelical missionaries worldwide.',
+  slogan: 'Strengthening Gospel Workers. Sustaining Kingdom Impact.',
+  description: 'A missionary-founded 501(c)(3) nonprofit ministry. For more than 35 years, YES has strengthened missionaries, pastors, evangelists, and church planters serving in some of the world’s most difficult places — sustaining the workers so the work endures.',
   foundingDate: '1990',
   taxID: '501(c)(3)',
   email: 'info@yeservants.org',
@@ -59,7 +63,10 @@ const orgSchema = {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
-  <meta name="theme-color" content="#2C4A3E" />
+  <meta name="theme-color" content="#2D5233" />
+
+  {/* Preload the LCP hero image — prioritizes it in the discovery graph for faster LCP */}
+  {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -88,12 +95,10 @@ const orgSchema = {
   <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
   <link rel="apple-touch-icon" href={`${base}favicon.ico`} />
 
-  <!-- Fonts -->
+  <!-- Fonts — Playfair Display (display) + Lora (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
 
   <ClientRouter />
 </head>
@@ -103,7 +108,7 @@ const orgSchema = {
       [data-reveal], [data-reveal-stagger] > * { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-white focus:rounded">Skip to main content</a>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-accent-deep)] focus:text-white focus:rounded">Skip to main content</a>
   <Nav client:only="react" base={base} transition:persist />
   <main id="main-content">
     <slot />
@@ -118,6 +123,13 @@ const orgSchema = {
 
   gsap.registerPlugin(ScrollTrigger);
   let lenis: Lenis | null = null;
+
+  // Mark once a ClientRouter view transition has occurred. Islands (e.g. the Hero)
+  // use this to SKIP heavy intro animations on SPA navigation — only the initial
+  // full page load animates. Prevents SplitText line-mask flashes during transitions.
+  document.addEventListener('astro:before-swap', () => {
+    Object.assign(window, { __yesSwapped: true });
+  });
 
   function initScrolling() {
     if (lenis) { lenis.destroy(); lenis = null; }
@@ -159,7 +171,35 @@ const orgSchema = {
         if (el.closest('astro-island')) return;
         window.scrollRevealObserver.observe(el);
       });
+      // Backstop for content already in the viewport on load (islands included),
+      // after hydration has settled. Safe: additive only, runs post-hydration.
+      setTimeout(sweepReveals, 500);
+      setTimeout(sweepReveals, 1400);
     }
+
+    // Safety net: a scroll-driven sweep that reveals ANY [data-reveal] element
+    // (including those inside React islands) once it has entered the viewport.
+    // Runs only on user scroll (always post-hydration → no #418 risk) and is
+    // additive (only ever adds .visible). Backstops the per-island Intersection
+    // Observers so a section can never stay blank after a fast scroll, a slow
+    // hydration, or a dev-server timing hiccup.
+    var sweepScheduled = false;
+    function sweepReveals() {
+      sweepScheduled = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var nodes = document.querySelectorAll('[data-reveal]:not(.visible), [data-reveal-stagger]:not(.visible)');
+      for (var i = 0; i < nodes.length; i++) {
+        var r = nodes[i].getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > -200) nodes[i].classList.add('visible');
+      }
+    }
+    function onScroll() {
+      if (sweepScheduled) return;
+      sweepScheduled = true;
+      requestAnimationFrame(sweepReveals);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true, signal: window._revealAbort.signal });
+
     document.addEventListener('astro:page-load', initReveals, { signal: window._revealAbort.signal });
   })();
 </script>

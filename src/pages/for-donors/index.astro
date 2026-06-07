@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer";
+import PageHero from "../../components/PageHero";
+import FdWhyPartner from "../../components/FdWhyPartner";
+import FdHowToPartner from "../../components/FdHowToPartner";
+import FdTransparency from "../../components/FdTransparency";
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<BaseLayout
+  title="For Donors — YES | Yielded Evangelical Servants"
+  description="Your partnership with YES connects you to real Gospel workers doing real ministry in real places. Monthly giving. One-time gifts. Church partnerships. Mission teams."
+>
+  <PageHero eyebrowKey="fd_s1_eyebrow" headlineKey="fd_s1_headline" introKey="fd_s1_body" scriptureKey="fd_s1_scripture" client:load />
+  <FdWhyPartner client:visible />
+  <FdHowToPartner base={base} client:visible />
+  <FdTransparency base={base} client:visible />
+  <Footer base={base} client:visible />
+</BaseLayout>

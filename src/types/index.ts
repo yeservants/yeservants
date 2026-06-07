@@ -18,11 +18,16 @@ export interface Missionary {
   pictureUrl?: string;
   description: string;
   bio: string;
-  contact?: MissionaryContact;
+  contact?: MissionaryContact | null;
   gallery?: string[];
   sendingChurch?: string;
   ministryStarted?: string;
   duration?: string;
+  /* V3 Gospel Workers profile fields */
+  role?: string;
+  region?: string;
+  yearsOfService?: string;
+  quote?: string;
 }
 
 export interface LeadershipMember {

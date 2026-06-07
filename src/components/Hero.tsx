@@ -1,332 +1,288 @@
 'use client';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import { useLang } from '../i18n/useLang';
 
-interface Props { base: string; heroImages?: [string, string, string]; }
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const ADVANCE = 7; // seconds per slide
+// Play the hero intro once per tab session. On ClientRouter back/forward returns
+// to Home, skip the re-animation (and the SplitText re-split) — just show it.
+let introPlayed = false;
+
+const SLIDE_MS = 3500;
+
+interface Props {
+  base: string;
+  heroImages: string[];
+}
 
 export default function Hero({ base, heroImages }: Props) {
   const { t } = useLang();
-  const [current, setCurrent]   = useState(0);
-  const [incoming, setIncoming] = useState<number | null>(null);
+  const rootRef     = useRef<HTMLElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const contentRef  = useRef<HTMLDivElement>(null);
+  const photoRef    = useRef<HTMLDivElement>(null);
+  const bloomRef    = useRef<HTMLDivElement>(null);
 
-  const contentRef    = useRef<HTMLDivElement>(null);
-  const incomingRef   = useRef<HTMLDivElement>(null);
-  const imgInRef      = useRef<HTMLImageElement>(null);
-  const progressRef   = useRef<HTMLSpanElement>(null);
-  const progressTween = useRef<gsap.core.Tween | null>(null);
-  const intervalRef   = useRef<ReturnType<typeof setInterval> | null>(null);
-  const busy          = useRef(false);
-  const currentRef    = useRef(0);
+  // ── Carousel state ──
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  const slides = [
-    {
-      image: heroImages?.[0] ?? `${base}Yespic/1.jpg`,
-      heading: t('hero_s1_heading'),
-      sub:     t('hero_s1_sub'),
-      cta1: { label: t('hero_s1_cta1'), href: `${base}donate/` },
-      cta2: { label: t('hero_s1_cta2'), href: `${base}join/` },
-    },
-    {
-      image: heroImages?.[1] ?? `${base}Yespic/9.jpg`,
-      heading: t('hero_s2_heading'),
-      sub:     t('hero_s2_sub'),
-      cta1: { label: t('hero_s2_cta1'), href: `${base}donate/` },
-      cta2: { label: t('hero_s2_cta2'), href: `${base}missionaries/` },
-    },
-    {
-      image: heroImages?.[2] ?? `${base}Yespic/IMG-20240810-WA0010.jpg`,
-      heading: t('hero_s3_heading'),
-      sub:     t('hero_s3_sub'),
-      cta1: { label: t('hero_s3_cta1'), href: `${base}join/` },
-      cta2: { label: t('hero_s3_cta2'), href: `${base}missionaries/` },
-    },
-  ];
-
-  const padded = (n: number) => String(n + 1).padStart(2, '0');
-
-  /* ── Progress bar ──────────────────────────────── */
-  const startProgress = useCallback(() => {
-    const bar = progressRef.current;
-    if (!bar) return;
-    if (progressTween.current) progressTween.current.kill();
-    gsap.set(bar, { scaleX: 0 });
-    progressTween.current = gsap.to(bar, { scaleX: 1, duration: ADVANCE, ease: 'none' });
-  }, []);
-
-  /* ── Auto-advance ──────────────────────────────── */
-  const scheduleNext = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      goTo((currentRef.current + 1) % slides.length);
-    }, ADVANCE * 1000);
-  }, []); // eslint-disable-line
-
-  /* ── Navigate to slide ─────────────────────────── */
-  const goTo = useCallback((idx: number) => {
-    if (busy.current || idx === currentRef.current) return;
-    busy.current = true;
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setIncoming(idx);
-  }, []);
-
-  /* ── Reveal content + restart progress ────────── */
+  // Auto-advance crossfade (paused on hover / reduced-motion / single image).
   useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-    const lines = el.querySelectorAll('.h-line');
-    gsap.fromTo(
-      lines,
-      { opacity: 0, y: 32 },
-      { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out', stagger: 0.1, clearProps: 'transform' }
-    );
-    startProgress();
-    scheduleNext();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [current]); // eslint-disable-line
+    if (heroImages.length <= 1 || paused) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = window.setInterval(() => {
+      setCurrent((c) => (c + 1) % heroImages.length);
+    }, SLIDE_MS);
+    return () => window.clearInterval(id);
+  }, [paused, heroImages.length]);
 
-  /* ── Animate incoming slide ────────────────────── */
   useEffect(() => {
-    if (incoming === null) return;
-    const div = incomingRef.current;
-    if (!div) return;
+    const root = rootRef.current;
+    if (!root) return;
+    let cancelled = false;
+    let revealed = false;
+    let split: SplitText | null = null;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wasSwapped = (window as Window & { __yesSwapped?: boolean }).__yesSwapped === true;
 
-    // Fade-up out the current content
-    const content = contentRef.current;
-    if (content) {
-      gsap.to(content.querySelectorAll('.h-line'), {
-        opacity: 0, y: -14, duration: 0.25, ease: 'power2.in',
+    const ctx = gsap.context(() => {
+      const fadeUp = root.querySelectorAll('[data-hero-fade]');
+
+      const forceVisible = () => {
+        revealed = true;
+        gsap.set(fadeUp, { opacity: 1, y: 0 });
+        gsap.set(photoRef.current, { opacity: 1 });
+        gsap.set(bloomRef.current, { opacity: 1, scale: 1 });
+        if (headlineRef.current) gsap.set(headlineRef.current, { opacity: 1 });
+      };
+
+      // Reverent intro — runs only on a genuine first load (not SPA / reduced motion).
+      if (reduce || introPlayed || wasSwapped) { forceVisible(); }
+      else {
+        introPlayed = true;
+        gsap.set(fadeUp, { opacity: 0, y: 24 });
+        gsap.set(photoRef.current, { opacity: 0 });
+        gsap.set(bloomRef.current, { opacity: 0, scale: 0.82 });
+
+        let started = false;
+        const play = () => {
+          if (cancelled || started) return;
+          started = true;
+          try {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: () => { revealed = true; } });
+            tl.to(bloomRef.current, { opacity: 1, scale: 1, duration: 2.4, ease: 'power2.out' }, 0);
+            if (headlineRef.current) {
+              split = new SplitText(headlineRef.current, { type: 'lines', mask: 'lines', linesClass: 'split-line' });
+              gsap.set(split.lines, { yPercent: 110 });
+              tl.to(split.lines, { yPercent: 0, duration: 1.25, stagger: 0.16 }, 0.25);
+            }
+            tl.to(photoRef.current, { opacity: 1, duration: 1.8, ease: 'power2.out' }, 0.35)
+              .to(fadeUp, { opacity: 1, y: 0, duration: 1.1, stagger: 0.14 }, 0.7);
+          } catch {
+            forceVisible();
+          }
+        };
+
+        const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
+        if (fonts?.ready) fonts.ready.then(() => { if (!cancelled) play(); });
+        timers.push(setTimeout(play, 500));
+        timers.push(setTimeout(() => { if (!cancelled && !revealed) forceVisible(); }, 1900));
+      }
+
+      // Scroll dissolve — content lifts + fades, photo gentle parallax.
+      gsap.to(contentRef.current, {
+        opacity: 0, y: -40, ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true },
       });
-    }
+      gsap.to(photoRef.current, {
+        yPercent: 10, ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true },
+      });
+    }, root);
 
-    // Clip-path wipe: right side reveals first
-    gsap.set(div, { clipPath: 'inset(0 100% 0 0)' });
-    // Subtle parallax: incoming image starts slightly right
-    if (imgInRef.current) gsap.set(imgInRef.current, { x: 50 });
+    const cleanupSplit = () => { if (split) { split.revert(); split = null; } };
+    document.addEventListener('astro:before-swap', cleanupSplit);
 
-    gsap.to(div, {
-      clipPath: 'inset(0 0% 0 0)',
-      duration: 1.2,
-      ease: 'power4.inOut',
-      onComplete: () => {
-        currentRef.current = incoming;
-        setCurrent(incoming);
-        setIncoming(null);
-        busy.current = false;
-      },
-    });
-    if (imgInRef.current) {
-      gsap.to(imgInRef.current, { x: 0, duration: 1.6, ease: 'power3.out' });
-    }
-  }, [incoming]);
-
-  const slide         = slides[current]!;
-  const incomingSlide = incoming !== null ? slides[incoming]! : null;
-  const headingLines  = slide.heading.split('\n');
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+      document.removeEventListener('astro:before-swap', cleanupSplit);
+      cleanupSplit();
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[var(--color-primary)]"
-      style={{ height: '100dvh', minHeight: '620px' }}
+      ref={rootRef}
+      className="relative min-h-svh overflow-hidden green-gradient text-[var(--color-cream)]"
     >
-      {/* ── Current background image ─────────────── */}
-      <div className="absolute inset-0">
-        <img src={slide.image} alt="" className="w-full h-full object-cover" loading="eager" />
-        {/* Gradient: heavy left (content legibility) + vignette bottom + soft top */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+      {/* ── Atmosphere: sacred light, depth, drifting motes, celestial life ── */}
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_120%,rgba(15,30,22,0.6),transparent_60%)]" />
+        {/* slow-drifting aurora glows */}
+        <div className="aurora w-[46vw] h-[46vw] -top-[12%] -right-[6%] bg-[radial-gradient(circle,rgba(246,205,148,0.22),transparent_68%)] [animation-delay:0s]" />
+        <div className="aurora w-[40vw] h-[40vw] -bottom-[18%] -left-[10%] bg-[radial-gradient(circle,rgba(58,107,66,0.6),transparent_66%)] [animation-delay:-11s] [animation-duration:28s]" />
+        {/* breathing god-rays pouring from the upper-right */}
+        <div className="god-rays absolute -top-1/3 right-0 w-[88%] h-[170%] rotate-[15deg] blur-[1.5px] bg-[repeating-linear-gradient(96deg,transparent_0px,transparent_52px,rgba(246,222,180,0.45)_58px,transparent_68px)] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_68%)]" />
+        {/* haloed ghost cross */}
+        <div className="cross-halo w-[42vh] h-[42vh] top-1/2 left-[34%] hidden md:block" />
+        <div className="ghost-cross text-[var(--color-cream)] top-1/2 left-[34%] -translate-x-1/2 -translate-y-1/2 w-[46vh] h-[66vh]" />
+        {/* twinkling starfield */}
+        <span className="star left-[20%] top-[18%] [animation-delay:0s]" />
+        <span className="star star-lg left-[44%] top-[12%] [animation-delay:1.5s]" />
+        <span className="star left-[62%] top-[20%] [animation-delay:3s]" />
+        <span className="star left-[84%] top-[14%] star-lg [animation-delay:2.2s]" />
+        <span className="star left-[31%] top-[30%] [animation-delay:4.4s]" />
+        <span className="star left-[88%] top-[40%] [animation-delay:5.1s]" />
+        <span className="star left-[14%] top-[52%] [animation-delay:3.7s]" />
+        {/* drifting embers */}
+        <span className="ember left-[70%] top-[6%] [animation-delay:-3s]" />
+        <span className="ember left-[40%] top-[10%] [animation-delay:-10s]" />
+        {/* dust motes in the light */}
+        <span className="mote w-1.5 h-1.5 left-[57%] top-[56%] [animation-delay:0s]" />
+        <span className="mote w-1 h-1 left-[66%] top-[40%] [animation-delay:1.6s]" />
+        <span className="mote w-2 h-2 left-[72%] top-[63%] [animation-delay:3.1s]" />
+        <span className="mote w-1 h-1 left-[81%] top-[47%] [animation-delay:4.7s]" />
+        <span className="mote w-1.5 h-1.5 left-[51%] top-[71%] [animation-delay:6.2s]" />
+        <span className="mote w-1 h-1 left-[63%] top-[27%] [animation-delay:2.3s]" />
+        <span className="mote w-1.5 h-1.5 left-[78%] top-[33%] [animation-delay:5.4s]" />
       </div>
 
-      {/* ── Incoming image (clip-path wipe) ──────── */}
-      {incomingSlide && (
-        <div
-          ref={incomingRef}
-          className="absolute inset-0 z-10"
-          style={{ clipPath: 'inset(0 100% 0 0)' }}
-        >
-          <img
-            ref={imgInRef}
-            src={incomingSlide.image}
-            alt=""
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/15" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-32 md:pt-36 pb-16 lg:pb-20">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+          {/* ── Text column ── */}
+          <div ref={contentRef} className="lg:col-span-6">
+            <p data-hero-fade className="flex items-center gap-3 text-[var(--color-accent-light)] text-xs md:text-sm tracking-[0.32em] uppercase font-medium mb-8">
+              <span aria-hidden="true" className="w-10 h-px bg-[var(--color-accent-light)]/50" />
+              {t('home_hero_eyebrow')}
+            </p>
+
+            <h1 ref={headlineRef} className="font-heading font-medium leading-[1.06] text-[clamp(2rem,4.1vw,3.6rem)] max-w-3xl">
+              {t('home_hero_headline')}
+            </h1>
+
+            <p data-hero-fade className="mt-7 text-[var(--color-cream)]/75 text-lg md:text-xl leading-relaxed max-w-xl">
+              {t('home_hero_sub')}
+            </p>
+
+            <div data-hero-fade className="mt-6 max-w-xl border-l border-[var(--color-accent-light)]/30 pl-5 space-y-1.5">
+              {[t('home_hero_line1'), t('home_hero_line2'), t('home_hero_line3'), t('home_hero_line4')].map((line) => (
+                <p key={line} className="text-[var(--color-cream)]/65 text-base md:text-lg leading-relaxed">{line}</p>
+              ))}
+            </div>
+
+            <div data-hero-fade className="mt-8 max-w-xl">
+              <span aria-hidden="true" className="block w-12 h-px bg-[var(--color-accent-light)]/40 mb-4" />
+              <p className="font-heading italic text-[var(--color-accent-light)] text-2xl md:text-3xl lg:text-[1.95rem] leading-[1.3]">
+                &ldquo;{t('brand_thematic')}&rdquo;
+              </p>
+            </div>
+
+            <div data-hero-fade className="mt-9 flex flex-col sm:flex-row gap-4">
+              <a href={`${base}for-donors/`}
+                className="px-8 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]">
+                {t('cta_partnerWithUs')}
+              </a>
+              <a href={`${base}gospel-workers/`}
+                className="px-8 py-3.5 border border-[var(--color-cream)]/35 text-[var(--color-cream)] text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-cream)]/10 transition-colors duration-300">
+                {t('cta_meetTheWorkers')}
+              </a>
+            </div>
+          </div>
+
+          {/* ── Arched photo carousel — chapel window with light breaking through ── */}
+          <div className="lg:col-span-6">
+            <div className="relative w-full max-w-[34rem] mx-auto lg:ml-auto lg:mr-0">
+              {/* warm light bloom behind the arch */}
+              <div
+                ref={bloomRef}
+                aria-hidden="true"
+                className="absolute -inset-x-12 -top-20 bottom-6 bg-[radial-gradient(ellipse_55%_60%_at_50%_22%,rgba(246,205,148,0.5),rgba(246,205,148,0.12)_45%,transparent_72%)] blur-2xl pointer-events-none"
+              />
+              <div
+                ref={photoRef}
+                className="relative"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+              >
+                {/* outer keyline echo of the arch (window frame) */}
+                <div aria-hidden="true" className="absolute -inset-2.5 rounded-t-full rounded-b-[1.4rem] border border-[var(--color-accent-light)]/25 pointer-events-none" />
+                <div className="relative overflow-hidden rounded-t-full rounded-b-[1.4rem] ring-1 ring-[var(--color-accent-light)]/25 shadow-[0_44px_90px_-32px_rgba(0,0,0,0.7)] aspect-[4/5.4]">
+                  {/* crossfading slides */}
+                  {heroImages.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={i === current ? 'A YES-supported Gospel worker serving in the field' : ''}
+                      aria-hidden={i !== current}
+                      className={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-out ${i === current ? 'opacity-100' : 'opacity-0'}`}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={i === 0 ? 'high' : undefined}
+                      width={760}
+                      height={1026}
+                    />
+                  ))}
+                  {/* light pouring in from the top of the window */}
+                  <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_bottom,rgba(255,242,214,0.22),transparent_38%)]" />
+                  {/* grounding vignette */}
+                  <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[var(--color-primary-deep)]/60 via-transparent to-transparent" />
+                  {/* chapel-window mullions */}
+                  <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+                    <span className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-[var(--color-accent-light)]/20" />
+                    <span className="absolute left-[8%] right-[8%] top-[20%] h-px bg-[var(--color-accent-light)]/18" />
+                    <span className="absolute left-0 right-0 top-[64%] h-px bg-[var(--color-accent-light)]/12" />
+                  </div>
+
+                  {/* carousel indicator — segmented progress at the foot of the arch */}
+                  {heroImages.length > 1 && (
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center">
+                      {heroImages.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setCurrent(i)}
+                          aria-label={`Show field photo ${i + 1} of ${heroImages.length}`}
+                          aria-current={i === current}
+                          className="group/dot flex h-6 items-center justify-center px-2"
+                        >
+                          <span
+                            className={`block h-1 rounded-full overflow-hidden transition-all duration-500 ${i === current ? 'w-8 bg-[var(--color-cream)]/25' : 'w-2.5 bg-[var(--color-cream)]/35 group-hover/dot:bg-[var(--color-cream)]/60'}`}
+                          >
+                            {i === current && (
+                              <span
+                                key={current}
+                                className={`block h-full bg-[var(--color-accent-light)] [animation:carousel-progress_3500ms_linear_forwards] ${paused ? '[animation-play-state:paused]' : ''}`}
+                              />
+                            )}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* layered proof chip — overlaps the arch (depth + substance) */}
+                <div className="absolute -left-4 sm:-left-6 bottom-12 z-20 bg-[var(--color-primary-deep)]/90 backdrop-blur-sm ring-1 ring-[var(--color-accent-light)]/30 rounded-xl px-5 py-3.5 shadow-[0_18px_44px_-16px_rgba(0,0,0,0.75)]">
+                  <p className="font-heading text-[var(--color-cream)] text-3xl leading-none">35<span className="text-[var(--color-accent-light)]">+</span></p>
+                  <p className="text-[var(--color-cream)]/60 text-[10px] tracking-[0.2em] uppercase mt-1.5">{t('home_hero_stat_label')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      )}
-
-      {/* ── Atmosphere: warm accent radial glow ──── */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 right-0 w-[55vw] h-[65vh] pointer-events-none z-10"
-        style={{
-          background: 'radial-gradient(ellipse at 100% 0%, rgba(194,125,65,0.14) 0%, transparent 65%)',
-        }}
-      />
-      {/* Bottom atmospheric glow */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 w-[40vw] h-[40vh] pointer-events-none z-10"
-        style={{
-          background: 'radial-gradient(ellipse at 0% 100%, rgba(44,74,62,0.5) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* ── Decorative vertical lines ────────────── */}
-      <div aria-hidden="true" className="absolute top-0 left-[12%] md:left-[20%] w-px h-full bg-white/[0.05] pointer-events-none z-10" />
-      <div aria-hidden="true" className="absolute top-0 right-[30%] w-px h-[35%] bg-white/[0.03] pointer-events-none z-10" />
-
-      {/* ── Ghost slide number ───────────────────── */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[-0.5rem] right-[-0.5rem] font-heading font-bold text-white/[0.04] pointer-events-none select-none leading-none z-10 tabular-nums"
-        style={{ fontSize: 'clamp(8rem, 28vw, 24rem)' }}
-      >
-        {padded(current)}
       </div>
 
-      {/* ── Cross motif ─────────────────────────── */}
-      <div
-        aria-hidden="true"
-        className="absolute top-[22%] right-[7%] pointer-events-none select-none z-20 text-[var(--color-accent)]"
-        style={{ opacity: 0.18, fontSize: '1.75rem' }}
-      >
-        ✛
-      </div>
-      {/* Small secondary cross */}
-      <div
-        aria-hidden="true"
-        className="absolute top-[55%] right-[18%] pointer-events-none select-none z-20 text-white"
-        style={{ opacity: 0.06, fontSize: '0.875rem' }}
-      >
-        ✛
-      </div>
-
-      {/* ── Content: bottom-left editorial ──────── */}
-      <div
-        ref={contentRef}
-        className="absolute inset-0 z-20 flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-28 md:pb-32"
-      >
-        {/* Eyebrow */}
-        <p className="h-line text-[var(--color-accent)] text-[10px] tracking-[0.32em] uppercase font-medium mb-5">
-          Yielded Evangelical Servants — since 1990
-        </p>
-
-        {/* Heading — each line animates independently */}
-        <h1 className="mb-6 max-w-4xl">
-          {headingLines.map((line, i) => (
-            <span
-              key={i}
-              className="h-line block font-heading font-light leading-[1.02]"
-              style={{
-                fontSize: 'clamp(2.1rem, 5.8vw, 5.2rem)',
-                color: i === 1 ? 'var(--color-accent)' : 'white',
-              }}
-            >
-              {line}
-            </span>
-          ))}
-        </h1>
-
-        {/* Sub */}
-        <p className="h-line text-white/50 text-sm md:text-[0.9375rem] leading-relaxed max-w-[420px] mb-9">
-          {slide.sub}
-        </p>
-
-        {/* CTAs */}
-        <div className="h-line flex flex-col sm:flex-row items-start gap-3">
-          <a
-            href={slide.cta1.href}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-white text-[11px] tracking-[0.18em] uppercase font-semibold hover:opacity-90 transition-opacity duration-300"
-          >
-            <span aria-hidden="true" className="text-[9px] leading-none">✛</span>
-            {slide.cta1.label}
-          </a>
-          <a
-            href={slide.cta2.href}
-            className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white text-[11px] tracking-[0.18em] uppercase font-semibold hover:bg-white/10 hover:border-white/40 transition-all duration-300"
-          >
-            {slide.cta2.label}
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      {/* ── Bottom bar: progress · counter · nav ── */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 flex items-center gap-5 px-6 md:px-16 lg:px-24 pb-8">
-
-        {/* Progress bar */}
-        <div className="w-32 md:w-44 h-px bg-white/[0.12] relative overflow-hidden flex-shrink-0">
-          <span
-            ref={progressRef}
-            className="absolute inset-0 bg-[var(--color-accent)] origin-left"
-            style={{ transform: 'scaleX(0)' }}
-          />
-        </div>
-
-        {/* Slide counter */}
-        <span className="font-heading text-white/30 text-[11px] tracking-[0.18em] tabular-nums flex-shrink-0">
-          {padded(current)}
-          <span className="mx-2 text-white/15">—</span>
-          {padded(slides.length - 1)}
-        </span>
-
-        {/* Spacer */}
-        <div className="flex-1" />
-
-        {/* Pill dots */}
-        <div className="flex items-center gap-1.5">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`transition-all duration-400 rounded-full ${
-                i === current
-                  ? 'w-6 h-[3px] bg-[var(--color-accent)]'
-                  : 'w-[5px] h-[3px] bg-white/25 hover:bg-white/50'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Prev / Next */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-            aria-label="Previous slide"
-            className="group flex items-center gap-1.5 text-white/30 hover:text-white/80 transition-colors duration-200"
-          >
-            <svg
-              className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
-              fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            <span className="text-[9px] tracking-[0.25em] uppercase hidden sm:block">Prev</span>
-          </button>
-
-          <div className="w-px h-3 bg-white/15" />
-
-          <button
-            onClick={() => goTo((current + 1) % slides.length)}
-            aria-label="Next slide"
-            className="group flex items-center gap-1.5 text-white/30 hover:text-white/80 transition-colors duration-200"
-          >
-            <span className="text-[9px] tracking-[0.25em] uppercase hidden sm:block">Next</span>
-            <svg
-              className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5"
-              fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+      {/* scroll cue */}
+      <div aria-hidden="true" className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-cream)]/40">
+        <span className="text-[9px] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="w-px h-8 bg-gradient-to-b from-[var(--color-cream)]/40 to-transparent" />
       </div>
     </section>
   );

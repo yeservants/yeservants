@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import MissionaryDetail from '../../../components/MissionaryDetail';
+import Footer from '../../../components/Footer';
+
+const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
+export async function getStaticPaths() {
+  const all = await getCollection('missionaries');
+  return all.map((m) => ({
+    params: { slug: m.data.url },
+    props: { worker: m.data },
+  }));
+}
+
+const { worker } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// Optimise portrait → WebP
+const key = `/src/assets/images/${worker.picture}`;
+const mod = portraitModules[key];
+let pictureUrl: string | undefined;
+if (mod?.default) {
+  const opt = await getImage({ src: mod.default, format: 'webp', width: 800, quality: 85 });
+  pictureUrl = opt.src;
+}
+---
+
+<BaseLayout
+  title={`${worker.name} — Gospel Worker · YES`}
+  description={worker.description}
+  ogImage={`/images/${worker.picture}`}
+  ogType="article"
+>
+  <!--
+    MissionaryDetail is reused here — it already reads `detail_back` from common.ts
+    which now reads "All Gospel Workers", and its back link points to gospel-workers/.
+  -->
+  <MissionaryDetail missionary={{ ...worker, pictureUrl }} base={base} client:load />
+  <Footer base={base} client:visible />
+</BaseLayout>
