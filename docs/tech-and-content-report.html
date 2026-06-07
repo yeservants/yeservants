@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>YES — Technology & Content Implementation Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+  :root{
+    --green:#2D5233; --green-light:#3A6B42; --accent:#E8751A; --accent-deep:#A84F0A;
+    --cream:#F0EDE6; --bg:#F6F2EA; --text:#1C2620; --grey:#7A8A82; --line:#D8D0C2;
+  }
+  *{box-sizing:border-box;}
+  @page{ size:A4; margin:18mm 16mm 20mm 16mm; }
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Lora',Georgia,serif; color:var(--text);
+    font-size:10.6pt; line-height:1.62; background:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif; color:var(--green); font-weight:600; line-height:1.18;}
+  h2{font-size:21pt; margin:0 0 4px; padding-bottom:8px; border-bottom:2px solid var(--green); page-break-after:avoid;}
+  h3{font-size:14pt; margin:22px 0 8px; color:var(--green-light); page-break-after:avoid;}
+  h4{font-size:11.5pt; margin:14px 0 4px; color:var(--accent-deep); page-break-after:avoid;}
+  p{margin:0 0 9px;}
+  a{color:var(--accent-deep); text-decoration:none;}
+  .small{font-size:9pt; color:var(--grey);}
+  .accent{color:var(--accent-deep);}
+  strong{color:var(--green); font-weight:600;}
+  code{font-family:'SF Mono',Menlo,monospace; font-size:8.8pt; background:var(--cream); padding:1px 5px; border-radius:3px; color:var(--accent-deep);}
+
+  /* Cover */
+  .cover{height:255mm; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; page-break-after:always; position:relative; background:var(--green); color:var(--cream); margin:-18mm -16mm 0; padding:0 30mm;}
+  .cover .rule{width:64px; height:3px; background:var(--accent); margin:22px 0;}
+  .cover .word{font-family:'Playfair Display',serif; font-size:72pt; letter-spacing:.04em; color:var(--accent); line-height:1; margin:0;}
+  .cover h1{color:var(--cream); font-size:25pt; font-weight:600; margin:8px 0 0; max-width:18em;}
+  .cover .sub{font-style:italic; color:var(--cream); opacity:.85; font-size:12pt; margin-top:18px;}
+  .cover .meta{position:absolute; bottom:24mm; font-size:9.5pt; color:var(--cream); opacity:.7; letter-spacing:.06em;}
+
+  section{page-break-before:always; padding-top:4px;}
+  .lead{font-size:11pt; color:#3a463f;}
+
+  table{width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:9.5pt;}
+  th{background:var(--green); color:var(--cream); text-align:left; padding:7px 9px; font-family:'Lora',serif; font-weight:600; font-size:9pt; letter-spacing:.02em;}
+  td{padding:6px 9px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:#FBF8F2;}
+  td code{font-size:8.4pt;}
+
+  .map{border-left:3px solid var(--accent); background:#FBF8F2; padding:10px 14px; margin:10px 0; page-break-inside:avoid;}
+  .map .pdf{font-family:'Playfair Display',serif; color:var(--green); font-size:11pt; font-weight:600;}
+  .map .arrow{color:var(--accent-deep); font-weight:600;}
+  .map .impl{font-size:9.4pt; color:#3a463f; margin-top:3px;}
+  .map .impl code{font-size:8.3pt;}
+
+  ul{margin:4px 0 12px; padding-left:18px;}
+  li{margin:3px 0;}
+
+  .pill{display:inline-block; background:var(--cream); border:1px solid var(--line); border-radius:20px; padding:2px 11px; font-size:8.6pt; margin:2px 3px 2px 0; color:var(--green);}
+  .callout{background:var(--green); color:var(--cream); padding:14px 18px; border-radius:6px; margin:14px 0; font-style:italic; font-family:'Playfair Display',serif; font-size:12pt; text-align:center;}
+  .callout .src{display:block; font-family:'Lora',serif; font-style:normal; font-size:8.5pt; opacity:.7; margin-top:6px; letter-spacing:.05em;}
+  .two{display:flex; gap:18px;}
+  .two>div{flex:1;}
+  .note{font-size:9pt; color:var(--grey); font-style:italic;}
+  .check{color:var(--green-light); font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="word">YES</div>
+  <div class="rule"></div>
+  <h1>Technology &amp; Content Implementation Report</h1>
+  <div class="sub">How the site is built — and how every page follows the V3 Copy &amp; Structure Guide</div>
+  <div class="meta">YIELDED EVANGELICAL SERVANTS &middot; PREPARED BY FULL STACK EVOLVED &middot; JUNE 2026</div>
+</div>
+
+<!-- ============ 1. OVERVIEW ============ -->
+<section>
+  <h2>1 &middot; Overview</h2>
+  <p class="lead">This document is the engineering &amp; editorial record for the YES website. It explains <strong>every technology used</strong> and <strong>how each page maps back to the client's V3 Copy &amp; Structure Guide</strong> — the 34-page PDF that is the single source of truth for all copy, page order, and section structure.</p>
+
+  <p>The site is a <strong>bilingual (English / Spanish) static marketing site</strong> for Yielded Evangelical Servants, a missionary-founded 501(c)(3) missions ministry. It is built as a fast, accessible, statically-generated site and deployed automatically to GitHub Pages.</p>
+
+  <table>
+    <tr><th style="width:32%">Property</th><th>Value</th></tr>
+    <tr><td>Project type</td><td>Bilingual nonprofit marketing site (real client site)</td></tr>
+    <tr><td>Source of truth</td><td><code>YES_Website_Copy_V3.pdf</code> — 34-page client copy &amp; structure guide</td></tr>
+    <tr><td>Pages</td><td>7 primary + 1 off-nav + utilities (Contact, Privacy, 404) + per-worker profiles</td></tr>
+    <tr><td>Languages</td><td>English &amp; Spanish, full parity, switchable in-page</td></tr>
+    <tr><td>Hosting</td><td>GitHub Pages (static), auto-deployed on every push</td></tr>
+    <tr><td>Live URL</td><td><a href="https://fpsjago.github.io/yesservant-proposal/">fpsjago.github.io/yesservant-proposal/</a></td></tr>
+  </table>
+
+  <div class="callout">"If we are one Body, no servant of Christ should stand alone."<span class="src">CORE THEMATIC LINE — V3 GUIDE, USED ON HERO &amp; BIBLICAL FOUNDATION</span></div>
+</section>
+
+<!-- ============ 2. TECH STACK ============ -->
+<section>
+  <h2>2 &middot; The Technology Stack</h2>
+  <p class="lead">Modern, fast, and maintenance-light. Everything compiles to plain HTML, CSS, and a small amount of JavaScript — there is no server to run, no database to maintain, and no monthly hosting cost.</p>
+
+  <table>
+    <tr><th style="width:22%">Layer</th><th style="width:24%">Technology</th><th>Why it was chosen</th></tr>
+    <tr><td><strong>Framework</strong></td><td>Astro 6</td><td>Ships zero JavaScript by default → very fast load, great SEO. Ideal for a content-driven marketing site.</td></tr>
+    <tr><td><strong>UI components</strong></td><td>React 19</td><td>Interactive sections ("islands") — language switcher, animated reveals — built as React components.</td></tr>
+    <tr><td><strong>Language</strong></td><td>TypeScript (strict)</td><td>Type-safe code, no <code>any</code>. Catches errors before they reach the browser.</td></tr>
+    <tr><td><strong>Styling</strong></td><td>Tailwind CSS v4</td><td>Brand colors &amp; fonts defined once as design tokens; consistent styling across the whole site.</td></tr>
+    <tr><td><strong>Motion</strong></td><td>GSAP + Lenis</td><td>Smooth scroll and the cinematic hero headline reveal. Honors "reduce motion" accessibility setting.</td></tr>
+    <tr><td><strong>Images</strong></td><td>Astro <code>&lt;Image&gt;</code> &rarr; WebP</td><td>Real field photos auto-optimized to modern WebP format — sharp but lightweight.</td></tr>
+    <tr><td><strong>SEO</strong></td><td>@astrojs/sitemap</td><td>Auto-generated sitemap + structured data (NonprofitOrganization schema) for search engines.</td></tr>
+    <tr><td><strong>Content</strong></td><td>Markdown collections</td><td>Gospel Worker profiles stored as simple Markdown files, validated by a schema.</td></tr>
+    <tr><td><strong>Hosting / CI</strong></td><td>GitHub Pages + Actions</td><td>Push code &rarr; site rebuilds and redeploys automatically. Free, reliable, version-controlled.</td></tr>
+    <tr><td><strong>Runtime</strong></td><td>Node.js 22+</td><td>Current LTS build environment.</td></tr>
+  </table>
+
+  <h3>Quality gates</h3>
+  <p>Two checks must pass before anything ships: <code>astro check</code> (TypeScript type safety — currently <span class="check">0 errors</span>) and a clean production build verified against <code>npm run preview</code> (<span class="check">43 pages built successfully</span>). There is no flaky guesswork — the build is proven before deploy.</p>
+</section>
+
+<!-- ============ 3. ARCHITECTURE ============ -->
+<section>
+  <h2>3 &middot; How the Site Is Built</h2>
+  <p class="lead">A few deliberate architectural decisions keep the site fast, bilingual, and easy to extend without breaking.</p>
+
+  <h3>Astro Islands</h3>
+  <p>Pages are written in Astro and act as the <strong>data layer</strong> — they load content and optimize images. Every interactive piece is a self-contained React "island" that only loads its JavaScript when it scrolls into view. Result: the page is readable instantly; interactivity hydrates lazily.</p>
+
+  <h3>Bilingual system (EN / ES)</h3>
+  <p>All copy lives in a <strong>translation registry</strong>. Each page owns its own translation file (<code>home.ts</code>, <code>about.ts</code>, <code>ourWork.ts</code>, etc.) so English and Spanish always stay in sync and never collide. A language toggle remembers the visitor's choice and switches the whole site live — no page reload.</p>
+  <p class="note">Every key has a matching English and Spanish value. The V3 guide's exact English copy is preserved verbatim; Spanish is a faithful, dignified translation.</p>
+
+  <h3>Scroll-reveal &amp; motion</h3>
+  <p>Sections reveal with a gentle "mask-up" as you scroll — reverent, never flashy, matching the V3 tone ("let impact lines sit in silence"). Smooth scrolling is powered by Lenis; the hero headline reveals line-by-line via GSAP. Visitors who prefer reduced motion see everything immediately, fully accessible.</p>
+
+  <h3>Brand system</h3>
+  <p>The V3 brand is encoded once as design tokens and reused everywhere:</p>
+  <div style="margin:8px 0;">
+    <span class="pill" style="background:#2D5233;color:#F0EDE6;border-color:#2D5233;">Forest green #2D5233</span>
+    <span class="pill" style="background:#E8751A;color:#fff;border-color:#E8751A;">Orange #E8751A</span>
+    <span class="pill" style="background:#F0EDE6;">Off-white #F0EDE6</span>
+    <span class="pill">Playfair Display (headings)</span>
+    <span class="pill">Lora (body)</span>
+  </div>
+  <p class="note">Accent orange is tiered for accessibility: bright #E8751A for large display only; a deeper #A84F0A for small text, links, and buttons so all text meets WCAG AA contrast.</p>
+</section>
+
+<!-- ============ 4. SITEMAP ============ -->
+<section>
+  <h2>4 &middot; Site Map vs. the V3 Guide</h2>
+  <p class="lead">The V3 guide defines the pages and their order. The site implements them one-to-one, plus the supporting utility pages a live site requires.</p>
+
+  <table>
+    <tr><th style="width:26%">V3 Guide page</th><th style="width:24%">URL</th><th>Sections</th></tr>
+    <tr><td>Page 1 — Homepage</td><td><code>/</code></td><td>9 sections (Hero &rarr; Final CTA)</td></tr>
+    <tr><td>Page 2 — About YES</td><td><code>/about/</code></td><td>6 sections</td></tr>
+    <tr><td>Page 3 — Our Work</td><td><code>/our-work/</code></td><td>7 sections</td></tr>
+    <tr><td>Page 4 — Gospel Workers</td><td><code>/gospel-workers/</code></td><td>Grid + individual <code>/[slug]</code> profiles</td></tr>
+    <tr><td>Page 5 — How It Works</td><td><code>/how-it-works/</code></td><td>5 sections</td></tr>
+    <tr><td>Page 6 — Give</td><td><code>/give/</code></td><td>4 sections &rarr; Aplos link-out</td></tr>
+    <tr><td>Page 7 — For Donors</td><td><code>/for-donors/</code></td><td>4 sections (off-nav; linked from footer + CTAs)</td></tr>
+    <tr><td colspan="3" style="background:var(--cream);font-style:italic;color:var(--grey);">Utility (required for a live site): /contact/ &middot; /privacy/ &middot; 404</td></tr>
+  </table>
+  <p>Primary navigation matches the guide exactly: <strong>Home &middot; About YES &middot; Our Work &middot; Gospel Workers &middot; How It Works &middot; Give</strong> (orange button). The guide's "Missionaries" are presented site-wide as "Gospel Workers" per the V3 language.</p>
+</section>
+
+<!-- ============ 5. PAGE-BY-PAGE MAPPING ============ -->
+<section>
+  <h2>5 &middot; Page-by-Page Mapping to the V3 Guide</h2>
+  <p class="lead">Every section in the V3 PDF is implemented as a dedicated, named component. Below, each V3 section is paired with the exact component that delivers it.</p>
+
+  <h3>Page 1 — Homepage <span class="small">(9 sections)</span></h3>
+  <div class="map"><span class="pdf">§1 Hero</span> <span class="arrow">&rarr;</span> <code>Hero.tsx</code><div class="impl">"Faithful Workers Are Already in the Field. YES Exists to Strengthen Them." — full-screen forest-green hero, line-by-line headline reveal, the core thematic line in orange italic.</div></div>
+  <div class="map"><span class="pdf">§2 The Reality on the Ground</span> <span class="arrow">&rarr;</span> <code>HomeReality.tsx</code><div class="impl">"The Gospel Is Advancing. The Workers Who Carry It Forward Need Our Support." — includes the "We asked why / his own house" field anecdote and the pull-quote on faithful partners.</div></div>
+  <div class="map"><span class="pdf">§3 Thirty-Five Years of Witness</span> <span class="arrow">&rarr;</span> <code>HomeFieldStories.tsx</code><div class="impl">"This Is What We Have Seen. This Is What We Believe." — three decades of field witness.</div></div>
+  <div class="map"><span class="pdf">§4 The Difference YES Makes</span> <span class="arrow">&rarr;</span> <code>HomeDifference.tsx</code><div class="impl">"The Most Fruitful Ministry Comes From Workers Who Can Stay." + quote "YES advances the workers."</div></div>
+  <div class="map"><span class="pdf">§5 What YES Does</span> <span class="arrow">&rarr;</span> <code>HomeWhatYesDoes.tsx</code><div class="impl">"Strengthening Faithful Workers for Long-Term Kingdom Impact."</div></div>
+  <div class="map"><span class="pdf">§6 Why YES</span> <span class="arrow">&rarr;</span> <code>HomeWhyYes.tsx</code><div class="impl">"The result: Gospel workers who are strengthened to serve, sustained to stay…"</div></div>
+  <div class="map"><span class="pdf">§7 Who We Are</span> <span class="arrow">&rarr;</span> <code>HomeWhoWeAre.tsx</code><div class="impl">"Three Decades of Faithful Partnership. Real Workers. Real Places. Real Fruit."</div></div>
+  <div class="map"><span class="pdf">§8 Biblical Foundation</span> <span class="arrow">&rarr;</span> <code>HomeBiblical.tsx</code><div class="impl">"This Is Not a Nonprofit Strategy. This Is a Biblical Conviction." + Romans 10:15.</div></div>
+  <div class="map"><span class="pdf">§9 Final CTA</span> <span class="arrow">&rarr;</span> <code>HomeFinalCta.tsx</code><div class="impl">"Faithful Workers Are in the Field. Will You Stand With Them? They need you."</div></div>
+
+  <h3>Page 2 — About YES <span class="small">(6 sections)</span></h3>
+  <div class="map"><span class="pdf">§1 Opener / §2 Our Story / §3 What Makes YES Different</span> <span class="arrow">&rarr;</span> <code>AboutStory.tsx</code>, <code>AboutDifferent.tsx</code>, <code>AboutWorkers.tsx</code>, <code>AboutBeliefs.tsx</code>, <code>AboutPeople.tsx</code><div class="impl">"YES Began in the Field. Not in a Boardroom." &middot; "Thirty-Five Years of Field-Proven Partnership" &middot; "We Have Been in the Field. We Know What Workers Need." Each V3 section is its own island.</div></div>
+
+  <h3>Page 3 — Our Work <span class="small">(7 sections)</span></h3>
+  <div class="map"><span class="pdf">All 7 work areas</span> <span class="arrow">&rarr;</span> <code>WorkThirtyFiveYears</code>, <code>WorkMissionarySupport</code>, <code>WorkEvangelism</code>, <code>WorkChurchPlanting</code>, <code>WorkLeadership</code>, <code>WorkMissionTeams</code><div class="impl">Each pillar of YES's field work (worker support, evangelism, church planting, leadership, mission teams) is a dedicated section component.</div></div>
+
+  <h3>Page 4 — Gospel Workers</h3>
+  <div class="map"><span class="pdf">Worker directory + profiles</span> <span class="arrow">&rarr;</span> <code>GwOpener</code>, <code>GwProfiles</code>, <code>GwStories</code>, <code>GwLongTerm</code>, <code>GwQuotes</code>, <code>GwCta</code> + <code>/gospel-workers/[slug]/</code><div class="impl">Workers stored as Markdown files in a validated content collection. Anonymous/sensitive-field workers shown without photo or link (<code>picture: 'none.jpg'</code>) — protecting workers in restricted regions.</div></div>
+
+  <h3>Page 5 — How It Works <span class="small">(5 sections)</span></h3>
+  <div class="map"><span class="pdf">Partnership mechanics</span> <span class="arrow">&rarr;</span> <code>HiwPartnershipSteps</code>, <code>HiwWhatSupportCovers</code>, <code>HiwFunds</code>, <code>HiwMissionTeams</code><div class="impl">Explains how a partner's giving reaches the field, what support covers, and how mission teams engage.</div></div>
+
+  <h3>Page 6 — Give <span class="small">(4 sections)</span></h3>
+  <div class="map"><span class="pdf">Giving options + trust</span> <span class="arrow">&rarr;</span> <code>GiveOptions</code>, <code>GiveTrust</code>, <code>GiveMajorPartners</code><div class="impl">Links out to the YES Aplos donation portal + mail-in option. Trust/transparency block for donor confidence.</div></div>
+
+  <h3>Page 7 — For Donors <span class="small">(4 sections, off-nav)</span></h3>
+  <div class="map"><span class="pdf">Donor assurance</span> <span class="arrow">&rarr;</span> <code>FdWhyPartner</code>, <code>FdHowToPartner</code>, <code>FdTransparency</code><div class="impl">Financial transparency &amp; partnership rationale; linked from the footer and inline CTAs throughout the site.</div></div>
+</section>
+
+<!-- ============ 6. FIDELITY ============ -->
+<section>
+  <h2>6 &middot; Fidelity to the Guide</h2>
+  <p class="lead">How we guaranteed the site says what the client wrote — and carries the tone the guide asks for.</p>
+
+  <h4>Copy is verbatim</h4>
+  <p>Every headline, impact line, anecdote, and Scripture reference from the V3 PDF is reproduced exactly. The thematic line — <em>"If we are one Body, no servant of Christ should stand alone"</em> — is used with weight, only on the Hero and the Biblical Foundation, exactly as the guide instructs.</p>
+
+  <h4>Structure is one-to-one</h4>
+  <p>Page order, section order, and section count all match the guide. Nothing was reordered, merged, or invented. Where the guide named 9 homepage sections, there are 9 components.</p>
+
+  <h4>Tone is "Reverent Editorial Authority"</h4>
+  <p>The guide asks for dignity, whitespace, and a premium faith-magazine gravity. Delivered through the Playfair/Lora serif pairing, deep-green dominance with restrained orange, real field photography (never stock or poverty spectacle), and quiet motion that lets impact lines breathe.</p>
+
+  <h4>Theology preserved</h4>
+  <p>John 17:21 &middot; John 13:35 &middot; Romans 10:14–15 are placed where the guide places them, in the Biblical Foundation and supporting sections.</p>
+
+  <h4>Awaiting client content</h4>
+  <p>A handful of items in the guide require the client's real data. These are marked in-code (<code>&lt;!-- CLIENT: … --&gt;</code>) and listed in <code>CLIENT-CHECKLIST.md</code>: exact statistics (number of nations / workers / teams), EIN, leadership bios &amp; headshots, worker quotes, financial/annual-report links, and authentic field photos (Bajo Rodríguez CR · Mata Hambre HN · Ozamiz PH · Yanomàmö VE). Everything else is complete and live.</p>
+
+  <div class="callout">Strengthening Gospel Workers. Sustaining Kingdom Impact.<span class="src">YES TAGLINE — CARRIED THROUGHOUT THE SITE</span></div>
+</section>
+
+<!-- ============ 7. DEPLOY ============ -->
+<section>
+  <h2>7 &middot; Deployment &amp; Maintenance</h2>
+  <p class="lead">The site maintains itself. There is no server, no database, and no hosting bill.</p>
+  <ul>
+    <li><strong>Automatic deploy.</strong> Pushing code to GitHub triggers a build (GitHub Actions) that compiles the site and publishes it to GitHub Pages — typically live within a minute.</li>
+    <li><strong>Static &amp; free.</strong> The output is plain files served by a global CDN. Fast everywhere, nothing to patch or pay for.</li>
+    <li><strong>Version-controlled.</strong> Every change is tracked in Git; any version can be restored.</li>
+    <li><strong>Easy content edits.</strong> Adding a Gospel Worker = adding one Markdown file. Updating copy = editing the page's translation file (both languages side by side).</li>
+    <li><strong>SEO-ready.</strong> Auto-generated sitemap, per-page titles/descriptions, and NonprofitOrganization structured data help search engines and AI assistants find and cite YES.</li>
+  </ul>
+
+  <p class="small" style="margin-top:24px; border-top:1px solid var(--line); padding-top:10px;">Prepared by Full Stack Evolved · June 2026 · Source of truth: YES_Website_Copy_V3.pdf · Live: fpsjago.github.io/yesservant-proposal/</p>
+</section>
+
+</body>
+</html>

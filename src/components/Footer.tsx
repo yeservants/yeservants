@@ -33,7 +33,7 @@ export default function Footer({ base }: Props) {
           {/* Brand */}
           <div className="md:col-span-5">
             <a href={base} className="inline-block mb-4" aria-label="Yielded Evangelical Servants — Home">
-              <img src={`${base}yes_logo_white.png`} alt="Yielded Evangelical Servants" width={200} height={68} className="h-24 w-auto object-contain" />
+              <img src={`${base}yes_logo_white.webp`} alt="Yielded Evangelical Servants" width={200} height={68} className="h-24 w-auto object-contain" />
             </a>
             <p className="font-heading text-[var(--color-cream)]/85 text-lg italic leading-snug max-w-xs mb-4">{t('brand_tagline')}</p>
             <p className="text-[var(--color-cream)]/45 text-sm leading-relaxed max-w-sm">{t('brand_founded')}</p>

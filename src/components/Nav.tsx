@@ -136,7 +136,7 @@ export default function Nav({ base }: Props) {
         <div className={`mx-auto flex items-center justify-between transition-all duration-500 ${scrolled ? 'px-5 h-20' : 'px-6 h-24'}`}>
           <a href={base} aria-label="Yielded Evangelical Servants — Home" className="flex-shrink-0 flex items-center">
             <img
-              src={`${base}yes_logo-04.png`}
+              src={`${base}yes_logo-04.webp`}
               alt="Yielded Evangelical Servants"
               width={200} height={68}
               className={`w-auto object-contain transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}
@@ -195,7 +195,7 @@ export default function Nav({ base }: Props) {
           </div>
 
           <div className="relative z-10 flex items-center justify-between px-6 pt-5 pb-6 border-b border-[var(--color-cream)]/[0.08]">
-            <img src={`${base}yes_logo_white.png`} alt="YES" width={140} height={48} className="h-14 w-auto object-contain" />
+            <img src={`${base}yes_logo_white.webp`} alt="YES" width={140} height={48} className="h-14 w-auto object-contain" />
             <button onClick={closeMenu} aria-label="Close menu" className="w-10 h-10 flex items-center justify-center text-[var(--color-cream)]/55 hover:text-[var(--color-cream)] transition-colors duration-200">
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></svg>
             </button>

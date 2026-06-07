@@ -29,6 +29,20 @@ export default function Hero({ base, heroImages }: Props) {
   // ── Carousel state ──
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Progressive loading: only fetch a slide once it's reached (plus the next one,
+  // preloaded for a smooth crossfade). Keeps the initial load to the LCP image only.
+  const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]));
+
+  useEffect(() => {
+    setLoaded((prev) => {
+      const next = (current + 1) % heroImages.length;
+      if (prev.has(current) && prev.has(next)) return prev;
+      const s = new Set(prev);
+      s.add(current);
+      s.add(next);
+      return s;
+    });
+  }, [current, heroImages.length]);
 
   // Auto-advance crossfade (paused on hover / reduced-motion / single image).
   useEffect(() => {
@@ -219,7 +233,7 @@ export default function Hero({ base, heroImages }: Props) {
                   {heroImages.map((src, i) => (
                     <img
                       key={i}
-                      src={src}
+                      src={loaded.has(i) ? src : undefined}
                       alt={i === current ? 'A YES-supported Gospel worker serving in the field' : ''}
                       aria-hidden={i !== current}
                       className={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-out ${i === current ? 'opacity-100' : 'opacity-0'}`}
