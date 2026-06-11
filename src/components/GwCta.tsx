@@ -91,15 +91,14 @@ export default function GwCta({ base }: Props) {
 
         <div className="prose-yes text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl mx-auto">
           <p data-reveal="fade">{t('gw_cta_p1')}</p>
-          <p data-reveal="fade" className="mt-5">{t('gw_cta_p2')}</p>
         </div>
 
         <div data-reveal="fade" className="mt-12">
           <a
-            href={`${base}for-donors/`}
+            href={`${base}give/`}
             className="w-full sm:w-auto inline-flex justify-center px-7 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
           >
-            {t('gw_cta_button')}
+            {t('cta_standWithWorker')} →
           </a>
         </div>
 

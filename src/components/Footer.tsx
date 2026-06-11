@@ -7,18 +7,15 @@ interface Props { base: string; }
 export default function Footer({ base }: Props) {
   const { t } = useLang();
 
-  const explore = [
-    { href: base,                     label: t('nav_home') },
-    { href: `${base}about/`,          label: t('nav_aboutYes') },
-    { href: `${base}our-work/`,       label: t('nav_ourWork') },
-    { href: `${base}gospel-workers/`, label: t('nav_gospelWorkers') },
-    { href: `${base}how-it-works/`,   label: t('nav_howItWorks') },
-    { href: `${base}give/`,           label: t('nav_give') },
-    { href: `${base}for-donors/`,     label: t('nav_forDonors') },
-  ];
-  const connect = [
-    { href: `${base}contact/`, label: t('footer_utility_contact') },
-    { href: `${base}privacy/`, label: t('footer_utility_privacy') },
+  /* FINAL v2 footer links: Financial Support · Logistical Support · Partnership
+     · Annual Reports · Privacy · Contact */
+  const links = [
+    { href: `${base}how-it-works/#financial`,   label: t('footer_financialSupport') },
+    { href: `${base}how-it-works/#logistical`,  label: t('footer_logisticalSupport') },
+    { href: `${base}give/`,                     label: t('footer_partnership') },
+    { href: '#', label: t('footer_annualReports') }, /* CLIENT: annual reports link */
+    { href: `${base}privacy/`,                  label: t('footer_utility_privacy') },
+    { href: `${base}contact/`,                  label: t('footer_utility_contact') },
   ];
 
   const linkCls = 'inline-block py-1 text-[var(--color-cream)]/55 text-sm hover:text-[var(--color-accent-light)] transition-colors duration-300';
@@ -39,12 +36,12 @@ export default function Footer({ base }: Props) {
             <p className="text-[var(--color-cream)]/45 text-sm leading-relaxed max-w-sm">{t('brand_founded')}</p>
           </div>
 
-          {/* Explore */}
+          {/* Links */}
           <div className="md:col-span-3">
-            <h2 className="text-[var(--color-cream)]/80 text-xs font-semibold tracking-[0.16em] uppercase mb-4">{t('footer_explore')}</h2>
+            <h2 className="text-[var(--color-cream)]/80 text-xs font-semibold tracking-[0.16em] uppercase mb-4">{t('footer_links')}</h2>
             <nav className="flex flex-col gap-1">
-              {explore.map((l) => (
-                <a key={l.href} href={l.href} className={linkCls}>{l.label}</a>
+              {links.map((l) => (
+                <a key={l.label} href={l.href} className={linkCls}>{l.label}</a>
               ))}
             </nav>
           </div>
@@ -56,11 +53,6 @@ export default function Footer({ base }: Props) {
               PO Box 770308<br />Orlando, FL 32837<br />
               <a href="mailto:info@yeservants.org" className="inline-block py-1 hover:text-[var(--color-accent-light)] transition-colors duration-300">info@yeservants.org</a>
             </address>
-            <nav className="flex flex-col gap-1 mb-5">
-              {connect.map((l) => (
-                <a key={l.href} href={l.href} className={linkCls}>{l.label}</a>
-              ))}
-            </nav>
             <div className="flex items-center gap-3">
               <a href="https://www.facebook.com/profile.php?id=100080058171515" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-9 h-9 flex items-center justify-center rounded bg-[var(--color-cream)]/5 text-[var(--color-cream)]/60 hover:text-white hover:bg-[var(--color-accent-deep)] transition-all duration-300">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.027 4.388 11.025 10.125 11.928v-8.437H7.078v-3.49h3.047V9.43c0-3.006 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.491h-2.796v8.437C19.612 23.098 24 18.1 24 12.073z"/></svg>
@@ -72,6 +64,11 @@ export default function Footer({ base }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Central thematic statement (mapa: "Frase central en itálica") */}
+        <p className="font-heading italic text-center text-[var(--color-cream)]/70 text-lg md:text-xl leading-snug max-w-2xl mx-auto mb-10">
+          &ldquo;{t('brand_thematic')}&rdquo;
+        </p>
 
         <div className="border-t border-[var(--color-cream)]/10 pt-6 flex flex-col gap-3">
           <p className="text-[var(--color-cream)]/35 text-xs leading-relaxed max-w-3xl">

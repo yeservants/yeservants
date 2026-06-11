@@ -3,26 +3,28 @@
 astro-island { display: contents; }
 
 @theme {
-  /* V3 — Reverent Editorial Authority */
+  /* FINAL v2 — The Letter. "Cafe oscuro, serif grande, dorado" (Sergio's design) */
   --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Lora', Georgia, 'Times New Roman', serif;
 
-  /* Palette — forest green × orange (70 green / 20 cream / 10 orange) */
+  /* Palette — dark coffee × gold × orange (70 coffee / 20 cream / 10 orange-gold) */
   --color-bg: #F6F2EA;            /* warm off-white — light editorial sections */
-  --color-bg-dark: #2D5233;       /* deep forest green — hero + feature sections */
+  --color-bg-dark: #33241A;       /* espresso — hero + feature sections */
   --color-surface: #EFE9DD;       /* warm card surface on light */
-  --color-primary: #2D5233;       /* forest green */
-  --color-primary-light: #3A6B42;
-  --color-primary-deep: #1F3A26;
+  --color-primary: #33241A;       /* dark coffee */
+  --color-primary-light: #54402E;
+  --color-primary-deep: #211710;
   --color-accent: #E8751A;        /* orange — graphics, large display text, borders, decorative (≥3:1 only) */
   --color-accent-hover: #B5530C;  /* darker orange — button hover (white text 4.98:1, paired with deep base below) */
   --color-accent-deep: #A84F0A;   /* deep orange — small text/links on LIGHT bg + button backgrounds (AA 4.5:1: 4.94:1 on #F6F2EA, white text 5.55:1) */
-  --color-accent-light: #F6A862;  /* light orange — small text on DARK green bg (AA 4.59:1 on #2D5233) */
-  --color-grey: #7A8A82;          /* sage grey */
-  --color-grey-light: #9AADA3;
+  --color-accent-light: #F6A862;  /* light orange — small text on DARK coffee bg (7.6:1 on #33241A) */
+  --color-gold: #C9952C;          /* dorado — display accents, rules, eyebrows on dark (5.5:1 on #33241A) */
+  --color-gold-light: #E2B25C;    /* light gold — small text / fine detail on dark */
+  --color-grey: #8A7A6C;          /* warm taupe */
+  --color-grey-light: #A89684;
   --color-cream: #F0EDE6;         /* off-white text on dark */
-  --color-text: #1C2620;          /* near-black green — text on light */
-  --color-text-muted: #5E6B62;    /* muted green-grey */
+  --color-text: #241B12;          /* near-black coffee — text on light */
+  --color-text-muted: #6E5F50;    /* muted warm taupe (5.5:1 on #F6F2EA) */
 }
 
 @layer base {
@@ -38,8 +40,8 @@ astro-island { display: contents; }
   }
   body {
     overflow-x: hidden;
-    /* V3 readability floor: body ≥ 17px, line-height ≥ 1.7 */
-    font-size: 1.0625rem;        /* 17px */
+    /* FINAL v2 webmaster instruction: body min 18px, line-height 1.75 */
+    font-size: 1.125rem;         /* 18px */
     line-height: 1.75;
     /* low-opacity orange cross-grid texture (light sections) */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='26.5' y='19' width='3' height='18' rx='1.5' fill='%23E8751A' opacity='0.06'/%3E%3Crect x='19' y='26.5' width='18' height='3' rx='1.5' fill='%23E8751A' opacity='0.06'/%3E%3C/svg%3E");
@@ -55,7 +57,7 @@ astro-island { display: contents; }
     letter-spacing: -0.01em;
   }
   /* Visible focus for keyboard users (accessibility — SC 2.4.11 / 1.4.11).
-     Dual-ring so the indicator clears 3:1 on BOTH light (#F6F2EA) and dark (#2D5233)
+     Dual-ring so the indicator clears 3:1 on BOTH light (#F6F2EA) and dark (#33241A)
      backgrounds: deep-orange outline (4.94:1 on light) + cream halo (visible on dark). */
   :focus-visible {
     outline: 2px solid var(--color-accent-deep);
@@ -72,22 +74,23 @@ astro-island { display: contents; }
 }
 
 /* ── Section backgrounds ─────────────────────────────────── */
-/* Deep forest-green gradient (hero + feature/dark sections) */
+/* Deep espresso gradient (hero + feature/dark sections) — class names kept
+   from the green era to avoid touching every component; values are coffee now. */
 .green-gradient {
-  background: linear-gradient(135deg, #2D5233 0%, #234029 55%, #14271a 100%);
+  background: linear-gradient(135deg, #33241A 0%, #271B12 55%, #150D07 100%);
 }
 .green-gradient-r {
-  background: linear-gradient(to right, #2D5233 0%, #234029 60%, #14271a 100%);
+  background: linear-gradient(to right, #33241A 0%, #271B12 60%, #150D07 100%);
 }
 
-/* Atmospheric radial glows (forest + amber, subtle) */
+/* Atmospheric radial glows (gold + amber, subtle) */
 .atmos-glow { position: relative; }
 .atmos-glow::before {
   content: '';
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 60% 50% at 20% 50%, rgba(232,117,26,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(45,82,51,0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(201,149,44,0.06) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -112,7 +115,7 @@ astro-island { display: contents; }
 
 /* Dot grid background */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(45,82,51,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(51,36,26,0.12) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 .dot-grid-light {
@@ -125,7 +128,7 @@ astro-island { display: contents; }
   position: absolute;
   font-family: var(--font-heading);
   font-weight: 700;
-  color: rgba(45, 82, 51, 0.05);
+  color: rgba(51, 36, 26, 0.05);
   pointer-events: none;
   user-select: none;
   line-height: 0.85;
@@ -292,7 +295,7 @@ astro-island { display: contents; }
 }
 
 /* ── Celestial atmosphere (breathing light, starfield, aurora, halo) ──
-   Reverent, restrained motion for the deep-green blocks. Every effect is
+   Reverent, restrained motion for the dark coffee blocks. Every effect is
    decorative (aria-hidden) and animates only opacity/transform/filter, so it
    stays GPU-cheap and won't fight the Tailwind rotate on the ray divs. */
 

@@ -1,6 +1,6 @@
 /**
- * Shared atmosphere for GREEN (forest-green) blocks. Pass a `variant` (0–5) to
- * vary the composition so no two green sections look alike: the ghost logo
+ * Shared atmosphere for the DARK (espresso coffee) blocks. Pass a `variant` (0–5)
+ * to vary the composition so no two dark sections look alike: the ghost logo
  * rotates to a different corner, ghost crosses scatter at different positions /
  * sizes / tilts, and the god-rays flip direction. Decorative only (aria-hidden).
  * variant 0 = the clean hero look (no logo) used by PageHero for consistent heroes.
@@ -38,7 +38,7 @@ export default function GreenAtmos({ variant = 0 }: Props) {
 
       {/* ── shared celestial light: two slow-drifting aurora glows ── */}
       <div className="aurora w-[42vw] h-[42vw] left-[6%] -top-[14%] bg-[radial-gradient(circle,rgba(246,205,148,0.16),transparent_70%)] [animation-delay:0s]" />
-      <div className="aurora w-[36vw] h-[36vw] right-0 -bottom-[18%] bg-[radial-gradient(circle,rgba(58,107,66,0.55),transparent_68%)] [animation-delay:-9s] [animation-duration:26s]" />
+      <div className="aurora w-[36vw] h-[36vw] right-0 -bottom-[18%] bg-[radial-gradient(circle,rgba(201,149,44,0.4),transparent_68%)] [animation-delay:-9s] [animation-duration:26s]" />
 
       {/* ── shared twinkling starfield ── */}
       {STARS.map((s, i) => (
@@ -58,8 +58,8 @@ export default function GreenAtmos({ variant = 0 }: Props) {
       {v === 0 && (
         <>
           <div className="god-rays absolute -top-1/3 right-0 w-[82%] h-[170%] rotate-[15deg] blur-[1px] bg-[repeating-linear-gradient(96deg,transparent_0px,transparent_46px,rgba(246,222,180,0.6)_52px,transparent_60px)] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_72%)]" />
-          <div className="cross-halo w-[40vh] h-[40vh] top-1/2 left-1/2 hidden md:block" />
-          <div className="ghost-cross text-[var(--color-cream)] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[46vh] h-[66vh] hidden md:block" />
+          <div className="cross-halo w-[30vh] h-[30vh] top-[56%] left-1/2 hidden md:block" />
+          <div className="ghost-cross text-[var(--color-cream)] top-[56%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[33vh] h-[47vh] hidden md:block" />
         </>
       )}
 

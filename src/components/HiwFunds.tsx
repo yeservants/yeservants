@@ -5,14 +5,13 @@ import type { TranslationKey } from '../i18n/translations';
 
 interface Fund {
   title: TranslationKey;
-  sub: TranslationKey;
   body: TranslationKey;
 }
 
 const FUNDS: Fund[] = [
-  { title: 'hiw_fund1_title', sub: 'hiw_fund1_sub', body: 'hiw_fund1_body' },
-  { title: 'hiw_fund2_title', sub: 'hiw_fund2_sub', body: 'hiw_fund2_body' },
-  { title: 'hiw_fund3_title', sub: 'hiw_fund3_sub', body: 'hiw_fund3_body' },
+  { title: 'hiw_fund1_title', body: 'hiw_fund1_body' },
+  { title: 'hiw_fund2_title', body: 'hiw_fund2_body' },
+  { title: 'hiw_fund3_title', body: 'hiw_fund3_body' },
 ];
 
 interface Props {
@@ -77,16 +76,10 @@ export default function HiwFunds({ base }: Props) {
           <h2
             id="hiw-funds-heading"
             data-reveal="mask"
-            className="font-heading font-medium leading-[1.08] text-[clamp(1.9rem,4vw,3.2rem)] text-[var(--color-text)] mb-6"
+            className="font-heading font-medium leading-[1.08] text-[clamp(1.9rem,4vw,3.2rem)] text-[var(--color-text)]"
           >
             {t('hiw_funds_headline')}
           </h2>
-          <p
-            data-reveal="fade"
-            className="prose-yes text-lg leading-relaxed text-[var(--color-text-muted)] max-w-xl"
-          >
-            {t('hiw_funds_intro')}
-          </p>
         </div>
 
         {/* Three fund cards */}
@@ -100,7 +93,7 @@ export default function HiwFunds({ base }: Props) {
             <article
               key={fund.title}
               role="listitem"
-              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
+              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
               style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               {/* Fund number watermark */}
@@ -110,12 +103,9 @@ export default function HiwFunds({ base }: Props) {
               >
                 {String(i + 1)}
               </span>
-              <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-2 relative z-10">
+              <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-4 relative z-10">
                 {t(fund.title)}
               </h3>
-              <p className="text-[var(--color-accent-deep)] text-xs tracking-wide uppercase mb-4 font-medium">
-                {t(fund.sub)}
-              </p>
               <p className="prose-yes text-[var(--color-text-muted)] leading-relaxed text-base">
                 {t(fund.body)}
               </p>
@@ -123,10 +113,13 @@ export default function HiwFunds({ base }: Props) {
           ))}
         </div>
 
-        {/* 100% disclaimer */}
-        <div data-reveal="fade" className="mt-12 max-w-3xl">
-          <p className="text-[var(--color-text-muted)] text-base leading-relaxed border-l-2 border-[var(--color-primary)]/30 pl-5">
+        {/* 100% line + Platinum — given weight (FINAL v2 bolds it) */}
+        <div data-reveal="fade" className="mt-12 max-w-3xl border-l-[3px] border-[var(--color-accent)] pl-6">
+          <p className="font-heading text-[var(--color-text)] text-xl md:text-2xl leading-snug mb-2">
             {t('hiw_funds_disclaimer')}
+          </p>
+          <p className="text-[var(--color-text-muted)] text-base leading-relaxed">
+            {t('hiw_funds_platinum')}
           </p>
         </div>
 
@@ -136,7 +129,7 @@ export default function HiwFunds({ base }: Props) {
           <a
             href="#"
             className="w-full sm:w-auto inline-flex justify-center items-center gap-2 border border-[var(--color-primary)]/30 text-[var(--color-primary)] text-sm font-semibold tracking-wide rounded-full px-7 py-3.5 hover:bg-[var(--color-primary)]/5 transition-colors duration-300"
-            aria-label={t('hiw_funds_cta_financials')}
+            aria-label={t('cta_viewFinancials')}
           >
             <svg
               width="16"
@@ -149,14 +142,14 @@ export default function HiwFunds({ base }: Props) {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            {t('hiw_funds_cta_financials')}
+            {t('cta_viewFinancials')}
           </a>
 
           <a
             href={`${base}give/`}
             className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full px-7 py-3.5 hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
           >
-            {t('hiw_funds_cta_give')}
+            {t('cta_becomePartnerShort')}
             <svg
               width="16"
               height="16"

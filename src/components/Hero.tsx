@@ -138,10 +138,10 @@ export default function Hero({ base, heroImages }: Props) {
     >
       {/* ── Atmosphere: sacred light, depth, drifting motes, celestial life ── */}
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_120%,rgba(15,30,22,0.6),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_120%,rgba(23,14,8,0.6),transparent_60%)]" />
         {/* slow-drifting aurora glows */}
         <div className="aurora w-[46vw] h-[46vw] -top-[12%] -right-[6%] bg-[radial-gradient(circle,rgba(246,205,148,0.22),transparent_68%)] [animation-delay:0s]" />
-        <div className="aurora w-[40vw] h-[40vw] -bottom-[18%] -left-[10%] bg-[radial-gradient(circle,rgba(58,107,66,0.6),transparent_66%)] [animation-delay:-11s] [animation-duration:28s]" />
+        <div className="aurora w-[40vw] h-[40vw] -bottom-[18%] -left-[10%] bg-[radial-gradient(circle,rgba(201,149,44,0.45),transparent_66%)] [animation-delay:-11s] [animation-duration:28s]" />
         {/* breathing god-rays pouring from the upper-right */}
         <div className="god-rays absolute -top-1/3 right-0 w-[88%] h-[170%] rotate-[15deg] blur-[1.5px] bg-[repeating-linear-gradient(96deg,transparent_0px,transparent_52px,rgba(246,222,180,0.45)_58px,transparent_68px)] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_68%)]" />
         {/* haloed ghost cross */}
@@ -182,31 +182,22 @@ export default function Hero({ base, heroImages }: Props) {
               {t('home_hero_headline')}
             </h1>
 
-            <p data-hero-fade className="mt-7 text-[var(--color-cream)]/75 text-lg md:text-xl leading-relaxed max-w-xl">
-              {t('home_hero_sub')}
-            </p>
-
-            <div data-hero-fade className="mt-6 max-w-xl border-l border-[var(--color-accent-light)]/30 pl-5 space-y-1.5">
-              {[t('home_hero_line1'), t('home_hero_line2'), t('home_hero_line3'), t('home_hero_line4')].map((line) => (
-                <p key={line} className="text-[var(--color-cream)]/65 text-base md:text-lg leading-relaxed">{line}</p>
-              ))}
-            </div>
-
-            <div data-hero-fade className="mt-8 max-w-xl">
-              <span aria-hidden="true" className="block w-12 h-px bg-[var(--color-accent-light)]/40 mb-4" />
-              <p className="font-heading italic text-[var(--color-accent-light)] text-2xl md:text-3xl lg:text-[1.95rem] leading-[1.3]">
-                &ldquo;{t('brand_thematic')}&rdquo;
-              </p>
-            </div>
+            {/* Block quote — orange left border (FINAL v2 webmaster note) */}
+            <blockquote
+              data-hero-fade
+              className="mt-8 max-w-xl border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-cream)]/85 text-lg md:text-xl leading-[1.6]"
+            >
+              &ldquo;{t('home_hero_quote')}&rdquo;
+            </blockquote>
 
             <div data-hero-fade className="mt-9 flex flex-col sm:flex-row gap-4">
-              <a href={`${base}for-donors/`}
+              <a href={`${base}give/`}
                 className="px-8 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]">
-                {t('cta_partnerWithUs')}
+                {t('cta_becomePartner')}
               </a>
-              <a href={`${base}gospel-workers/`}
+              <a href={`${base}how-it-works/`}
                 className="px-8 py-3.5 border border-[var(--color-cream)]/35 text-[var(--color-cream)] text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-cream)]/10 transition-colors duration-300">
-                {t('cta_meetTheWorkers')}
+                {t('cta_howItWorks')}
               </a>
             </div>
           </div>

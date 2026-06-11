@@ -123,16 +123,10 @@ export default function GwStories({ photos }: Props) {
           </p>
           <h2
             data-reveal="mask"
-            className="font-heading font-medium leading-[1.08] text-[clamp(1.9rem,4vw,3.2rem)] text-[var(--color-text)]"
+            className="font-heading font-medium leading-[1.15] text-[clamp(1.7rem,3.4vw,2.7rem)] text-[var(--color-text)]"
           >
             {t('gw_cost_headline')}
           </h2>
-          <p
-            data-reveal="fade"
-            className="mt-6 text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl"
-          >
-            {t('gw_cost_intro')}
-          </p>
         </div>
 
         {/* Three field stories */}

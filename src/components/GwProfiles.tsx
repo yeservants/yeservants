@@ -105,7 +105,7 @@ export default function GwProfiles({ missionaries, base }: Props) {
         >
           {missionaries.map((m, i) => {
             const anon = isAnonymous(m);
-            const href = anon ? undefined : `${base}gospel-workers/${m.url}/`;
+            const href = anon ? undefined : `${base}missionaries/${m.url}/`;
 
             const inner = (
               <>

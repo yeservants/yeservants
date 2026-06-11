@@ -65,22 +65,19 @@ export default function AboutStory({ storyImage }: Props) {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Prose */}
           <div className="lg:col-span-7">
-            <div className="prose-yes text-lg leading-relaxed text-[var(--color-text-muted)] max-w-3xl">
+            <div className="prose-yes text-lg leading-[1.8] text-[var(--color-text)]/85 max-w-3xl">
               <p data-reveal="fade">{t('about_story_para1')}</p>
               <p data-reveal="fade" style={{ '--reveal-delay': '0.08s' } as React.CSSProperties}>
                 {t('about_story_para2')}
               </p>
-              <p data-reveal="fade" style={{ '--reveal-delay': '0.16s' } as React.CSSProperties}>
-                {t('about_story_para3')}
-              </p>
             </div>
 
-            {/* Pull-quote */}
+            {/* Pull-quote — "the gap YES was built to fill" */}
             <blockquote
               data-reveal="fade"
-              className="my-12 border-l-2 border-[var(--color-accent)]/50 pl-6 font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl leading-snug max-w-2xl"
+              className="my-12 border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl leading-snug max-w-2xl"
             >
-              &ldquo;Not as a theory. As a practice.&rdquo;
+              {t('about_story_quote')}
             </blockquote>
           </div>
 
@@ -92,8 +89,8 @@ export default function AboutStory({ storyImage }: Props) {
                 aria-hidden="true"
                 className="absolute -inset-3 border border-[var(--color-accent)]/20 rounded-[1.4rem] pointer-events-none hidden sm:block"
               />
-              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(31,58,38,0.28)] aspect-[4/5]">
-                {/* CLIENT: replace with verified Yanomàmö/Venezuela photo */}
+              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(33,23,16,0.28)] aspect-[4/5]">
+                {/* CLIENT: replace with a real photo of the YES founders / early field work */}
                 <img
                   src={storyImage}
                   alt={t('about_story_photo_alt')}
@@ -109,8 +106,7 @@ export default function AboutStory({ storyImage }: Props) {
                 />
               </div>
               <figcaption className="mt-3 text-[var(--color-text-muted)] text-xs tracking-wide text-center">
-                {/* CLIENT: replace with verified Yanomàmö/Venezuela photo */}
-                Field partnership — Yanomàmö region, Venezuela
+                {t('about_story_photo_caption')}
               </figcaption>
             </figure>
           </div>

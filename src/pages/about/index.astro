@@ -4,10 +4,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer';
 import PageHero from '../../components/PageHero';
 import AboutStory from '../../components/AboutStory';
-import AboutDifferent from '../../components/AboutDifferent';
+import AboutStories from '../../components/AboutStories';
 import AboutBeliefs from '../../components/AboutBeliefs';
-import AboutPeople from '../../components/AboutPeople';
 import AboutWorkers from '../../components/AboutWorkers';
+import AboutStats from '../../components/AboutStats';
 
 import rawStoryImage from '../../assets/images/yespic/1.jpg';
 
@@ -21,34 +21,32 @@ const storyImage = await getImage({
   height: 800,
   quality: 80,
 });
-/* CLIENT: replace rawStoryImage with a verified Yanomàmö/Venezuela photo */
+/* CLIENT: replace rawStoryImage with a real photo of the YES founders / early field work.
+   FINAL v2 note: photo of Andres — not stock. */
+
+// FINAL v2 meta description (About)
+const description =
+  'YES was built by missionaries who saw faithful workers standing alone — and decided that had to change. 35 years. 20+ nations. Platinum-rated.';
 ---
 
-<BaseLayout
-  title="About YES — Yielded Evangelical Servants"
-  description="Founded by missionaries who served the Yanomàmö people of Venezuela, YES has spent more than three decades building trusted partnerships with Gospel workers around the world."
->
-  <!-- Section 1: Opener — shared PageHero -->
-  <PageHero eyebrowKey="about_opener_eyebrow" headlineKey="about_opener_headline" introKey="about_opener_body" client:load />
+<BaseLayout title="About YES — Yielded Evangelical Servants" description={description}>
+  <!-- Block 1: Opener — "YES Did Not Begin in a Boardroom. It Began in the Field." -->
+  <PageHero eyebrowKey="about_opener_eyebrow" headlineKey="about_opener_headline" client:load />
 
-  <!-- Section 2: Our Story — light -->
-  <AboutStory
-    base={base}
-    storyImage={storyImage.src}
-    client:visible
-  />
+  <!-- Block 1 (cont.): The Beginning — light -->
+  <AboutStory base={base} storyImage={storyImage.src} client:visible />
 
-  <!-- Section 3: What Makes YES Different — dark green -->
-  <AboutDifferent base={base} client:visible />
+  <!-- Block 2: What We Saw That We Couldn't Unsee — dark espresso -->
+  <AboutStories base={base} client:visible />
 
-  <!-- Section 4: What We Believe — light -->
+  <!-- Block 3: What We Believe (5 convictions) — light -->
   <AboutBeliefs base={base} client:visible />
 
-  <!-- Section 5: The People Behind YES — dark green (placeholder) -->
-  <AboutPeople base={base} client:visible />
-
-  <!-- Section 6: The Workers YES Strengthens — light -->
+  <!-- Block 4: Who YES Stands With — light -->
   <AboutWorkers base={base} client:visible />
+
+  <!-- Closing stats band — 35 Years of Field-Proven Partnership -->
+  <AboutStats base={base} client:visible />
 
   <Footer base={base} client:visible />
 </BaseLayout>

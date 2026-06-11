@@ -9,7 +9,12 @@ interface Props {
 const APLOS_URL =
   'https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations';
 
-export default function HomeFinalCta({ base }: Props) {
+/**
+ * Block 6 — Final CTA. Orange/gold box, different from the rest of the page
+ * (mapa: "Fondo naranja o dorado"), signed by Andrés, President. Big centered
+ * button, contact info underneath.
+ */
+export default function HomeFinalCta({ base: _base }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -37,78 +42,49 @@ export default function HomeFinalCta({ base }: Props) {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-[var(--color-bg)] text-[var(--color-text)] py-28 md:py-40 overflow-hidden"
-    >
-      {/* Subtle atmospheric warmth */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(232,117,26,0.05)_0%,transparent_70%)]" />
-      <div aria-hidden="true" className="absolute top-6 left-1/2 -translate-x-1/2 float-line h-16" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 text-center">
-
-        {/* Headline */}
-        <h2
-          data-reveal="mask"
-          className="font-heading font-medium leading-[1.08] text-[clamp(2rem,4.5vw,3.8rem)] text-[var(--color-text)] max-w-3xl mx-auto mb-12"
-        >
-          {t('home_cta_headline')}
-        </h2>
-
-        {/* Subhead paragraphs */}
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-20 md:py-28 overflow-hidden">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
         <div
-          data-reveal="fade"
-          className="space-y-5 text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8"
-        >
-          <p>{t('home_cta_p1')}</p>
-          <p>{t('home_cta_p2')}</p>
-          <p>{t('home_cta_p3')}</p>
-        </div>
-
-        {/* "They need you." — isolated impact line */}
-        <p
           data-reveal="mask"
-          className="font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl mb-8"
+          className="relative overflow-hidden rounded-[1.5rem] bg-[linear-gradient(135deg,#E8751A_0%,#D88322_55%,#C9952C_100%)] px-7 py-14 md:px-16 md:py-20 text-center text-[var(--color-primary-deep)] shadow-[0_40px_90px_-30px_rgba(168,79,10,0.55)]"
         >
-          {t('home_cta_emphasis')}
-        </p>
+          {/* texture: faint rays + grain-friendly glow */}
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(255,236,200,0.35),transparent_65%)]" />
+          <div aria-hidden="true" className="absolute -bottom-20 -right-16 w-72 h-72 rounded-full bg-[rgba(255,236,200,0.18)] blur-3xl pointer-events-none" />
 
-        {/* Continuation */}
-        <p
-          data-reveal="fade"
-          className="text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl mx-auto mb-12"
-        >
-          {t('home_cta_sub')}
-        </p>
+          <div className="relative z-10">
+            {/* Signature eyebrow */}
+            <p className="text-[var(--color-primary-deep)]/80 text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-8">
+              {t('home_cta_signature')}
+            </p>
 
-        {/* CTA buttons */}
-        <div
-          data-reveal="fade"
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-        >
-          <a
-            href={APLOS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex justify-center px-8 py-4 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_24px_rgba(232,117,26,0.35)]"
-          >
-            {t('cta_giveMonthly')}
-          </a>
-          <a
-            href={`${base}our-work/`}
-            className="w-full sm:w-auto inline-flex justify-center px-8 py-4 border border-[var(--color-primary)]/30 text-[var(--color-primary)] text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)]/5 transition-colors duration-300"
-          >
-            {t('cta_exploreOurWork')}
-          </a>
+            {/* Headline */}
+            <h2 className="font-heading font-medium leading-[1.1] text-[clamp(1.9rem,4.2vw,3.4rem)] max-w-3xl mx-auto mb-9">
+              {t('home_cta_headline')}
+            </h2>
+
+            {/* Italic body (PDF: "Texto en itálica explicando el impacto") */}
+            <div className="space-y-5 italic text-lg md:text-xl leading-[1.7] text-[var(--color-primary-deep)]/85 max-w-2xl mx-auto mb-11">
+              <p>{t('home_cta_p1')}</p>
+              <p>{t('home_cta_p2')}</p>
+            </div>
+
+            {/* Big centered button — full width on mobile (webmaster rule #5) */}
+            <a
+              href={APLOS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto justify-center px-12 py-5 bg-[var(--color-primary-deep)] text-[var(--color-cream)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)] transition-colors duration-300 shadow-[0_14px_36px_-10px_rgba(33,23,16,0.6)]"
+            >
+              {t('cta_becomePartner')}
+            </a>
+
+            {/* Contact line under the button */}
+            <p className="mt-8 text-[var(--color-primary-deep)]/70 text-sm tracking-wide">
+              {t('home_cta_contact')}
+            </p>
+          </div>
         </div>
-
-        {/* Legal line */}
-        <p
-          data-reveal="fade"
-          className="text-[var(--color-text-muted)]/80 text-xs leading-relaxed max-w-xl mx-auto"
-        >
-          {t('home_cta_legal')}
-        </p>
       </div>
     </section>
   );

@@ -13,8 +13,8 @@ interface Props {
 }
 
 /**
- * Shared page hero — the consistent opener for every inner page (About, Our Work,
- * Gospel Workers, How It Works, Give, For Donors). Deep forest-green, the same
+ * Shared page hero — the consistent opener for every inner page (About, The
+ * Missionaries, How It Works, Mission Teams, Give). Deep espresso, the same
  * atmosphere language as the home hero (god-rays, motes, ghost cross), eyebrow +
  * Playfair headline + intro. Home keeps its richer flagship Hero.
  */
@@ -40,12 +40,12 @@ export default function PageHero({ eyebrowKey, headlineKey, introKey, scriptureK
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden green-gradient text-[var(--color-cream)] pt-36 pb-20 md:pt-44 md:pb-28"
+      className="relative overflow-hidden green-gradient text-[var(--color-cream)] flex items-center min-h-[54vh] md:min-h-[64vh] pt-32 pb-16 md:pt-36 md:pb-20"
     >
       {/* Shared green-block atmosphere (god-rays, ghost logo, ghost crosses, motes) */}
       <GreenAtmos />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-10 text-center">
         {eyebrowKey && (
           <p data-reveal="fade" className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-7">
             <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />

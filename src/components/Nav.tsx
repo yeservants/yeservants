@@ -79,12 +79,13 @@ export default function Nav({ base }: Props) {
     return currentPath.includes(slug);
   };
 
-  /* ── V3 primary navigation ────────────────────────────────── */
+  /* ── FINAL v2 primary navigation ──────────────────────────── */
   const links = [
-    { href: `${base}about/`,          label: t('nav_aboutYes') },
-    { href: `${base}our-work/`,       label: t('nav_ourWork') },
-    { href: `${base}gospel-workers/`, label: t('nav_gospelWorkers') },
-    { href: `${base}how-it-works/`,   label: t('nav_howItWorks') },
+    { href: `${base}about/`,         label: t('nav_aboutYes') },
+    { href: `${base}missionaries/`,  label: t('nav_missionaries') },
+    { href: `${base}how-it-works/`,  label: t('nav_howItWorks') },
+    { href: `${base}mission-teams/`, label: t('nav_missionTeams') },
+    { href: `${base}contact/`,       label: t('nav_contact') },
   ];
   const mobileLinks = [
     { href: base,                     label: t('nav_home') },
@@ -130,7 +131,7 @@ export default function Nav({ base }: Props) {
       {/* ── Desktop / Tablet nav ───────────────────────────── */}
       <nav
         className={`fixed z-50 left-0 right-0 top-3 mx-5 md:mx-12 lg:mx-20 rounded-2xl ring-1 ring-[var(--color-primary)]/[0.08] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[var(--color-bg)]/95 backdrop-blur-md ${
-          scrolled ? 'shadow-[0_8px_32px_rgba(31,58,38,0.16)]' : 'shadow-[0_4px_24px_rgba(31,58,38,0.10)]'
+          scrolled ? 'shadow-[0_8px_32px_rgba(33,23,16,0.16)]' : 'shadow-[0_4px_24px_rgba(33,23,16,0.10)]'
         }`}
       >
         <div className={`mx-auto flex items-center justify-between transition-all duration-500 ${scrolled ? 'px-5 h-20' : 'px-6 h-24'}`}>
@@ -143,7 +144,7 @@ export default function Nav({ base }: Props) {
             />
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {links.map((link) => (
               <a key={link.href} href={link.href} className={linkCls(link.href)}>
                 {link.label}
@@ -165,18 +166,28 @@ export default function Nav({ base }: Props) {
             </a>
           </div>
 
-          {/* Hamburger */}
-          <button
-            className="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 -mr-1"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-          >
-            <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-5 rotate-45 translate-y-[5px]' : 'w-5'}`} />
-            <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-0 opacity-0' : 'w-3.5'}`} />
-            <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-5 -rotate-45 -translate-y-[5px]' : 'w-5'}`} />
-          </button>
+          {/* Mobile/tablet: Give button ALWAYS visible (mapa: "el botón de donación
+              siempre visible") + hamburger for the links */}
+          <div className="flex lg:hidden items-center gap-3">
+            <a
+              href={`${base}give/`}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent-deep)] text-white text-[11px] tracking-[0.14em] uppercase font-semibold hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_2px_10px_rgba(232,117,26,0.30)]"
+            >
+              <span aria-hidden="true" className="text-[9px] leading-none">✛</span>
+              {t('nav_give')}
+            </a>
+            <button
+              className="flex flex-col justify-center gap-[5px] w-9 h-9 -mr-1"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+            >
+              <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-5 rotate-45 translate-y-[5px]' : 'w-5'}`} />
+              <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-0 opacity-0' : 'w-3.5'}`} />
+              <span className={`block h-px bg-[var(--color-primary)] transition-all duration-300 ${menuOpen ? 'w-5 -rotate-45 -translate-y-[5px]' : 'w-5'}`} />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -185,11 +196,11 @@ export default function Nav({ base }: Props) {
         <div
           ref={menuRef}
           id="mobile-nav"
-          className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-gradient-to-br from-[#234029] via-[var(--color-primary)] to-[#14271a]"
+          className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-gradient-to-br from-[#271B12] via-[var(--color-primary)] to-[#150D07]"
         >
           <div aria-hidden="true" className="absolute inset-0 dot-grid-light opacity-[0.08]" />
           <div aria-hidden="true" className="absolute top-0 right-0 w-[60vw] h-[60vw] rounded-full bg-[var(--color-accent)]/[0.07] blur-[80px] pointer-events-none" />
-          <div aria-hidden="true" className="absolute bottom-0 left-0 w-[50vw] h-[50vw] rounded-full bg-[#1a5c3a]/40 blur-[100px] pointer-events-none" />
+          <div aria-hidden="true" className="absolute bottom-0 left-0 w-[50vw] h-[50vw] rounded-full bg-[#C9952C]/25 blur-[100px] pointer-events-none" />
           <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 font-heading font-bold text-[clamp(5rem,28vw,18rem)] leading-none pointer-events-none select-none text-[var(--color-cream)]/[0.04] whitespace-nowrap overflow-hidden">
             SERVE
           </div>

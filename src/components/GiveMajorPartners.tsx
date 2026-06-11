@@ -73,9 +73,9 @@ export default function GiveMajorPartners() {
             <div data-reveal="fade" className="mt-10">
               <a
                 href="mailto:info@yeservants.org"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
+                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-7 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
               >
-                {t("give_s4_cta")}
+                {t("cta_talkWithAndres")}
                 {/* email icon */}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
@@ -83,14 +83,6 @@ export default function GiveMajorPartners() {
                 </svg>
               </a>
             </div>
-
-            {/* Thematic conviction — isolated line */}
-            <blockquote
-              data-reveal="fade"
-              className="mt-14 border-l-2 border-[var(--color-accent)]/40 pl-6 font-heading italic text-[var(--color-accent-deep)] text-xl md:text-2xl leading-snug max-w-lg"
-            >
-              &ldquo;The Gospel advances through workers who stay. YES advances the workers.&rdquo;
-            </blockquote>
           </div>
         </div>
       </div>

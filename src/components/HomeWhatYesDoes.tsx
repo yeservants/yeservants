@@ -1,12 +1,18 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useLang } from '../i18n/useLang';
+import type { TranslationKey } from '../i18n/translations';
 
 interface Props {
   base: string;
 }
 
-export default function HomeWhatYesDoes({ base }: Props) {
+/**
+ * Block 3 — What YES Does. Intro paragraph + two cards side by side
+ * (Financial Support / Logistical Support) with arrow bullets, per the
+ * FINAL v2 webmaster note ("dos tarjetas lado a lado. Flechas como bullets").
+ */
+export default function HomeWhatYesDoes({ base: _base }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -33,31 +39,34 @@ export default function HomeWhatYesDoes({ base }: Props) {
     return () => io.disconnect();
   }, []);
 
-  const cards = [
+  const cards: { title: string; sub: string; items: TranslationKey[] }[] = [
     {
       title: t('home_does_card1_title'),
       sub: t('home_does_card1_sub'),
-      body: t('home_does_card1_body'),
+      items: [
+        'home_does_card1_item1',
+        'home_does_card1_item2',
+        'home_does_card1_item3',
+        'home_does_card1_item4',
+        'home_does_card1_item5',
+      ],
     },
     {
       title: t('home_does_card2_title'),
       sub: t('home_does_card2_sub'),
-      body: t('home_does_card2_body'),
+      items: [
+        'home_does_card2_item1',
+        'home_does_card2_item2',
+        'home_does_card2_item3',
+        'home_does_card2_item4',
+        'home_does_card2_item5',
+      ],
     },
-    {
-      title: t('home_does_card3_title'),
-      sub: t('home_does_card3_sub'),
-      body: t('home_does_card3_body'),
-    },
-  ] as const;
+  ];
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-[var(--color-bg)] py-24 md:py-32"
-    >
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-
         {/* Header row */}
         <div className="max-w-3xl mb-16">
           <p
@@ -68,53 +77,35 @@ export default function HomeWhatYesDoes({ base }: Props) {
             {t('home_does_label')}
           </p>
 
-          <h2
-            data-reveal="mask"
-            className="font-heading font-medium leading-[1.08] text-[clamp(1.9rem,4vw,3.2rem)] text-[var(--color-text)] mb-6"
-          >
-            {t('home_does_headline')}
-          </h2>
-
-          <p data-reveal="fade" className="text-lg leading-relaxed text-[var(--color-text-muted)]">
+          <p data-reveal="fade" className="text-lg md:text-xl leading-[1.8] text-[var(--color-text)]/85">
             {t('home_does_intro')}
           </p>
         </div>
 
-        {/* Cards — orange top-border per kit recipe */}
-        <div
-          data-reveal-stagger
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16"
-        >
+        {/* Two cards — orange top border, arrow bullets */}
+        <div data-reveal-stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
           {cards.map((card, i) => (
             <article
               key={card.title}
-              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
+              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-10 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
+              style={{ '--reveal-delay': `${i * 0.1}s` } as React.CSSProperties}
             >
-              <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-2">
+              <h3 className="font-heading text-2xl md:text-3xl text-[var(--color-text)] mb-2">
                 {card.title}
               </h3>
-              <p className="text-[var(--color-accent-deep)] text-xs tracking-wide uppercase mb-4">
+              <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.18em] uppercase font-semibold mb-7">
                 {card.sub}
               </p>
-              <p className="prose-yes text-[var(--color-text-muted)] text-base leading-relaxed">
-                {card.body}
-              </p>
+              <ul className="space-y-3.5">
+                {card.items.map((key) => (
+                  <li key={key} className="flex items-start gap-3 text-[var(--color-text-muted)] text-base leading-relaxed">
+                    <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-px">→</span>
+                    {t(key)}
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
-        </div>
-
-        {/* Closing line + CTA */}
-        <div data-reveal="fade" className="border-t border-[var(--color-primary)]/10 pt-12 flex flex-col md:flex-row md:items-end gap-8 justify-between">
-          <p className="font-heading text-xl md:text-2xl text-[var(--color-text)] leading-snug max-w-2xl italic">
-            {t('home_does_closing')}
-          </p>
-          <a
-            href={`${base}how-it-works/`}
-            className="shrink-0 w-full sm:w-auto inline-flex justify-center px-7 py-3.5 border border-[var(--color-primary)]/30 text-[var(--color-primary)] text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)]/5 transition-colors duration-300"
-          >
-            {t('home_does_cta')}
-          </a>
         </div>
       </div>
     </section>

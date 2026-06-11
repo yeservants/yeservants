@@ -1,0 +1,46 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+import PageHero from '../../components/PageHero';
+import MtHow from '../../components/MtHow';
+import MtDone from '../../components/MtDone';
+import MtChurches from '../../components/MtChurches';
+
+/* Team field photo — stand-in. CLIENT: replace with a real photo of a YES team in the field. */
+import teamFieldSrc from '../../assets/images/yespic/1.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const teamFieldImg = await getImage({
+  src: teamFieldSrc,
+  format: 'webp',
+  width: 760,
+  height: 950,
+  quality: 82,
+});
+
+const description =
+  'Go to the field with YES. Mission teams that serve under workers already there — strengthening real ministry, not starting over. 35+ years of teams.';
+---
+
+<BaseLayout title="Mission Teams · YES (Yielded Evangelical Servants)" description={description}>
+  <!-- Opener — "Go to the Field. Serve Alongside the Ones Already There." -->
+  <PageHero
+    eyebrowKey="mt_opener_label"
+    headlineKey="mt_opener_headline"
+    introKey="mt_opener_body"
+    client:load
+  />
+
+  <!-- Block 1 — How Our Teams Work (dark, photo + 4 points) -->
+  <MtHow base={base} fieldImage={teamFieldImg.src} client:visible />
+
+  <!-- Block 2 — What Our Teams Have Done (5 examples) -->
+  <MtDone base={base} client:visible />
+
+  <!-- Block 3 — For Churches + Inquire CTA -->
+  <MtChurches base={base} client:visible />
+
+  <Footer base={base} client:visible />
+</BaseLayout>

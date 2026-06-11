@@ -5,9 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer';
 import GwOpener from '../../components/GwOpener';
 import GwStories from '../../components/GwStories';
-import GwLongTerm from '../../components/GwLongTerm';
 import GwProfiles from '../../components/GwProfiles';
-import GwQuotes from '../../components/GwQuotes';
 import GwCta from '../../components/GwCta';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -67,27 +65,20 @@ const workers = await Promise.all(
 ---
 
 <BaseLayout
-  title="Gospel Workers — Yielded Evangelical Servants"
-  description="Meet the missionaries, pastors, evangelists, and church planters YES has walked alongside for more than three decades."
+  title="The Missionaries — Yielded Evangelical Servants"
+  description="Meet the pastors, evangelists and church planters YES walks alongside — already in the field, already faithful, already bearing fruit."
 >
-  <!-- Section 1 — Opener (shared PageHero) -->
+  <!-- Block 1 — Opener (shared PageHero) -->
   <GwOpener client:load />
 
-  <!-- Section 2 — What This Work Actually Costs (field stories) -->
+  <!-- Block 2 — Three Stories (full versions) -->
   <!-- CLIENT: replace stand-in photos with verified field location photographs -->
   <GwStories photos={storyPhotos} client:visible />
 
-  <!-- Section 3 — The Long-Term Difference -->
-  <GwLongTerm client:visible />
-
-  <!-- Section 4 — Worker Profiles (33-entry collection) -->
+  <!-- Block 3 — Worker Profiles (collection) -->
   <GwProfiles missionaries={workers} base={base} client:visible />
 
-  <!-- Section 5 — In Their Own Words -->
-  <!-- CLIENT: provide unedited worker quotes to replace placeholder -->
-  <GwQuotes client:visible />
-
-  <!-- Section 6 — CTA -->
+  <!-- Block 4 — CTA: "One worker who stays changes the region around them." -->
   <GwCta base={base} client:visible />
 
   <Footer base={base} client:visible />

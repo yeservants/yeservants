@@ -16,7 +16,7 @@ interface Props {
 
 const {
   title,
-  description = "YES (Yielded Evangelical Servants) has strengthened missionaries, pastors, evangelists, and church planters for more than 35 years — sustaining faithful Gospel workers in some of the world's most difficult places.",
+  description = 'Behind every missionary is a story no one sees. YES stands with faithful Gospel workers already in the field, carrying more than anyone should carry alone. Since 1990.',
   canonicalUrl,
   ogImage = '/images/homepage-children.jpg',
   ogType = 'website',
@@ -36,8 +36,8 @@ const orgSchema = {
   alternateName: 'YES',
   url: siteUrl,
   logo: `${siteUrl}/images/logo.png`,
-  slogan: 'Strengthening Gospel Workers. Sustaining Kingdom Impact.',
-  description: 'A missionary-founded 501(c)(3) nonprofit ministry. For more than 35 years, YES has strengthened missionaries, pastors, evangelists, and church planters serving in some of the world’s most difficult places — sustaining the workers so the work endures.',
+  slogan: 'YES finds the faithful workers nobody is standing with — and stands with them.',
+  description: 'A missionary-founded 501(c)(3) nonprofit ministry. Since 1990, YES has stood with faithful Gospel workers already serving in the field — providing the financial and logistical support that lets them stop surviving and start thriving.',
   foundingDate: '1990',
   taxID: '501(c)(3)',
   email: 'info@yeservants.org',
@@ -63,7 +63,7 @@ const orgSchema = {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
-  <meta name="theme-color" content="#2D5233" />
+  <meta name="theme-color" content="#33241A" />
 
   {/* Preload the LCP hero image — prioritizes it in the discovery graph for faster LCP */}
   {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}

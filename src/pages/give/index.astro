@@ -5,17 +5,30 @@ import PageHero from "../../components/PageHero";
 import GiveOptions from "../../components/GiveOptions";
 import GiveTrust from "../../components/GiveTrust";
 import GiveMajorPartners from "../../components/GiveMajorPartners";
+import GiveTheologicalClose from "../../components/GiveTheologicalClose";
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
+// FINAL v2 meta description (Give)
+const description =
+  "Stand with a missionary today. Sustained support to faithful workers in places most organizations never reach. Platinum-rated. 501(c)(3). Since 1990.";
 ---
 
-<BaseLayout
-  title="Give — YES | Yielded Evangelical Servants"
-  description="Invest in Gospel workers who are giving everything to advance the Great Commission. Monthly partnership with YES provides sustained support in some of the world's most challenging places."
->
+<BaseLayout title="Give — YES | Yielded Evangelical Servants" description={description}>
+  <!-- Block 1 — The message: "Stand With the Workers Already in the Field." -->
   <PageHero eyebrowKey="give_s1_eyebrow" headlineKey="give_s1_headline" introKey="give_s1_body" client:load />
+
+  <!-- Block 2 — The giving form FIRST (webmaster: "formulario primero") -->
   <GiveOptions base={base} client:visible />
+
+  <!-- Trust signals (secure · tax-deductible · Platinum Candid · annual reports) -->
   <GiveTrust base={base} client:visible />
+
+  <!-- Block 3 — For Major Donors: "Talk With Andres Directly" -->
   <GiveMajorPartners client:visible />
+
+  <!-- Theological close — John 17:21 ENDS the page -->
+  <GiveTheologicalClose base={base} client:visible />
+
   <Footer base={base} client:visible />
 </BaseLayout>

@@ -2,15 +2,13 @@
 import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero';
-import Footer from '../components/Footer';
-import HomeReality from '../components/HomeReality';
-import HomeFieldStories from '../components/HomeFieldStories';
-import HomeDifference from '../components/HomeDifference';
+import HomeLetter from '../components/HomeLetter';
+import HomeInsight from '../components/HomeInsight';
 import HomeWhatYesDoes from '../components/HomeWhatYesDoes';
-import HomeWhyYes from '../components/HomeWhyYes';
-import HomeWhoWeAre from '../components/HomeWhoWeAre';
+import HomeWhyItWorks from '../components/HomeWhyItWorks';
 import HomeBiblical from '../components/HomeBiblical';
 import HomeFinalCta from '../components/HomeFinalCta';
+import Footer from '../components/Footer';
 
 // Hero carousel field photos → WebP (dignified, real field photography)
 import hero1Src from '../assets/images/yespic/IMG-20240810-WA0010.jpg';
@@ -18,13 +16,10 @@ import hero2Src from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
 import hero3Src from '../assets/images/yespic/IMG-20240810-WA0009.jpg';
 import hero4Src from '../assets/images/yespic/9.jpg';
 
-// Field story photos — stand-ins; CLIENT must replace with verified location photos
-// Section 3 story 1: Bajo Rodríguez, Costa Rica stand-in
-import story1Src from '../assets/images/yespic/1.jpg';
-// Section 3 story 2: Mata Hambre, Honduras stand-in
-import story2Src from '../assets/images/yespic/IMG-20240810-WA0007.jpg';
-// Section 3 story 3: Ozamiz, Philippines stand-in
-import story3Src from '../assets/images/yespic/2.jpg';
+// Letter story photos — stand-ins; CLIENT must replace with verified location photos
+import crSrc from '../assets/images/yespic/1.jpg';                   // Bajo Rodriguez, Costa Rica
+import hnSrc from '../assets/images/yespic/IMG-20240810-WA0007.jpg'; // Mata Hambre, Honduras
+import phSrc from '../assets/images/yespic/2.jpg';                   // Ozamiz, Philippines
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -35,51 +30,45 @@ const heroImages = (
   )
 ).map((img) => img.src);
 
-// Section 3 story images → WebP
 /* CLIENT: replace stand-in photos with verified field photos for each location */
-const story1Img = await getImage({ src: story1Src, format: 'webp', width: 720, height: 540, quality: 82 });
-const story2Img = await getImage({ src: story2Src, format: 'webp', width: 720, height: 540, quality: 82 });
-const story3Img = await getImage({ src: story3Src, format: 'webp', width: 720, height: 540, quality: 82 });
+const crImg = await getImage({ src: crSrc, format: 'webp', width: 720, height: 540, quality: 82 });
+const hnImg = await getImage({ src: hnSrc, format: 'webp', width: 720, height: 540, quality: 82 });
+const phImg = await getImage({ src: phSrc, format: 'webp', width: 720, height: 540, quality: 82 });
 
+// FINAL v2 meta description (homepage)
 const description =
-  "YES (Yielded Evangelical Servants) has strengthened missionaries, pastors, evangelists, and church planters for more than 35 years — sustaining faithful Gospel workers in some of the world's most difficult places.";
+  'Behind every missionary is a story no one sees. YES stands with faithful Gospel workers already in the field, carrying more than anyone should carry alone. Since 1990.';
 
 // Transparency seal lives in public/ — referenced directly
 const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
 ---
 
-<BaseLayout title="Strengthening Gospel Workers · YES (Yielded Evangelical Servants)" description={description} preloadImage={heroImages[0]}>
-  {/* Section 1 — Hero */}
+<BaseLayout title="Behind Every Missionary Is a Story No One Sees · YES (Yielded Evangelical Servants)" description={description} preloadImage={heroImages[0]}>
+  {/* Block 1 — Hero: the letter opens (eyebrow, headline, block quote) */}
   <Hero base={base} heroImages={heroImages} client:load />
 
-  {/* Section 2 — The Reality on the Ground */}
-  <HomeReality base={base} client:visible />
-
-  {/* Section 3 — Thirty-Five Years of Witness (three field stories) */}
-  <HomeFieldStories
+  {/* Block 1 (cont.) — What I've Seen: the letter body with the three field stories */}
+  <HomeLetter
     base={base}
-    story1Img={{ src: story1Img.src, alt: "A faithful pastor and his congregation in Bajo Rodríguez, Costa Rica — stand-in photo" }}
-    story2Img={{ src: story2Img.src, alt: "Gospel workers serving in the Mata Hambre community, Honduras — stand-in photo" }}
-    story3Img={{ src: story3Img.src, alt: "Ministry workers in Ozamiz, Philippines — stand-in photo" }}
+    crImg={{ src: crImg.src, alt: "A faithful pastor and his congregation in Bajo Rodriguez, Costa Rica — stand-in photo" }}
+    hnImg={{ src: hnImg.src, alt: "Gospel workers serving in the Mata Hambre community, Honduras — stand-in photo" }}
+    phImg={{ src: phImg.src, alt: "Ministry leaders serving in Ozamiz, Philippines — stand-in photo" }}
     client:visible
   />
 
-  {/* Section 4 — The Difference YES Makes */}
-  <HomeDifference base={base} client:visible />
+  {/* Block 2 — The Insight (single centered card) */}
+  <HomeInsight base={base} client:visible />
 
-  {/* Section 5 — What YES Does (3 cards) */}
+  {/* Block 3 — What YES Does (two cards: financial + logistical) */}
   <HomeWhatYesDoes base={base} client:visible />
 
-  {/* Section 6 — Why YES (4 points) */}
-  <HomeWhyYes base={base} client:visible />
+  {/* Block 4 — Why It Works (paragraph + stat row) */}
+  <HomeWhyItWorks base={base} sealSrc={sealSrc} client:visible />
 
-  {/* Section 7 — Who We Are (stat row + transparency) */}
-  <HomeWhoWeAre base={base} sealSrc={sealSrc} client:visible />
-
-  {/* Section 8 — Biblical Foundation */}
+  {/* Block 5 — The Biblical Foundation (4 scripture cards) */}
   <HomeBiblical base={base} client:visible />
 
-  {/* Section 9 — Final CTA */}
+  {/* Block 6 — Final CTA (orange box, signed by Andres) */}
   <HomeFinalCta base={base} client:visible />
 
   <Footer base={base} client:visible />

@@ -86,7 +86,7 @@ export default function GiveOptions({ base }: Props) {
           {/* ── Giving Type ── */}
           <fieldset className="mb-10">
             <legend className="font-heading text-[var(--color-text)] text-xl md:text-2xl mb-5 text-center w-full">
-              {t("give_type_monthly")} &amp; {t("give_type_onetime")}
+              {t("give_type_label")}
             </legend>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Monthly */}
@@ -97,7 +97,7 @@ export default function GiveOptions({ base }: Props) {
                 className={[
                   "relative flex-1 text-left rounded-xl border-t-2 p-6 transition-colors duration-300",
                   givingType === "monthly"
-                    ? "border-[var(--color-accent)] bg-white shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
+                    ? "border-[var(--color-accent)] bg-white shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
                     : "border-transparent bg-[var(--color-surface)] hover:border-[var(--color-accent)]/40",
                 ].join(" ")}
               >
@@ -127,7 +127,7 @@ export default function GiveOptions({ base }: Props) {
                 className={[
                   "relative flex-1 text-left rounded-xl border-t-2 p-6 transition-colors duration-300",
                   givingType === "onetime"
-                    ? "border-[var(--color-accent)] bg-white shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
+                    ? "border-[var(--color-accent)] bg-white shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
                     : "border-transparent bg-[var(--color-surface)] hover:border-[var(--color-accent)]/40",
                 ].join(" ")}
               >
@@ -188,7 +188,7 @@ export default function GiveOptions({ base }: Props) {
                   className={[
                     "text-left py-4 px-5 rounded-xl border transition-colors duration-300 text-sm leading-snug",
                     designation === d.value
-                      ? "border-[var(--color-accent)] bg-white text-[var(--color-text)] shadow-[0_8px_24px_-12px_rgba(31,58,38,0.25)]"
+                      ? "border-[var(--color-accent)] bg-white text-[var(--color-text)] shadow-[0_8px_24px_-12px_rgba(33,23,16,0.25)]"
                       : "border-[var(--color-primary)]/15 bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/40",
                   ].join(" ")}
                 >
@@ -221,7 +221,7 @@ export default function GiveOptions({ base }: Props) {
               rel="noopener noreferrer"
               className="w-full inline-flex justify-center items-center gap-2 px-7 py-4 bg-[var(--color-accent-deep)] text-white text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.35)]"
             >
-              {t("give_cta_proceed")}
+              {t("cta_becomePartner")}
               {/* external link icon */}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M5.5 2H2a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V8.5M8.5 1H13m0 0v4.5M13 1L6 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

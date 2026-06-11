@@ -111,12 +111,6 @@ export default function AboutWorkers({ base }: Props) {
           >
             {t('about_workers_headline')}
           </h2>
-          <p
-            data-reveal="fade"
-            className="mt-6 text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl"
-          >
-            {t('about_workers_intro')}
-          </p>
         </div>
 
         {/* Worker types — card grid, 2-col on md, staggered */}
@@ -127,7 +121,7 @@ export default function AboutWorkers({ base }: Props) {
           {WORKER_TYPES.map((wt, i) => (
             <article
               key={wt.titleKey}
-              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
+              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
               style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               {/* Icon */}
@@ -156,21 +150,21 @@ export default function AboutWorkers({ base }: Props) {
           ))}
         </div>
 
-        {/* Closing statement */}
+        {/* Closing statement — isolated impact line */}
         <p
-          data-reveal="fade"
-          className="text-lg leading-relaxed text-[var(--color-text-muted)] max-w-3xl mb-12"
+          data-reveal="mask"
+          className="font-heading italic text-[var(--color-text)] text-xl md:text-2xl leading-snug max-w-3xl mb-12"
         >
           {t('about_workers_closing')}
         </p>
 
-        {/* CTA */}
+        {/* CTA — Meet the Workers */}
         <div data-reveal="fade">
           <a
-            href={`${base}gospel-workers/`}
+            href={`${base}missionaries/`}
             className="w-full sm:w-auto inline-flex justify-center px-7 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
           >
-            {t('about_workers_cta')}
+            {t('cta_meetTheWorkers')} →
           </a>
         </div>
       </div>

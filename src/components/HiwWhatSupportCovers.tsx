@@ -3,35 +3,12 @@ import { useEffect, useRef } from 'react';
 import { useLang } from '../i18n/useLang';
 import type { TranslationKey } from '../i18n/translations';
 
-interface Bullet {
-  title: TranslationKey;
-  body: TranslationKey;
-  icon: string;
-}
-
-const BULLETS: Bullet[] = [
-  {
-    title: 'hiw_support_b1_title',
-    body: 'hiw_support_b1_body',
-    icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707',
-  },
-  {
-    title: 'hiw_support_b2_title',
-    body: 'hiw_support_b2_body',
-    icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4',
-  },
-  {
-    title: 'hiw_support_b3_title',
-    body: 'hiw_support_b3_body',
-    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-  },
-  {
-    title: 'hiw_support_b4_title',
-    body: 'hiw_support_b4_body',
-    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0',
-  },
-];
-
+/**
+ * HIW Block 2 — What Support Actually Covers. Intro ("not a salary… Paul wrote
+ * about it") + two arrow-bullet lists: Financial (#financial) and Logistical
+ * (#logistical). The footer links "Financial Support" / "Logistical Support"
+ * land on these anchors.
+ */
 export default function HiwWhatSupportCovers() {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
@@ -60,6 +37,31 @@ export default function HiwWhatSupportCovers() {
     );
     return () => io.disconnect();
   }, []);
+
+  const lists: { id: string; title: TranslationKey; items: TranslationKey[] }[] = [
+    {
+      id: 'financial',
+      title: 'hiw_support_fin_title',
+      items: [
+        'hiw_support_fin_i1',
+        'hiw_support_fin_i2',
+        'hiw_support_fin_i3',
+        'hiw_support_fin_i4',
+        'hiw_support_fin_i5',
+      ],
+    },
+    {
+      id: 'logistical',
+      title: 'hiw_support_log_title',
+      items: [
+        'hiw_support_log_i1',
+        'hiw_support_log_i2',
+        'hiw_support_log_i3',
+        'hiw_support_log_i4',
+        'hiw_support_log_i5',
+      ],
+    },
+  ];
 
   return (
     <section
@@ -98,63 +100,38 @@ export default function HiwWhatSupportCovers() {
           </div>
 
           <div className="lg:col-span-7 lg:pt-10">
-            <div
+            <p
               data-reveal="fade"
-              className="prose-yes text-lg leading-relaxed text-[var(--color-text-muted)] max-w-prose"
+              className="text-lg leading-[1.8] text-[var(--color-text)]/85 max-w-prose"
             >
-              <p>{t('hiw_support_intro')}</p>
-              <p className="mt-5 font-medium text-[var(--color-text)]">{t('hiw_support_sub')}</p>
-            </div>
+              {t('hiw_support_intro')}
+            </p>
           </div>
         </div>
 
-        {/* Bullet grid — 2×2 */}
-        <div
-          data-reveal-stagger
-          className="grid sm:grid-cols-2 gap-6 md:gap-8"
-          role="list"
-          aria-label={t('hiw_support_headline')}
-        >
-          {BULLETS.map((b, i) => (
+        {/* Two arrow-bullet lists — financial / logistical (footer anchor targets) */}
+        <div data-reveal-stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
+          {lists.map((list, i) => (
             <article
-              key={b.title}
-              role="listitem"
-              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(31,58,38,0.35)]"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
+              key={list.id}
+              id={list.id}
+              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-10 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)] scroll-mt-32"
+              style={{ '--reveal-delay': `${i * 0.1}s` } as React.CSSProperties}
             >
-              <div
-                className="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-5"
-                aria-hidden="true"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  fill="none"
-                  stroke="var(--color-accent)"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d={b.icon} />
-                </svg>
-              </div>
-              <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-2">
-                {t(b.title)}
+              <h3 className="font-heading text-2xl md:text-3xl text-[var(--color-text)] mb-7">
+                {t(list.title)}
               </h3>
-              <p className="prose-yes text-[var(--color-text-muted)] leading-relaxed">
-                {t(b.body)}
-              </p>
+              <ul className="space-y-3.5">
+                {list.items.map((key) => (
+                  <li key={key} className="flex items-start gap-3 text-[var(--color-text-muted)] text-base leading-relaxed">
+                    <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-px">→</span>
+                    {t(key)}
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
-
-        {/* 1 Cor 9 reference pull-quote */}
-        <blockquote
-          data-reveal="fade"
-          className="mt-16 border-l-2 border-[var(--color-accent)]/50 pl-6 font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl leading-snug max-w-2xl"
-        >
-          &ldquo;{t('brand_thematic')}&rdquo;
-        </blockquote>
       </div>
     </section>
   );

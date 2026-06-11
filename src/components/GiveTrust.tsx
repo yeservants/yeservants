@@ -61,6 +61,17 @@ export default function GiveTrust({ base }: Props) {
     {
       icon: (
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="11" r="7" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M14 7.5l1.1 2.2 2.4.35-1.75 1.7.4 2.4L14 13l-2.15 1.15.4-2.4-1.75-1.7 2.4-.35L14 7.5z" fill="currentColor" />
+          <path d="M9.5 16.5L8 25l6-3 6 3-1.5-8.5" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+        </svg>
+      ),
+      titleKey: "give_trust_platinum" as const,
+      bodyKey: "give_trust_platinum_body" as const,
+    },
+    {
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
           <rect x="4" y="4" width="20" height="20" rx="3" stroke="currentColor" strokeWidth="1.7" />
           <path d="M9 10h10M9 14h7M9 18h5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
         </svg>
@@ -92,7 +103,7 @@ export default function GiveTrust({ base }: Props) {
 
         <div
           data-reveal-stagger
-          className="grid md:grid-cols-3 gap-6 md:gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
           {signals.map((s, i) => (
             <article

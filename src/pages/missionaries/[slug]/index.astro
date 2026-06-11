@@ -32,14 +32,14 @@ if (mod?.default) {
 ---
 
 <BaseLayout
-  title={`${worker.name} — Gospel Worker · YES`}
+  title={`${worker.name} — Missionary · YES`}
   description={worker.description}
   ogImage={`/images/${worker.picture}`}
   ogType="article"
 >
   <!--
-    MissionaryDetail is reused here — it already reads `detail_back` from common.ts
-    which now reads "All Gospel Workers", and its back link points to gospel-workers/.
+    MissionaryDetail reads `detail_back` ("All Missionaries") from common.ts and
+    its back link points to missionaries/.
   -->
   <MissionaryDetail missionary={{ ...worker, pictureUrl }} base={base} client:load />
   <Footer base={base} client:visible />

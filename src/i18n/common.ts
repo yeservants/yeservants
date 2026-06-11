@@ -2,57 +2,56 @@
  * Shared / global strings — nav, footer, brand constants, common CTAs.
  * Page-specific copy lives in ./pages/<page>.ts and is merged by translations.ts.
  * Keys must be globally unique across all modules.
+ * Source: YES_Website_FINAL_v2.pdf + YES_Mapa_Website.pdf (client Spanish kept
+ * verbatim where the mapa provides it).
  */
 export const common = {
   en: {
-    /* ── Brand constants ─────────────────────────────────── */
-    brand_tagline: 'Strengthening Gospel Workers. Sustaining Kingdom Impact.',
-    brand_thematic: 'If we are one Body, no servant of Christ should stand alone.',
-    brand_founded: 'Founded by missionaries. Built on the field. Serving Gospel workers for 35+ years.',
+    /* ── Brand constants (FINAL v2 Brand Identity) ───────── */
+    brand_tagline: 'YES finds the faithful workers nobody is standing with — and stands with them.',
+    brand_thematic: 'If we are one Body — no faithful servant should stand alone.',
+    brand_uvp: 'YES goes where faithful workers are already serving — and carrying more than anyone should carry alone.',
+    brand_founded: 'Founded by missionaries. Built on the field. Standing with faithful Gospel workers since 1990.',
 
-    /* ── V3 primary navigation ───────────────────────────── */
+    /* ── Primary navigation (FINAL v2) ───────────────────── */
     nav_home: 'Home',
-    nav_aboutYes: 'About YES',
-    nav_ourWork: 'Our Work',
-    nav_gospelWorkers: 'Gospel Workers',
+    nav_aboutYes: 'About',
+    nav_missionaries: 'The Missionaries',
     nav_howItWorks: 'How It Works',
-    nav_give: 'Give',
-    nav_forDonors: 'For Donors',
+    nav_missionTeams: 'Mission Teams',
+    nav_contact: 'Contact',
+    nav_give: 'Give Now',
     nav_menu: 'Menu',
     nav_close: 'Close',
 
     /* ── Common CTA labels ───────────────────────────────── */
-    cta_partnerWithUs: 'Partner With Us',
-    cta_meetTheWorkers: 'Meet the Workers',
-    cta_giveMonthly: 'Give Monthly',
-    cta_exploreOurWork: 'Explore Our Work',
-    cta_learnMore: 'Learn More',
-    cta_learnHowWeWork: 'Learn More About How We Work',
-    cta_seeFinancials: 'See Our Financials',
-    cta_viewFinancials: 'View Our Financials and Annual Reports',
-    cta_giveToday: 'Give Today',
-    cta_becomeMonthlyPartner: 'Become a Monthly Partner',
     cta_becomePartner: 'Become a Partner Today',
-    cta_talkWithTeam: 'Talk With Our Team',
-    cta_scheduleConversation: 'Schedule a Conversation',
-    cta_donateOnline: 'Donate Online',
+    cta_becomePartnerShort: 'Become a Partner',
+    cta_standWithWorker: 'Stand With a Worker Today',
+    cta_meetTheWorkers: 'Meet the Workers',
+    cta_howItWorks: 'How It Works',
+    cta_viewFinancials: 'View Our Financials',
+    cta_talkWithAndres: 'Talk With Andrés Directly',
+    cta_inquireTrip: 'Inquire About a Mission Trip',
     cta_giveByMail: 'Give By Mail',
+    cta_learnMore: 'Learn More',
 
-    /* ── V3 footer ───────────────────────────────────────── */
-    footer_explore: 'Explore',
+    /* ── Footer (FINAL v2 / mapa) ────────────────────────── */
+    footer_links: 'Links',
     footer_connect: 'Connect',
-    footer_supportCta_label: '2 Corinthians 9:7',
-    footer_supportCta_heading: 'Stand With Faithful Workers',
-    footer_supportCta_body: 'For more than 35 years, YES has strengthened the workers who carry the Gospel into hard places. Your partnership keeps them there.',
-    footer_legal: 'Yielded Evangelical Servants (YES) is a registered 501(c)(3) nonprofit ministry. All donations are tax-deductible to the extent permitted by law.',
+    footer_financialSupport: 'Financial Support',
+    footer_logisticalSupport: 'Logistical Support',
+    footer_partnership: 'Partnership',
+    footer_annualReports: 'Annual Reports',
+    footer_legal: 'YES (Yielded Evangelical Servants) is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent permitted by law.',
     footer_ein: 'EIN: [to be provided]',
     footer_copyright: 'Yielded Evangelical Servants © 2002–2026 · All Rights Reserved',
     footer_utility_contact: 'Contact',
     footer_utility_privacy: 'Privacy',
 
     /* ── Worker / profile detail (shared) ────────────────── */
-    detail_back: 'All Gospel Workers',
-    detail_label: 'Gospel Worker · YES',
+    detail_back: 'All Missionaries',
+    detail_label: 'Missionary · YES',
     detail_sendingChurch: 'Sending Church',
     detail_started: 'Ministry Started',
     detail_duration: 'Duration',
@@ -61,7 +60,7 @@ export const common = {
     detail_ctaLabel: 'Stand With',
     detail_ministry: '',
     detail_giveNow: 'Give Now →',
-    detail_meetOthers: 'Meet Other Workers',
+    detail_meetOthers: 'Meet Other Missionaries',
 
     /* ── Statement of Faith (reused) ─────────────────────── */
     faith_label: 'What We Believe',
@@ -70,54 +69,51 @@ export const common = {
   },
 
   es: {
-    /* ── Constantes de marca ─────────────────────────────── */
-    brand_tagline: 'Fortaleciendo a los Obreros del Evangelio. Sosteniendo el Impacto del Reino.',
-    brand_thematic: 'Si somos un solo Cuerpo, ningún siervo de Cristo debería estar solo.',
-    brand_founded: 'Fundada por misioneros. Forjada en el campo. Sirviendo a obreros del Evangelio por más de 35 años.',
+    /* ── Constantes de marca (FINAL v2) ──────────────────── */
+    brand_tagline: 'YES encuentra a los obreros fieles con quienes nadie está — y se pone a su lado.',
+    brand_thematic: 'Si somos un solo Cuerpo — ningún siervo fiel debería estar solo.',
+    brand_uvp: 'YES va donde los obreros fieles ya están sirviendo — cargando más de lo que nadie debería cargar solo.',
+    brand_founded: 'Fundada por misioneros. Forjada en el campo. Junto a obreros fieles del Evangelio desde 1990.',
 
-    /* ── Navegación principal V3 ─────────────────────────── */
+    /* ── Navegación principal (FINAL v2) ─────────────────── */
     nav_home: 'Inicio',
-    nav_aboutYes: 'Sobre YES',
-    nav_ourWork: 'Nuestra Labor',
-    nav_gospelWorkers: 'Obreros del Evangelio',
+    nav_aboutYes: 'Quiénes Somos',
+    nav_missionaries: 'Los Misioneros',
     nav_howItWorks: 'Cómo Funciona',
-    nav_give: 'Donar',
-    nav_forDonors: 'Para Donantes',
+    nav_missionTeams: 'Equipos Misioneros',
+    nav_contact: 'Contacto',
+    nav_give: 'Donar Ahora',
     nav_menu: 'Menú',
     nav_close: 'Cerrar',
 
     /* ── Botones / llamados a la acción comunes ──────────── */
-    cta_partnerWithUs: 'Asóciate con Nosotros',
-    cta_meetTheWorkers: 'Conoce a los Obreros',
-    cta_giveMonthly: 'Dona Mensualmente',
-    cta_exploreOurWork: 'Explora Nuestra Labor',
-    cta_learnMore: 'Conoce Más',
-    cta_learnHowWeWork: 'Conoce Cómo Trabajamos',
-    cta_seeFinancials: 'Ver Nuestras Finanzas',
-    cta_viewFinancials: 'Ver Nuestras Finanzas e Informes Anuales',
-    cta_giveToday: 'Dona Hoy',
-    cta_becomeMonthlyPartner: 'Hazte Socio Mensual',
-    cta_becomePartner: 'Hazte Socio Hoy',
-    cta_talkWithTeam: 'Habla con Nuestro Equipo',
-    cta_scheduleConversation: 'Agenda una Conversación',
-    cta_donateOnline: 'Donar en Línea',
+    cta_becomePartner: 'Ser Socio Hoy',
+    cta_becomePartnerShort: 'Ser Socio',
+    cta_standWithWorker: 'Apoya a un Trabajador Hoy',
+    cta_meetTheWorkers: 'Conoce a los Misioneros',
+    cta_howItWorks: 'Cómo Funciona',
+    cta_viewFinancials: 'Ver Nuestras Finanzas',
+    cta_talkWithAndres: 'Habla Directamente con Andrés',
+    cta_inquireTrip: 'Consultar sobre un Viaje Misionero',
     cta_giveByMail: 'Donar por Correo',
+    cta_learnMore: 'Conoce Más',
 
-    /* ── Pie de página V3 ────────────────────────────────── */
-    footer_explore: 'Explorar',
+    /* ── Pie de página (FINAL v2 / mapa) ─────────────────── */
+    footer_links: 'Enlaces',
     footer_connect: 'Conectar',
-    footer_supportCta_label: '2 Corintios 9:7',
-    footer_supportCta_heading: 'Acompaña a los Obreros Fieles',
-    footer_supportCta_body: 'Por más de 35 años, YES ha fortalecido a los obreros que llevan el Evangelio a lugares difíciles. Tu apoyo los sostiene allí.',
-    footer_legal: 'Yielded Evangelical Servants (YES) es un ministerio sin fines de lucro 501(c)(3) registrado. Todas las donaciones son deducibles de impuestos en la medida permitida por la ley.',
+    footer_financialSupport: 'Apoyo Financiero',
+    footer_logisticalSupport: 'Apoyo Logístico',
+    footer_partnership: 'Asociación',
+    footer_annualReports: 'Informes Anuales',
+    footer_legal: 'YES (Yielded Evangelical Servants) es una organización sin fines de lucro 501(c)(3) registrada. Todas las donaciones son deducibles de impuestos en la medida permitida por la ley.',
     footer_ein: 'EIN: [por proporcionar]',
     footer_copyright: 'Yielded Evangelical Servants © 2002–2026 · Todos los derechos reservados',
     footer_utility_contact: 'Contacto',
     footer_utility_privacy: 'Privacidad',
 
-    /* ── Detalle de obrero / perfil (compartido) ─────────── */
-    detail_back: 'Todos los Obreros',
-    detail_label: 'Obrero del Evangelio · YES',
+    /* ── Detalle de misionero / perfil (compartido) ──────── */
+    detail_back: 'Todos los Misioneros',
+    detail_label: 'Misionero · YES',
     detail_sendingChurch: 'Iglesia Enviadora',
     detail_started: 'Inicio del Ministerio',
     detail_duration: 'Duración',
@@ -126,7 +122,7 @@ export const common = {
     detail_ctaLabel: 'Acompaña a',
     detail_ministry: '',
     detail_giveNow: 'Dar Ahora →',
-    detail_meetOthers: 'Conoce a Otros Obreros',
+    detail_meetOthers: 'Conoce a Otros Misioneros',
 
     /* ── Declaración de Fe (reutilizada) ─────────────────── */
     faith_label: 'En Qué Creemos',
