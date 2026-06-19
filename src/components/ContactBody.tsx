@@ -103,7 +103,7 @@ export default function ContactBody({ base, web3formsKey = '' }: Props) {
   };
 
   const inputCls =
-    'w-full rounded-xl border border-[var(--color-primary)]/15 bg-white/70 px-4 py-3 text-[var(--color-text)] text-base placeholder:text-[var(--color-text-muted)]/60 focus:border-[var(--color-accent)] focus:outline-none transition-colors duration-200';
+    'w-full rounded-xl border border-[var(--color-primary)]/15 bg-white/70 px-4 py-3 text-[var(--color-text)] text-base placeholder:text-[var(--color-text-muted)]/60 focus:border-[var(--color-accent-deep)] focus:ring-2 focus:ring-[var(--color-accent-deep)] focus:ring-offset-1 transition-colors duration-200';
   const labelCls =
     'block text-[var(--color-text)] text-sm font-semibold tracking-wide mb-2';
 
@@ -229,6 +229,7 @@ export default function ContactBody({ base, web3formsKey = '' }: Props) {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
+                  aria-describedby="contact-form-note"
                   className="w-full sm:w-auto inline-flex justify-center px-9 py-4 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === 'sending' ? t('contact_form_sending') : t('contact_form_submit')}
@@ -243,7 +244,7 @@ export default function ContactBody({ base, web3formsKey = '' }: Props) {
                     {t('contact_form_error')}
                   </p>
                 ) : (
-                  <p className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed">
+                  <p id="contact-form-note" className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed">
                     {web3formsKey ? t('contact_form_note_inbox') : t('contact_form_note')}
                   </p>
                 )}

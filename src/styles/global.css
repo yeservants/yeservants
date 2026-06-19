@@ -320,7 +320,6 @@ astro-island { display: contents; }
   box-shadow: 0 0 6px 1px rgba(248,236,206,0.35);
   pointer-events: none;
   animation: twinkle 6s ease-in-out infinite;
-  will-change: opacity, transform;
 }
 .star-lg { width: 5px; height: 5px; }
 
@@ -336,7 +335,6 @@ astro-island { display: contents; }
   pointer-events: none;
   filter: blur(64px);
   animation: aurora-drift 22s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 /* Soft pulsing halo — placed behind a ghost cross to give it presence */
@@ -351,7 +349,6 @@ astro-island { display: contents; }
   background: radial-gradient(circle, rgba(246,205,148,0.55), rgba(246,205,148,0.08) 46%, transparent 72%);
   filter: blur(18px);
   animation: halo-pulse 7s ease-in-out infinite;
-  will-change: opacity, transform;
 }
 
 /* Rare drifting ember — a single slow point that crosses the sky */
@@ -368,7 +365,6 @@ astro-island { display: contents; }
   background: radial-gradient(circle, rgba(246,205,148,1), rgba(246,205,148,0) 70%);
   pointer-events: none;
   animation: ember-fall 16s linear infinite;
-  will-change: transform, opacity;
 }
 
 /* ── Reduced motion ──────────────────────────────────────── */
@@ -392,7 +388,7 @@ astro-island { display: contents; }
 }
 .missionary-bio b:first-child { margin-top: 0; }
 .missionary-bio a {
-  color: var(--color-accent);
+  color: var(--color-accent-deep);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

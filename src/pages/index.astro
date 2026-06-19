@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const heroSrcs = [hero1Src, hero2Src, hero3Src, hero4Src];
 const heroImages = (
   await Promise.all(
-    heroSrcs.map((src) => getImage({ src, format: 'webp', width: 880, height: 1100, quality: 82 }))
+    heroSrcs.map((src, i) => getImage({ src, format: 'webp', width: 880, height: 1100, quality: i === 3 ? 72 : 82 }))
   )
 ).map((img) => img.src);
 

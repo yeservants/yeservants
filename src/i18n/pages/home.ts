@@ -50,6 +50,9 @@ export const home = {
     home_letter_cr_alt: 'A pastor leading his congregation in worship in Bajo Rodríguez, Costa Rica',
     home_letter_hn_alt: 'An elder of the Mata Hambre community, Honduras',
     home_letter_ph_alt: 'Children and families gathered for ministry in Ozamiz, Philippines',
+    home_letter_cr_loc: 'Bajo Rodríguez, Costa Rica',
+    home_letter_hn_loc: 'Mata Hambre, Honduras',
+    home_letter_ph_loc: 'Ozamiz, Philippines',
 
     /* ── Block 2 — The Insight ───────────────────────────── */
     home_insight_part1:
@@ -172,6 +175,9 @@ export const home = {
 
     home_letter_close:
       'No llegamos donde no hay nada. Encontramos a los que ya están, ya fieles, ya dando fruto, ya cargando más de lo que nadie debería cargar solo. Y nos ponemos a su lado.',
+    home_letter_cr_loc: 'Bajo Rodríguez, Costa Rica',
+    home_letter_hn_loc: 'Mata Hambre, Honduras',
+    home_letter_ph_loc: 'Ozamiz, Filipinas',
     home_letter_cr_alt: 'Un pastor dirigiendo a su congregación en adoración en Bajo Rodríguez, Costa Rica',
     home_letter_hn_alt: 'Un anciano de la comunidad de Mata Hambre, Honduras',
     home_letter_ph_alt: 'Niños y familias reunidos para el ministerio en Ozamiz, Filipinas',

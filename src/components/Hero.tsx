@@ -79,15 +79,18 @@ export default function Hero({ base, heroImages }: Props) {
       if (reduce || introPlayed || wasSwapped) { forceVisible(); }
       else {
         introPlayed = true;
-        gsap.set(fadeUp, { opacity: 0, y: 24 });
-        gsap.set(photoRef.current, { opacity: 0 });
-        gsap.set(bloomRef.current, { opacity: 0, scale: 0.82 });
 
         let started = false;
         const play = () => {
           if (cancelled || started) return;
           started = true;
           try {
+            // Hide only at the moment we animate — the SSR-painted hero text/photo
+            // stay visible until GSAP is ready, so the text LCP isn't held back
+            // through React hydration.
+            gsap.set(fadeUp, { opacity: 0, y: 24 });
+            gsap.set(photoRef.current, { opacity: 0 });
+            gsap.set(bloomRef.current, { opacity: 0, scale: 0.82 });
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: () => { revealed = true; } });
             tl.to(bloomRef.current, { opacity: 1, scale: 1, duration: 2.4, ease: 'power2.out' }, 0);
             if (headlineRef.current) {
@@ -104,7 +107,7 @@ export default function Hero({ base, heroImages }: Props) {
 
         const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
         if (fonts?.ready) fonts.ready.then(() => { if (!cancelled) play(); });
-        timers.push(setTimeout(play, 500));
+        timers.push(setTimeout(play, 200));
         timers.push(setTimeout(() => { if (!cancelled && !revealed) forceVisible(); }, 1900));
       }
 

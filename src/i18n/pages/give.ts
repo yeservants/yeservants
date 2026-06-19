@@ -18,9 +18,10 @@ export const give = {
       'This is not a donation to an organization. It is a commitment to a person — a specific person, in a specific place, doing specific work. Someone who is part of the same Body you are.',
 
     /* ── Block 2 — The giving form ───────────────────────── */
-    give_s2_eyebrow: 'The Giving Form',
+    give_s2_eyebrow: 'Give Now',
     give_s2_intro:
-      'Choose your giving type, amount, and designation — then complete your gift securely through Aplos, our trusted giving platform.',
+      'Complete your gift securely through Aplos, our trusted giving platform. Choose a one-time or monthly gift, and the fund you would like to support.',
+    give_new_tab: '(opens in a new tab)',
 
     /* Giving type */
     give_type_label: 'Giving Type',
@@ -92,9 +93,10 @@ export const give = {
       'Esto no es una donación a una organización. Es un compromiso con una persona — una persona específica, en un lugar específico, haciendo un trabajo específico. Alguien que es parte del mismo Cuerpo que tú.',
 
     /* ── Bloque 2 — El formulario de donación ────────────── */
-    give_s2_eyebrow: 'El Formulario de Donación',
+    give_s2_eyebrow: 'Donar Ahora',
     give_s2_intro:
-      'Elige tu tipo de donación, el monto y la designación — y completa tu ofrenda de forma segura a través de Aplos, nuestra plataforma de donaciones de confianza.',
+      'Completa tu donación de forma segura a través de Aplos, nuestra plataforma de confianza. Elige una donación única o mensual, y el fondo que deseas apoyar.',
+    give_new_tab: '(se abre en una pestaña nueva)',
 
     /* Tipo de donación */
     give_type_label: 'Tipo de Donación',

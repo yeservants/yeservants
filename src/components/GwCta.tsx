@@ -119,7 +119,7 @@ export default function GwCta({ base }: Props) {
         {/* Thematic statement */}
         <p
           data-reveal="fade"
-          className="mt-14 font-heading italic text-[var(--color-text-muted)]/70 text-lg leading-snug max-w-xl mx-auto"
+          className="mt-14 font-heading italic text-[var(--color-text-muted)] text-lg leading-snug max-w-xl mx-auto"
         >
           &ldquo;{t('brand_thematic')}&rdquo;
         </p>

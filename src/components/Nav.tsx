@@ -61,6 +61,11 @@ export default function Nav({ base }: Props) {
           { opacity: 1, x: 0, duration: 0.45, ease: 'power3.out', stagger: 0.06, delay: 0.25 }
         );
       }
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setMenuOpen(false);
+      };
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
     } else {
       document.body.classList.remove('overflow-hidden');
       gsap.to(menu, {
@@ -146,7 +151,7 @@ export default function Nav({ base }: Props) {
 
           <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className={linkCls(link.href)}>
+              <a key={link.href} href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} className={linkCls(link.href)}>
                 {link.label}
                 <span className={`absolute -bottom-0.5 left-0 right-0 h-px bg-[var(--color-accent)] transition-transform duration-300 origin-left ${
                   isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
@@ -196,6 +201,8 @@ export default function Nav({ base }: Props) {
         <div
           ref={menuRef}
           id="mobile-nav"
+          role="dialog"
+          aria-modal="true"
           className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-gradient-to-br from-[#271B12] via-[var(--color-primary)] to-[#150D07]"
         >
           <div aria-hidden="true" className="absolute inset-0 dot-grid-light opacity-[0.08]" />
@@ -218,6 +225,7 @@ export default function Nav({ base }: Props) {
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
+                aria-current={isActive(link.href) ? 'page' : undefined}
                 className="group flex items-baseline gap-4 py-4 border-b border-[var(--color-cream)]/[0.07] text-[var(--color-cream)]/75 hover:text-[var(--color-cream)] transition-colors duration-300"
               >
                 <span aria-hidden="true" className="text-[var(--color-accent)]/50 group-hover:text-[var(--color-accent)] transition-colors duration-300 text-xs shrink-0 translate-y-[-2px]">✛</span>

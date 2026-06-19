@@ -6,6 +6,19 @@ interface StoryImg {
   src: string;
 }
 
+// Inline pin icon + location badge — matches the Missionaries story photos.
+function LocationBadge({ label }: { label: string }) {
+  return (
+    <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-[var(--color-primary-deep)]/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+      <svg className="w-4 h-4 flex-shrink-0 text-[var(--color-accent)]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+      </svg>
+      <span className="text-[var(--color-cream)] text-[10px] tracking-[0.18em] uppercase font-medium">{label}</span>
+    </div>
+  );
+}
+
 interface Props {
   base: string;
   crImg: StoryImg;
@@ -105,6 +118,8 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 translate-x-3 translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
                 <img src={crImg.src} alt={t('home_letter_cr_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/50 via-transparent to-transparent" />
+                <LocationBadge label={t('home_letter_cr_loc')} />
               </div>
             </figure>
           </div>
@@ -117,6 +132,8 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 -translate-x-3 translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
                 <img src={hnImg.src} alt={t('home_letter_hn_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/50 via-transparent to-transparent" />
+                <LocationBadge label={t('home_letter_hn_loc')} />
               </div>
             </figure>
           </div>
@@ -144,6 +161,8 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 translate-x-3 -translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
                 <img src={phImg.src} alt={t('home_letter_ph_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/50 via-transparent to-transparent" />
+                <LocationBadge label={t('home_letter_ph_loc')} />
               </div>
             </figure>
           </div>

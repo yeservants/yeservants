@@ -18,38 +18,66 @@ const {
   title,
   description = 'Behind every missionary is a story no one sees. YES stands with faithful Gospel workers already in the field, carrying more than anyone should carry alone. Since 1990.',
   canonicalUrl,
-  ogImage = '/images/homepage-children.jpg',
+  ogImage = 'images/og-home.jpg',
   ogType = 'website',
   noindex = false,
   preloadImage,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const siteUrl = 'https://yeservants.org';
+// Derive absolute URLs from the configured deploy origin so OG images and
+// JSON-LD always RESOLVE on the live site. (Moving to a custom domain later
+// only requires changing `site` in astro.config.mjs.)
+const origin = Astro.site?.origin ?? 'https://fpsjago.github.io';
+const homeUrl = `${origin}${base}`;
 const canonical = canonicalUrl ?? Astro.url.href;
-const ogImageFull = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const toAbs = (p: string) => {
+  if (p.startsWith('http')) return p;
+  if (p.startsWith(base)) return `${origin}${p}`; // already base-prefixed (e.g. getImage output)
+  return `${origin}${base}${p.replace(/^\//, '')}`; // base-relative, e.g. 'images/og-home.jpg'
+};
+const ogImageFull = toAbs(ogImage);
+
+const fontHref =
+  'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,300..700;1,400..700&display=swap';
 
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'NonprofitOrganization',
   name: 'Yielded Evangelical Servants, Inc.',
   alternateName: 'YES',
-  url: siteUrl,
-  logo: `${siteUrl}/images/logo.png`,
+  url: homeUrl,
+  logo: toAbs('yes_logo-04.webp'),
   slogan: 'YES finds the faithful workers nobody is standing with — and stands with them.',
   description: 'A missionary-founded 501(c)(3) nonprofit ministry. Since 1990, YES has stood with faithful Gospel workers already serving in the field — providing the financial and logistical support that lets them stop surviving and start thriving.',
   foundingDate: '1990',
-  taxID: '501(c)(3)',
+  taxID: '54-1558343',
+  nonprofitStatus: 'Nonprofit501c3',
   email: 'info@yeservants.org',
+  telephone: '+1-407-498-5128',
   sameAs: [],
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'PO Box 770308',
+    addressLocality: 'Orlando',
+    addressRegion: 'FL',
+    postalCode: '32837',
     addressCountry: 'US',
   },
   areaServed: {
     '@type': 'Place',
     name: 'Worldwide',
   },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Yielded Evangelical Servants',
+  alternateName: 'YES',
+  url: homeUrl,
+  inLanguage: ['en', 'es'],
+  publisher: { '@type': 'NonprofitOrganization', name: 'Yielded Evangelical Servants, Inc.' },
 };
 ---
 
@@ -79,6 +107,8 @@ const orgSchema = {
   <meta property="og:image:alt" content="Yielded Evangelical Servants — Missionaries in the field" />
   <meta property="og:site_name" content="Yielded Evangelical Servants" />
   <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta http-equiv="content-language" content="en, es" />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -89,16 +119,28 @@ const orgSchema = {
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
   <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-  <link rel="apple-touch-icon" href={`${base}favicon.ico`} />
+  <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`} />
 
-  <!-- Fonts — Playfair Display (display) + Lora (body) -->
+  <!-- Keep <html lang> in sync with the reader's chosen language before first paint -->
+  <script is:inline>
+    try {
+      var l = localStorage.getItem('yes_lang');
+      if (l === 'en' || l === 'es') document.documentElement.lang = l;
+    } catch (e) {}
+  </script>
+
+  <!-- Fonts — Playfair Display (display) + Lora (body). Loaded async so the
+       stylesheet never blocks first paint; display=swap renders fallback text
+       immediately, then swaps. <noscript> keeps it working without JS. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,300..700;1,400..700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href={fontHref} onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href={fontHref} /></noscript>
 
   <ClientRouter />
 </head>

@@ -40,11 +40,11 @@ export default function MissionaryDetail({ missionary, base }: Props) {
 
   return (
     <div>
-      {/* Full-bleed hero */}
-      <section className="relative h-[60vh] min-h-[420px] overflow-hidden bg-gradient-to-br from-[#2C4A3E] via-[#1e3530] to-[#0f1f18]">
+      {/* Full-bleed hero — brand espresso (matches every other inner-page hero) */}
+      <section className="relative h-[60vh] min-h-[420px] overflow-hidden green-gradient">
         {/* Radial accent glow */}
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_100%_0%,rgba(194,125,65,0.18)_0%,transparent_60%)] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[50%] h-[60%] bg-[radial-gradient(ellipse_at_0%_100%,rgba(44,74,62,0.8)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_100%_0%,rgba(246,205,148,0.16)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[50%] h-[60%] bg-[radial-gradient(ellipse_at_0%_100%,rgba(23,14,8,0.6)_0%,transparent_70%)] pointer-events-none" />
         {/* Decorative cross motif */}
         <div aria-hidden="true" className="absolute top-[20%] right-[8%] text-[var(--color-accent)] opacity-10 text-[5rem] pointer-events-none select-none">✛</div>
         <div aria-hidden="true" className="absolute bottom-[15%] left-[6%] text-white opacity-[0.04] text-[8rem] font-heading font-bold pointer-events-none select-none leading-none">YES</div>

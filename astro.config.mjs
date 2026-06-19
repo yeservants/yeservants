@@ -4,7 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({ filter: (page) => !page.includes('/privacy') && !page.includes('/404') }),
+  ],
   output: 'static',
   site: 'https://fpsjago.github.io',
   base: '/yesservant-proposal',

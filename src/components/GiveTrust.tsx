@@ -130,7 +130,6 @@ export default function GiveTrust({ base }: Props) {
             width={60}
             height={60}
             loading="lazy"
-            className="rounded-full"
           />
           <p className="text-[var(--color-cream)]/60 text-sm max-w-xs">
             Candid Platinum Transparency Seal — verified independent accountability.
