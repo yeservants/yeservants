@@ -105,10 +105,14 @@ export default function Hero({ base, heroImages }: Props) {
           }
         };
 
+        // SplitText must measure lines with the REAL font, so wait on
+        // fonts.ready before animating (self-hosted + preloaded → resolves
+        // fast). If the font API is missing, animate immediately. A late
+        // safety net only reveals (never starts a broken split) if fonts hang.
         const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
         if (fonts?.ready) fonts.ready.then(() => { if (!cancelled) play(); });
-        timers.push(setTimeout(play, 200));
-        timers.push(setTimeout(() => { if (!cancelled && !revealed) forceVisible(); }, 1900));
+        else play();
+        timers.push(setTimeout(() => { if (!cancelled && !started) forceVisible(); }, 2500));
       }
 
       // Scroll dissolve — content lifts + fades, photo gentle parallax.

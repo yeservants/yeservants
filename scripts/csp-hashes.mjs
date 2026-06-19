@@ -15,7 +15,6 @@ const re = /<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>([\s\S]*?)<\/script>/g;
 
 const labels = [
   { startsWith: '\n    try {', label: 'lang sync' },
-  { startsWith: "\n    (function () {\n      var l = document.getElementById('yes-fonts')", label: 'font preload swap' },
   { startsWith: '\n  (function() {', label: 'reveal observer' },
 ];
 

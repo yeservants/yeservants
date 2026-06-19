@@ -144,7 +144,7 @@ export default function Nav({ base }: Props) {
             <img
               src={`${base}yes_logo-04.webp`}
               alt="Yielded Evangelical Servants"
-              width={200} height={68}
+              width={400} height={210}
               className={`w-auto object-contain transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}
             />
           </a>

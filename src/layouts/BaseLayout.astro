@@ -2,6 +2,11 @@
 import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav';
 import '../styles/global.css';
+// Self-hosted fonts (no CDN). Preload the two upright latin faces used above
+// the fold (Playfair headline is the LCP, Lora is body) so they paint without
+// a swap flash. Vite resolves these to base-correct, hashed asset URLs.
+import playfairWoff2 from '../fonts/playfair-display-normal-latin.woff2';
+import loraWoff2 from '../fonts/lora-normal-latin.woff2';
 
 interface Props {
   title: string;
@@ -37,9 +42,6 @@ const toAbs = (p: string) => {
   return `${origin}${base}${p.replace(/^\//, '')}`; // base-relative, e.g. 'images/og-home.jpg'
 };
 const ogImageFull = toAbs(ogImage);
-
-const fontHref =
-  'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,300..700;1,400..700&display=swap';
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -134,21 +136,11 @@ const websiteSchema = {
     } catch (e) {}
   </script>
 
-  <!-- Fonts — Playfair Display (display) + Lora (body). Loaded async so the
-       stylesheet never blocks first paint; display=swap renders fallback text
-       immediately, then swaps. <noscript> keeps it working without JS. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link id="yes-fonts" rel="preload" as="style" href={fontHref} />
-  <!-- Swap preload→stylesheet without an inline event handler (CSP: strict
-       script-src hashes this is:inline block; inline onload attrs are blocked). -->
-  <script is:inline>
-    (function () {
-      var l = document.getElementById('yes-fonts');
-      if (l) l.rel = 'stylesheet';
-    })();
-  </script>
-  <noscript><link rel="stylesheet" href={fontHref} /></noscript>
+  <!-- Fonts — self-hosted Playfair Display (display) + Lora (body), declared via
+       @font-face in global.css. Preload the two upright latin faces so the
+       Playfair headline (LCP) and Lora body paint without a swap flash. -->
+  <link rel="preload" as="font" type="font/woff2" href={playfairWoff2} crossorigin="anonymous" />
+  <link rel="preload" as="font" type="font/woff2" href={loraWoff2} crossorigin="anonymous" />
 
   <ClientRouter />
 </head>

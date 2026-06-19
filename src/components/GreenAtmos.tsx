@@ -9,7 +9,7 @@
  * twinkling starfield, breathing god-rays, and a soft halo behind the cross —
  * reverent motion so the green blocks feel alive, not static.
  */
-const LOGO = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}yes_logo_ghost.png`;
+const LOGO = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}yes_logo_ghost.webp`;
 
 interface Props {
   variant?: number;
