@@ -139,7 +139,15 @@ const websiteSchema = {
        immediately, then swaps. <noscript> keeps it working without JS. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href={fontHref} onload="this.onload=null;this.rel='stylesheet'" />
+  <link id="yes-fonts" rel="preload" as="style" href={fontHref} />
+  <!-- Swap preload→stylesheet without an inline event handler (CSP: strict
+       script-src hashes this is:inline block; inline onload attrs are blocked). -->
+  <script is:inline>
+    (function () {
+      var l = document.getElementById('yes-fonts');
+      if (l) l.rel = 'stylesheet';
+    })();
+  </script>
   <noscript><link rel="stylesheet" href={fontHref} /></noscript>
 
   <ClientRouter />

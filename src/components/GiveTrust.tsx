@@ -105,11 +105,10 @@ export default function GiveTrust({ base }: Props) {
           data-reveal-stagger
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
-          {signals.map((s, i) => (
+          {signals.map((s) => (
             <article
               key={s.titleKey}
               className="relative bg-white/8 border border-[var(--color-cream)]/10 rounded-xl p-7 md:p-8"
-              style={{ "--reveal-delay": `${i * 0.1}s` } as React.CSSProperties}
             >
               <div className="text-[var(--color-accent)] mb-5">{s.icon}</div>
               <h3 className="font-heading text-xl md:text-2xl text-[var(--color-cream)] mb-3">

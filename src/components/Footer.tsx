@@ -19,7 +19,7 @@ export default function Footer({ base }: Props) {
     { href: `${base}contact/`,                  label: t('footer_utility_contact') },
   ];
 
-  const linkCls = 'inline-block py-1 text-[var(--color-cream)]/55 text-sm hover:text-[var(--color-accent-light)] transition-colors duration-300';
+  const linkCls = 'inline-block py-1 text-[var(--color-cream)]/70 text-sm hover:text-[var(--color-accent-light)] transition-colors duration-300';
 
   return (
     <footer className="relative green-gradient overflow-hidden text-[var(--color-cream)]">
@@ -34,7 +34,7 @@ export default function Footer({ base }: Props) {
               <img src={`${base}yes_logo_white.webp`} alt="Yielded Evangelical Servants" width={200} height={68} className="h-24 w-auto object-contain" />
             </a>
             <p className="font-heading text-[var(--color-cream)]/85 text-lg italic leading-snug max-w-xs mb-4">{t('brand_tagline')}</p>
-            <p className="text-[var(--color-cream)]/45 text-sm leading-relaxed max-w-sm">{t('brand_founded')}</p>
+            <p className="text-[var(--color-cream)]/65 text-sm leading-relaxed max-w-sm">{t('brand_founded')}</p>
           </div>
 
           {/* Links */}
@@ -50,7 +50,7 @@ export default function Footer({ base }: Props) {
           {/* Connect */}
           <div className="md:col-span-4">
             <h2 className="text-[var(--color-cream)]/80 text-xs font-semibold tracking-[0.16em] uppercase mb-4">{t('footer_connect')}</h2>
-            <address className="not-italic text-[var(--color-cream)]/55 text-sm leading-relaxed mb-4">
+            <address className="not-italic text-[var(--color-cream)]/70 text-sm leading-relaxed mb-4">
               PO Box 770308<br />Orlando, FL 32837<br />
               <a href="mailto:info@yeservants.org" className="inline-block py-1 hover:text-[var(--color-accent-light)] transition-colors duration-300">info@yeservants.org</a>
             </address>
@@ -72,14 +72,14 @@ export default function Footer({ base }: Props) {
         </p>
 
         <div className="border-t border-[var(--color-cream)]/10 pt-6 flex flex-col gap-3">
-          <p className="text-[var(--color-cream)]/35 text-xs leading-relaxed max-w-3xl">
-            {t('footer_legal')} <span className="text-[var(--color-cream)]/30">{t('footer_ein')}</span>
+          <p className="text-[var(--color-cream)]/65 text-xs leading-relaxed max-w-3xl">
+            {t('footer_legal')} <span className="text-[var(--color-cream)]/60">{t('footer_ein')}</span>
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-            <p className="text-[var(--color-cream)]/30 text-xs">{t('footer_copyright')}</p>
-            <p className="text-[var(--color-cream)]/20 text-xs">
+            <p className="text-[var(--color-cream)]/60 text-xs">{t('footer_copyright')}</p>
+            <p className="text-[var(--color-cream)]/60 text-xs">
               Designed by{' '}
-              <a href="https://www.fullstackevolved.com/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-cream)]/40 hover:text-[var(--color-accent-light)] transition-colors duration-300">FSEVO</a>
+              <a href="https://www.fullstackevolved.com/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-cream)]/75 hover:text-[var(--color-accent-light)] transition-colors duration-300">FSEVO</a>
             </p>
           </div>
         </div>

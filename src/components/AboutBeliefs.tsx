@@ -87,11 +87,10 @@ export default function AboutBeliefs({ base: _base }: Props) {
             className="absolute left-[2.75rem] top-6 bottom-6 w-px bg-[var(--color-accent)]/15 hidden md:block"
           />
 
-          {CONVICTIONS.map((c, i) => (
+          {CONVICTIONS.map((c) => (
             <li
               key={c.number}
               className="relative flex gap-8 md:gap-12 items-start py-8 border-b border-[var(--color-text)]/8 last:border-b-0"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               {/* Big Playfair number */}
               <span

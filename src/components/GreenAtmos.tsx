@@ -17,17 +17,20 @@ interface Props {
 
 // A small twinkling starfield — deterministic positions, varied delays so the
 // points fade in and out at different rhythms. (No Math.random → SSR-stable.)
+// Delay is baked into the class string as a Tailwind arbitrary value so the
+// markup carries no inline style attribute (CSP: strict style-src, no
+// 'unsafe-inline'). Tailwind JITs these literal classes at build time.
 const STARS = [
-  { c: 'left-[16%] top-[22%]',        d: '0s' },
-  { c: 'left-[82%] top-[18%] star-lg', d: '1.3s' },
-  { c: 'left-[68%] top-[12%]',        d: '2.6s' },
-  { c: 'left-[30%] top-[68%]',        d: '3.4s' },
-  { c: 'left-[88%] top-[54%]',        d: '4.1s' },
-  { c: 'left-[8%] top-[46%] star-lg',  d: '1.9s' },
-  { c: 'left-[46%] top-[14%]',        d: '5.2s' },
-  { c: 'left-[58%] top-[78%]',        d: '2.2s' },
-  { c: 'left-[92%] top-[34%]',        d: '3.9s' },
-  { c: 'left-[38%] top-[40%]',        d: '6.0s' },
+  'left-[16%] top-[22%] [animation-delay:0s]',
+  'left-[82%] top-[18%] star-lg [animation-delay:1.3s]',
+  'left-[68%] top-[12%] [animation-delay:2.6s]',
+  'left-[30%] top-[68%] [animation-delay:3.4s]',
+  'left-[88%] top-[54%] [animation-delay:4.1s]',
+  'left-[8%] top-[46%] star-lg [animation-delay:1.9s]',
+  'left-[46%] top-[14%] [animation-delay:5.2s]',
+  'left-[58%] top-[78%] [animation-delay:2.2s]',
+  'left-[92%] top-[34%] [animation-delay:3.9s]',
+  'left-[38%] top-[40%] [animation-delay:6.0s]',
 ];
 
 export default function GreenAtmos({ variant = 0 }: Props) {
@@ -42,7 +45,7 @@ export default function GreenAtmos({ variant = 0 }: Props) {
 
       {/* ── shared twinkling starfield ── */}
       {STARS.map((s, i) => (
-        <span key={i} className={`star ${s.c}`} style={{ animationDelay: s.d }} />
+        <span key={i} className={`star ${s}`} />
       ))}
 
       {/* a single slow ember drifting through the sky */}

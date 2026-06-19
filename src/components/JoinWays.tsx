@@ -113,12 +113,11 @@ export default function JoinWays({ base }: Props) {
         </div>
 
         <div data-reveal-stagger className="grid sm:grid-cols-2 gap-5 md:gap-6">
-          {ways.map((w, i) => (
+          {ways.map((w) => (
             <a
               key={w.num}
               href={w.href}
               className="group relative flex flex-col rounded-2xl bg-[var(--color-surface)] ring-1 ring-[var(--color-primary)]/[0.08] p-8 md:p-9 transition-all duration-300 hover:ring-[var(--color-accent)]/40 hover:shadow-[0_14px_40px_rgba(33,23,16,0.10)] hover:-translate-y-1"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               <div className="flex items-center justify-between mb-6">
                 <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent-deep)]">

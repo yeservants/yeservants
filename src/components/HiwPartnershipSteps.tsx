@@ -95,11 +95,10 @@ export default function HiwPartnershipSteps() {
             className="absolute left-[2.35rem] top-[3.5rem] bottom-[3.5rem] w-px bg-[var(--color-accent)]/15 hidden md:block"
           />
 
-          {STEPS.map((step, i) => (
+          {STEPS.map((step) => (
             <li
               key={step.num}
               data-reveal="mask"
-              style={{ '--reveal-delay': `${i * 0.1}s` } as React.CSSProperties}
               className="relative flex gap-6 md:gap-10 items-start pb-12 last:pb-0"
             >
               {/* Big Playfair orange number */}

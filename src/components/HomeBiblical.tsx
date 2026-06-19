@@ -79,11 +79,10 @@ export default function HomeBiblical({ base: _base }: Props) {
 
         {/* Four scripture cards */}
         <div data-reveal-stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <article
               key={card.ref}
               className="relative rounded-2xl border border-[var(--color-gold)]/25 bg-[var(--color-primary-deep)]/45 px-7 py-9 md:px-10 md:py-10"
-              style={{ '--reveal-delay': `${i * 0.09}s` } as React.CSSProperties}
             >
               <p className="text-[var(--color-gold-light)] text-xs tracking-[0.24em] uppercase font-semibold mb-5">
                 {t(card.ref)}

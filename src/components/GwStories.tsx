@@ -92,11 +92,7 @@ export default function GwStories({ photos }: Props) {
       {/* Atmospheric decorations */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 55% 45% at 15% 60%, rgba(232,117,26,0.07) 0%, transparent 65%)',
-        }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_55%_45%_at_15%_60%,rgba(232,117,26,0.07)_0%,transparent_65%)]"
       />
       <div aria-hidden="true" className="float-line h-[28vh] top-[12%] right-[8%]" />
       <svg

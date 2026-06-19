@@ -72,11 +72,7 @@ export default function HiwWhatSupportCovers() {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 50% 40% at 95% 10%, rgba(232,117,26,0.06) 0%, transparent 60%)',
-        }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_50%_40%_at_95%_10%,rgba(232,117,26,0.06)_0%,transparent_60%)]"
       />
       <div aria-hidden="true" className="float-cross top-[8%] left-[4%]" />
 
@@ -112,12 +108,11 @@ export default function HiwWhatSupportCovers() {
 
         {/* Two arrow-bullet lists — financial / logistical (footer anchor targets) */}
         <div data-reveal-stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {lists.map((list, i) => (
+          {lists.map((list) => (
             <article
               key={list.id}
               id={list.id}
               className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-10 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)] scroll-mt-32"
-              style={{ '--reveal-delay': `${i * 0.1}s` } as React.CSSProperties}
             >
               <h3 className="font-heading text-2xl md:text-3xl text-[var(--color-text)] mb-7">
                 {t(list.title)}

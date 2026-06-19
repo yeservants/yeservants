@@ -68,8 +68,8 @@ export default function AboutStats({ base: _base }: Props) {
           data-reveal-stagger
           className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10 border-y border-[var(--color-cream)]/10 py-12 mb-14"
         >
-          {stats.map((s, i) => (
-            <div key={s.label} className="text-center" style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}>
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
               <dd className="font-heading font-medium text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight text-[var(--color-gold-light)] mb-2 order-1">
                 {t(s.value)}
               </dd>

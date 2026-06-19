@@ -78,11 +78,10 @@ export default function MtDone({ base: _base }: Props) {
 
         {/* Arrow list — one item per line, generous space */}
         <ul data-reveal-stagger className="max-w-3xl" aria-label={t('mt_done_label')}>
-          {ITEMS.map((key, i) => (
+          {ITEMS.map((key) => (
             <li
               key={key}
               className="flex items-start gap-4 py-5 border-b border-[var(--color-primary)]/10 last:border-b-0"
-              style={{ '--reveal-delay': `${i * 0.07}s` } as React.CSSProperties}
             >
               <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
               <p className="text-[var(--color-text)]/85 text-lg md:text-xl leading-relaxed">{t(key)}</p>

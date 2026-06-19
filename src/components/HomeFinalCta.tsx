@@ -70,7 +70,7 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
             {/* Text */}
             <div className="lg:col-span-7">
               {/* Signature eyebrow */}
-              <p className="text-[var(--color-primary-deep)]/80 text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-7">
+              <p className="text-[var(--color-primary-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-7">
                 {t('home_cta_signature')}
               </p>
 
@@ -94,7 +94,7 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
               </a>
 
               {/* Contact line under the button */}
-              <p className="mt-8 text-[var(--color-primary-deep)]/70 text-sm tracking-wide">
+              <p className="mt-8 text-[var(--color-primary-deep)]/90 text-sm tracking-wide">
                 {t('home_cta_contact')}
               </p>
             </div>

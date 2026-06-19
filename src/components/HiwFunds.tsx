@@ -55,11 +55,7 @@ export default function HiwFunds({ base }: Props) {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 55% 40% at 10% 85%, rgba(45,82,51,0.06) 0%, transparent 60%)',
-        }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_55%_40%_at_10%_85%,rgba(45,82,51,0.06)_0%,transparent_60%)]"
       />
       <div aria-hidden="true" className="float-ring w-48 h-48 bottom-[5%] right-[3%] hidden lg:block" />
 
@@ -94,7 +90,6 @@ export default function HiwFunds({ base }: Props) {
               key={fund.title}
               role="listitem"
               className="relative overflow-hidden bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               {/* Ghost fund number — large faint watermark behind the content */}
               <span

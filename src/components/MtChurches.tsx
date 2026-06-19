@@ -72,11 +72,10 @@ export default function MtChurches({ base }: Props) {
         </p>
 
         <ul data-reveal-stagger className="max-w-2xl mx-auto text-left mb-12" aria-label={t('mt_church_label')}>
-          {ITEMS.map((key, i) => (
+          {ITEMS.map((key) => (
             <li
               key={key}
               className="flex items-start gap-4 py-4 border-b border-[var(--color-primary)]/10 last:border-b-0"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
               <p className="text-[var(--color-text)]/85 text-base md:text-lg leading-relaxed">{t(key)}</p>

@@ -74,11 +74,10 @@ export default function AboutStories({ base: _base }: Props) {
 
         {/* Three stories */}
         <div data-reveal-stagger className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {stories.map((s, i) => (
+          {stories.map((s) => (
             <article
               key={s.label}
               className="relative rounded-2xl border border-[var(--color-gold)]/20 bg-[var(--color-primary-deep)]/45 px-7 py-9"
-              style={{ '--reveal-delay': `${i * 0.09}s` } as React.CSSProperties}
             >
               <p className="text-[var(--color-gold-light)] text-xs tracking-[0.24em] uppercase font-semibold mb-5">
                 {t(s.label)}

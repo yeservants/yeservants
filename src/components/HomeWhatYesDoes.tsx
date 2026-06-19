@@ -93,15 +93,14 @@ export default function HomeWhatYesDoes({ base: _base }: Props) {
 
         {/* Two cards — orange top border, arrow bullets */}
         <div data-reveal-stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <article
               key={card.title}
               className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-10 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
-              style={{ '--reveal-delay': `${i * 0.1}s` } as React.CSSProperties}
             >
-              <h3 className="font-heading text-2xl md:text-3xl text-[var(--color-text)] mb-2">
+              <h2 className="font-heading text-2xl md:text-3xl text-[var(--color-text)] mb-2">
                 {card.title}
-              </h3>
+              </h2>
               <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.18em] uppercase font-semibold mb-7">
                 {card.sub}
               </p>

@@ -41,11 +41,7 @@ export default function GwCta({ base }: Props) {
       {/* Atmospheric decorations */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 55% at 50% 40%, rgba(232,117,26,0.07) 0%, transparent 65%)',
-        }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_55%_at_50%_40%,rgba(232,117,26,0.07)_0%,transparent_65%)]"
       />
       <div aria-hidden="true" className="float-line h-[35vh] top-[8%] left-[5%]" />
       <div aria-hidden="true" className="float-line h-[25vh] bottom-[10%] right-[7%]" />
@@ -91,11 +87,10 @@ export default function GwCta({ base }: Props) {
 
         {/* Three concrete examples — one per story (Philippines · Costa Rica · Honduras) */}
         <ul data-reveal-stagger className="mb-10 mx-auto max-w-2xl text-left space-y-4">
-          {(['gw_cta_bul_ph', 'gw_cta_bul_cr', 'gw_cta_bul_hn'] as const).map((key, i) => (
+          {(['gw_cta_bul_ph', 'gw_cta_bul_cr', 'gw_cta_bul_hn'] as const).map((key) => (
             <li
               key={key}
               className="flex items-start gap-4"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
               <p className="text-[var(--color-text)]/85 text-base md:text-lg leading-relaxed">{t(key)}</p>

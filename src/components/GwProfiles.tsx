@@ -72,11 +72,7 @@ export default function GwProfiles({ missionaries, base }: Props) {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 65% 55% at 80% 20%, rgba(232,117,26,0.06) 0%, transparent 65%)',
-        }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_65%_55%_at_80%_20%,rgba(232,117,26,0.06)_0%,transparent_65%)]"
       />
 
       <GreenAtmos variant={2} />
@@ -197,7 +193,6 @@ export default function GwProfiles({ missionaries, base }: Props) {
                 key={m.url ?? `worker-${i}`}
                 href={href}
                 className="group flex flex-col items-center text-center"
-                style={{ '--reveal-delay': `${i * 0.04}s` } as React.CSSProperties}
               >
                 {inner}
               </a>
@@ -205,7 +200,6 @@ export default function GwProfiles({ missionaries, base }: Props) {
               <div
                 key={`anon-${i}`}
                 className="flex flex-col items-center text-center"
-                style={{ '--reveal-delay': `${i * 0.04}s` } as React.CSSProperties}
               >
                 {inner}
               </div>

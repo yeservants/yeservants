@@ -118,11 +118,10 @@ export default function AboutWorkers({ base }: Props) {
           data-reveal-stagger
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-14"
         >
-          {WORKER_TYPES.map((wt, i) => (
+          {WORKER_TYPES.map((wt) => (
             <article
               key={wt.titleKey}
               className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
-              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
               {/* Icon */}
               <div className="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-5">

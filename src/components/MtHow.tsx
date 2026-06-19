@@ -102,11 +102,10 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
             </h2>
 
             <ul data-reveal-stagger className="flex flex-col gap-5" aria-label={t('mt_how_label')}>
-              {ITEMS.map((key, i) => (
+              {ITEMS.map((key) => (
                 <li
                   key={key}
                   className="flex items-start gap-4"
-                  style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
                 >
                   <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
                   <p className="text-[var(--color-text)]/85 text-base md:text-lg leading-[1.75]">

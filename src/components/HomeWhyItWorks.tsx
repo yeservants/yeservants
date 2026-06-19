@@ -80,11 +80,10 @@ export default function HomeWhyItWorks({ base: _base, sealSrc }: Props) {
           data-reveal-stagger
           className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 border-y border-[var(--color-primary)]/10 py-12"
         >
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <div
               key={stat.label}
               className="text-center"
-              style={{ '--reveal-delay': `${i * 0.09}s` } as React.CSSProperties}
             >
               <p className="font-heading font-medium text-[clamp(2.2rem,5.5vw,4rem)] leading-none mb-2 text-[var(--color-primary)]">
                 {stat.value}
