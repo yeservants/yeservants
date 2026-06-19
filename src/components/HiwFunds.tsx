@@ -93,22 +93,24 @@ export default function HiwFunds({ base }: Props) {
             <article
               key={fund.title}
               role="listitem"
-              className="relative bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
+              className="relative overflow-hidden bg-white/60 border-t-2 border-[var(--color-accent)] rounded-xl p-7 md:p-8 shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)]"
               style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
             >
-              {/* Fund number watermark */}
+              {/* Ghost fund number — large faint watermark behind the content */}
               <span
                 aria-hidden="true"
-                className="absolute top-5 right-7 font-heading font-bold text-[4rem] leading-none text-[var(--color-accent)]/08 select-none pointer-events-none"
+                className="absolute bottom-4 right-6 font-heading font-bold text-[6rem] leading-none text-[var(--color-accent)] opacity-[0.10] select-none pointer-events-none z-0"
               >
                 {String(i + 1)}
               </span>
-              <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-4 relative z-10">
-                {t(fund.title)}
-              </h3>
-              <p className="prose-yes text-[var(--color-text-muted)] leading-relaxed text-base">
-                {t(fund.body)}
-              </p>
+              <div className="relative z-10">
+                <h3 className="font-heading text-xl md:text-2xl text-[var(--color-text)] mb-4">
+                  {t(fund.title)}
+                </h3>
+                <p className="prose-yes text-[var(--color-text-muted)] leading-relaxed text-base">
+                  {t(fund.body)}
+                </p>
+              </div>
             </article>
           ))}
         </div>

@@ -21,14 +21,14 @@ const yespicModules = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 // ── Field stories photos ───────────────────────────────────────────────────
-// Stand-in field photos (no location-verified photos for these stories)
+// Same location-verified photos used on the homepage letter (CR · HN · PH).
 const storySrcs: Array<{ key: string; w: number; h: number }> = [
-  // Bajo Rodríguez CR — stand-in
-  { key: '/src/assets/images/yespic/1.jpg', w: 720, h: 480 },
-  // Mata Hambre HN — stand-in
-  { key: '/src/assets/images/yespic/9.jpg', w: 720, h: 480 },
-  // Ozamiz PH — stand-in
-  { key: '/src/assets/images/BocaTrip.png', w: 720, h: 480 },
+  // Bajo Rodríguez, Costa Rica
+  { key: '/src/assets/images/yespic/costa-rica-bajo-rodriguez.jpg', w: 720, h: 480 },
+  // Mata Hambre, Honduras
+  { key: '/src/assets/images/yespic/honduras-mata-hambre.jpg', w: 720, h: 480 },
+  // Ozamiz, Philippines
+  { key: '/src/assets/images/yespic/philippines-ozamiz.jpg', w: 720, h: 480 },
 ];
 
 const storyPhotos = await Promise.all(

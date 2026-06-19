@@ -81,6 +81,7 @@ export default function Nav({ base }: Props) {
 
   /* ── FINAL v2 primary navigation ──────────────────────────── */
   const links = [
+    { href: base,                    label: t('nav_home') },
     { href: `${base}about/`,         label: t('nav_aboutYes') },
     { href: `${base}missionaries/`,  label: t('nav_missionaries') },
     { href: `${base}how-it-works/`,  label: t('nav_howItWorks') },
@@ -88,7 +89,6 @@ export default function Nav({ base }: Props) {
     { href: `${base}contact/`,       label: t('nav_contact') },
   ];
   const mobileLinks = [
-    { href: base,                     label: t('nav_home') },
     ...links,
     { href: `${base}give/`,           label: t('nav_give') },
   ];
