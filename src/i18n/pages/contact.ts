@@ -40,8 +40,15 @@ export const contact = {
     contact_form_subject_other: 'Other',
     contact_form_message: 'Message',
     contact_form_submit: 'Send Message',
+    contact_form_sending: 'Sending…',
     contact_form_note:
       'Submitting opens your email app with your message addressed to info@yeservants.org.',
+    contact_form_note_inbox:
+      'Your message goes straight to the YES team. We typically reply within a few days.',
+    contact_form_success:
+      'Thank you — your message is on its way. We will be in touch soon.',
+    contact_form_error:
+      'Something went wrong sending your message. Please try again, or email us directly at info@yeservants.org.',
 
     /* ── Close — John 13:35 ──────────────────────────────── */
     contact_close_quote:
@@ -85,8 +92,15 @@ export const contact = {
     contact_form_subject_other: 'Otro',
     contact_form_message: 'Mensaje',
     contact_form_submit: 'Enviar Mensaje',
+    contact_form_sending: 'Enviando…',
     contact_form_note:
       'Al enviar se abrirá tu aplicación de correo con el mensaje dirigido a info@yeservants.org.',
+    contact_form_note_inbox:
+      'Tu mensaje llega directamente al equipo de YES. Normalmente respondemos en unos pocos días.',
+    contact_form_success:
+      'Gracias — tu mensaje va en camino. Nos pondremos en contacto pronto.',
+    contact_form_error:
+      'Hubo un problema al enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente a info@yeservants.org.',
 
     /* ── Cierre — Juan 13:35 ─────────────────────────────── */
     contact_close_quote:

@@ -5,7 +5,11 @@ import type { TranslationKey } from '../i18n/translations';
 
 interface Props {
   base: string;
+  /** Web3Forms access key. Empty string → form falls back to mailto:. */
+  web3formsKey?: string;
 }
+
+type SubmitState = 'idle' | 'sending' | 'success' | 'error';
 
 const SUBJECTS: TranslationKey[] = [
   'contact_form_subject_partner',
@@ -17,10 +21,11 @@ const SUBJECTS: TranslationKey[] = [
 
 /**
  * Contact — two columns (FINAL v2: info left, form right) + centered
- * John 13:35 close. Static site: the form composes a mailto: message.
- * CLIENT: wire a form service (e.g. Formspree) if inbox submission is preferred.
+ * John 13:35 close. Static site: the form POSTs to Web3Forms (no backend) so
+ * submissions land in the YES inbox. If no access key is configured it falls
+ * back to composing a mailto: message.
  */
-export default function ContactBody({ base }: Props) {
+export default function ContactBody({ base, web3formsKey = '' }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -28,6 +33,7 @@ export default function ContactBody({ base }: Props) {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState<TranslationKey>('contact_form_subject_partner');
   const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<SubmitState>('idle');
 
   useEffect(() => {
     const root = ref.current;
@@ -52,11 +58,48 @@ export default function ContactBody({ base }: Props) {
     return () => io.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const sendViaMailto = () => {
     const mailSubject = encodeURIComponent(`[${t(subject)}] ${name}`.trim());
     const mailBody = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
     window.location.href = `mailto:info@yeservants.org?subject=${mailSubject}&body=${mailBody}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // No key configured → keep the original mailto behaviour.
+    if (!web3formsKey) {
+      sendViaMailto();
+      return;
+    }
+
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          name,
+          email,
+          subject: `[${t(subject)}] ${name}`.trim(),
+          message,
+          from_name: 'YES Website Contact Form',
+        }),
+      });
+      const data: { success?: boolean } = await res.json();
+      if (res.ok && data.success) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setSubject('contact_form_subject_partner');
+        setMessage('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const inputCls =
@@ -185,13 +228,25 @@ export default function ContactBody({ base }: Props) {
               <div>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex justify-center px-9 py-4 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]"
+                  disabled={status === 'sending'}
+                  className="w-full sm:w-auto inline-flex justify-center px-9 py-4 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {t('contact_form_submit')}
+                  {status === 'sending' ? t('contact_form_sending') : t('contact_form_submit')}
                 </button>
-                <p className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed">
-                  {t('contact_form_note')}
-                </p>
+
+                {status === 'success' ? (
+                  <p role="status" className="mt-3 text-[var(--color-accent-deep)] text-sm font-semibold leading-relaxed">
+                    {t('contact_form_success')}
+                  </p>
+                ) : status === 'error' ? (
+                  <p role="alert" className="mt-3 text-[#A8201A] text-sm font-semibold leading-relaxed">
+                    {t('contact_form_error')}
+                  </p>
+                ) : (
+                  <p className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed">
+                    {web3formsKey ? t('contact_form_note_inbox') : t('contact_form_note')}
+                  </p>
+                )}
               </div>
             </form>
           </div>

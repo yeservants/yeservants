@@ -6,6 +6,11 @@ import ContactBody from '../../components/ContactBody';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
+// Web3Forms access key (free, from web3forms.com — safe to expose by design).
+// Set PUBLIC_WEB3FORMS_KEY in the build env (.env or the GitHub Actions workflow).
+// While empty, the form gracefully falls back to a mailto: link.
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+
 const description =
   'Whether you want to become a partner, send a team, ask about a specific worker, or just learn more — we want to hear from you.';
 ---
@@ -20,7 +25,7 @@ const description =
   />
 
   <!-- Two columns: info left, form right + John 13:35 close -->
-  <ContactBody base={base} client:visible />
+  <ContactBody base={base} web3formsKey={web3formsKey} client:visible />
 
   <Footer base={base} client:visible />
 </BaseLayout>
