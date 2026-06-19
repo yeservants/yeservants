@@ -65,11 +65,18 @@ export default function AboutStory({ storyImage }: Props) {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Prose */}
           <div className="lg:col-span-7">
-            <div className="prose-yes text-lg leading-[1.8] text-[var(--color-text)]/85 max-w-3xl">
+            <div className="prose-yes space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85 max-w-3xl">
               <p data-reveal="fade">{t('about_story_para1')}</p>
-              <p data-reveal="fade" style={{ '--reveal-delay': '0.08s' } as React.CSSProperties}>
-                {t('about_story_para2')}
+              <p data-reveal="fade">{t('about_story_para1b')}</p>
+              <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
+                {t('about_story_emph1')}
               </p>
+              <p data-reveal="fade">{t('about_story_para1c')}</p>
+              <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
+                {t('about_story_emph2')}
+              </p>
+              <p data-reveal="fade">{t('about_story_para1d')}</p>
+              <p data-reveal="fade">{t('about_story_para2')}</p>
             </div>
 
             {/* Pull-quote — "the gap YES was built to fill" */}

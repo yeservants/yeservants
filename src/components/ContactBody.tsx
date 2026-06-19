@@ -10,6 +10,7 @@ interface Props {
 const SUBJECTS: TranslationKey[] = [
   'contact_form_subject_partner',
   'contact_form_subject_trip',
+  'contact_form_subject_accounting',
   'contact_form_subject_general',
   'contact_form_subject_other',
 ];
@@ -19,7 +20,7 @@ const SUBJECTS: TranslationKey[] = [
  * John 13:35 close. Static site: the form composes a mailto: message.
  * CLIENT: wire a form service (e.g. Formspree) if inbox submission is preferred.
  */
-export default function ContactBody({ base: _base }: Props) {
+export default function ContactBody({ base }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -84,15 +85,16 @@ export default function ContactBody({ base: _base }: Props) {
 
             <div className="rounded-2xl bg-white/60 border-t-2 border-[var(--color-accent)] shadow-[0_18px_40px_-24px_rgba(33,23,16,0.35)] px-7 py-4">
               {infoRow(
-                'Web',
-                <a href="https://yeservants.org" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-deep)] hover:underline">
-                  {t('contact_info_website')}
-                </a>
-              )}
-              {infoRow(
                 'Email',
                 <a href="mailto:info@yeservants.org" className="text-[var(--color-accent-deep)] hover:underline">
                   {t('contact_info_email')}
+                </a>
+              )}
+              {/* CLIENT: confirm accounting@yeservants.org is active and monitored before launch */}
+              {infoRow(
+                t('contact_info_accounting_label'),
+                <a href="mailto:accounting@yeservants.org" className="text-[var(--color-accent-deep)] hover:underline">
+                  {t('contact_info_accounting')}
                 </a>
               )}
               {infoRow(t('contact_info_phone_label'), <a href="tel:4074985128" className="hover:underline">407-498-5128</a>)}
@@ -100,8 +102,21 @@ export default function ContactBody({ base: _base }: Props) {
                 t('contact_info_address_label'),
                 <address className="not-italic leading-relaxed">PO Box 770308<br />{t('contact_info_location')} 32837</address>
               )}
-              {/* CLIENT: provide EIN number */}
               {infoRow('501(c)(3)', <span>{t('contact_info_org')}</span>)}
+              {infoRow(
+                t('contact_info_transparency_label'),
+                <span className="flex items-center gap-3">
+                  <img
+                    src={`${base}images/candid-seal-platinum-2025.png`}
+                    alt="Candid Platinum Transparency 2025 seal"
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    className="w-10 h-10 shrink-0"
+                  />
+                  {t('contact_info_transparency')}
+                </span>
+              )}
             </div>
           </div>
 

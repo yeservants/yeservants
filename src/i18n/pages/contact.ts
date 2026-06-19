@@ -18,10 +18,13 @@ export const contact = {
 
     /* ── Info column ─────────────────────────────────────── */
     contact_info_label: 'Contact Information',
-    contact_info_website: 'yeservants.org',
     contact_info_email: 'info@yeservants.org',
+    contact_info_accounting_label: 'Accounting',
+    contact_info_accounting: 'accounting@yeservants.org',
     contact_info_location: 'Orlando, FL',
-    contact_info_org: '501(c)(3) — EIN: [number]',
+    contact_info_org: '501(c)(3), EIN: 54-1558343',
+    contact_info_transparency_label: 'Transparency',
+    contact_info_transparency: 'Platinum-rated on Candid',
     contact_info_address_label: 'Mailing Address',
     contact_info_phone_label: 'Phone',
 
@@ -32,6 +35,7 @@ export const contact = {
     contact_form_subject: 'Subject',
     contact_form_subject_partner: 'Partner inquiry',
     contact_form_subject_trip: 'Mission trip',
+    contact_form_subject_accounting: 'Accounting / records request',
     contact_form_subject_general: 'General',
     contact_form_subject_other: 'Other',
     contact_form_message: 'Message',
@@ -59,10 +63,13 @@ export const contact = {
 
     /* ── Columna de información ──────────────────────────── */
     contact_info_label: 'Información de Contacto',
-    contact_info_website: 'yeservants.org',
     contact_info_email: 'info@yeservants.org',
+    contact_info_accounting_label: 'Contabilidad',
+    contact_info_accounting: 'accounting@yeservants.org',
     contact_info_location: 'Orlando, FL',
-    contact_info_org: '501(c)(3) — EIN: [número]',
+    contact_info_org: '501(c)(3), EIN: 54-1558343',
+    contact_info_transparency_label: 'Transparencia',
+    contact_info_transparency: 'Calificación Platino en Candid',
     contact_info_address_label: 'Dirección Postal',
     contact_info_phone_label: 'Teléfono',
 
@@ -73,6 +80,7 @@ export const contact = {
     contact_form_subject: 'Asunto',
     contact_form_subject_partner: 'Consulta de asociación',
     contact_form_subject_trip: 'Viaje misionero',
+    contact_form_subject_accounting: 'Contabilidad / registros',
     contact_form_subject_general: 'General',
     contact_form_subject_other: 'Otro',
     contact_form_message: 'Mensaje',

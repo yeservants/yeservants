@@ -24,7 +24,7 @@ export const missionTeams = {
     mt_how_i1:
       "Serve under the direction of field workers who know the community. We don't go and do our own thing. We go and strengthen theirs.",
     mt_how_i2:
-      'Complete meaningful, purposeful work — construction, medical care, teaching, training — that the long-term worker has identified as a priority.',
+      "Complete meaningful, purposeful work, construction, medical care, teaching, training, that the long-term worker has identified as a priority. And every project carries an evangelistic heart: as the team serves, they build relationships with the children and families of the community, and when the work is finished, that community is invited into the local church's service. The roof gets fixed. The connection to the church is what stays.",
     mt_how_i3:
       'Build genuine relationships between your church and field workers that continue long after the team comes home.',
     mt_how_i4:
@@ -34,17 +34,20 @@ export const missionTeams = {
     /* ── Block 2 — What Our Teams Have Done ──────────────── */
     mt_done_label: 'What Our Teams Have Done',
     mt_done_headline: 'Real Work, Identified by the Workers Themselves.',
-    mt_done_i1: 'Church roofs replaced in rural Costa Rica',
-    mt_done_i2: 'Home restoration for missionary families in Honduras',
+    mt_done_i1: 'Church roofs and buildings repaired so congregations can keep gathering',
+    mt_done_i2: 'Homes restored for missionary and pastor families',
     mt_done_i3: 'Medical outreach in underserved communities',
-    mt_done_i4: 'School construction for low-income families in the Philippines',
-    mt_done_i5: 'Evangelism alongside local pastors across multiple nations',
+    mt_done_i4: 'Schools built for children who had nowhere else to learn',
+    mt_done_i5:
+      'Evangelism alongside local pastors, with whole communities introduced to a local church for the first time',
+    mt_done_closing:
+      'These are not isolated projects in a handful of countries. This is the pattern, wherever YES sends a team. And the change runs both directions: real stories, real people, real transformation — not just for the communities served, but for everyone who goes.',
 
-    /* ── Block 3 — For Churches ──────────────────────────── */
-    mt_church_label: 'For Churches',
+    /* ── Block 3 — For Churches, Schools, and Teams ──────── */
+    mt_church_label: 'For Churches, Schools, and Teams',
     mt_church_headline: 'Invest in Global Mission in a Serious, Sustained, Accountable Way.',
     mt_church_intro:
-      'YES partners with local churches who want to invest in global mission in a serious, sustained, accountable way.',
+      "YES partners with churches, schools, universities, and companies who want to invest in global mission in a serious, sustained, accountable way. Whether it's a congregation, a graduating class, or a team from your workplace, the same conviction applies: this is not a sightseeing trip. It is real work, alongside real people, that leaves something behind that lasts.",
     mt_church_i1: 'Connect with real field workers doing real ministry in real places',
     mt_church_i2: 'Send teams that strengthen the work instead of creating dependency',
     mt_church_i3:
@@ -69,7 +72,7 @@ export const missionTeams = {
     mt_how_i1:
       'Sirven bajo la dirección de trabajadores de campo que conocen la comunidad. No vamos a hacer lo nuestro. Vamos a fortalecer lo de ellos.',
     mt_how_i2:
-      'Completan trabajo significativo y con propósito — construcción, atención médica, enseñanza, entrenamiento — que el trabajador a largo plazo ha identificado como prioridad.',
+      'Completan trabajo significativo y con propósito, construcción, atención médica, enseñanza, entrenamiento, que el trabajador a largo plazo ha identificado como prioridad. Y cada proyecto lleva un corazón evangelístico: mientras el equipo sirve, construye relaciones con los niños y las familias de la comunidad, y cuando el trabajo termina, esa comunidad es invitada al servicio de la iglesia local. El techo queda reparado. La conexión con la iglesia es lo que permanece.',
     mt_how_i3:
       'Construyen relaciones genuinas entre tu iglesia y los trabajadores de campo que continúan mucho después de que el equipo vuelve a casa.',
     mt_how_i4:
@@ -79,17 +82,20 @@ export const missionTeams = {
     /* ── Bloque 2 — Lo Que Nuestros Equipos Han Hecho ────── */
     mt_done_label: 'Lo Que Nuestros Equipos Han Hecho',
     mt_done_headline: 'Trabajo Real, Identificado por los Propios Trabajadores.',
-    mt_done_i1: 'Techos de iglesias reemplazados en zonas rurales de Costa Rica',
-    mt_done_i2: 'Restauración de hogares para familias misioneras en Honduras',
+    mt_done_i1: 'Techos y edificios de iglesias reparados para que las congregaciones puedan seguir reuniéndose',
+    mt_done_i2: 'Hogares restaurados para familias de misioneros y pastores',
     mt_done_i3: 'Jornadas médicas en comunidades desatendidas',
-    mt_done_i4: 'Construcción de escuelas para familias de bajos recursos en Filipinas',
-    mt_done_i5: 'Evangelismo junto a pastores locales en múltiples naciones',
+    mt_done_i4: 'Escuelas construidas para niños que no tenían otro lugar donde aprender',
+    mt_done_i5:
+      'Evangelismo junto a pastores locales, con comunidades enteras presentadas por primera vez a una iglesia local',
+    mt_done_closing:
+      'No son proyectos aislados en un puñado de países. Este es el patrón, dondequiera que YES envía un equipo. Y el cambio corre en ambas direcciones: historias reales, personas reales, transformación real — no solo para las comunidades servidas, sino para todos los que van.',
 
-    /* ── Bloque 3 — Para Iglesias ────────────────────────── */
-    mt_church_label: 'Para Iglesias',
+    /* ── Bloque 3 — Para Iglesias, Escuelas y Equipos ────── */
+    mt_church_label: 'Para Iglesias, Escuelas y Equipos',
     mt_church_headline: 'Invierte en la Misión Global de Manera Seria, Sostenida y Responsable.',
     mt_church_intro:
-      'YES se asocia con iglesias locales que quieren invertir en la misión global de manera seria, sostenida y responsable.',
+      'YES se asocia con iglesias, escuelas, universidades y empresas que quieren invertir en la misión global de manera seria, sostenida y responsable. Ya sea una congregación, una clase que se gradúa, o un equipo de tu lugar de trabajo, aplica la misma convicción: esto no es un viaje turístico. Es trabajo real, junto a personas reales, que deja algo que perdura.',
     mt_church_i1: 'Conéctate con trabajadores de campo reales haciendo ministerio real en lugares reales',
     mt_church_i2: 'Envía equipos que fortalezcan el trabajo en lugar de crear dependencia',
     mt_church_i3:

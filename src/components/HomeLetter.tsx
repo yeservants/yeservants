@@ -4,7 +4,6 @@ import { useLang } from '../i18n/useLang';
 
 interface StoryImg {
   src: string;
-  alt: string;
 }
 
 interface Props {
@@ -87,20 +86,10 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
           <div data-reveal="fade" className="lg:col-span-7 order-2 lg:order-1">
             {locationLabel(t('home_letter_cr_label'))}
             <div className="space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85">
-              <p>{t('home_letter_cr_p1')}</p>
-            </div>
-
-            {/* isolated impact line — given its own silence */}
-            <p
-              data-reveal="mask"
-              className="font-heading italic text-[var(--color-text)] text-[clamp(1.4rem,2.8vw,2rem)] leading-snug text-center py-10 md:py-12"
-            >
-              {t('home_letter_cr_iso')}
-            </p>
-
-            <div className="space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85">
-              <p>{t('home_letter_cr_p2')}</p>
-              <p>{t('home_letter_cr_p3')}</p>
+              <p>
+                {t('home_letter_cr_p1')} {t('home_letter_cr_iso')}{' '}
+                {t('home_letter_cr_p2')} {t('home_letter_cr_p3')}
+              </p>
             </div>
 
             <blockquote
@@ -115,8 +104,7 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
             <figure className="relative">
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 translate-x-3 translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
-                {/* CLIENT: replace stand-in with verified Bajo Rodriguez photo */}
-                <img src={crImg.src} alt={crImg.alt} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <img src={crImg.src} alt={t('home_letter_cr_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
               </div>
             </figure>
           </div>
@@ -128,8 +116,7 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
             <figure className="relative">
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 -translate-x-3 translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
-                {/* CLIENT: replace stand-in with verified Mata Hambre photo */}
-                <img src={hnImg.src} alt={hnImg.alt} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <img src={hnImg.src} alt={t('home_letter_hn_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
               </div>
             </figure>
           </div>
@@ -150,21 +137,13 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
             <div className="space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85">
               <p>{t('home_letter_ph_p1')}</p>
             </div>
-
-            <p
-              data-reveal="mask"
-              className="font-heading italic text-[var(--color-accent-deep)] text-[clamp(1.4rem,2.8vw,2rem)] leading-snug text-center py-10 md:py-12"
-            >
-              {t('home_letter_ph_iso')}
-            </p>
           </div>
 
           <div data-reveal="mask" className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-32">
             <figure className="relative">
               <div aria-hidden="true" className="absolute -inset-2.5 rounded-[1.2rem] border border-[var(--color-accent)]/20 translate-x-3 -translate-y-3 pointer-events-none" />
               <div className="relative overflow-hidden rounded-[1rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/3]">
-                {/* CLIENT: replace stand-in with verified Ozamiz photo */}
-                <img src={phImg.src} alt={phImg.alt} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
+                <img src={phImg.src} alt={t('home_letter_ph_alt')} loading="lazy" width={720} height={540} className="w-full h-full object-cover" />
               </div>
             </figure>
           </div>

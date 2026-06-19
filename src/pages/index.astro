@@ -16,10 +16,13 @@ import hero2Src from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
 import hero3Src from '../assets/images/yespic/IMG-20240810-WA0009.jpg';
 import hero4Src from '../assets/images/yespic/9.jpg';
 
-// Letter story photos — stand-ins; CLIENT must replace with verified location photos
-import crSrc from '../assets/images/yespic/1.jpg';                   // Bajo Rodriguez, Costa Rica
-import hnSrc from '../assets/images/yespic/IMG-20240810-WA0007.jpg'; // Mata Hambre, Honduras
-import phSrc from '../assets/images/yespic/2.jpg';                   // Ozamiz, Philippines
+// Letter story photos — verified field photography per location
+import crSrc from '../assets/images/yespic/costa-rica-bajo-rodriguez.jpg'; // Bajo Rodriguez, Costa Rica
+import hnSrc from '../assets/images/yespic/honduras-mata-hambre.jpg';      // Mata Hambre, Honduras
+import phSrc from '../assets/images/yespic/philippines-ozamiz.jpg';        // Ozamiz, Philippines
+
+// Andrés González — President of YES (Final CTA portrait)
+import andresSrc from '../assets/images/andres.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -30,10 +33,12 @@ const heroImages = (
   )
 ).map((img) => img.src);
 
-/* CLIENT: replace stand-in photos with verified field photos for each location */
 const crImg = await getImage({ src: crSrc, format: 'webp', width: 720, height: 540, quality: 82 });
 const hnImg = await getImage({ src: hnSrc, format: 'webp', width: 720, height: 540, quality: 82 });
 const phImg = await getImage({ src: phSrc, format: 'webp', width: 720, height: 540, quality: 82 });
+
+/* CLIENT: Andrés' current field photo; an in-action ministry shot may replace it if available */
+const andresImg = await getImage({ src: andresSrc, format: 'webp', width: 640, height: 720, quality: 82 });
 
 // FINAL v2 meta description (homepage)
 const description =
@@ -50,9 +55,9 @@ const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
   {/* Block 1 (cont.) — What I've Seen: the letter body with the three field stories */}
   <HomeLetter
     base={base}
-    crImg={{ src: crImg.src, alt: "A faithful pastor and his congregation in Bajo Rodriguez, Costa Rica — stand-in photo" }}
-    hnImg={{ src: hnImg.src, alt: "Gospel workers serving in the Mata Hambre community, Honduras — stand-in photo" }}
-    phImg={{ src: phImg.src, alt: "Ministry leaders serving in Ozamiz, Philippines — stand-in photo" }}
+    crImg={{ src: crImg.src }}
+    hnImg={{ src: hnImg.src }}
+    phImg={{ src: phImg.src }}
     client:visible
   />
 
@@ -68,8 +73,12 @@ const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
   {/* Block 5 — The Biblical Foundation (4 scripture cards) */}
   <HomeBiblical base={base} client:visible />
 
-  {/* Block 6 — Final CTA (orange box, signed by Andres) */}
-  <HomeFinalCta base={base} client:visible />
+  {/* Block 6 — Final CTA (orange box, signed by Andres, with his photo) */}
+  <HomeFinalCta
+    base={base}
+    andresImg={{ src: andresImg.src }}
+    client:visible
+  />
 
   <Footer base={base} client:visible />
 </BaseLayout>

@@ -16,7 +16,15 @@ export const about = {
     about_story_eyebrow: 'Our Beginning',
     about_story_headline: 'The People Who Built YES Were Missionaries.',
     about_story_para1:
-      'Not people who studied missions — people who went. Who learned languages nobody at home spoke. Who buried neighbors. Who stayed when leaving would have been easier.',
+      'Bernie and Jean LaTour were trained by New Tribes Mission. They studied language and in 1973 traveled to Venezuela, to the Amazon, to live and work among the Yanomami.',
+    about_story_para1b:
+      'Jean treated snake bites and machete wounds as the camp nurse. Bernie printed and distributed Scripture translated into tribal languages. They worked in the dorms for missionary children. They saw from the inside what it costs to serve in a remote place and what missionaries and their families actually need.',
+    about_story_emph1: "They didn't theorize about what missionaries need. They lived it.",
+    about_story_para1c:
+      "When they returned to the States, that knowledge didn't leave them. In 1988, Bernie became Director of Missions at a church in Virginia. A group of missionaries approached him. They needed someone to handle their financial support. The church couldn't do it.",
+    about_story_emph2: 'So Bernie built something that could.',
+    about_story_para1d:
+      "With the Lord's guidance, YES became a reality in 1990. Not as a theory. As a direct response to a real need, from people who had been in the field and understood from experience what faithful workers were missing.",
     about_story_para2:
       "After years in the field, they saw something that wouldn't let them go: the most faithful workers were the least supported. Not because they lacked calling. Not because they lacked fruit. Because nobody was looking for them.",
     about_story_quote: "That's the gap YES was built to fill. And we've been filling it for 35 years.",
@@ -91,6 +99,22 @@ export const about = {
     about_stats_5_value: '501(c)(3) nonprofit',
     about_stats_quote:
       "We don't parachute in. We build relationships, stay for the long term, and structure everything so local leaders are empowered, not dependent.",
+
+    /* ── The Person Behind YES (Andrés) ──────────────────── */
+    about_person_label: 'The Person Behind YES',
+    about_person_name: 'Andrés González',
+    about_person_title: 'President, YES — Yielded Evangelical Servants',
+    about_person_lead:
+      'I came to this work the same way our founders did. Not from a distance, but from the field.',
+    about_person_p1:
+      "I've been to Costa Rica, Honduras, Colombia, Guatemala, Venezuela, Mexico. I've sat with pastors carrying far more than anyone should carry alone. I've seen what happens when faithful workers finally have someone standing with them.",
+    about_person_p2:
+      "And through the people I walk closely with — missionaries and leaders serving in the Philippines, Kenya, Uganda, Equatorial Guinea, Egypt, Romania, Indonesia, and beyond — I've come to understand that what we saw in Latin America is not regional.",
+    about_person_emph1: 'It is the pattern.',
+    about_person_emph2: 'Faithful workers. Real fruit. Almost no support.',
+    about_person_p3:
+      'That is the work YES exists to change. And it is the work I have given my life to.',
+    about_person_photo_alt: 'Andrés González, President of YES, in the field',
   },
 
   es: {
@@ -104,7 +128,15 @@ export const about = {
     about_story_eyebrow: 'El Inicio',
     about_story_headline: 'Las personas que construyeron YES eran misioneros.',
     about_story_para1:
-      'No personas que estudiaron misiones — personas que fueron. Que aprendieron idiomas que nadie hablaba en casa. Que enterraron vecinos. Que se quedaron cuando irse habría sido más fácil.',
+      'Bernie y Jean LaTour se entrenaron con New Tribes Mission. Estudiaron el idioma y en 1973 viajaron a Venezuela, a la Amazonía, para vivir y trabajar entre los Yanomami.',
+    about_story_para1b:
+      'Jean atendía mordeduras de serpiente y heridas de machete como enfermera del campamento. Bernie imprimía y distribuía las Escrituras traducidas a las lenguas tribales. Trabajaron en los dormitorios de los hijos de misioneros. Vieron desde adentro lo que cuesta servir en un lugar remoto — y lo que los misioneros y sus familias realmente necesitan.',
+    about_story_emph1: 'No teorizaron sobre lo que necesitan los misioneros. Lo vivieron.',
+    about_story_para1c:
+      'Cuando regresaron a los Estados Unidos, ese conocimiento no los abandonó. En 1988, Bernie llegó a ser Director de Misiones en una iglesia en Virginia. Un grupo de misioneros se le acercó. Necesitaban a alguien que manejara su apoyo financiero. La iglesia no podía hacerlo.',
+    about_story_emph2: 'Así que Bernie construyó algo que sí podía.',
+    about_story_para1d:
+      'Con la guía del Señor, YES se hizo realidad en 1990. No como una teoría. Como una respuesta directa a una necesidad real — de personas que habían estado en el campo y entendían por experiencia lo que les faltaba a los obreros fieles.',
     about_story_para2:
       'Después de años en el campo, vieron algo que no los dejó en paz: los obreros más fieles eran los menos apoyados. No por falta de llamado. No por falta de fruto. Porque nadie los estaba buscando.',
     about_story_quote:
@@ -181,5 +213,21 @@ export const about = {
     about_stats_5_value: 'Sin fines de lucro 501(c)(3)',
     about_stats_quote:
       'No llegamos en paracaídas. Construimos relaciones, nos quedamos a largo plazo y estructuramos todo para que los líderes locales sean empoderados, no dependientes.',
+
+    /* ── La Persona Detrás de YES (Andrés) ───────────────── */
+    about_person_label: 'La Persona Detrás de YES',
+    about_person_name: 'Andrés González',
+    about_person_title: 'Presidente, YES — Yielded Evangelical Servants',
+    about_person_lead:
+      'Llegué a esta obra de la misma manera que nuestros fundadores. No desde la distancia, sino desde el campo.',
+    about_person_p1:
+      'He estado en Costa Rica, Honduras, Colombia, Guatemala, Venezuela, México. Me he sentado con pastores que cargan mucho más de lo que nadie debería cargar solo. He visto lo que sucede cuando los obreros fieles por fin tienen a alguien a su lado.',
+    about_person_p2:
+      'Y a través de las personas con quienes camino de cerca — misioneros y líderes sirviendo en Filipinas, Kenia, Uganda, Guinea Ecuatorial, Egipto, Rumania, Indonesia y más allá — he llegado a entender que lo que vimos en América Latina no es regional.',
+    about_person_emph1: 'Es el patrón.',
+    about_person_emph2: 'Obreros fieles. Fruto real. Casi ningún apoyo.',
+    about_person_p3:
+      'Esa es la obra que YES existe para cambiar. Y es la obra a la que he entregado mi vida.',
+    about_person_photo_alt: 'Andrés González, Presidente de YES, en el campo',
   },
 } as const;

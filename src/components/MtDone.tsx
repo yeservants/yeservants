@@ -16,9 +16,10 @@ interface Props {
 }
 
 /**
- * Mission Teams Block 2 — What Our Teams Have Done. Five concrete examples
- * (roofs in Costa Rica, restoration in Honduras, medical outreach, schools in
- * the Philippines, evangelism with local pastors).
+ * Mission Teams Block 2 — What Our Teams Have Done. Five generalized work types
+ * (church roofs/buildings, home restoration, medical outreach, schools,
+ * evangelism with local pastors) — not tied to single countries — plus a
+ * closing line on the pattern and how the change runs both directions.
  */
 export default function MtDone({ base: _base }: Props) {
   const { t } = useLang();
@@ -88,6 +89,14 @@ export default function MtDone({ base: _base }: Props) {
             </li>
           ))}
         </ul>
+
+        {/* Closing line — the pattern, both directions */}
+        <p
+          data-reveal="fade"
+          className="mt-12 max-w-3xl font-heading italic text-[var(--color-accent-deep)] text-[clamp(1.2rem,2.4vw,1.7rem)] leading-snug"
+        >
+          {t('mt_done_closing')}
+        </p>
       </div>
     </section>
   );

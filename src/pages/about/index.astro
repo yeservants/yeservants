@@ -8,8 +8,10 @@ import AboutStories from '../../components/AboutStories';
 import AboutBeliefs from '../../components/AboutBeliefs';
 import AboutWorkers from '../../components/AboutWorkers';
 import AboutStats from '../../components/AboutStats';
+import AboutPerson from '../../components/AboutPerson';
 
 import rawStoryImage from '../../assets/images/yespic/1.jpg';
+import rawAndresImage from '../../assets/images/andres.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -21,8 +23,16 @@ const storyImage = await getImage({
   height: 800,
   quality: 80,
 });
-/* CLIENT: replace rawStoryImage with a real photo of the YES founders / early field work.
-   FINAL v2 note: photo of Andres — not stock. */
+/* CLIENT: replace rawStoryImage with a real photo of the YES founders / early field work. */
+
+// Andrés González — President (The Person Behind YES)
+const andresImage = await getImage({
+  src: rawAndresImage,
+  format: 'webp',
+  width: 640,
+  height: 800,
+  quality: 82,
+});
 
 // FINAL v2 meta description (About)
 const description =
@@ -47,6 +57,9 @@ const description =
 
   <!-- Closing stats band — 35 Years of Field-Proven Partnership -->
   <AboutStats base={base} client:visible />
+
+  <!-- The Person Behind YES — Andrés González (FINAL v2 new section) -->
+  <AboutPerson base={base} andresImage={andresImage.src} client:visible />
 
   <Footer base={base} client:visible />
 </BaseLayout>

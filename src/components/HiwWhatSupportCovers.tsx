@@ -56,6 +56,7 @@ export default function HiwWhatSupportCovers() {
       items: [
         'hiw_support_log_i1',
         'hiw_support_log_i2',
+        'hiw_support_log_i6',
         'hiw_support_log_i3',
         'hiw_support_log_i4',
         'hiw_support_log_i5',

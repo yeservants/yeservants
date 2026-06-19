@@ -12,9 +12,9 @@ export const home = {
 
     /* ── Block 1 — Hero (the letter opens) ───────────────── */
     home_hero_eyebrow: 'An Invitation from Andrés, President',
-    home_hero_headline: 'Behind every missionary is a story no one sees — until now.',
+    home_hero_headline: 'Behind every missionary is a story no one sees. Until now.',
     home_hero_quote:
-      "They are the hands and feet of Jesus in the world's most forgotten places — reaching people no outsider ever could. And they're doing it with almost no support, no structure, and no safety net — for themselves or their families.",
+      "They are the hands and feet of Jesus in the world's most forgotten places, reaching people no outsider ever could. And they're doing it with almost no support, no structure, and no safety net for themselves or their families.",
     home_hero_stat_label: 'Years in the Field',
 
     /* ── Block 1 (cont.) — What I've Seen (the letter body) ── */
@@ -31,24 +31,25 @@ export const home = {
       "I've been to Costa Rica, where a team of 35 of us replaced a church roof that had been leaking for years. When we finished, the pastor quietly set aside the old zinc sheets that were still usable.",
     home_letter_cr_iso: 'He needed them for his own house.',
     home_letter_cr_p2: 'His house was in the same condition as the church. Or worse.',
-    home_letter_cr_p3:
-      'He never said a word about it. He was going to keep preaching, keep shepherding, keep showing up — regardless of what it cost him.',
+    home_letter_cr_p3: 'He never said a word about it.',
     home_letter_cr_quote:
-      'If we can have church under a tree — who is thinking about the pastor?',
+      'If we can have church under a tree, who is thinking about the pastor?',
 
     home_letter_hn_label: 'Mata Hambre, Honduras',
     home_letter_hn_p1:
-      'The name of the community means "kill hunger." That is not a metaphor. No running water. A pastor working warehouse hours for very little pay — and then spending his days off walking mountain paths with a megaphone, women from his congregation walking beside him, praying.',
+      'The name of the community means "kill hunger." That is not a metaphor. No running water. A pastor working warehouse hours for very little pay. Then spending his days off walking mountain paths with a megaphone, women from his congregation walking beside him, praying.',
     home_letter_hn_p2:
       'No vehicle. No salary. No safety net. Just a calling he refused to let the conditions silence.',
 
     home_letter_ph_label: 'Ozamiz, Philippines',
     home_letter_ph_p1:
-      "Pastors and leaders serving where being a Christian carries real social risk — feeding children, building a school for families who had no other options. We didn't create that ministry. God had already started it. What our support did was free it to go further.",
-    home_letter_ph_iso: "We don't create ministry. We free it.",
+      "Pastors and leaders serving where being a Christian carries real social risk, feeding children, building a school for families who had no other options. We didn't create that ministry. God had already started it. What our support did was free it to go further.",
 
     home_letter_close:
-      "We don't show up where there is nothing. We find the ones who are already there — already faithful, already bearing fruit, already carrying more than anyone should carry alone — and we stand with them.",
+      "We don't show up where there is nothing. We find the ones who are already there, already faithful, already bearing fruit, already carrying more than anyone should carry alone. And we stand with them.",
+    home_letter_cr_alt: 'A pastor leading his congregation in worship in Bajo Rodríguez, Costa Rica',
+    home_letter_hn_alt: 'An elder of the Mata Hambre community, Honduras',
+    home_letter_ph_alt: 'Children and families gathered for ministry in Ozamiz, Philippines',
 
     /* ── Block 2 — The Insight ───────────────────────────── */
     home_insight_part1:
@@ -58,6 +59,10 @@ export const home = {
       'Someone to handle the logistics so they can focus entirely on the mission.',
 
     /* ── Block 3 — What YES Does ─────────────────────────── */
+    home_does_lead1: "That's what YES does.",
+    home_does_lead2:
+      'We go looking for them. We find the ones nobody is finding. And we come alongside them with the financial support to keep their families stable, and the logistical structure to keep their ministry moving.',
+    home_does_lead3: 'Not for a season. For as long as it takes.',
     home_does_label: 'What YES Does',
     home_does_intro:
       "YES stands behind missionaries and their families with two things that change everything: financial support and logistical support. Not one or the other — both. Because a missionary who's worried about rent, healthcare, or how to get supplies to the field can't give everything to the work.",
@@ -119,10 +124,11 @@ export const home = {
     home_cta_signature: 'Andrés · President, YES',
     home_cta_headline: 'The hands and feet need the whole body. Will you be that support?',
     home_cta_p1:
-      'Your partnership — financially and logistically — is what lets a missionary stop surviving and start thriving. The Body of Christ is incomplete when its reach into the world is left to stand alone.',
+      'Your partnership, financially and logistically, is what lets a missionary stop surviving and start thriving. The Body of Christ is incomplete when its reach into the world is left to stand alone.',
     home_cta_p2:
       "Give me a few minutes. I'll show you a real face, a real place, and exactly where your support goes.",
     home_cta_contact: 'yeservants.org · info@yeservants.org · Orlando, FL · 501(c)(3)',
+    home_cta_andres_alt: 'Andrés González, President of YES, in the field',
   },
 
   es: {
@@ -150,10 +156,9 @@ export const home = {
       'Estuve en Costa Rica, donde un equipo de 35 personas reemplazamos el techo de una iglesia que llevaba años goteando. Cuando terminamos, el pastor apartó en silencio las láminas de zinc viejas que todavía servían.',
     home_letter_cr_iso: 'Las necesitaba para su propia casa.',
     home_letter_cr_p2: 'Su casa estaba en las mismas condiciones que la iglesia. O peor.',
-    home_letter_cr_p3:
-      'Nunca dijo una palabra al respecto. Iba a seguir predicando, seguir pastoreando, seguir presente — sin importar lo que le costara.',
+    home_letter_cr_p3: 'Nunca dijo una palabra al respecto.',
     home_letter_cr_quote:
-      'Si podemos tener iglesia bajo un árbol — ¿quién está pensando en el pastor?',
+      'Si podemos tener iglesia bajo un árbol, ¿quién está pensando en el pastor?',
 
     home_letter_hn_label: 'Mata Hambre, Honduras',
     home_letter_hn_p1:
@@ -163,11 +168,13 @@ export const home = {
 
     home_letter_ph_label: 'Ozamiz, Filipinas',
     home_letter_ph_p1:
-      'Pastores y líderes sirviendo donde ser cristiano implica un riesgo social real — alimentando niños, construyendo una escuela para familias que no tenían otra opción. Nosotros no creamos ese ministerio. Dios ya lo había comenzado. Lo que hizo nuestro apoyo fue liberarlo para llegar más lejos.',
-    home_letter_ph_iso: 'No creamos ministerio. Lo liberamos.',
+      'Pastores y líderes sirviendo donde ser cristiano implica un riesgo social real, alimentando niños, construyendo una escuela para familias que no tenían otra opción. Nosotros no creamos ese ministerio. Dios ya lo había comenzado. Lo que hizo nuestro apoyo fue liberarlo para llegar más lejos.',
 
     home_letter_close:
-      'No llegamos donde no hay nada. Encontramos a los que ya están — ya fieles, ya dando fruto, ya cargando más de lo que nadie debería cargar solo — y nos ponemos a su lado.',
+      'No llegamos donde no hay nada. Encontramos a los que ya están, ya fieles, ya dando fruto, ya cargando más de lo que nadie debería cargar solo. Y nos ponemos a su lado.',
+    home_letter_cr_alt: 'Un pastor dirigiendo a su congregación en adoración en Bajo Rodríguez, Costa Rica',
+    home_letter_hn_alt: 'Un anciano de la comunidad de Mata Hambre, Honduras',
+    home_letter_ph_alt: 'Niños y familias reunidos para el ministerio en Ozamiz, Filipinas',
 
     /* ── Bloque 2 — La Conclusión ────────────────────────── */
     home_insight_part1:
@@ -177,6 +184,10 @@ export const home = {
       'Alguien que se encargue de la logística para que puedan enfocarse por completo en la misión.',
 
     /* ── Bloque 3 — Qué Hace YES ─────────────────────────── */
+    home_does_lead1: 'Eso es lo que hace YES.',
+    home_does_lead2:
+      'Vamos a buscarlos. Encontramos a los que nadie está encontrando. Y nos ponemos a su lado con el apoyo financiero para mantener estables a sus familias, y la estructura logística para mantener su ministerio en marcha.',
+    home_does_lead3: 'No por una temporada. Por todo el tiempo que haga falta.',
     home_does_label: 'Qué Hace YES',
     home_does_intro:
       'YES respalda a los misioneros y a sus familias con dos cosas que lo cambian todo: apoyo financiero y apoyo logístico. No una u otra — ambas. Porque un misionero preocupado por la renta, la salud o cómo llevar suministros al campo no puede entregarse por completo a la obra.',
@@ -241,9 +252,10 @@ export const home = {
     home_cta_headline:
       'Las manos y los pies necesitan todo el cuerpo. ¿Serás tú ese apoyo?',
     home_cta_p1:
-      'Tu asociación — financiera y logística — es lo que permite que un misionero deje de sobrevivir y empiece a florecer. El Cuerpo de Cristo está incompleto cuando su alcance al mundo queda solo.',
+      'Tu asociación, financiera y logística, es lo que permite que un misionero deje de sobrevivir y empiece a florecer. El Cuerpo de Cristo está incompleto cuando su alcance al mundo queda solo.',
     home_cta_p2:
       'Dame unos minutos. Te mostraré un rostro real, un lugar real, y exactamente a dónde va tu apoyo.',
     home_cta_contact: 'yeservants.org · info@yeservants.org · Orlando, FL · 501(c)(3)',
+    home_cta_andres_alt: 'Andrés González, Presidente de YES, en el campo',
   },
 } as const;

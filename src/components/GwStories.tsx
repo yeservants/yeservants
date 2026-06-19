@@ -181,6 +181,14 @@ export default function GwStories({ photos }: Props) {
             </article>
           ))}
         </div>
+
+        {/* Closing line — isolated impact statement after the three stories */}
+        <p
+          data-reveal="mask"
+          className="mt-16 md:mt-20 mx-auto max-w-3xl text-center font-heading italic text-[var(--color-accent-deep)] text-[clamp(1.4rem,3vw,2.1rem)] leading-snug"
+        >
+          {t('gw_cost_closing')}
+        </p>
       </div>
     </section>
   );

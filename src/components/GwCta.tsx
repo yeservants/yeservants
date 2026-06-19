@@ -89,6 +89,20 @@ export default function GwCta({ base }: Props) {
           {t('gw_cta_headline')}
         </h2>
 
+        {/* Three concrete examples — one per story (Philippines · Costa Rica · Honduras) */}
+        <ul data-reveal-stagger className="mb-10 mx-auto max-w-2xl text-left space-y-4">
+          {(['gw_cta_bul_ph', 'gw_cta_bul_cr', 'gw_cta_bul_hn'] as const).map((key, i) => (
+            <li
+              key={key}
+              className="flex items-start gap-4"
+              style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
+            >
+              <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
+              <p className="text-[var(--color-text)]/85 text-base md:text-lg leading-relaxed">{t(key)}</p>
+            </li>
+          ))}
+        </ul>
+
         <div className="prose-yes text-lg leading-relaxed text-[var(--color-text-muted)] max-w-2xl mx-auto">
           <p data-reveal="fade">{t('gw_cta_p1')}</p>
         </div>

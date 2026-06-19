@@ -29,6 +29,7 @@ export const missionaries = {
     gw_cost_ph_label: 'Ozamiz, Philippines',
     gw_cost_ph_body:
       'Serving in a region where being a Christian carries real social risk. Leaders faithfully at this for years before YES arrived. The ministry was real. The trust was already built. With support, they began feeding children. Then they started a school. YES did not create that. God had already started it. What support did was free it to go further.',
+    gw_cost_closing: 'That is what YES does. God makes the connection. We stay.',
 
     /* ── Block 3 — Worker Profiles ───────────────────────── */
     gw_profiles_label: 'Worker Profiles',
@@ -42,6 +43,12 @@ export const missionaries = {
     /* ── Block 4 — CTA ───────────────────────────────────── */
     gw_cta_label: 'The Long View',
     gw_cta_headline: 'One worker who stays changes the region around them.',
+    gw_cta_bul_ph:
+      'In the Philippines, one sustained leader is now feeding children and running a school.',
+    gw_cta_bul_cr:
+      'In Costa Rica, a pastor who knows the Body sees him preaches with a different kind of authority.',
+    gw_cta_bul_hn:
+      'In Honduras, a man walking mountain paths with a megaphone knows that someone on the other side of the world is praying for him by name.',
     gw_cta_p1:
       "That doesn't come from a trip. It comes from someone staying — and from the rest of the Body deciding to stay with them.",
   },
@@ -70,6 +77,7 @@ export const missionaries = {
     gw_cost_ph_label: 'Ozamiz, Filipinas',
     gw_cost_ph_body:
       'Sirviendo en una región donde ser cristiano implica un riesgo social real. Líderes fieles en esta labor durante años antes de que YES llegara. El ministerio era real. La confianza ya estaba construida. Con apoyo, comenzaron a alimentar niños. Luego abrieron una escuela. YES no creó eso. Dios ya lo había comenzado. Lo que hizo el apoyo fue liberarlo para llegar más lejos.',
+    gw_cost_closing: 'Eso es lo que hace YES. Dios hace la conexión. Nosotros nos quedamos.',
 
     /* ── Bloque 3 — Perfiles ─────────────────────────────── */
     gw_profiles_label: 'Perfiles de Trabajadores',
@@ -83,6 +91,12 @@ export const missionaries = {
     /* ── Bloque 4 — CTA ──────────────────────────────────── */
     gw_cta_label: 'La Mirada Larga',
     gw_cta_headline: 'Un trabajador que se queda cambia la región a su alrededor.',
+    gw_cta_bul_ph:
+      'En Filipinas, un líder sostenido ahora alimenta niños y dirige una escuela.',
+    gw_cta_bul_cr:
+      'En Costa Rica, un pastor que sabe que el Cuerpo lo ve predica con una autoridad distinta.',
+    gw_cta_bul_hn:
+      'En Honduras, un hombre que camina senderos de montaña con un megáfono sabe que alguien al otro lado del mundo ora por él por su nombre.',
     gw_cta_p1:
       'Eso no viene de un viaje. Viene de alguien que se queda — y del resto del Cuerpo decidiendo quedarse con él.',
   },
