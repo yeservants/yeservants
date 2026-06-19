@@ -2,7 +2,6 @@
 import { useEffect, useRef } from 'react';
 import { useLang } from '../i18n/useLang';
 import type { TranslationKey } from '../i18n/translations';
-import GreenAtmos from './GreenAtmos';
 
 const ITEMS: TranslationKey[] = ['mt_how_i1', 'mt_how_i2', 'mt_how_i3', 'mt_how_i4'];
 
@@ -12,7 +11,8 @@ interface Props {
 }
 
 /**
- * Mission Teams Block 1 — How Our Teams Work. Dark espresso, field photo with
+ * Mission Teams Block 1 — How Our Teams Work. Light background (sits right under
+ * the dark hero, so it must not repeat the espresso treatment), field photo with
  * 35+ years badge, four points: serve under field workers' direction,
  * purposeful work, lasting relationships, return home changed.
  */
@@ -46,13 +46,12 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-32 green-gradient overflow-hidden text-[var(--color-cream)]"
+      className="relative py-24 md:py-32 bg-[var(--color-bg)] overflow-hidden"
       aria-labelledby="mt-how-heading"
     >
-      <div aria-hidden="true" className="absolute inset-0 atmos-glow pointer-events-none" />
-      <div aria-hidden="true" className="float-line h-56 top-[8%] right-[4%] hidden lg:block" />
+      <div aria-hidden="true" className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
+      <div aria-hidden="true" className="float-cross absolute top-[10%] right-[5%] opacity-25" />
 
-      <GreenAtmos variant={4} />
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Field photo */}
@@ -62,7 +61,7 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
                 aria-hidden="true"
                 className="absolute -inset-3 border border-[var(--color-accent)]/20 rounded-[1.4rem] pointer-events-none hidden sm:block"
               />
-              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.6)] aspect-[4/5]">
+              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_24px_60px_-20px_rgba(33,23,16,0.35)] aspect-[4/5]">
                 {/* CLIENT: replace with a real photo of a YES team in the field */}
                 <img
                   src={fieldImage}
@@ -89,15 +88,15 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
           <div className="lg:col-span-7">
             <p
               data-reveal="fade"
-              className="flex items-center gap-3 text-[var(--color-gold-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+              className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
             >
-              <span aria-hidden="true" className="w-8 h-px bg-[var(--color-gold)]/50" />
+              <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
               {t('mt_how_label')}
             </p>
             <h2
               id="mt-how-heading"
               data-reveal="mask"
-              className="font-heading font-medium leading-[1.1] text-[clamp(1.8rem,3.8vw,3rem)] text-[var(--color-cream)] mb-9"
+              className="font-heading font-medium leading-[1.1] text-[clamp(1.8rem,3.8vw,3rem)] text-[var(--color-text)] mb-9"
             >
               {t('mt_how_headline')}
             </h2>
@@ -109,8 +108,8 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
                   className="flex items-start gap-4"
                   style={{ '--reveal-delay': `${i * 0.08}s` } as React.CSSProperties}
                 >
-                  <span aria-hidden="true" className="text-[var(--color-gold-light)] font-semibold shrink-0 translate-y-1">→</span>
-                  <p className="text-[var(--color-cream)]/80 text-base md:text-lg leading-[1.75]">
+                  <span aria-hidden="true" className="text-[var(--color-accent-deep)] font-semibold shrink-0 translate-y-1">→</span>
+                  <p className="text-[var(--color-text)]/85 text-base md:text-lg leading-[1.75]">
                     {t(key)}
                   </p>
                 </li>
