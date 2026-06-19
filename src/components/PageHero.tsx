@@ -9,6 +9,11 @@ interface Props {
   headlineKey: TranslationKey;
   introKey?: TranslationKey;
   scriptureKey?: TranslationKey;
+  /* Optional hero CTAs (used by Join). When omitted the hero renders as before. */
+  primaryCtaKey?: TranslationKey;
+  primaryCtaHref?: string;
+  secondaryCtaKey?: TranslationKey;
+  secondaryCtaHref?: string;
   children?: ReactNode;
 }
 
@@ -18,7 +23,17 @@ interface Props {
  * atmosphere language as the home hero (god-rays, motes, ghost cross), eyebrow +
  * Playfair headline + intro. Home keeps its richer flagship Hero.
  */
-export default function PageHero({ eyebrowKey, headlineKey, introKey, scriptureKey, children }: Props) {
+export default function PageHero({
+  eyebrowKey,
+  headlineKey,
+  introKey,
+  scriptureKey,
+  primaryCtaKey,
+  primaryCtaHref,
+  secondaryCtaKey,
+  secondaryCtaHref,
+  children,
+}: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -68,6 +83,27 @@ export default function PageHero({ eyebrowKey, headlineKey, introKey, scriptureK
           <p data-reveal="fade" className="mt-8 text-[var(--color-cream)]/75 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             {t(introKey)}
           </p>
+        )}
+
+        {((primaryCtaKey && primaryCtaHref) || (secondaryCtaKey && secondaryCtaHref)) && (
+          <div data-reveal="fade" className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            {primaryCtaKey && primaryCtaHref && (
+              <a
+                href={primaryCtaHref}
+                className="px-8 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]"
+              >
+                {t(primaryCtaKey)}
+              </a>
+            )}
+            {secondaryCtaKey && secondaryCtaHref && (
+              <a
+                href={secondaryCtaHref}
+                className="px-8 py-3.5 border border-[var(--color-cream)]/35 text-[var(--color-cream)] text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-cream)]/10 transition-colors duration-300"
+              >
+                {t(secondaryCtaKey)}
+              </a>
+            )}
+          </div>
         )}
 
         {children}

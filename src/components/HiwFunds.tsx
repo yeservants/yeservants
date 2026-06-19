@@ -148,7 +148,7 @@ export default function HiwFunds({ base }: Props) {
           </a>
 
           <a
-            href={`${base}give/`}
+            href={`${base}join/`}
             className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full px-7 py-3.5 hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
           >
             {t('cta_becomePartnerShort')}

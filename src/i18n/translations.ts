@@ -13,6 +13,7 @@ import { howItWorks } from './pages/howItWorks';
 import { missionTeams } from './pages/missionTeams';
 import { give } from './pages/give';
 import { contact } from './pages/contact';
+import { join } from './pages/join';
 
 export type Lang = 'en' | 'es';
 
@@ -26,6 +27,7 @@ export const ui = {
     ...missionTeams.en,
     ...give.en,
     ...contact.en,
+    ...join.en,
   },
   es: {
     ...common.es,
@@ -36,6 +38,7 @@ export const ui = {
     ...missionTeams.es,
     ...give.es,
     ...contact.es,
+    ...join.es,
   },
 } as const;
 

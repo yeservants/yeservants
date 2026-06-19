@@ -69,7 +69,7 @@ export default function GiveOptions({ base }: Props) {
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-9 py-4 bg-[var(--color-accent-deep)] text-white text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.35)]"
           >
-            {t("cta_becomePartner")}
+            {t("cta_donateNow")}
             <span className="sr-only">{t("give_new_tab")}</span>
             {/* external link icon */}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">

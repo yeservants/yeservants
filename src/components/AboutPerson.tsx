@@ -107,7 +107,7 @@ export default function AboutPerson({ base, andresImage }: Props) {
 
             <div data-reveal="fade" className="mt-10">
               <a
-                href={`${base}give/`}
+                href={`${base}join/`}
                 className="w-full sm:w-auto inline-flex justify-center px-9 py-4 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]"
               >
                 {t('cta_becomePartner')}

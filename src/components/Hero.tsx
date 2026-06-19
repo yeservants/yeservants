@@ -194,7 +194,7 @@ export default function Hero({ base, heroImages }: Props) {
             </blockquote>
 
             <div data-hero-fade className="mt-9 flex flex-col sm:flex-row gap-4">
-              <a href={`${base}give/`}
+              <a href={`${base}join/`}
                 className="px-8 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]">
                 {t('cta_becomePartner')}
               </a>

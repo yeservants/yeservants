@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer';
+import PageHero from '../../components/PageHero';
+import JoinWays from '../../components/JoinWays';
+import JoinCalling from '../../components/JoinCalling';
+import JoinClose from '../../components/JoinClose';
+import { ui } from '../../i18n/translations';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// EN default for SSR meta; useLang swaps copy client-side.
+const title = ui.en.join_meta_title;
+const description = ui.en.join_meta_desc;
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Opener — "Will You Stand With Them?" + partner / contact CTAs -->
+  <PageHero
+    eyebrowKey="join_hero_label"
+    headlineKey="join_hero_headline"
+    introKey="join_hero_intro"
+    primaryCtaKey="join_hero_cta_secondary"
+    primaryCtaHref={`${base}contact/`}
+    client:load
+  />
+
+  <!-- Block 1 — Four ways to partner (give · send a team · go · pray) -->
+  <JoinWays base={base} client:visible />
+
+  <!-- Block 2 — Romans 10:15 anchor + missionary-doc downloads -->
+  <JoinCalling base={base} client:visible />
+
+  <!-- Block 3 — Closing partner CTA -->
+  <JoinClose base={base} client:visible />
+
+  <Footer base={base} client:visible />
+</BaseLayout>

@@ -11,15 +11,12 @@ interface Props {
   andresImg: AndresImg;
 }
 
-const APLOS_URL =
-  'https://www.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations';
-
 /**
  * Block 6 — Final CTA. Orange/gold box, different from the rest of the page
  * (mapa: "Fondo naranja o dorado"), signed by Andrés, President. Big centered
  * button, contact info underneath.
  */
-export default function HomeFinalCta({ base: _base, andresImg }: Props) {
+export default function HomeFinalCta({ base, andresImg }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -90,9 +87,7 @@ export default function HomeFinalCta({ base: _base, andresImg }: Props) {
 
               {/* Big button — full width on mobile (webmaster rule #5) */}
               <a
-                href={APLOS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`${base}join/`}
                 className="inline-flex w-full sm:w-auto justify-center px-12 py-5 bg-[var(--color-primary-deep)] text-[var(--color-cream)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)] transition-colors duration-300 shadow-[0_14px_36px_-10px_rgba(33,23,16,0.6)]"
               >
                 {t('cta_becomePartner')}

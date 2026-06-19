@@ -35,6 +35,7 @@ The site is bilingual (English / Spanish, toggled in-page).
 - The Missionaries: https://fpsjago.github.io/yesservant-proposal/missionaries/ — profiles of the faithful workers YES supports.
 - How It Works: https://fpsjago.github.io/yesservant-proposal/how-it-works/ — the partnership model and what financial and logistical support is designed to provide.
 - Mission Teams: https://fpsjago.github.io/yesservant-proposal/mission-teams/ — short-term teams that serve alongside long-term field workers; for churches, schools, and teams.
+- Join the Mission: https://fpsjago.github.io/yesservant-proposal/join/ — the partner on-ramp: the four ways to be part of the work (give monthly, send a team, go and serve, pray), with the Romans 10:15 anchor and missionary application/handbook downloads.
 - Give: https://fpsjago.github.io/yesservant-proposal/give/ — ways to partner financially with YES.
 - Contact: https://fpsjago.github.io/yesservant-proposal/contact/ — reach the YES team.
 

@@ -27,6 +27,7 @@ export const common = {
     /* ── Common CTA labels ───────────────────────────────── */
     cta_becomePartner: 'Become a Partner Today',
     cta_becomePartnerShort: 'Become a Partner',
+    cta_donateNow: 'Donate Now',
     cta_standWithWorker: 'Stand With a Worker Today',
     cta_meetTheWorkers: 'Meet the Workers',
     cta_howItWorks: 'How It Works',
@@ -39,6 +40,7 @@ export const common = {
     /* ── Footer (FINAL v2 / mapa) ────────────────────────── */
     footer_links: 'Links',
     footer_connect: 'Connect',
+    footer_join: 'Join the Mission',
     footer_financialSupport: 'Financial Support',
     footer_logisticalSupport: 'Logistical Support',
     footer_partnership: 'Partnership',
@@ -89,6 +91,7 @@ export const common = {
     /* ── Botones / llamados a la acción comunes ──────────── */
     cta_becomePartner: 'Ser Socio Hoy',
     cta_becomePartnerShort: 'Ser Socio',
+    cta_donateNow: 'Donar Ahora',
     cta_standWithWorker: 'Apoya a un Trabajador Hoy',
     cta_meetTheWorkers: 'Conoce a los Misioneros',
     cta_howItWorks: 'Cómo Funciona',
@@ -101,6 +104,7 @@ export const common = {
     /* ── Pie de página (FINAL v2 / mapa) ─────────────────── */
     footer_links: 'Enlaces',
     footer_connect: 'Conectar',
+    footer_join: 'Únete a la Misión',
     footer_financialSupport: 'Apoyo Financiero',
     footer_logisticalSupport: 'Apoyo Logístico',
     footer_partnership: 'Asociación',

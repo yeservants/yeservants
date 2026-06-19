@@ -10,6 +10,7 @@ export default function Footer({ base }: Props) {
   /* FINAL v2 footer links: Financial Support · Logistical Support · Partnership
      · Annual Reports · Privacy · Contact */
   const links = [
+    { href: `${base}join/`,                     label: t('footer_join') },
     { href: `${base}how-it-works/#financial`,   label: t('footer_financialSupport') },
     { href: `${base}how-it-works/#logistical`,  label: t('footer_logisticalSupport') },
     { href: `${base}give/`,                     label: t('footer_partnership') },
