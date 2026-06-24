@@ -4,10 +4,11 @@ import { useLang } from '../i18n/useLang';
 
 interface Props {
   base: string;
-  storyImage: string;
+  familyImage: string;
+  coupleImage: string;
 }
 
-export default function AboutStory({ storyImage }: Props) {
+export default function AboutStory({ familyImage, coupleImage }: Props) {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
 
@@ -61,62 +62,82 @@ export default function AboutStory({ storyImage }: Props) {
           </h2>
         </div>
 
-        {/* Two-column: prose left, image right */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Prose */}
-          <div className="lg:col-span-7">
-            <div className="prose-yes space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85 max-w-3xl">
-              <p data-reveal="fade">{t('about_story_para1')}</p>
-              <p data-reveal="fade">{t('about_story_para1b')}</p>
-              <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
-                {t('about_story_emph1')}
-              </p>
-              <p data-reveal="fade">{t('about_story_para1c')}</p>
-              <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
-                {t('about_story_emph2')}
-              </p>
-              <p data-reveal="fade">{t('about_story_para1d')}</p>
-              <p data-reveal="fade">{t('about_story_para2')}</p>
-            </div>
-
-            {/* Pull-quote — "the gap YES was built to fill" */}
-            <blockquote
-              data-reveal="fade"
-              className="my-12 border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl leading-snug max-w-2xl"
-            >
-              {t('about_story_quote')}
-            </blockquote>
-          </div>
-
-          {/* Image column */}
-          <div className="lg:col-span-5">
-            <figure data-reveal="mask" className="relative">
-              {/* Decorative border offset */}
-              <div
-                aria-hidden="true"
-                className="absolute -inset-3 border border-[var(--color-accent)]/20 rounded-[1.4rem] pointer-events-none hidden sm:block"
-              />
-              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(33,23,16,0.28)] aspect-[4/5]">
-                {/* CLIENT: replace with a real photo of the YES founders / early field work */}
+        {/* "Then & now" diptych — the founders in the field + the LaTours today */}
+        <figure data-reveal="mask" className="mb-16 md:mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-5 sm:gap-6 items-start">
+            {/* Then — historic field photo with the mission plane (wider) */}
+            <div className="sm:col-span-3">
+              <div className="group relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(33,23,16,0.28)] h-[260px] sm:h-[320px] md:h-[400px]">
                 <img
-                  src={storyImage}
+                  src={familyImage}
                   alt={t('about_story_photo_alt')}
                   className="w-full h-full object-cover"
                   loading="lazy"
-                  width={640}
-                  height={800}
+                  width={900}
+                  height={612}
                 />
-                {/* Gradient overlay */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/40 via-transparent to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/35 via-transparent to-transparent"
                 />
+                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[var(--color-primary-deep)]/80 backdrop-blur-sm text-[var(--color-bg)] text-[0.65rem] tracking-[0.18em] uppercase">
+                  {t('about_story_badge_then')}
+                </span>
               </div>
-              <figcaption className="mt-3 text-[var(--color-text-muted)] text-xs tracking-wide text-center">
+              <figcaption className="mt-3 text-[var(--color-text-muted)] text-xs leading-snug tracking-wide">
                 {t('about_story_photo_caption')}
               </figcaption>
-            </figure>
+            </div>
+
+            {/* Now — the LaTours today (portrait beside, bottom-aligned) */}
+            <div className="sm:col-span-2">
+              <div className="relative overflow-hidden rounded-[1.2rem] shadow-[0_30px_70px_-20px_rgba(33,23,16,0.28)] h-[260px] sm:h-[320px] md:h-[400px]">
+                <img
+                  src={coupleImage}
+                  alt={t('about_story_photo_alt2')}
+                  className="w-full h-full object-cover object-[center_28%]"
+                  loading="lazy"
+                  width={500}
+                  height={500}
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-deep)]/30 via-transparent to-transparent"
+                />
+                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[var(--color-accent-deep)]/85 backdrop-blur-sm text-[var(--color-bg)] text-[0.65rem] tracking-[0.18em] uppercase">
+                  {t('about_story_badge_now')}
+                </span>
+              </div>
+              <figcaption className="mt-3 text-[var(--color-text-muted)] text-xs leading-snug tracking-wide">
+                {t('about_story_photo_caption2')}
+              </figcaption>
+            </div>
           </div>
+        </figure>
+
+        {/* Story prose — clean readable column */}
+        <div className="max-w-3xl">
+          <div className="prose-yes space-y-6 text-lg leading-[1.8] text-[var(--color-text)]/85">
+            <p data-reveal="fade">{t('about_story_para1')}</p>
+            <p data-reveal="fade">{t('about_story_para1b')}</p>
+            <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
+              {t('about_story_emph1')}
+            </p>
+            <p data-reveal="fade">{t('about_story_para1c')}</p>
+            <p data-reveal="fade" className="font-semibold text-[var(--color-text)]">
+              {t('about_story_emph2')}
+            </p>
+            <p data-reveal="fade">{t('about_story_para1d')}</p>
+            <p data-reveal="fade">{t('about_story_para2')}</p>
+          </div>
+
+          {/* Pull-quote — "the gap YES was built to fill" */}
+          <blockquote
+            data-reveal="fade"
+            className="mt-12 border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-accent-deep)] text-2xl md:text-3xl leading-snug"
+          >
+            {t('about_story_quote')}
+          </blockquote>
         </div>
       </div>
     </section>

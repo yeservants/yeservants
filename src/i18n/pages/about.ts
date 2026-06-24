@@ -29,8 +29,12 @@ export const about = {
       "After years in the field, they saw something that wouldn't let them go: the most faithful workers were the least supported. Not because they lacked calling. Not because they lacked fruit. Because nobody was looking for them.",
     about_story_quote: "That's the gap YES was built to fill. And we've been filling it for 35 years.",
     about_story_photo_alt:
-      'YES founders serving alongside Gospel workers in the field — photo from the YES archive',
-    about_story_photo_caption: 'From the YES field archive',
+      'Bernie and Jean LaTour with their family beside the mission plane in the field — early YES years',
+    about_story_photo_alt2: 'Bernie and Jean LaTour today',
+    about_story_photo_caption: 'Bernie and Jean LaTour with their children in the field — the early years',
+    about_story_photo_caption2: 'Bernie and Jean LaTour today — the missionaries who founded YES',
+    about_story_badge_then: 'Then',
+    about_story_badge_now: 'Today',
 
     /* ── Block 2 — What We Saw ───────────────────────────── */
     about_saw_eyebrow: 'What We Saw',
@@ -142,8 +146,12 @@ export const about = {
     about_story_quote:
       'Esa es la brecha que YES fue construida para llenar. Y llevamos 35 años llenándola.',
     about_story_photo_alt:
-      'Fundadores de YES sirviendo junto a obreros del Evangelio en el campo — foto del archivo de YES',
-    about_story_photo_caption: 'Del archivo de campo de YES',
+      'Bernie y Jean LaTour con su familia junto a la avioneta misionera en el campo — los primeros años de YES',
+    about_story_photo_alt2: 'Bernie y Jean LaTour hoy',
+    about_story_photo_caption: 'Bernie y Jean LaTour con sus hijos en el campo — los primeros años',
+    about_story_photo_caption2: 'Bernie y Jean LaTour hoy — los misioneros que fundaron YES',
+    about_story_badge_then: 'Antes',
+    about_story_badge_now: 'Hoy',
 
     /* ── Bloque 2 — Lo Que Vimos ─────────────────────────── */
     about_saw_eyebrow: 'Lo Que Vimos',

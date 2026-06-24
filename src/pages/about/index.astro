@@ -10,20 +10,29 @@ import AboutWorkers from '../../components/AboutWorkers';
 import AboutStats from '../../components/AboutStats';
 import AboutPerson from '../../components/AboutPerson';
 
-import rawStoryImage from '../../assets/images/yespic/1.jpg';
+import rawFamilyImage from '../../assets/images/yespic/latour-family-field.jpg';
+import rawCoupleImage from '../../assets/images/yespic/latour-couple.jpg';
 import rawAndresImage from '../../assets/images/andres.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 /* ── WebP optimisation ────────────────────────────────────── */
-const storyImage = await getImage({
-  src: rawStoryImage,
+// Founders Bernie & Jean LaTour — the historic field photo (with the mission plane)
+const familyImage = await getImage({
+  src: rawFamilyImage,
   format: 'webp',
-  width: 640,
-  height: 800,
-  quality: 80,
+  width: 900,
+  height: 612,
+  quality: 82,
 });
-/* CLIENT: replace rawStoryImage with a real photo of the YES founders / early field work. */
+// Bernie & Jean LaTour today — the "then and now" inset portrait
+const coupleImage = await getImage({
+  src: rawCoupleImage,
+  format: 'webp',
+  width: 500,
+  height: 500,
+  quality: 84,
+});
 
 // Andrés González — President (The Person Behind YES)
 const andresImage = await getImage({
@@ -44,7 +53,7 @@ const description =
   <PageHero eyebrowKey="about_opener_eyebrow" headlineKey="about_opener_headline" client:load />
 
   <!-- Block 1 (cont.): The Beginning — light -->
-  <AboutStory base={base} storyImage={storyImage.src} client:visible />
+  <AboutStory base={base} familyImage={familyImage.src} coupleImage={coupleImage.src} client:visible />
 
   <!-- Block 2: What We Saw That We Couldn't Unsee — dark espresso -->
   <AboutStories base={base} client:visible />
