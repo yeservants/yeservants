@@ -180,8 +180,8 @@ export default function Hero({ base, heroImages }: Props) {
 
           {/* ── Text column ── */}
           <div ref={contentRef} className="lg:col-span-6">
-            <p data-hero-fade className="flex items-center gap-3 text-[var(--color-accent-light)] text-xs md:text-sm tracking-[0.32em] uppercase font-medium mb-8">
-              <span aria-hidden="true" className="w-10 h-px bg-[var(--color-accent-light)]/50" />
+            <p data-hero-fade className="flex items-start gap-3 text-[var(--color-accent-light)] text-sm md:text-base tracking-[0.28em] uppercase font-medium mb-8">
+              <span aria-hidden="true" className="w-10 h-px bg-[var(--color-accent-light)]/50 shrink-0 mt-[0.6em]" />
               {t('home_hero_eyebrow')}
             </p>
 
@@ -189,22 +189,33 @@ export default function Hero({ base, heroImages }: Props) {
               {t('home_hero_headline')}
             </h1>
 
-            {/* Block quote — orange left border (FINAL v2 webmaster note) */}
+            {/* v7 hero sequence: opening paragraph → orange-border quote →
+                "hands and feet" paragraph → pill CTAs. The opening lines moved
+                up here from HomeLetter so nothing repeats down the page. */}
+            <p data-hero-fade className="mt-7 max-w-xl text-[var(--color-cream)]/75 text-base md:text-lg leading-[1.75]">
+              {t('home_letter_p1')} {t('home_letter_p2')}
+            </p>
+
             <blockquote
               data-hero-fade
-              className="mt-8 max-w-xl border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-cream)]/85 text-lg md:text-xl leading-[1.6]"
+              className="mt-7 max-w-xl border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-cream)]/90 text-lg md:text-xl leading-[1.6]"
             >
-              &ldquo;{t('home_hero_quote')}&rdquo;
+              &ldquo;{t('home_letter_p3')}&rdquo;
             </blockquote>
 
+            <p data-hero-fade className="mt-7 max-w-xl text-[var(--color-cream)]/70 text-base md:text-lg leading-[1.75]">
+              {t('home_hero_quote')}
+            </p>
+
             <div data-hero-fade className="mt-9 flex flex-col sm:flex-row gap-4">
-              <a href={`${base}join/`}
+              {/* Partnership talk → contact (give/join are hidden — 2026-08-19) */}
+              <a href={`${base}contact/`}
                 className="px-8 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_20px_rgba(168,79,10,0.4)]">
-                {t('cta_becomePartner')}
+                {t('cta_becomePartner')} <span aria-hidden="true">→</span>
               </a>
-              <a href={`${base}how-it-works/`}
+              <a href="#yes-different"
                 className="px-8 py-3.5 border border-[var(--color-cream)]/35 text-[var(--color-cream)] text-sm font-semibold tracking-wide rounded-full text-center hover:bg-[var(--color-cream)]/10 transition-colors duration-300">
-                {t('cta_howItWorks')}
+                {t('cta_learnMore')} <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>

@@ -115,7 +115,7 @@ export default function ContactBody({ base, web3formsKey = '' }: Props) {
   );
 
   return (
-    <section ref={ref} className="relative bg-[var(--color-bg)] py-20 md:py-28 overflow-hidden">
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-10 md:py-14 overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">

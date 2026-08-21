@@ -52,7 +52,7 @@ export default function HomeBiblical({ base: _base }: Props) {
   return (
     <section
       ref={ref}
-      className="relative green-gradient text-[var(--color-cream)] py-28 md:py-40 overflow-hidden"
+      className="relative green-gradient text-[var(--color-cream)] py-14 md:py-20 overflow-hidden"
     >
       <div aria-hidden="true" className="absolute inset-0 atmos-glow-center pointer-events-none" />
       <div aria-hidden="true" className="absolute top-0 left-[8%] float-line h-64 hidden md:block" />
@@ -64,7 +64,7 @@ export default function HomeBiblical({ base: _base }: Props) {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p
             data-reveal="fade"
-            className="flex items-center justify-center gap-3 text-[var(--color-gold-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-8"
+            className="flex items-center justify-center gap-3 text-[var(--color-gold-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-8"
           >
             <span aria-hidden="true" className="w-9 h-px bg-[var(--color-gold)]/50" />
             {t('home_biblical_label')}

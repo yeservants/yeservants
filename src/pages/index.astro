@@ -1,13 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero';
 import HomeLetter from '../components/HomeLetter';
 import HomeInsight from '../components/HomeInsight';
-import HomeWhatYesDoes from '../components/HomeWhatYesDoes';
 import HomeWhyItWorks from '../components/HomeWhyItWorks';
+import HomeInvestment from '../components/HomeInvestment';
+import HomeDifferent from '../components/HomeDifferent';
+import HomeModel from '../components/HomeModel';
+import HomeSupport from '../components/HomeSupport';
+import HomeProjects from '../components/HomeProjects';
 import HomeBiblical from '../components/HomeBiblical';
 import HomeFinalCta from '../components/HomeFinalCta';
+import HomeMissionaries from '../components/HomeMissionaries';
 import Footer from '../components/Footer';
 
 // Hero carousel field photos → WebP (dignified, real field photography)
@@ -40,6 +46,28 @@ const phImg = await getImage({ src: phSrc, format: 'webp', width: 720, height: 5
 /* CLIENT: Andrés' current field photo; an in-action ministry shot may replace it if available */
 const andresImg = await getImage({ src: andresSrc, format: 'webp', width: 640, height: 720, quality: 82 });
 
+// ── The Missionaries procession (bottom carousel) ─────────────────────────
+// Same portrait pipeline as /missionaries/ — anonymous workers ('none.jpg')
+// and entries without a resolvable photo are excluded from the strip.
+const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+const allWorkers = await getCollection('missionaries');
+const carouselMissionaries = (
+  await Promise.all(
+    allWorkers
+      .sort((a, b) => a.data.name.localeCompare(b.data.name))
+      .map(async (m) => {
+        if (m.data.picture === 'none.jpg') return null;
+        const mod = portraitModules[`/src/assets/images/${m.data.picture}`];
+        if (!mod?.default) return null;
+        const opt = await getImage({ src: mod.default, format: 'webp', width: 416, height: 540, quality: 82 });
+        return { name: m.data.name, url: m.data.url, location: m.data.location, pictureUrl: opt.src };
+      })
+  )
+).filter((m): m is NonNullable<typeof m> => m !== null);
+
 // FINAL v2 meta description (homepage)
 const description =
   'Behind every missionary is a story no one sees. YES stands with faithful Gospel workers already in the field, carrying more than anyone should carry alone. Since 1990.';
@@ -64,21 +92,36 @@ const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
   {/* Block 2 — The Insight (single centered card) */}
   <HomeInsight base={base} client:visible />
 
-  {/* Block 3 — What YES Does (two cards: financial + logistical) */}
-  <HomeWhatYesDoes base={base} client:visible />
-
-  {/* Block 4 — Why It Works (paragraph + stat row) */}
+  {/* v7 — Stats strip equivalent (paragraph + 35+/20+/Platinum/501(c)(3)) */}
   <HomeWhyItWorks base={base} sealSrc={sealSrc} client:visible />
 
-  {/* Block 5 — The Biblical Foundation (4 scripture cards) */}
+  {/* v7 — The Investment (isolated pull-quote + Matthew 6:19-20) */}
+  <HomeInvestment base={base} client:visible />
+
+  {/* v7 — What Makes YES Different (4 numbered points) */}
+  <HomeDifferent base={base} client:visible />
+
+  {/* v7 — The Model (comparison ledger: Sent from the US vs YES) */}
+  <HomeModel base={base} client:visible />
+
+  {/* v7 — Where Your Partnership Goes (chain quote + 4 areas) */}
+  <HomeSupport base={base} client:visible />
+
+  {/* v7 — Special Projects (Priority 01: pastor's home · 02: gathering place) */}
+  <HomeProjects base={base} client:visible />
+
+  {/* The Biblical Foundation (4 scripture cards — v7 "Body of Christ") */}
   <HomeBiblical base={base} client:visible />
 
-  {/* Block 6 — Final CTA (orange box, signed by Andres, with his photo) */}
+  {/* Final CTA (orange box, signed by Andres, with his photo) */}
   <HomeFinalCta
     base={base}
     andresImg={{ src: andresImg.src }}
     client:visible
   />
+
+  {/* The Missionaries procession — client directive: carousel at the very end */}
+  <HomeMissionaries base={base} missionaries={carouselMissionaries} client:visible />
 
   <Footer base={base} client:visible />
 </BaseLayout>

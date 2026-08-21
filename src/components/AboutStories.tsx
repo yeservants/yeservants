@@ -59,7 +59,7 @@ export default function AboutStories({ base: _base }: Props) {
         <div className="max-w-3xl mb-16">
           <p
             data-reveal="fade"
-            className="flex items-center gap-3 text-[var(--color-gold-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+            className="flex items-center gap-3 text-[var(--color-gold-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
           >
             <span aria-hidden="true" className="w-8 h-px bg-[var(--color-gold)]/50" />
             {t('about_saw_eyebrow')}

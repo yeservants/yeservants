@@ -62,7 +62,7 @@ export default function PageHero({
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-10 text-center">
         {eyebrowKey && (
-          <p data-reveal="fade" className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-7">
+          <p data-reveal="fade" className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-7">
             <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />
             {t(eyebrowKey)}
             <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />

@@ -88,7 +88,7 @@ export default function MtHow({ base: _base, fieldImage }: Props) {
           <div className="lg:col-span-7">
             <p
               data-reveal="fade"
-              className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+              className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
             >
               <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
               {t('mt_how_label')}

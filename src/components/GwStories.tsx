@@ -87,7 +87,7 @@ export default function GwStories({ photos }: Props) {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[var(--color-bg)] py-24 md:py-32"
+      className="relative overflow-hidden bg-[var(--color-bg)] py-12 md:py-16"
     >
       {/* Atmospheric decorations */}
       <div
@@ -112,7 +112,7 @@ export default function GwStories({ photos }: Props) {
         <div className="max-w-3xl mb-16">
           <p
             data-reveal="fade"
-            className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+            className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
           >
             <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
             {t('gw_cost_label')}

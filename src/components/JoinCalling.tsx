@@ -47,7 +47,7 @@ export default function JoinCalling({ base }: Props) {
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
         <p
           data-reveal="fade"
-          className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-8"
+          className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-8"
         >
           <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />
           {t('join_calling_label')}

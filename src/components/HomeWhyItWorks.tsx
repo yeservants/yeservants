@@ -47,18 +47,26 @@ export default function HomeWhyItWorks({ base: _base, sealSrc }: Props) {
   ] as const;
 
   return (
-    <section ref={ref} className="relative bg-[var(--color-surface)] py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative bg-[var(--color-surface)] py-12 md:py-16 overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 atmos-glow-center pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
         {/* Eyebrow */}
         <p
           data-reveal="fade"
-          className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-8"
+          className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-8"
         >
           <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
           {t('home_why_label')}
         </p>
+
+        {/* v7 trust headline */}
+        <h2
+          data-reveal="mask"
+          className="font-heading font-medium text-[var(--color-text)] text-[clamp(1.9rem,4.2vw,3.1rem)] leading-[1.15] mb-8 max-w-4xl"
+        >
+          {t('home_trust_headline')}
+        </h2>
 
         {/* Short paragraph + Candid seal */}
         <div data-reveal="fade" className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center mb-14">

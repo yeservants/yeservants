@@ -40,7 +40,7 @@ export default function JoinClose({ base }: Props) {
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
         <p
           data-reveal="fade"
-          className="flex items-center justify-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+          className="flex items-center justify-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
         >
           <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
           {t('join_close_label')}

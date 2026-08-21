@@ -4,7 +4,6 @@ import { getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer';
 import GwOpener from '../../components/GwOpener';
-import GwStories from '../../components/GwStories';
 import GwProfiles from '../../components/GwProfiles';
 import GwCta from '../../components/GwCta';
 
@@ -15,31 +14,6 @@ const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/*.{jpg,jpeg,png}',
   { eager: true }
 );
-const yespicModules = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/images/yespic/*.{jpg,jpeg,png}',
-  { eager: true }
-);
-
-// ── Field stories photos ───────────────────────────────────────────────────
-// Same location-verified photos used on the homepage letter (CR · HN · PH).
-const storySrcs: Array<{ key: string; w: number; h: number }> = [
-  // Bajo Rodríguez, Costa Rica
-  { key: '/src/assets/images/yespic/costa-rica-bajo-rodriguez.jpg', w: 720, h: 480 },
-  // Mata Hambre, Honduras
-  { key: '/src/assets/images/yespic/honduras-mata-hambre.jpg', w: 720, h: 480 },
-  // Ozamiz, Philippines
-  { key: '/src/assets/images/yespic/philippines-ozamiz.jpg', w: 720, h: 480 },
-];
-
-const storyPhotos = await Promise.all(
-  storySrcs.map(async ({ key, w, h }) => {
-    const mod = yespicModules[key] ?? portraitModules[key];
-    if (!mod?.default) return { src: '' };
-    const opt = await getImage({ src: mod.default, format: 'webp', width: w, height: h, quality: 85 });
-    return { src: opt.src };
-  })
-);
-
 // ── Worker collection ──────────────────────────────────────────────────────
 const allWorkers = await getCollection('missionaries');
 const workers = await Promise.all(
@@ -71,9 +45,8 @@ const workers = await Promise.all(
   <!-- Block 1 — Opener (shared PageHero) -->
   <GwOpener client:load />
 
-  <!-- Block 2 — Three Stories (full versions) -->
-  <!-- CLIENT: replace stand-in photos with verified field location photographs -->
-  <GwStories photos={storyPhotos} client:visible />
+  <!-- Three Stories removed from this page per Jago 2026-08-20 (GwStories.tsx
+       kept in the repo; the home letter already tells the field stories) -->
 
   <!-- Block 3 — Worker Profiles (collection) -->
   <GwProfiles missionaries={workers} base={base} client:visible />

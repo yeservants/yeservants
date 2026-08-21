@@ -60,14 +60,14 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
   }, []);
 
   const locationLabel = (text: string) => (
-    <p className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.28em] uppercase font-semibold mb-6">
+    <p className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.28em] uppercase font-semibold mb-6">
       <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
       {text}
     </p>
   );
 
   return (
-    <section ref={ref} className="relative bg-[var(--color-bg)] py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-12 md:py-16 overflow-hidden">
       {/* faint ghost typography — letter atmosphere */}
       <div
         aria-hidden="true"
@@ -79,19 +79,16 @@ export default function HomeLetter({ base: _base, crImg, hnImg, phImg }: Props) 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
         {/* ── Letter opening ── */}
         <div className="max-w-3xl">
-          <p
-            data-reveal="fade"
-            className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-10"
+          {/* Opening paragraphs (p1–p3) moved into the Hero (v7 hero sequence,
+              2026-08-20) — the letter opens on its chapter title, then the
+              field stories. */}
+          <h2
+            data-reveal="mask"
+            className="flex items-center gap-5 font-heading font-medium text-[var(--color-text)] text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.12]"
           >
-            <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
+            <span aria-hidden="true" className="w-12 h-[2px] bg-[var(--color-accent)]/70 shrink-0" />
             {t('home_letter_label')}
-          </p>
-
-          <div data-reveal="fade" className="space-y-6 text-lg md:text-xl leading-[1.8] text-[var(--color-text)]/85">
-            <p>{t('home_letter_p1')}</p>
-            <p>{t('home_letter_p2')}</p>
-            <p className="font-semibold text-[var(--color-text)]">{t('home_letter_p3')}</p>
-          </div>
+          </h2>
         </div>
 
         {/* ── Story 1 — Costa Rica ── */}

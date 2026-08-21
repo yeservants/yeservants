@@ -43,7 +43,7 @@ export default function HomeInsight({ base: _base }: Props) {
   return (
     <section
       ref={ref}
-      className="relative green-gradient text-[var(--color-cream)] py-24 md:py-32 overflow-hidden"
+      className="relative green-gradient text-[var(--color-cream)] py-12 md:py-16 overflow-hidden"
     >
       <GreenAtmos variant={1} />
 

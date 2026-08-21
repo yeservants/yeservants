@@ -65,7 +65,7 @@ export default function HomeWhatYesDoes({ base: _base }: Props) {
   ];
 
   return (
-    <section ref={ref} className="relative bg-[var(--color-bg)] py-24 md:py-32">
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-12 md:py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         {/* Lead-in — "That's what YES does." (no label, body type) */}
         <div data-reveal="fade" className="max-w-3xl mb-14 space-y-5 text-lg md:text-xl leading-[1.8] text-[var(--color-text)]/85">
@@ -80,7 +80,7 @@ export default function HomeWhatYesDoes({ base: _base }: Props) {
         <div className="max-w-3xl mb-16">
           <p
             data-reveal="fade"
-            className="flex items-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+            className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
           >
             <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
             {t('home_does_label')}

@@ -44,7 +44,7 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[var(--color-bg)] py-20 md:py-28 overflow-hidden">
+    <section ref={ref} className="relative bg-[var(--color-bg)] py-10 md:py-14 overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
         <div
           data-reveal="mask"
@@ -70,7 +70,7 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
             {/* Text */}
             <div className="lg:col-span-7">
               {/* Signature eyebrow */}
-              <p className="text-[var(--color-primary-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-7">
+              <p className="text-[var(--color-primary-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-semibold mb-7">
                 {t('home_cta_signature')}
               </p>
 
@@ -87,10 +87,10 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
 
               {/* Big button — full width on mobile (webmaster rule #5) */}
               <a
-                href={`${base}join/`}
+                href={`${base}contact/`}
                 className="inline-flex w-full sm:w-auto justify-center px-12 py-5 bg-[var(--color-primary-deep)] text-[var(--color-cream)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)] transition-colors duration-300 shadow-[0_14px_36px_-10px_rgba(33,23,16,0.6)]"
               >
-                {t('cta_becomePartner')}
+                {t('cta_talkWithAndres')}
               </a>
 
               {/* Contact line under the button */}

@@ -66,6 +66,10 @@ astro-island { display: contents; }
 @layer base {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html {
+    /* 2026-08-20 (Jago): global ~10% type reduction — scales every rem-based
+       size (Tailwind text-*, clamp() rem terms). Body drops 18px → ~16.2px,
+       below the FINAL v2 "min 18px" webmaster rule, per the v7 denser layout. */
+    font-size: 90%;
     font-family: var(--font-body);
     background: var(--color-bg);
     color: var(--color-text);
