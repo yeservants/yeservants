@@ -36,7 +36,7 @@ export default function GwCta({ base }: Props) {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[var(--color-bg)] py-24 md:py-32 text-center"
+      className="relative overflow-hidden bg-[var(--color-bg)] py-12 md:py-16 text-center"
     >
       {/* Atmospheric decorations */}
       <div
@@ -71,7 +71,7 @@ export default function GwCta({ base }: Props) {
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
         <p
           data-reveal="fade"
-          className="flex items-center justify-center gap-3 text-[var(--color-accent-deep)] text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-6"
+          className="flex items-center justify-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
         >
           <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
           {t('gw_cta_label')}
@@ -104,7 +104,8 @@ export default function GwCta({ base }: Props) {
 
         <div data-reveal="fade" className="mt-12">
           <a
-            href={`${base}give/`}
+            href="https://app.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations"
+            target="_blank" rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex justify-center px-7 py-3.5 bg-[var(--color-accent-deep)] text-white text-sm font-semibold tracking-wide rounded-full hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_4px_18px_rgba(232,117,26,0.3)]"
           >
             {t('cta_standWithWorker')} →

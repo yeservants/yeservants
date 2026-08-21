@@ -6,6 +6,10 @@ import type { Lang } from '../i18n/translations';
 
 interface Props { base: string; }
 
+/* /give/ is hidden (client directive 2026-08-19) — the always-visible Give
+   button goes straight to the Aplos donation form the give page used. */
+const APLOS = 'https://app.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations';
+
 let initialized = false; // Nav uses transition:persist → does NOT remount; guard is correct here.
 
 export default function Nav({ base }: Props) {
@@ -84,19 +88,16 @@ export default function Nav({ base }: Props) {
     return currentPath.includes(slug);
   };
 
-  /* ── FINAL v2 primary navigation ──────────────────────────── */
+  /* ── Primary navigation (client directive 2026-08-19: only Home ·
+     Missionaries · Contact; About / How It Works / Mission Teams / Give
+     are hidden — pages still exist by direct URL but nothing links to them.
+     Give button stays always visible (mapa rule) → external Aplos form. ── */
   const links = [
     { href: base,                    label: t('nav_home') },
-    { href: `${base}about/`,         label: t('nav_aboutYes') },
     { href: `${base}missionaries/`,  label: t('nav_missionaries') },
-    { href: `${base}how-it-works/`,  label: t('nav_howItWorks') },
-    { href: `${base}mission-teams/`, label: t('nav_missionTeams') },
     { href: `${base}contact/`,       label: t('nav_contact') },
   ];
-  const mobileLinks = [
-    ...links,
-    { href: `${base}give/`,           label: t('nav_give') },
-  ];
+  const mobileLinks = links;
 
   const LangToggle = ({ light = false }: { light?: boolean }) => (
     <div className="flex items-center gap-0.5">
@@ -163,7 +164,8 @@ export default function Nav({ base }: Props) {
             <LangToggle />
 
             <a
-              href={`${base}give/`}
+              href={APLOS}
+              target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-deep)] text-white text-[12px] tracking-[0.16em] uppercase font-semibold hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_2px_10px_rgba(232,117,26,0.30)]"
             >
               <span aria-hidden="true" className="text-[10px] leading-none">✛</span>
@@ -175,7 +177,8 @@ export default function Nav({ base }: Props) {
               siempre visible") + hamburger for the links */}
           <div className="flex lg:hidden items-center gap-3">
             <a
-              href={`${base}give/`}
+              href={APLOS}
+              target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent-deep)] text-white text-[11px] tracking-[0.14em] uppercase font-semibold hover:bg-[var(--color-accent-hover)] transition-colors duration-300 shadow-[0_2px_10px_rgba(232,117,26,0.30)]"
             >
               <span aria-hidden="true" className="text-[9px] leading-none">✛</span>
@@ -234,7 +237,8 @@ export default function Nav({ base }: Props) {
             ))}
 
             <a
-              href={`${base}give/`}
+              href={APLOS}
+              target="_blank" rel="noopener noreferrer"
               onClick={closeMenu}
               className="mt-8 self-stretch flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[var(--color-accent-deep)] text-white text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-[var(--color-accent-hover)] transition-colors duration-300"
             >

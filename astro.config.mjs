@@ -46,7 +46,13 @@ function relaxCspStyleSrc() {
 export default defineConfig({
   integrations: [
     react(),
-    sitemap({ filter: (page) => !page.includes('/privacy') && !page.includes('/404') }),
+    sitemap({
+      // Hidden pages (client directive 2026-08-19): reachable by direct URL
+      // only — out of the sitemap, noindex'd, and nothing links to them.
+      filter: (page) =>
+        !['/privacy', '/404', '/about', '/give', '/how-it-works', '/mission-teams', '/join']
+          .some((hidden) => page.includes(hidden)),
+    }),
     relaxCspStyleSrc(),
   ],
   output: 'static',

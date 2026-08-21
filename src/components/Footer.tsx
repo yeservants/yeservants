@@ -7,13 +7,11 @@ interface Props { base: string; }
 export default function Footer({ base }: Props) {
   const { t } = useLang();
 
-  /* FINAL v2 footer links: Financial Support · Logistical Support · Partnership
-     · Annual Reports · Privacy · Contact */
-  const links = [
-    { href: `${base}join/`,                     label: t('footer_join') },
-    { href: `${base}how-it-works/#financial`,   label: t('footer_financialSupport') },
-    { href: `${base}how-it-works/#logistical`,  label: t('footer_logisticalSupport') },
-    { href: `${base}give/`,                     label: t('footer_partnership') },
+  /* Client directive 2026-08-19: join / how-it-works / give are hidden —
+     no internal link may point to them. Partnership → Aplos donation form. */
+  const links: { href: string; label: string; external?: boolean }[] = [
+    { href: 'https://app.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations',
+      external: true, label: t('footer_partnership') },
     { href: '#', label: t('footer_annualReports') }, /* CLIENT: annual reports link */
     { href: `${base}privacy/`,                  label: t('footer_utility_privacy') },
     { href: `${base}contact/`,                  label: t('footer_utility_contact') },
@@ -42,7 +40,12 @@ export default function Footer({ base }: Props) {
             <h2 className="text-[var(--color-cream)]/80 text-xs font-semibold tracking-[0.16em] uppercase mb-4">{t('footer_links')}</h2>
             <nav className="flex flex-col gap-1">
               {links.map((l) => (
-                <a key={l.label} href={l.href} className={linkCls}>{l.label}</a>
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className={linkCls}
+                  {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >{l.label}</a>
               ))}
             </nav>
           </div>
