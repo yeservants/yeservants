@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FSEVO · Claude (yesservant-proposal)",
+      "type": "shell",
+      "command": "env -u CLAUDE_CODE_CHILD_SESSION -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT CLAUDE_CODE_FORCE_SESSION_PERSISTENCE=1 claude --dangerously-skip-permissions --name 'yesservant-proposal'",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "fsevo-auto",
+        "reveal": "always",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FSEVO · dev server (yesservant-proposal)",
+      "type": "shell",
+      "command": "npm run dev",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "fsevo-auto",
+        "reveal": "always",
+        "focus": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}
