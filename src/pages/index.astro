@@ -3,15 +3,14 @@ import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero';
-import HomeLetter from '../components/HomeLetter';
-import HomeInsight from '../components/HomeInsight';
-import HomeWhyItWorks from '../components/HomeWhyItWorks';
+import HomeStats from '../components/HomeStats';
 import HomeInvestment from '../components/HomeInvestment';
 import HomeDifferent from '../components/HomeDifferent';
 import HomeModel from '../components/HomeModel';
 import HomeSupport from '../components/HomeSupport';
 import HomeProjects from '../components/HomeProjects';
 import HomeBiblical from '../components/HomeBiblical';
+import HomeTrust from '../components/HomeTrust';
 import HomeFinalCta from '../components/HomeFinalCta';
 import HomeMissionaries from '../components/HomeMissionaries';
 import Footer from '../components/Footer';
@@ -20,28 +19,18 @@ import Footer from '../components/Footer';
 import hero1Src from '../assets/images/yespic/IMG-20240810-WA0010.jpg';
 import hero2Src from '../assets/images/yespic/IMG-20240810-WA0012.jpg';
 import hero3Src from '../assets/images/yespic/IMG-20240810-WA0009.jpg';
-import hero4Src from '../assets/images/yespic/9.jpg';
-
-// Letter story photos — verified field photography per location
-import crSrc from '../assets/images/yespic/costa-rica-bajo-rodriguez.jpg'; // Bajo Rodriguez, Costa Rica
-import hnSrc from '../assets/images/yespic/honduras-mata-hambre.jpg';      // Mata Hambre, Honduras
-import phSrc from '../assets/images/yespic/philippines-ozamiz.jpg';        // Ozamiz, Philippines
 
 // Andrés González — President of YES (Final CTA portrait)
 import andresSrc from '../assets/images/andres.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
-const heroSrcs = [hero1Src, hero2Src, hero3Src, hero4Src];
+const heroSrcs = [hero1Src, hero2Src, hero3Src];
 const heroImages = (
   await Promise.all(
-    heroSrcs.map((src, i) => getImage({ src, format: 'webp', width: 880, height: 1100, quality: i === 3 ? 72 : 82 }))
+    heroSrcs.map((src) => getImage({ src, format: 'webp', width: 880, height: 1100, quality: 82 }))
   )
 ).map((img) => img.src);
-
-const crImg = await getImage({ src: crSrc, format: 'webp', width: 720, height: 540, quality: 82 });
-const hnImg = await getImage({ src: hnSrc, format: 'webp', width: 720, height: 540, quality: 82 });
-const phImg = await getImage({ src: phSrc, format: 'webp', width: 720, height: 540, quality: 82 });
 
 /* CLIENT: Andrés' current field photo; an in-action ministry shot may replace it if available */
 const andresImg = await getImage({ src: andresSrc, format: 'webp', width: 640, height: 720, quality: 82 });
@@ -77,43 +66,34 @@ const sealSrc = `${base}images/candid-seal-platinum-2025.png`;
 ---
 
 <BaseLayout title="Behind Every Missionary Is a Story No One Sees · YES (Yielded Evangelical Servants)" description={description} preloadImage={heroImages[0]}>
-  {/* Block 1 — Hero: the letter opens (eyebrow, headline, block quote) */}
+  {/* 1 — Hero: eyebrow, headline, opening paragraph, pull-quote, CTAs */}
   <Hero base={base} heroImages={heroImages} client:load />
 
-  {/* Block 1 (cont.) — What I've Seen: the letter body with the three field stories */}
-  <HomeLetter
-    base={base}
-    crImg={{ src: crImg.src }}
-    hnImg={{ src: hnImg.src }}
-    phImg={{ src: phImg.src }}
-    client:visible
-  />
+  {/* 2 — Stats strip: 35+ · 20+ · Platinum · 501(c)(3) */}
+  <HomeStats base={base} sealSrc={sealSrc} client:visible />
 
-  {/* Block 2 — The Insight (single centered card) */}
-  <HomeInsight base={base} client:visible />
-
-  {/* v7 — Stats strip equivalent (paragraph + 35+/20+/Platinum/501(c)(3)) */}
-  <HomeWhyItWorks base={base} sealSrc={sealSrc} client:visible />
-
-  {/* v7 — The Investment (isolated pull-quote + Matthew 6:19-20) */}
+  {/* 3 — The Investment (bridge pull-quote + Matthew 6:19-20) */}
   <HomeInvestment base={base} client:visible />
 
-  {/* v7 — What Makes YES Different (4 numbered points) */}
+  {/* 4 — What Makes YES Different (4 numbered points) */}
   <HomeDifferent base={base} client:visible />
 
-  {/* v7 — The Model (comparison ledger: Sent from the US vs YES) */}
+  {/* 5 — The Model (comparison ledger: Sent from the US vs YES) */}
   <HomeModel base={base} client:visible />
 
-  {/* v7 — Where Your Partnership Goes (chain quote + 4 areas) */}
+  {/* 6 — Where Your Partnership Goes (chain quote + 4 areas) */}
   <HomeSupport base={base} client:visible />
 
-  {/* v7 — Special Projects (Priority 01: pastor's home · 02: gathering place) */}
+  {/* 7 — Special Projects (Priority 01: pastor's home · 02: gathering place) */}
   <HomeProjects base={base} client:visible />
 
-  {/* The Biblical Foundation (4 scripture cards — v7 "Body of Christ") */}
+  {/* 8 — The Body of Christ (1 Cor 12:26-27 · Luke 6:38) */}
   <HomeBiblical base={base} client:visible />
 
-  {/* Final CTA (orange box, signed by Andres, with his photo) */}
+  {/* 9 — Why Trust YES (paragraph + 5 credential pills) */}
+  <HomeTrust base={base} client:visible />
+
+  {/* 10 — Final CTA (orange box, signed by Andres, closes on John 13:35) */}
   <HomeFinalCta
     base={base}
     andresImg={{ src: andresImg.src }}

@@ -36,7 +36,7 @@ export const common = {
     cta_learnMore: 'Learn more',
     cta_inquireTrip: 'Inquire About a Mission Trip',
     cta_giveByMail: 'Give By Mail',
-    cta_learnMore: 'Learn More',
+    cta_seeFullStory: 'See the full story',
 
     /* ── Footer (FINAL v2 / mapa) ────────────────────────── */
     footer_links: 'Links',
@@ -101,7 +101,7 @@ export const common = {
     cta_learnMore: 'Conoce más',
     cta_inquireTrip: 'Consultar sobre un Viaje Misionero',
     cta_giveByMail: 'Donar por Correo',
-    cta_learnMore: 'Conoce Más',
+    cta_seeFullStory: 'Conoce la historia completa',
 
     /* ── Pie de página (FINAL v2 / mapa) ─────────────────── */
     footer_links: 'Enlaces',

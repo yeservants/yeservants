@@ -88,14 +88,15 @@ export default function Nav({ base }: Props) {
     return currentPath.includes(slug);
   };
 
-  /* ── Primary navigation (client directive 2026-08-19: only Home ·
-     Missionaries · Contact; About / How It Works / Mission Teams / Give
-     are hidden — pages still exist by direct URL but nothing links to them.
+  /* ── Primary navigation (client directive 2026-09-01: Home · Contact only.
+     The Missionaries came out of the nav — the page still exists and is
+     reached from the home page's procession carousel and the final CTA.
+     About / How It Works / Mission Teams / Give stay hidden — pages exist by
+     direct URL but nothing links to them.
      Give button stays always visible (mapa rule) → external Aplos form. ── */
   const links = [
-    { href: base,                    label: t('nav_home') },
-    { href: `${base}missionaries/`,  label: t('nav_missionaries') },
-    { href: `${base}contact/`,       label: t('nav_contact') },
+    { href: base,               label: t('nav_home') },
+    { href: `${base}contact/`,  label: t('nav_contact') },
   ];
   const mobileLinks = links;
 

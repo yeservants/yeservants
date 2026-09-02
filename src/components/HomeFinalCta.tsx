@@ -80,21 +80,34 @@ export default function HomeFinalCta({ base, andresImg }: Props) {
               </h2>
 
               {/* Italic body (PDF: "Texto en itálica explicando el impacto") */}
-              <div className="space-y-5 italic text-lg md:text-xl leading-[1.7] text-[var(--color-primary-deep)]/85 mb-10">
-                <p>{t('home_cta_p1')}</p>
-                <p>{t('home_cta_p2')}</p>
+              <p className="italic text-lg md:text-xl leading-[1.7] text-[var(--color-primary-deep)]/85 mb-10">
+                {t('home_cta_body')}
+              </p>
+
+              {/* Buttons — full width on mobile (webmaster rule #5) */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:justify-start justify-center">
+                <a
+                  href={`${base}contact/`}
+                  className="inline-flex w-full sm:w-auto justify-center px-10 py-5 bg-[var(--color-primary-deep)] text-[var(--color-cream)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)] transition-colors duration-300 shadow-[0_14px_36px_-10px_rgba(33,23,16,0.6)]"
+                >
+                  {t('cta_talkWithAndres')} <span aria-hidden="true">→</span>
+                </a>
+                <a
+                  href={`${base}missionaries/`}
+                  className="inline-flex w-full sm:w-auto justify-center px-10 py-5 border border-[var(--color-primary-deep)]/45 text-[var(--color-primary-deep)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary-deep)]/10 transition-colors duration-300"
+                >
+                  {t('cta_seeFullStory')}
+                </a>
               </div>
 
-              {/* Big button — full width on mobile (webmaster rule #5) */}
-              <a
-                href={`${base}contact/`}
-                className="inline-flex w-full sm:w-auto justify-center px-12 py-5 bg-[var(--color-primary-deep)] text-[var(--color-cream)] text-base font-semibold tracking-wide rounded-full hover:bg-[var(--color-primary)] transition-colors duration-300 shadow-[0_14px_36px_-10px_rgba(33,23,16,0.6)]"
-              >
-                {t('cta_talkWithAndres')}
-              </a>
+              {/* Closing verse (v7: John 13:35) */}
+              <p className="mt-9 font-heading italic text-[var(--color-primary-deep)]/75 text-base md:text-lg leading-[1.6]">
+                &ldquo;{t('home_cta_verse')}&rdquo;{' '}
+                <span className="not-italic text-sm tracking-[0.2em] uppercase">{t('home_cta_verse_ref')}</span>
+              </p>
 
-              {/* Contact line under the button */}
-              <p className="mt-8 text-[var(--color-primary-deep)]/90 text-sm tracking-wide">
+              {/* Contact line */}
+              <p className="mt-6 text-[var(--color-primary-deep)]/90 text-sm tracking-wide">
                 {t('home_cta_contact')}
               </p>
             </div>

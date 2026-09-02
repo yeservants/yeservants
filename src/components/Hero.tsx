@@ -190,21 +190,20 @@ export default function Hero({ base, heroImages }: Props) {
             </h1>
 
             {/* v7 hero sequence: opening paragraph → orange-border quote →
-                "hands and feet" paragraph → pill CTAs. The opening lines moved
-                up here from HomeLetter so nothing repeats down the page. */}
+                "hands and feet" paragraph → pill CTAs. */}
             <p data-hero-fade className="mt-7 max-w-xl text-[var(--color-cream)]/75 text-base md:text-lg leading-[1.75]">
-              {t('home_letter_p1')} {t('home_letter_p2')}
+              {t('home_hero_p1')}
             </p>
 
             <blockquote
               data-hero-fade
               className="mt-7 max-w-xl border-l-[3px] border-[var(--color-accent)] pl-6 font-heading italic text-[var(--color-cream)]/90 text-lg md:text-xl leading-[1.6]"
             >
-              &ldquo;{t('home_letter_p3')}&rdquo;
+              &ldquo;{t('home_hero_pullquote')}&rdquo;
             </blockquote>
 
             <p data-hero-fade className="mt-7 max-w-xl text-[var(--color-cream)]/70 text-base md:text-lg leading-[1.75]">
-              {t('home_hero_quote')}
+              {t('home_hero_p2')}
             </p>
 
             <div data-hero-fade className="mt-9 flex flex-col sm:flex-row gap-4">
