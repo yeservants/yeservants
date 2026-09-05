@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Bilingual (EN/ES) marketing site for **Yielded Evangelical Servants (YES)**, a missionary-founded 501(c)(3) missions ministry. Static Astro site deployed to **GitHub Pages** under base `/yesservant-proposal`. The authoritative content + structure sources are the client's **FINAL v2 docs** (`~/Desktop/YES_Website_FINAL_v2.pdf` — full EN copy + ES webmaster instructions — and `~/Desktop/YES_Mapa_Website.pdf` — the 7-page sitemap); they supersede the old V3 guide. The on-repo design direction lives in `.design-brief.md`.
+Bilingual (EN/ES) marketing site for **Yielded Evangelical Servants (YES)**, a missionary-founded 501(c)(3) missions ministry. Static Astro site on **GitHub Pages**. Two deploy targets from one branch (see README § Deployment): staging `fpsjago/yesservant-proposal` `master` under base `/yesservant-proposal`, and **production `yeservants/yeservants` branch `new-site` → https://yeservants.org at root** (config switches on `GITHUB_REPOSITORY`; `SITE_ENV=production npm run build` locally). Push both: `git push origin master && git push production master:new-site`. The production repo MUST stay public (org is on GitHub Free; private = Pages unpublished). The authoritative content + structure sources are the client's **FINAL v2 docs** (`~/Desktop/YES_Website_FINAL_v2.pdf` — full EN copy + ES webmaster instructions — and `~/Desktop/YES_Mapa_Website.pdf` — the 7-page sitemap); they supersede the old V3 guide. The on-repo design direction lives in `.design-brief.md`.
 
 **The site is a personal letter from Andrés, President of YES** — not a corporate NGO site. Brand: **Playfair Display** (display) + **Lora** (body; `html{font-size:90%}` global 10% type reduction per Jago 2026-08-20, so body ≈16.2px/1.75 — the old "min 18px" FINAL v2 rule is superseded) · **dark coffee/espresso** `#33241A` dominant, gold `#C9952C` warmth, orange `#E8751A` CTAs, off-white `#F0EDE6` on dark ("el diseño de Sergio: café oscuro, serif grande, dorado") · dignity-first, real field photography. Tagline: *YES finds the faithful workers nobody is standing with, and stands with them.* NOTE: `.green-gradient` / `GreenAtmos` class+file names survive from the V3 green era — their **values** are espresso/gold now.
 
@@ -41,7 +41,7 @@ No linter/test runner. `astro check` + verifying against `npm run preview` is th
 `src/i18n/pages/home.ts` in the source document's own order (2026-09-01: the "What I've Seen" field-story
 section and "The Insight" were removed on client instruction, and the stock street photo `yespic/9.jpg`
 was dropped from the hero carousel). The client's ES file was published without diacritics; the repo
-restores correct Spanish orthography on the same wording. Directive audios: `docs/client-directives-2026-08-19.md`. If deploying to the production domain where old URLs are indexed, add base-correct **meta-refresh stub pages** (Astro's `redirects` config strips the base from targets and 404s on a base path — don't use it).
+restores correct Spanish orthography on the same wording. Directive audios: `docs/client-directives-2026-08-19.md`. Old-site URL redirects (`/missionary/<slug>/` etc.) are production-only `redirects` in `astro.config.mjs` (fine at root; on the staging base path Astro's `redirects` strips the base and 404s, so they are off there).
 
 ## Conventions & gotchas
 

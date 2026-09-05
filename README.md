@@ -4,8 +4,8 @@ Bilingual (EN / ES) marketing site for **Yielded Evangelical Servants (YES)**, a
 
 > *YES finds the faithful workers nobody is standing with, and stands with them.*
 
-- **Live (staging):** https://fpsjago.github.io/yesservant-proposal/
-- **Production domain (old site, separate repo):** https://yeservants.org
+- **Production:** https://yeservants.org (repo `yeservants/yeservants`, branch `new-site`)
+- **Staging:** https://fpsjago.github.io/yesservant-proposal/ (repo `fpsjago/yesservant-proposal`, branch `master`)
 - **Stack:** Astro 6 · React 19 islands · TypeScript strict · Tailwind v4 · GSAP 3 + Lenis · static output on GitHub Pages
 
 ---
@@ -88,7 +88,7 @@ Requires Node 22.12 or newer. There is no linter or test runner; `astro check` p
 
 **Astro islands.** `.astro` files are pages and layouts only. Every component is a React `.tsx` island. The page `.astro` is the data layer: it runs `getCollection`, optimises images to WebP with `getImage`, and passes plain serialisable props (including `base`) into islands. Components never import `astro:*`. Sections hydrate with `client:visible`; the hero and page openers use `client:load`; only the persistent Nav uses `client:only`.
 
-**Base path.** The site is served under `/yesservant-proposal`. Pages compute `base` from `import.meta.env.BASE_URL` and thread it into every island. All internal links and image paths are built from `base`, never from a leading `/`.
+**Base path.** Staging is served under `/yesservant-proposal`; production at `/`. Pages compute `base` from `import.meta.env.BASE_URL` and thread it into every island. All internal links and image paths are built from `base`, never from a leading `/`.
 
 **i18n.** `src/i18n/translations.ts` merges `common.ts` with one module per page in `src/i18n/pages/` into a single dictionary. Keys are globally unique and namespaced by page (`home_`, `gw_` for missionaries, `contact_`, and so on). EN and ES must have matching keys. `useLang()` returns the current language and `t(key)`.
 
@@ -131,11 +131,27 @@ CLIENT-CHECKLIST.md      placeholders the client still has to fill
 
 ## Deployment
 
-Pushing to `master` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages at https://fpsjago.github.io/yesservant-proposal/.
+One branch, two repos, one workflow (`.github/workflows/deploy.yml`). The Astro config reads `GITHUB_REPOSITORY` and picks the target:
 
-The production domain **yeservants.org** currently points at the old site in the separate `yeservants/yeservants` repo. Moving it means adding the CNAME to this repo, changing `site` and `base` in `astro.config.mjs`, and pointing DNS at the new Pages host. If old URLs are indexed, add base-correct meta-refresh stub pages rather than Astro's `redirects` config, which strips the base and 404s.
+| Repo | Branch | Builds for | URL |
+| :-- | :-- | :-- | :-- |
+| `fpsjago/yesservant-proposal` (private) | `master` | staging, base `/yesservant-proposal` | https://fpsjago.github.io/yesservant-proposal/ |
+| `yeservants/yeservants` (public, the org's production repo) | `new-site` | production, root path, custom domain | https://yeservants.org |
 
-**Backups.** Before deploying a significant change, tag the currently live commit (`live-backup-YYYY-MM-DD`) and push the tag so the previous version is one checkout away. The first such tag is `live-backup-2026-09-04`.
+Ship a change by pushing the same commit to both:
+
+```sh
+git push origin master
+git push production master:new-site   # remote "production" = yeservants/yeservants
+```
+
+Production Pages is set to build from GitHub Actions and the `github-pages` environment allows `new-site`. The old site remains untouched on that repo's `master` branch (`/docs` folder) as the rollback: switch Pages back to legacy `master` + `/docs` to restore it.
+
+**The production repo must stay public.** The `yeservants` org is on GitHub Free, where Pages only serves public repos. Making it private unpublishes yeservants.org immediately (this happened on 2026-09-04 and was reverted).
+
+Production builds also emit meta-refresh redirects for the old site's URLs (`/missionary/<slug>/`, `/donate/`, `/download/`, `/thanks/`), defined in `astro.config.mjs`. To test a production build locally: `SITE_ENV=production npm run build`.
+
+**Backups.** Before deploying a significant change, tag the currently live commit (`live-backup-YYYY-MM-DD`) and push the tag so the previous version is one checkout away. The first such tag is `live-backup-2026-09-04` on the staging repo.
 
 ---
 
