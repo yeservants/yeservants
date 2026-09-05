@@ -8,8 +8,8 @@
 export const common = {
   en: {
     /* ── Brand constants (FINAL v2 Brand Identity) ───────── */
-    brand_tagline: 'YES finds the faithful workers nobody is standing with — and stands with them.',
-    brand_thematic: 'If we are one Body — no faithful servant should stand alone.',
+    brand_tagline: 'YES finds the faithful workers nobody is standing with, and stands with them.',
+    brand_thematic: 'If we are one Body, no faithful servant should stand alone.',
     brand_uvp: 'YES goes where faithful workers are already serving — and carrying more than anyone should carry alone.',
     brand_founded: 'Founded by missionaries. Built on the field. Standing with faithful Gospel workers since 1990.',
 
@@ -73,8 +73,8 @@ export const common = {
 
   es: {
     /* ── Constantes de marca (FINAL v2) ──────────────────── */
-    brand_tagline: 'YES encuentra a los obreros fieles con quienes nadie está — y se pone a su lado.',
-    brand_thematic: 'Si somos un solo Cuerpo — ningún siervo fiel debería estar solo.',
+    brand_tagline: 'YES encuentra a los obreros fieles con quienes nadie está, y se pone a su lado.',
+    brand_thematic: 'Si somos un solo Cuerpo, ningún siervo fiel debería estar solo.',
     brand_uvp: 'YES va donde los obreros fieles ya están sirviendo — cargando más de lo que nadie debería cargar solo.',
     brand_founded: 'Fundada por misioneros. Forjada en el campo. Junto a obreros fieles del Evangelio desde 1990.',
 

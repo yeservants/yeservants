@@ -49,9 +49,7 @@ export default function JoinCalling({ base }: Props) {
           data-reveal="fade"
           className="flex items-center justify-center gap-3 text-[var(--color-accent-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-8"
         >
-          <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />
           {t('join_calling_label')}
-          <span aria-hidden="true" className="w-9 h-px bg-[var(--color-accent-light)]/50" />
         </p>
 
         <blockquote data-reveal="mask" className="mb-5">

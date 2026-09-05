@@ -54,9 +54,7 @@ export default function MtChurches({ base }: Props) {
           data-reveal="fade"
           className="flex items-center justify-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
         >
-          <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
           {t('mt_church_label')}
-          <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
         </p>
 
         <h2

@@ -161,9 +161,7 @@ export default function HomeMissionaries({ base, missionaries }: Props) {
           data-reveal="fade"
           className="inline-flex items-center gap-3 text-[var(--color-gold)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
         >
-          <span aria-hidden="true" className="w-8 h-px bg-[var(--color-gold)]/60" />
           {t('home_mis_label')}
-          <span aria-hidden="true" className="w-8 h-px bg-[var(--color-gold)]/60" />
         </p>
         <h2
           data-reveal="mask"

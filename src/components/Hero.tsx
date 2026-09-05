@@ -181,7 +181,6 @@ export default function Hero({ base, heroImages }: Props) {
           {/* ── Text column ── */}
           <div ref={contentRef} className="lg:col-span-6">
             <p data-hero-fade className="flex items-start gap-3 text-[var(--color-accent-light)] text-sm md:text-base tracking-[0.28em] uppercase font-medium mb-8">
-              <span aria-hidden="true" className="w-10 h-px bg-[var(--color-accent-light)]/50 shrink-0 mt-[0.6em]" />
               {t('home_hero_eyebrow')}
             </p>
 

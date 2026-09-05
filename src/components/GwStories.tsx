@@ -114,7 +114,6 @@ export default function GwStories({ photos }: Props) {
             data-reveal="fade"
             className="flex items-center gap-3 text-[var(--color-accent-deep)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
           >
-            <span aria-hidden="true" className="w-8 h-px bg-[var(--color-accent)]/60" />
             {t('gw_cost_label')}
           </p>
           <h2
@@ -162,10 +161,6 @@ export default function GwStories({ photos }: Props) {
               {/* Story text */}
               <div className={i % 2 === 1 ? 'md:order-1' : ''}>
                 <div className="flex items-center gap-3 mb-4">
-                  <span
-                    aria-hidden="true"
-                    className="w-6 h-px bg-[var(--color-accent)]/60"
-                  />
                   <p className="text-[var(--color-accent-deep)] text-xs tracking-[0.25em] uppercase font-medium">
                     {story.label}
                   </p>

@@ -60,7 +60,6 @@ export default function HomeBiblical({ base: _base }: Props) {
           data-reveal="fade"
           className="flex items-center gap-3 text-[var(--color-gold-light)] text-sm md:text-lg tracking-[0.3em] uppercase font-medium mb-6"
         >
-          <span aria-hidden="true" className="w-9 h-px bg-[var(--color-gold)]/50" />
           {t('home_biblical_label')}
         </p>
 

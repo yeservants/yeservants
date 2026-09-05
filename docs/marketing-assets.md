@@ -5,11 +5,11 @@ Ready-to-use assets for email campaigns, social, and SEO. Not rendered on the si
 
 ## Core thematic statement
 
-> "If we are one Body — no faithful servant should stand alone."
+> "If we are one Body, no faithful servant should stand alone."
 
 ## Tagline
 
-> YES finds the faithful workers nobody is standing with — and stands with them.
+> YES finds the faithful workers nobody is standing with, and stands with them.
 
 **UVP expanded:** YES goes where faithful workers are already serving — and carrying more than anyone should carry alone.
 
@@ -23,7 +23,7 @@ Ready-to-use assets for email campaigns, social, and SEO. Not rendered on the si
 4. "They're already there. Nobody is standing with them."
 5. "A pastor cutting grass with a machete before Sunday's sermon."
 6. "What happened when one leader in the Philippines finally had support."
-7. "If we are one Body — no one should stand alone."
+7. "If we are one Body, no one should stand alone."
 8. "The hands and feet need the whole body. Will you be that support?"
 9. "35 years. This is what we've seen."
 
