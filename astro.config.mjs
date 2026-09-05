@@ -43,6 +43,44 @@ function relaxCspStyleSrc() {
   };
 }
 
+/**
+ * Deployment target.
+ *
+ * The same branch is pushed to two repos:
+ *   - fpsjago/yesservant-proposal  → staging at fpsjago.github.io/yesservant-proposal/
+ *   - yeservants/yeservants        → production at https://yeservants.org/ (root path)
+ * GitHub Actions sets GITHUB_REPOSITORY, so the build picks the right site/base
+ * automatically. Locally, `SITE_ENV=production npm run build` forces production.
+ */
+const isProduction =
+  process.env.GITHUB_REPOSITORY === 'yeservants/yeservants' ||
+  process.env.SITE_ENV === 'production';
+
+/**
+ * Old-site URLs (yeservants.org, 2018–2025) → new routes. Static output turns
+ * these into meta-refresh stub pages. Production only: Astro's `redirects`
+ * strips the base path, so on the staging base they would 404.
+ */
+const oldSlugs = [
+  'Andres-Gonzalez', 'Rupert-Henry-and-Judy-Henry', 'abernathy', 'ahn', 'anonymous',
+  'batluck', 'boyle', 'carolynn-hudson', 'chinn', 'daniel-and-doris-matheus',
+  'delmedico', 'federico-raquel-ferrero', 'hale', 'heinsch', 'hicks', 'hsu',
+  'johnson', 'johnsons', 'kathy-briner', 'kawinzi', 'lee', 'lisa-espineli-chinn',
+  'narvaez', 'oscar', 'pappa', 'paul-timothy', 'richard-and-catherine-weston',
+  'smith', 'stewart', 'tamercindy', 'william-and-chantell-burgess',
+];
+const retiredSlugs = [
+  'Sheryl-and-Steve-Froehlich', 'bernie-and-jean-latour', 'chuck-and-ann-tompkins', 'gray', 'maier',
+];
+const productionRedirects = {
+  ...Object.fromEntries(oldSlugs.map((s) => [`/missionary/${s}`, `/missionaries/${s}/`])),
+  ...Object.fromEntries(retiredSlugs.map((s) => [`/missionary/${s}`, '/missionaries/'])),
+  '/missionary': '/missionaries/',
+  '/donate': 'https://app.aplos.com/aws/give/YieldedEvangelicalServantsInc/YesDonations',
+  '/download': '/',
+  '/thanks': '/contact/',
+};
+
 export default defineConfig({
   integrations: [
     react(),
@@ -84,8 +122,9 @@ export default defineConfig({
       },
     },
   },
-  site: 'https://fpsjago.github.io',
-  base: '/yesservant-proposal',
+  site: isProduction ? 'https://yeservants.org' : 'https://fpsjago.github.io',
+  base: isProduction ? '/' : '/yesservant-proposal',
+  redirects: isProduction ? productionRedirects : {},
   compressHTML: true,
   build: { assets: '_assets' },
   vite: { plugins: [tailwindcss()] },
