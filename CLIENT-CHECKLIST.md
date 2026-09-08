@@ -25,7 +25,7 @@ The site now implements the **FINAL v2 copy + sitemap** (`YES_Website_FINAL_v2.p
 - [ ] **Hero carousel** field photos (Home) — swap if stronger lead images exist.
 
 ## 4. Contact form
-The Contact form is static-site friendly: submitting opens the visitor's email app addressed to info@yeservants.org with the subject + message pre-filled. If you prefer messages to land directly in an inbox/dashboard, we can wire a form service (e.g. Formspree) — say the word.
+The Contact form now submits through **Web3Forms** (your access key is wired into the site build), so messages land directly in the inbox tied to that Web3Forms account — no email app needed. Confirm the destination email in your Web3Forms dashboard is the one you want monitored. If the key is ever revoked, the form gracefully falls back to opening the visitor's email app addressed to info@yeservants.org.
 
 ## 5. Removed pages / redirects
 This build removed `/our-work/` and `/for-donors/` (their content was redistributed per the new sitemap: major-donor content → Give; mission teams → its own page; transparency → How It Works) and renamed `/gospel-workers/` → `/missionaries/`. **When deploying to the production domain**, add base-correct redirect stubs for any indexed old URLs (`/our-work → /`, `/for-donors → /give`, `/gospel-workers → /missionaries`, `/gospel-workers/[slug] → /missionaries/[slug]`).

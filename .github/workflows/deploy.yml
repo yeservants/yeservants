@@ -30,6 +30,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Web3Forms access key for the contact form. Public by design (client-side POST).
+          PUBLIC_WEB3FORMS_KEY: e2914b56-158f-4934-9fea-dbc2d9a5a769
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

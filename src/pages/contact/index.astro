@@ -7,9 +7,10 @@ import ContactBody from '../../components/ContactBody';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 // Web3Forms access key (free, from web3forms.com — safe to expose by design).
-// Set PUBLIC_WEB3FORMS_KEY in the build env (.env or the GitHub Actions workflow).
-// While empty, the form gracefully falls back to a mailto: link.
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+// PUBLIC_WEB3FORMS_KEY in the build env overrides the client's key below.
+// Only if both are empty does the form fall back to a mailto: link.
+const web3formsKey =
+  import.meta.env.PUBLIC_WEB3FORMS_KEY || 'e2914b56-158f-4934-9fea-dbc2d9a5a769';
 
 const description =
   'Whether you want to become a partner, send a team, ask about a specific worker, or just learn more — we want to hear from you.';
